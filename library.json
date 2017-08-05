@@ -1,0 +1,22 @@
+{
+  "title": "Advanced fill the blanks",
+  "description": "Fill the blanks exercise with individual feedback",
+  "majorVersion": 0,
+  "minorVersion": 1,
+  "patchVersion": 0,
+  "runnable": 1,
+  "author": "S. Rettig",
+  "license": "MIT",
+  "machineName": "H5P.AdvancedBlanks",
+  "embedTypes": [
+    "iframe"
+  ],
+  "preloadedJs": [
+    {
+      "path": "dist.js"
+    }
+  ],
+  "preloadedCss": [],
+  "preloadedDependencies": [],
+  "editorDependencies": []
+}
