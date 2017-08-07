@@ -1,12 +1,114 @@
 [
   {
-    "label": "Text",
-    "importance": "high",
-    "name": "textField",
+    "name": "mode",
+    "type": "select",
+    "label": "Answer mode",
+    "description": "Indicates in what way the user enters answers.",
+    "options": [
+      {
+        "value": "selection",
+        "label": "The users selects from options."
+      },
+      {
+        "value": "typing",
+        "label": "The users types in the answers."
+      }
+    ],
+    "default": "typing"
+  },
+  {
+    "name": "caseSensitivity",
+    "type": "boolean",
+    "label": "Answers are case sensitive.",
+    "default": false
+  },
+  {
+    "name": "typoWarning",
+    "type": "boolean",
+    "label": "Warn users if they've made a typing mistake.",
+    "description": "If a user enters a solution that is very similar to the real one, he is warned about the typing mistake.",
+    "default": true
+  },
+  {
+    "name": "blanksText",
     "type": "text",
-    "widget": "textarea",
-    "placeholder": "Hello world",
-    "default": "Hello %username",
-    "description": "Says hello to someone"
+    "widget": "html",
+    "label": "Text with blanks",
+    "description": "Enter the text here. Blanks must be marked with __________ (3 or more underscores).",
+    "tags": [
+      "strong",
+      "em",
+      "u",
+      "strike",
+      "ul",
+      "ol",
+      "table",
+      "hr"
+    ],
+    "font": {
+      "size": true,
+      "family": true,
+      "color": true,
+      "background": true
+    }
+  },
+  {
+    "name": "blanksList",
+    "type": "list",
+    "label": "Blanks used in the text",
+    "entity": "blank",
+    "min": 1,
+    "widgets": [
+      {
+        "name": "VerticalTabs",
+        "label": "Default"
+      }
+    ],
+    "field": {
+      "name": "blankGroup",
+      "type": "group",
+      "label": "Blank",
+      "fields": [
+        {
+          "name": "correctAnswerText",
+          "type": "text",
+          "label": "Correct answer",
+          "description": "You can separate alternative answers with a semicolon (;)."
+        },
+        {
+          "name": "hint",
+          "type": "text",
+          "label": "Hint",
+          "optional": true
+        },
+        {
+          "name": "incorrectAnswersList",
+          "type": "list",
+          "label": "Incorrect answers",
+          "entity": "incorrect answer",
+          "optional": true,
+          "min": 0,
+          "field": {
+            "name": "incorrectAnswerGroup",
+            "type": "group",
+            "label": "Incorrect answer",
+            "description": "You can separate alternative answers with a semicolon (;).",                    
+            "fields": [
+              {
+                "name": "incorrectAnswerText",
+                "type": "text",
+                "label": "Incorrect answer text"
+              },
+              {
+                "name": "incorrectAnswerFeedback",
+                "type": "text",
+                "label": "Feedback",
+                "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user entered."
+              }
+            ]
+          }
+        }
+      ] 
+    }
   }
 ]
