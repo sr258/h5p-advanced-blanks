@@ -2,7 +2,7 @@
 import { ClozeGap } from "./cloze-gap";
 import { MediaElement, MediaType } from "./media-element";
 import { ClozeElement, ClozeElementType } from "./cloze-element";
-import { Localization, Labels } from "./localization";
+import { H5PLocalization, Labels } from "./localization";
 
 export class Cloze {
 	public html: string;
@@ -18,26 +18,11 @@ export class Cloze {
 		return true;
 	}
 
-	private static htmlFromMarkdown(text: string): string {
-		return text;
-	}
-
 	public static clozeFromText(text: string, gaps: ClozeGap[], media: MediaElement[]): Cloze {
 
 		var elementsList: ClozeElement[] = new Array();
 		var highlightObjects: ClozeHighlight[] = new Array();
 		var gapsInstances: ClozeGap[] = new Array();
-
-		// convert image markup into Markdown 
-		var imageRegExp = new RegExp(`-${Localization.instance.getTextFromLabel(Labels.imageName)}\\s*(\\d+)-`, "gi");
-		text = text.replace(imageRegExp, "![$1][$1]");
-
-		// add Markdown footnotes for images
-		var imageString = media
-			.filter((media) => media.type === MediaType.Image)
-			.map((media) => "[" + media.id + "]: " + media.uri)
-			.reduce((previous, current) => previous + "\n" + current, "");
-		text += imageString;
 
 		// convert gap markings
 		var underlineGapRegEx = new RegExp("_{3,}");
@@ -45,8 +30,7 @@ export class Cloze {
 			text = text.replace(underlineGapRegEx, "ANONGAPMARKER");
 		}
 
-		// convert Markdown into Html
-		var html = this.htmlFromMarkdown(text);
+		var html = text;
 
 		// convert !!signal!! highlight markup and _____  gap markup into <span>
 		var exclamationMarkRegExp = new RegExp("!!(.{1,40}?)!!", "i");

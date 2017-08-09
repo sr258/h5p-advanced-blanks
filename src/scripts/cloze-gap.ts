@@ -3,7 +3,7 @@ import { Answer } from './answer';
 import { Message } from './message';
 import { ClozeHighlight } from './cloze-highlight';
 import { Evaluation, MessageType } from './enums';
-import { Localization, Labels } from './localization';
+import { H5PLocalization, Labels } from './localization';
 
 export class ClozeGap extends ClozeElement {
     // Content
@@ -161,7 +161,7 @@ export class ClozeGap extends ClozeElement {
         }
 
         if (closeCorrectMatches.length > 0) {
-            this.displayTooltip(Localization.instance.getTextFromLabel(Labels.typoMessage), MessageType.Retry);
+            this.displayTooltip(H5PLocalization.instance.getTextFromLabel(Labels.typoMessage), MessageType.Retry);
             this.setAnswerState(MessageType.Retry);
             return;
         }

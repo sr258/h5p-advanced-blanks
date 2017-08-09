@@ -1,4 +1,4 @@
-import "../styles/main.css";
+import "../styles/style.css";
 import AdvancedBlanks from '../scripts/app';
 
 // Load library

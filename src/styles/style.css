@@ -20,9 +20,9 @@
 	margin-top: 1em;
 }
 
-	#modalContentInner > a:hover {
-		background: #51B7F2;
-	}
+#modalContentInner > a:hover {
+	background: #51B7F2;
+}
 
 #modalContentInner {
 	margin-top: 5px;

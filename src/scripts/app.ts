@@ -1,6 +1,7 @@
 import * as $ from 'jquery';
 import { H5PDataRepository } from './data-repository';
 import { MindTheGapController } from './mind-the-gap-controller';
+import { H5PLocalization } from "./localization";
 
 export default class AdvancedBlanks extends (H5P.EventDispatcher as { new(): any; }) {
     /**
@@ -15,8 +16,8 @@ export default class AdvancedBlanks extends (H5P.EventDispatcher as { new(): any
       this.element = document.createElement('div');
       this.element.innerText = '-Advanced blanks content-';
 
-      var repository = new H5PDataRepository(contentData);      
-      //Localization.initialize(AppClient);
+      var repository = new H5PDataRepository(config);      
+      H5PLocalization.initialize(config);
       var app : MindTheGapController = new MindTheGapController(repository);
       app.initialize();
     }

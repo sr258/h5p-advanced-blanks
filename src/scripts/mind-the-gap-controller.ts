@@ -2,7 +2,7 @@
 import { Feedback } from "./feedback";
 import { IDataRepository } from "./data-repository";
 import { Settings } from "./settings";
-import { Localization, Labels } from "./localization";
+import { H5PLocalization, Labels } from "./localization";
 import { ClozeType } from "./enums";
 import { ClozeHighlight } from "./cloze-highlight";
 import { ClozeGap } from "./cloze-gap";
@@ -25,7 +25,7 @@ export class MindTheGapController {
 
     initialize() {
         this.isSelectCloze = Settings.instance.clozeType == ClozeType.Select ? true : false;
-        this.checkAllLabel = Localization.instance.getTextFromLabel(Labels.checkAllButton);
+        this.checkAllLabel = H5PLocalization.instance.getTextFromLabel(Labels.checkAllButton);
         this.feedback = new Feedback(this.repository.getFeedbackText());
         var gaps = this.repository.getGapRepository();
         var snippets = this.repository.getSnippets();

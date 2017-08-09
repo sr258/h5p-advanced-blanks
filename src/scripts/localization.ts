@@ -7,18 +7,23 @@
         signalName
     }
 
-    export class Localization {
-        constructor(private client: any) {
+    export class H5PLocalization {
+        private constructor(private config: any) {
 
         }
 
-        static initialize(client: any) {
-            Localization.instance = new Localization(client);
+        static initialize(config: any) {
+            H5PLocalization.instance = new H5PLocalization(config);
         }
-        static instance: Localization;
+        static instance: H5PLocalization;
+        
+        /**
+         * @param  {string} name
+         * @returns string
+         */
 
         getText(name: string): string {
-            return this.client.getTranslation(name);
+            return name;
         }
 
         private labelToString(label: Labels) {
@@ -35,13 +40,12 @@
                     return "Lücke";
                 case Labels.signalName:
                     return "Signal";
+                default:
+                    return "";
             }
         }
 
         getTextFromLabel(label: Labels): string {
-            var name = this.labelToString(label);
-            if (name != "")
-                return this.getText(name);
-            return "";
+            return this.labelToString(label);
         }
     }
