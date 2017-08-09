@@ -8,7 +8,7 @@
     "build": "cross-env NODE_ENV='development' webpack",
     "watch": "webpack --watch",
     "dist": "cp library.json dist && cp semantics.json dist",
-    "deploy": "rsync -vaz --delete --rsh=\"ssh -l bitnami\" dist/* 192.168.188.43:~/h5p_dev/h5p-advanced-blanks",
+    "deploy": "rsync -vaz --delete --rsh=\"ssh -l bitnami\" dist/* 192.168.1.207:~/h5p_dev/h5p-advanced-blanks",
     "build+deploy": "npm run build && npm run deploy"
   },
   "repository": {
@@ -31,9 +31,13 @@
     "babel-preset-latest": "^6.22.0",
     "cross-env": "^4.0.0",
     "css-loader": "^0.26.2",
+    "ractive": "^0.8.14",
     "style-loader": "^0.13.2",
     "ts-loader": "^2.3.2",
     "typescript": "^2.4.2",
     "webpack": "^2.2.1"
+  },
+  "dependencies": {
+    "@types/ractive": "^0.7.27"
   }
 }

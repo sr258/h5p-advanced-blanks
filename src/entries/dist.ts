@@ -1,7 +1,5 @@
 import "../styles/main.css";
-import AdvancedBlanks from "../scripts/app";
-
-declare var H5P: any;
+import AdvancedBlanks from '../scripts/app';
 
 // Load library
 H5P = H5P || {};

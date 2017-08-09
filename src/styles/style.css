@@ -1,0 +1,187 @@
+﻿html, body {
+	margin: 0px;
+	padding: 0px;
+	height: 100%;
+	min-height: 100%;
+	-webkit-text-size-adjust: 100%;
+	background-color: white;
+}
+
+/* Play Speech Button in Dialog */
+#modalContentInner > a {
+	display: inline-block;
+	padding: 1em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+	background: #3197d2;
+	cursor: pointer;
+	color: white;
+	border-radius: 10px;
+	margin-top: 1em;
+}
+
+	#modalContentInner > a:hover {
+		background: #51B7F2;
+	}
+
+#modalContentInner {
+	margin-top: 5px;
+}
+
+#feedback {
+	display: block;
+	position: absolute;
+	left: 50%;
+	margin-left: -180px;
+	top: 20%;
+	max-height: 60%;
+	width: 360px;
+	padding: 2%;
+	overflow: auto;
+	webkit-border-radius: 15px;
+	-moz-border-radius: 15px;
+	border-radius: 15px;
+	box-shadow: 0 3px 6px rgba(0,0,0,.5);
+	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+	-moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+	-ms-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+	-o-box-shadow: 0 3px 6px rgba(0,0,0,.5);
+	border: 10px solid #ddd;
+	background: white;
+	z-index: 100000;
+}
+
+.popover-title {
+	display: none;
+}
+
+.popover-content {
+	font-size: 1em !important;
+	padding: 0.5em;
+}
+
+.cloze {
+	border: 3px solid;
+	padding: 2px;
+	border-color: transparent;
+	display: inline-block;
+	margin-top: 1px;
+	margin-bottom: 1px;
+}
+
+.cloze.correct {
+	border-color: rgb(144, 238, 144);
+}
+
+.cloze.error {
+	border-color: red;
+}
+
+.cloze > input {
+}
+
+#clozeContainer button {
+	padding-left: 5px;
+	padding-right: 5px;
+	border: none;
+	background: none;
+}
+
+.tooltiperror, .tooltipcorrect, .tooltipretry {
+	padding: 10px;
+	max-width: 300px;
+	color: #303030;
+}
+
+.invisible {
+	visibility: collapse;
+}
+
+.checkAllButton {
+	text-align: center;
+}
+
+#page p > img:first-child:not(:only-child) {
+	float: left;
+	margin-right: 10px;
+}
+
+#page p > img:last-child:not(:only-child) {
+	float: right;
+	margin-left: 10px;
+}
+
+#page p > img:only-child {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+span.cloze span.message button {
+	font-size: smaller;
+	vertical-align: super;
+	float: right;
+}
+
+span.cloze span.message {
+	position: absolute;
+	max-width: 20em;
+	z-index: 100;
+	-ms-border-radius: 0.5em;
+	border-radius: 0.5em;
+	padding-left: 1em;
+	padding-right: 0.5em;
+	padding-top: 0.5em;
+	padding-bottom: 0.5em;
+}
+
+.highlighted {
+	color: red;
+	-webkit-animation-duration: 500ms;
+	-moz-animation-duration: 500ms;
+	-ms-animation-duration: 500ms;
+	-o-animation-duration: 500ms;
+	animation-duration: 500ms;
+	-webkit-animation-name: blink;
+	-moz-animation-name: blink;
+	-ms-animation-name: blink;
+	-o-animation-name: blink;
+	animation-name: blink;
+	-webkit-animation-iteration-count: 13;
+	-moz-animation-iteration-count: 13;
+	-ms-animation-iteration-count: 13;
+	-o-animation-iteration-count: 13;
+	animation-iteration-count: 13;
+	-webkit-animation-direction: alternate;
+	-moz-animation-direction: alternate;
+	-ms-animation-direction: alternate;
+	-o-animation-direction: alternate;
+	animation-direction: alternate;
+}
+
+@keyframes blink {
+	from {
+		color: black;
+	}
+
+	to {
+		color: red;
+	}
+}
+
+span.cloze.correct span.message {
+	background-color: #7fff79;
+	border: 1px solid green;
+}
+
+span.cloze.error span.message {
+	background-color: #ff4d4d;
+	border: 1px solid #ff4d4d;
+	color: white;
+}
+
+span.cloze.retry span.message {
+	background-color: #ffe774;
+	border: 1px solid #ffe774;
+	color: black;
+}
