@@ -6,95 +6,95 @@ import { Answer } from "./answer";
 import { Message } from "./message";
 
 export interface IDataRepository {
-    getGapRepository(): ClozeGap[];
-    setSolved(): any;
-    getClozeText(): string;
-    getFeedbackText(): string;
-    getMediaElements(): MediaElement[];
-    getSnippets(): string[];
+  getGapRepository(): ClozeGap[];
+  setSolved(): any;
+  getClozeText(): string;
+  getFeedbackText(): string;
+  getMediaElements(): MediaElement[];
+  getSnippets(): string[];
 }
 
 // encapsulates all of AppClient's data access
 export class H5PDataRepository implements IDataRepository {
-    private settings: Settings;
+  private settings: Settings;
 
-    constructor(private h5pConfigData: any) {
-        this.loadSettings();
-    }
+  constructor(private h5pConfigData: any) {
+    this.loadSettings();
+  }
 
-    private loadSettings() {
-        this.settings = Settings.instance;
-        this.settings.caseSensivitity = this.h5pConfigData.caseSensitivity;
-        if (this.h5pConfigData.mode == 'selection')
-            this.settings.clozeType = ClozeType.Select;
-        else
-            this.settings.clozeType = ClozeType.Type;
+  private loadSettings() {
+    this.settings = Settings.instance;
+    this.settings.caseSensivitity = this.h5pConfigData.caseSensitivity;
+    if (this.h5pConfigData.mode == 'selection')
+      this.settings.clozeType = ClozeType.Select;
+    else
+      this.settings.clozeType = ClozeType.Type;
 
-        this.settings.acceptTypos = this.h5pConfigData.typoWarning;
-    }
+    this.settings.acceptTypos = this.h5pConfigData.typoWarning;
+  }
 
-    setSolved() {
-        // TODO
-    }
+  setSolved() {
+    // TODO
+  }
 
-    getClozeText(): string {
-        return this.h5pConfigData.blanksText;
-    }
+  getClozeText(): string {
+    return this.h5pConfigData.blanksText;
+  }
 
-    getFeedbackText(): string {
-        return "";
-        // TODO: remove
-    }
+  getFeedbackText(): string {
+    return "";
+    // TODO: remove
+  }
 
-    getMediaElements(): MediaElement[] {
-        var mediaElements: MediaElement[] = new Array();
-        return mediaElements;
-    }
+  getMediaElements(): MediaElement[] {
+    var mediaElements: MediaElement[] = new Array();
+    return mediaElements;
+  }
 
-    getGapRepository(): ClozeGap[] {
-        var gapRepository: ClozeGap[] = new Array();
-        for (var i = 0; i < this.h5pConfigData.blanksList.length; i++) {
-            var rawGap = this.h5pConfigData.blanksList[i];
+  getGapRepository(): ClozeGap[] {
+    var gapRepository: ClozeGap[] = new Array();
+    for (var i = 0; i < this.h5pConfigData.blanksList.length; i++) {
+      var rawGap = this.h5pConfigData.blanksList[i];
 
-            var gap = new ClozeGap();
-            gap.id = "cloze" + i;
-            gap.correctAnswers = new Array();
-            gap.incorrectAnswers = new Array();
+      var gap = new ClozeGap();
+      gap.id = "cloze" + i;
+      gap.correctAnswers = new Array();
+      gap.incorrectAnswers = new Array();
 
-            var correctText = rawGap.correctAnswerText;
-            if (correctText === "" || correctText === undefined)
-                continue;
-            gap.correctAnswers.push(new Answer(correctText, ""));
-            gap.hint = new Message(rawGap.hint);
-            gap.hasHint = gap.hint.text != "";
+      var correctText = rawGap.correctAnswerText;
+      if (correctText === "" || correctText === undefined)
+        continue;
+      gap.correctAnswers.push(new Answer(correctText, ""));
+      gap.hint = new Message(rawGap.hint);
+      gap.hasHint = gap.hint.text != "";
 
-            if (rawGap.incorrectAnswersList) {
-                for (var ia of rawGap.incorrectAnswersList) {
-                    gap.incorrectAnswers.push(new Answer(ia.incorrectAnswerText, ia.incorrectAnswerFeedback));
-                }
-            }
+      if (rawGap.incorrectAnswersList) {
+        for (var ia of rawGap.incorrectAnswersList) {
+          gap.incorrectAnswers.push(new Answer(ia.incorrectAnswerText, ia.incorrectAnswerFeedback));
+        }
+      }
 
-            if (gap.correctAnswers.length > 0) {
-                if (Settings.instance.clozeType == ClozeType.Select) {
-                    gap.loadChoices();
-                }
-
-                gap.calculateMinTextLength();
-                gapRepository.push(gap);
-            }
+      if (gap.correctAnswers.length > 0) {
+        if (Settings.instance.clozeType == ClozeType.Select) {
+          gap.loadChoices();
         }
 
-        return gapRepository;
+        gap.calculateMinTextLength();
+        gapRepository.push(gap);
+      }
     }
 
-    getSnippets(): string[] {
-        var returnValue: string[] = new Array();
-        var snippets = new Array();
-        for (var snippet of snippets) {
-            if (snippet.value === "")
-                continue;
-            returnValue.push(snippet.value);
-        }
-        return returnValue;
+    return gapRepository;
+  }
+
+  getSnippets(): string[] {
+    var returnValue: string[] = new Array();
+    var snippets = new Array();
+    for (var snippet of snippets) {
+      if (snippet.value === "")
+        continue;
+      returnValue.push(snippet.value);
     }
+    return returnValue;
+  }
 }

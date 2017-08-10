@@ -1,20 +1,20 @@
 <span id="container{{id}}" class="cloze {{#gap.isCorrect}}correct{{/if}} {{#gap.isError}}error{{/if}} {{#gap.isRetry}}retry{{/if}}">
-    {{#unless isSelectCloze}}
+  {{#unless isSelectCloze}}
     <input id="{{gap.id}}" type="text" value="{{gap.enteredText}}" size="{{gap.minTextLength}}" on-escape="closeMessage:{{gap}}" on-enter="checkCloze:{{gap}}" {{#gap.isCorrect}}disabled="disabled" {{/if}} />
     {{#gap.hasHint}}<button on-click="showHint:{{gap}}" {{#gap.isCorrect}}disabled="disabled" {{/if}}><span class="glyphicon glyphicon-question-sign"></span></button>{{/if}}
-    {{/unless}}
-    {{#if isSelectCloze}}
+  {{/unless}}
+  {{#if isSelectCloze}}
     {{#gap.hasHint}}<button on-click="showHint:{{gap}}" {{#gap.isCorrect}}disabled="disabled" {{/if}}><span class="glyphicon glyphicon-question-sign"></span></button>{{/if}}
     <select id="{{gap.id}}" type="text" value="{{gap.enteredText}}" on-enter="checkCloze:{{gap}}" {{#gap.isCorrect}}disabled="disabled" {{/if}}size="1">
-        {{#each gap.choices}}
+      {{#each gap.choices}}
         <option>{{this}}</option>
-        {{/each}}
+      {{/each}}
     </select>                    
     <button on-click="checkCloze:{{gap}}" {{#gap.isCorrect}} disabled="disabled" {{/if}}>
-        <i class="glyphicon glyphicon-check"></i>
+      <i class="glyphicon glyphicon-check"></i>
     </button>
-    {{/if}}
-    {{#gap.showMessage}}
-        <span class="message"><button on-click="closeMessage:{{gap}}"><span class="glyphicon glyphicon-remove"></span></button>{{gap.message}}</span>
-    {{/if}}
+  {{/if}}
+  {{#gap.showMessage}}
+    <span class="message"><button on-click="closeMessage:{{gap}}"><span class="glyphicon glyphicon-remove"></span></button>{{gap.message}}</span>
+  {{/if}}
 </span>

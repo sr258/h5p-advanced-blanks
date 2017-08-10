@@ -1,8 +1,8 @@
-﻿	export enum ClozeElementType {
-		Gap,
-		Highlight
-	}
+﻿export enum ClozeElementType {
+  Gap,
+  Highlight
+}
 
-	export class ClozeElement {
-		public type: ClozeElementType;
-	}
+export class ClozeElement {
+  public type: ClozeElementType;
+}
