@@ -1,13 +1,4 @@
-﻿html, body {
-	margin: 0px;
-	padding: 0px;
-	height: 100%;
-	min-height: 100%;
-	-webkit-text-size-adjust: 100%;
-	background-color: white;
-}
-
-/* Play Speech Button in Dialog */
+﻿/* Play Speech Button in Dialog */
 #modalContentInner > a {
 	display: inline-block;
 	padding: 1em;

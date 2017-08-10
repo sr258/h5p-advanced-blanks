@@ -6,8 +6,15 @@ import { H5PLocalization, Labels } from "./localization";
 import { ClozeType } from "./enums";
 import { ClozeHighlight } from "./cloze-highlight";
 import { ClozeGap } from "./cloze-gap";
+import * as RactiveEventsKeys from "../libs/ractive-events-keys"
 
 import * as Ractive from 'ractive';
+
+declare var require: {
+    <T>(path: string): T;
+    (paths: string[], callback: (...modules: any[]) => void): void;
+    ensure: (paths: string[], callback: (require: <T>(path: string) => T) => void) => void;
+};
 
 export class MindTheGapController {
     private cloze: Cloze;
@@ -23,7 +30,15 @@ export class MindTheGapController {
     constructor(private repository: IDataRepository) {
     }
 
-    initialize() {
+    initialize(root: HTMLElement) {
+        var clozeContainerElement = document.createElement('div');
+        clozeContainerElement.classList.add('clozeContainer');
+        root.appendChild(clozeContainerElement);
+
+        var staticContainerElement = document.createElement('div');
+        staticContainerElement.classList.add('staticContainer');
+        root.appendChild(staticContainerElement);
+
         this.isSelectCloze = Settings.instance.clozeType == ClozeType.Select ? true : false;
         this.checkAllLabel = H5PLocalization.instance.getTextFromLabel(Labels.checkAllButton);
         this.feedback = new Feedback(this.repository.getFeedbackText());
@@ -32,14 +47,14 @@ export class MindTheGapController {
         gaps.forEach(gap => gap.replaceSnippets(snippets));
         var mediaElements = this.repository.getMediaElements();
         this.cloze = Cloze.clozeFromText(this.repository.getClozeText(), gaps, mediaElements);
-        $("#clozeContainer").html(this.cloze.html);
+        clozeContainerElement.innerHTML = this.cloze.html;
         this.establishBindings();
     }
 
     private bindHighlight(highlightableObject: ClozeHighlight) {
         this.highlightRactives[highlightableObject.id] = new Ractive({
             el: '#container_' + highlightableObject.id,
-            template: '#highlightTemplate',
+            template: require('../templates/highlight.ractive.html'),
             data: {
                 object: highlightableObject
             }
@@ -49,7 +64,7 @@ export class MindTheGapController {
     private bindGap(gap: ClozeGap) {
         var ractive = new Ractive({
             el: '#container_' + gap.id,
-            template: '#gapTemplate',
+            template: require('../templates/gap.ractive.html'),
             data: {
                 isSelectCloze: this.isSelectCloze,
                 gap: gap
@@ -70,7 +85,7 @@ export class MindTheGapController {
     private bindStatic() {
         this.staticRactive = new Ractive({
             el: '#staticContainer',
-            template: '#staticTemplate',
+            template: require('../templates/static.ractive.html'),
             data: {
                 feedback: this.feedback,
                 checkAllLabel: this.checkAllLabel,

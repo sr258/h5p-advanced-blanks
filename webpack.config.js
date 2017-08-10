@@ -22,15 +22,19 @@ var config = {
         include: path.resolve(__dirname, 'src'),
         use: ['style-loader', 'css-loader']
       },
-       {
-       test: /\.tsx?$/,
-       use: 'ts-loader',
-       exclude: /node_modules/
-     }
+      {
+        test: /\.tsx?$/,
+        use: 'ts-loader',
+        exclude: /node_modules/
+      },
+      {
+        test: /\.ractive.html$/,
+        use: 'html-loader'
+      }
     ]
   },
   resolve: {
-    extensions: [".tsx", ".ts", ".js"]
+    extensions: [".tsx", ".ts", ".js", ".ractive.html"]
   }
 };
 

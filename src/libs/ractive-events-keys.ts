@@ -1,5 +1,4 @@
-﻿module RactiveEventsKeys {
-    // TODO can we just declare the keydownHandler once? using `this`?
+﻿    // TODO can we just declare the keydownHandler once? using `this`?
     function makeKeyDefinition(code) {
         return (node, fire) => {
             function keydownHandler(event) {
@@ -34,4 +33,3 @@
     export const rightarrow = makeKeyDefinition(39);
     export const downarrow = makeKeyDefinition(40);
     export const uparrow = makeKeyDefinition(38);
-}
