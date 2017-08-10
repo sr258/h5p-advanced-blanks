@@ -27,16 +27,16 @@ export class MindTheGapController {
     private gapRactives: { [id: string]: Ractive.Ractive } = {};
     private staticRactive: Ractive.Ractive;
 
-    constructor(private repository: IDataRepository) {
+    constructor(private repository: IDataRepository, private jquery: JQuery) {
     }
 
     initialize(root: HTMLElement) {
         var clozeContainerElement = document.createElement('div');
-        clozeContainerElement.classList.add('clozeContainer');
+        clozeContainerElement.id = 'clozeContainer';
         root.appendChild(clozeContainerElement);
 
         var staticContainerElement = document.createElement('div');
-        staticContainerElement.classList.add('staticContainer');
+        staticContainerElement.id = 'staticContainer';
         root.appendChild(staticContainerElement);
 
         this.isSelectCloze = Settings.instance.clozeType == ClozeType.Select ? true : false;
@@ -160,7 +160,7 @@ export class MindTheGapController {
     onCloseMessage = (event: Ractive.Event, gap: ClozeGap) => {
         gap.removeTooltip();
         this.refreshCloze();
-        $("#" + gap.id).focus();
+        this.jquery.find("#" + gap.id).focus();
     }
 
     onCheckCloze = (event: Ractive.Event, gap: ClozeGap) => {
@@ -176,7 +176,7 @@ export class MindTheGapController {
                 if (index + 1 >= this.cloze.gaps.length)
                     return;
                 var nextId = this.cloze.gaps[index + 1].id;
-                $("#" + nextId).focus();
+                this.jquery.find("#" + nextId).focus();
             }
         }
     }
