@@ -2,7 +2,7 @@
 import { ClozeHighlight } from './cloze-highlight';
 import { Settings } from './settings';
 import { Evaluation } from './enums';
-import { Levensthein } from './levenshtein';
+import { Levensthein } from '../lib/levenshtein';
 
 export class Answer {
   alternatives: string[];

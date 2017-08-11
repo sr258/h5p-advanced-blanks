@@ -4,7 +4,10 @@
     {{#gap.hasHint}}<button on-click="showHint:{{gap}}" {{#gap.isCorrect}}disabled="disabled" {{/if}}><span class="glyphicon glyphicon-question-sign"></span></button>{{/if}}
   {{/unless}}
   {{#if isSelectCloze}}
-    {{#gap.hasHint}}<button on-click="showHint:{{gap}}" {{#gap.isCorrect}}disabled="disabled" {{/if}}><span class="glyphicon glyphicon-question-sign"></span></button>{{/if}}
+    {{#gap.hasHint}}
+      <button on-click="showHint:{{gap}}" {{#gap.isCorrect}}disabled="disabled"{{/if}}>
+      <span class="glyphicon glyphicon-question-sign"></span></button>
+    {{/if}}
     <select id="{{gap.id}}" type="text" value="{{gap.enteredText}}" on-enter="checkCloze:{{gap}}" {{#gap.isCorrect}}disabled="disabled" {{/if}}size="1">
       {{#each gap.choices}}
         <option>{{this}}</option>
@@ -15,6 +18,11 @@
     </button>
   {{/if}}
   {{#gap.showMessage}}
-    <span class="message"><button on-click="closeMessage:{{gap}}"><span class="glyphicon glyphicon-remove"></span></button>{{gap.message}}</span>
+    <span class="message">
+      <button on-click="closeMessage:{{gap}}">
+        <span class="glyphicon glyphicon-remove"></span>
+      </button>
+      {{gap.message}}
+    </span>
   {{/if}}
 </span>

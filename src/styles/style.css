@@ -1,57 +1,13 @@
-﻿/* Play Speech Button in Dialog */
-#modalContentInner > a {
-	display: inline-block;
-	padding: 1em;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-	background: #3197d2;
-	cursor: pointer;
-	color: white;
-	border-radius: 10px;
-	margin-top: 1em;
-}
-
-#modalContentInner > a:hover {
-	background: #51B7F2;
-}
-
-#modalContentInner {
-	margin-top: 5px;
-}
-
-#feedback {
-	display: block;
-	position: absolute;
-	left: 50%;
-	margin-left: -180px;
-	top: 20%;
-	max-height: 60%;
-	width: 360px;
-	padding: 2%;
-	overflow: auto;
-	webkit-border-radius: 15px;
-	-moz-border-radius: 15px;
-	border-radius: 15px;
-	box-shadow: 0 3px 6px rgba(0,0,0,.5);
-	-webkit-box-shadow: 0 3px 6px rgba(0,0,0,.5);
-	-moz-box-shadow: 0 3px 6px rgba(0,0,0,.5);
-	-ms-box-shadow: 0 3px 6px rgba(0,0,0,.5);
-	-o-box-shadow: 0 3px 6px rgba(0,0,0,.5);
-	border: 10px solid #ddd;
-	background: white;
-	z-index: 100000;
-}
-
-.popover-title {
+﻿.h5p-advanced-blanks .popover-title {
 	display: none;
 }
 
-.popover-content {
+.h5p-advanced-blanks .popover-content {
 	font-size: 1em !important;
 	padding: 0.5em;
 }
 
-.cloze {
+.h5p-advanced-blanks .cloze {
 	border: 3px solid;
 	padding: 2px;
 	border-color: transparent;
@@ -60,61 +16,58 @@
 	margin-bottom: 1px;
 }
 
-.cloze.correct {
+.h5p-advanced-blanks .cloze.correct {
 	border-color: rgb(144, 238, 144);
 }
 
-.cloze.error {
+.h5p-advanced-blanks .cloze.error {
 	border-color: red;
 }
 
-.cloze > input {
-}
-
-#clozeContainer button {
+.h5p-advanced-blanks #cloze button {
 	padding-left: 5px;
 	padding-right: 5px;
 	border: none;
 	background: none;
 }
 
-.tooltiperror, .tooltipcorrect, .tooltipretry {
+.h5p-advanced-blanks .tooltiperror, .h5p-advanced-blanks .tooltipcorrect, .h5p-advanced-blanks .tooltipretry {
 	padding: 10px;
 	max-width: 300px;
 	color: #303030;
 }
 
-.invisible {
+.h5p-advanced-blanks .invisible {
 	visibility: collapse;
 }
 
-.checkAllButton {
+.h5p-advanced-blanks .checkAllButton {
 	text-align: center;
 }
 
-#page p > img:first-child:not(:only-child) {
+.h5p-advanced-blanks #page p > img:first-child:not(:only-child) {
 	float: left;
 	margin-right: 10px;
 }
 
-#page p > img:last-child:not(:only-child) {
+.h5p-advanced-blanks #page p > img:last-child:not(:only-child) {
 	float: right;
 	margin-left: 10px;
 }
 
-#page p > img:only-child {
+.h5p-advanced-blanks #page p > img:only-child {
 	margin-left: auto;
 	margin-right: auto;
 	display: block;
 }
 
-span.cloze span.message button {
+.h5p-advanced-blanks .cloze .message button {
 	font-size: smaller;
 	vertical-align: super;
 	float: right;
 }
 
-span.cloze span.message {
+.h5p-advanced-blanks .cloze span.message {
 	position: absolute;
 	max-width: 20em;
 	z-index: 100;
@@ -126,7 +79,7 @@ span.cloze span.message {
 	padding-bottom: 0.5em;
 }
 
-.highlighted {
+.h5p-advanced-blanks .highlighted {
 	color: red;
 	-webkit-animation-duration: 500ms;
 	-moz-animation-duration: 500ms;
@@ -160,18 +113,18 @@ span.cloze span.message {
 	}
 }
 
-span.cloze.correct span.message {
+.h5p-advanced-blanks .cloze.correct span.message {
 	background-color: #7fff79;
 	border: 1px solid green;
 }
 
-span.cloze.error span.message {
+.h5p-advanced-blanks .cloze.error span.message {
 	background-color: #ff4d4d;
 	border: 1px solid #ff4d4d;
 	color: white;
 }
 
-span.cloze.retry span.message {
+.h5p-advanced-blanks .cloze.retry span.message {
 	background-color: #ffe774;
 	border: 1px solid #ffe774;
 	color: black;

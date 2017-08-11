@@ -6,7 +6,7 @@ import { H5PLocalization, Labels } from "./localization";
 import { ClozeType } from "./enums";
 import { ClozeHighlight } from "./cloze-highlight";
 import { ClozeGap } from "./cloze-gap";
-import * as RactiveEventsKeys from "../libs/ractive-events-keys"
+import * as RactiveEventsKeys from "../lib/ractive-events-keys"
 
 import * as Ractive from 'ractive';
 
