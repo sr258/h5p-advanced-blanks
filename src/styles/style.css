@@ -1,27 +1,64 @@
-﻿.h5p-advanced-blanks .popover-title {
-	display: none;
+﻿.h5p-advanced-blanks {
+  position: relative;
 }
 
-.h5p-advanced-blanks .popover-content {
-	font-size: 1em !important;
-	padding: 0.5em;
+/* Text */
+.h5p-advanced-blanks #cloze p, .h5p-advanced-blanks #cloze div {
+  line-height: 1.75em;
+  margin: 0 0 1em;
 }
 
-.h5p-advanced-blanks .cloze {
-	border: 3px solid;
-	padding: 2px;
-	border-color: transparent;
-	display: inline-block;
-	margin-top: 1px;
-	margin-bottom: 1px;
+/* Input */
+
+.h5p-advanced-blanks .cloze input {
+  font-family: H5PDroidSans, sans-serif;
+  font-size: 1em;
+  border-radius: 0.25em;
+  border: 1px solid #a0a0a0;
+  padding: 0.1875em 1em 0.1875em 0.5em;
+  overflow: hidden;
+  white-space: nowrap;
 }
 
-.h5p-advanced-blanks .cloze.correct {
-	border-color: rgb(144, 238, 144);
+/* Correctly answered input */
+.h5p-advanced-blanks .cloze input:focus {
+  outline: none;
+  box-shadow: 0 0 0.5em 0 #7fb8ff;
+  border-color: #7fb8ff;
 }
 
-.h5p-advanced-blanks .cloze.error {
-	border-color: red;
+.h5p-advanced-blanks .cloze.correct input {
+  background: #9dd8bb;
+  border: 1px solid #9dd8bb;
+  color: #255c41;
+}
+
+.h5p-advanced-blanks .cloze.correct:after {
+  position: absolute;
+  right: 0.5em;
+  top: 0;
+  text-decoration: none;
+  content: "\f00c";
+  font-family: 'H5PFontAwesome4';
+  color: #255c41;
+}
+
+/* Incorrect answers */
+.h5p-advanced-blanks .cloze.error input {
+  background-color: #f7d0d0;
+  border: 1px solid #f7d0d0;
+  color: #b71c1c;
+  text-decoration: line-through;
+}
+
+.h5p-advanced-blanks .cloze.error input:after {
+  position: absolute;
+  right: 0.5em;
+  top: 0;
+  font-family: 'H5PFontAwesome4';
+  text-decoration: none;
+  content: "\f00d";
+  color: #b71c1c;
 }
 
 .h5p-advanced-blanks #cloze button {
@@ -31,34 +68,11 @@
 	background: none;
 }
 
+/* Tooltips */
 .h5p-advanced-blanks .tooltiperror, .h5p-advanced-blanks .tooltipcorrect, .h5p-advanced-blanks .tooltipretry {
 	padding: 10px;
 	max-width: 300px;
 	color: #303030;
-}
-
-.h5p-advanced-blanks .invisible {
-	visibility: collapse;
-}
-
-.h5p-advanced-blanks .checkAllButton {
-	text-align: center;
-}
-
-.h5p-advanced-blanks #page p > img:first-child:not(:only-child) {
-	float: left;
-	margin-right: 10px;
-}
-
-.h5p-advanced-blanks #page p > img:last-child:not(:only-child) {
-	float: right;
-	margin-left: 10px;
-}
-
-.h5p-advanced-blanks #page p > img:only-child {
-	margin-left: auto;
-	margin-right: auto;
-	display: block;
 }
 
 .h5p-advanced-blanks .cloze .message button {
@@ -78,6 +92,42 @@
 	padding-top: 0.5em;
 	padding-bottom: 0.5em;
 }
+
+.h5p-advanced-blanks .cloze.correct span.message {
+	background-color: #7fff79;
+	border: 1px solid green;
+}
+
+.h5p-advanced-blanks .cloze.error span.message {
+	background-color: #ff4d4d;
+	border: 1px solid #ff4d4d;
+	color: white;
+}
+
+.h5p-advanced-blanks .cloze.retry span.message {
+	background-color: #ffe774;
+	border: 1px solid #ffe774;
+	color: black;
+}
+
+/* Image alignment */
+.h5p-advanced-blanks #page p > img:first-child:not(:only-child) {
+	float: left;
+	margin-right: 10px;
+}
+
+.h5p-advanced-blanks #page p > img:last-child:not(:only-child) {
+	float: right;
+	margin-left: 10px;
+}
+
+.h5p-advanced-blanks #page p > img:only-child {
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+/* Highlights in text */
 
 .h5p-advanced-blanks .highlighted {
 	color: red;
@@ -113,19 +163,12 @@
 	}
 }
 
-.h5p-advanced-blanks .cloze.correct span.message {
-	background-color: #7fff79;
-	border: 1px solid green;
+/* Others */
+
+.h5p-advanced-blanks .invisible {
+	visibility: collapse;
 }
 
-.h5p-advanced-blanks .cloze.error span.message {
-	background-color: #ff4d4d;
-	border: 1px solid #ff4d4d;
-	color: white;
-}
-
-.h5p-advanced-blanks .cloze.retry span.message {
-	background-color: #ffe774;
-	border: 1px solid #ffe774;
-	color: black;
+.h5p-advanced-blanks .checkAllButton {
+	text-align: center;
 }
