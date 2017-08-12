@@ -8,6 +8,10 @@
   "author": "S. Rettig",
   "license": "MIT",
   "machineName": "H5P.AdvancedBlanks",
+  "coreApi": {
+    "majorVersion": 1,
+    "minorVersion": 6
+  },
   "embedTypes": [
     "iframe"
   ],
