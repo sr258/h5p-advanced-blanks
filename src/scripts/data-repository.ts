@@ -1,4 +1,4 @@
-﻿import { ClozeGap } from "./cloze-gap";
+﻿import { Blank } from "./cloze-gap";
 import { MediaElement } from "./media-element";
 import { Settings } from "./settings";
 import { ClozeType } from "./enums";
@@ -6,7 +6,7 @@ import { Answer } from "./answer";
 import { Message } from "./message";
 
 export interface IDataRepository {
-  getGapRepository(): ClozeGap[];
+  getBlanks(): Blank[];
   setSolved(): any;
   getClozeText(): string;
   getFeedbackText(): string;
@@ -14,79 +14,82 @@ export interface IDataRepository {
   getSnippets(): string[];
 }
 
-// encapsulates all of AppClient's data access
+/**
+ * Wraps around the h5p config object and provides access to the content.
+ */
 export class H5PDataRepository implements IDataRepository {
   private settings: Settings;
 
   constructor(private h5pConfigData: any) {
-    this.loadSettings();
-  }
-
-  private loadSettings() {
     this.settings = Settings.instance;
-    this.settings.caseSensivitity = this.h5pConfigData.caseSensitivity;
-    if (this.h5pConfigData.mode == 'selection')
-      this.settings.clozeType = ClozeType.Select;
-    else
-      this.settings.clozeType = ClozeType.Type;
-
-    this.settings.acceptTypos = this.h5pConfigData.typoWarning;
+    this.loadGeneralSettings(h5pConfigData, this.settings);
   }
 
+  /**
+   * Loads settings from the configuration data. Settings are variables that are 
+   * not content.
+   */
+  private loadGeneralSettings(h5pConfigData: any, settings: Settings) {
+    settings.caseSensivitity = h5pConfigData.caseSensitivity;
+    if (h5pConfigData.mode === 'selection') {
+      settings.clozeType = ClozeType.Select;
+    }
+    else {
+      settings.clozeType = ClozeType.Type;
+    }
+    settings.acceptTypos = h5pConfigData.typoWarning;
+  }
+
+  /**
+   * Called when all blanks were entered correctly.
+   */
   setSolved() {
     // TODO
   }
 
+  /**
+   * Returns the blank text of the cloze (as HTML markup).
+   */
   getClozeText(): string {
     return this.h5pConfigData.blanksText;
   }
 
+  // TODO: remove or implement
   getFeedbackText(): string {
     return "";
-    // TODO: remove
   }
 
+  // TODO: implement
   getMediaElements(): MediaElement[] {
     var mediaElements: MediaElement[] = new Array();
     return mediaElements;
   }
 
-  getGapRepository(): ClozeGap[] {
-    var gapRepository: ClozeGap[] = new Array();
+  getBlanks(): Blank[] {
+    var gapRepository: Blank[] = new Array();
     for (var i = 0; i < this.h5pConfigData.blanksList.length; i++) {
-      var rawGap = this.h5pConfigData.blanksList[i];
+      var h5pBlank = this.h5pConfigData.blanksList[i];
 
-      var gap = new ClozeGap();
-      gap.id = "cloze" + i;
-      gap.correctAnswers = new Array();
-      gap.incorrectAnswers = new Array();
-
-      var correctText = rawGap.correctAnswerText;
+      var correctText = h5pBlank.correctAnswerText;
       if (correctText === "" || correctText === undefined)
         continue;
-      gap.correctAnswers.push(new Answer(correctText, ""));
-      gap.hint = new Message(rawGap.hint);
-      gap.hasHint = gap.hint.text != "";
 
-      if (rawGap.incorrectAnswersList) {
-        for (var ia of rawGap.incorrectAnswersList) {
-          gap.incorrectAnswers.push(new Answer(ia.incorrectAnswerText, ia.incorrectAnswerFeedback));
+      var blank = new Blank(this.settings, "cloze" + i, correctText, h5pBlank.hint);
+
+      if (h5pBlank.incorrectAnswersList) {
+        for (var h5pIncorrectAnswer of h5pBlank.incorrectAnswersList) {
+          blank.addIncorrectAnswer(h5pIncorrectAnswer.incorrectAnswerText, h5pIncorrectAnswer.incorrectAnswerFeedback);
         }
       }
 
-      if (gap.correctAnswers.length > 0) {
-        if (Settings.instance.clozeType == ClozeType.Select) {
-          gap.loadChoices();
-        }
-
-        gap.calculateMinTextLength();
-        gapRepository.push(gap);
-      }
+      blank.finishInitialization();
+      gapRepository.push(blank);
     }
 
     return gapRepository;
   }
 
+  // TODO: implement
   getSnippets(): string[] {
     var returnValue: string[] = new Array();
     var snippets = new Array();

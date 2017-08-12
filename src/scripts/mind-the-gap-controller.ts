@@ -2,10 +2,10 @@
 import { Feedback } from "./feedback";
 import { IDataRepository } from "./data-repository";
 import { Settings } from "./settings";
-import { H5PLocalization, Labels } from "./localization";
+import { H5PLocalization, LocalizationLabels } from "./localization";
 import { ClozeType } from "./enums";
-import { ClozeHighlight } from "./cloze-highlight";
-import { ClozeGap } from "./cloze-gap";
+import { Highlight } from "./cloze-highlight";
+import { Blank } from "./cloze-gap";
 import * as RactiveEventsKeys from "../lib/ractive-events-keys"
 
 import * as Ractive from 'ractive';
@@ -40,9 +40,9 @@ export class MindTheGapController {
     root.appendChild(staticContainerElement);
 
     this.isSelectCloze = Settings.instance.clozeType == ClozeType.Select ? true : false;
-    this.checkAllLabel = H5PLocalization.instance.getTextFromLabel(Labels.checkAllButton);
+    this.checkAllLabel = H5PLocalization.getInstance().getTextFromLabel(LocalizationLabels.checkAllButton);
     this.feedback = new Feedback(this.repository.getFeedbackText());
-    var gaps = this.repository.getGapRepository();
+    var gaps = this.repository.getBlanks();
     var snippets = this.repository.getSnippets();
     gaps.forEach(gap => gap.replaceSnippets(snippets));
     var mediaElements = this.repository.getMediaElements();
@@ -51,7 +51,7 @@ export class MindTheGapController {
     this.establishBindings();
   }
 
-  private bindHighlight(highlightableObject: ClozeHighlight) {
+  private bindHighlight(highlightableObject: Highlight) {
     this.highlightRactives[highlightableObject.id] = new Ractive({
       el: '#container_' + highlightableObject.id,
       template: require('../templates/highlight.ractive.html'),
@@ -61,7 +61,7 @@ export class MindTheGapController {
     });
   }
 
-  private bindGap(gap: ClozeGap) {
+  private bindGap(gap: Blank) {
     var ractive = new Ractive({
       el: '#container_' + gap.id,
       template: require('../templates/gap.ractive.html'),
@@ -143,13 +143,13 @@ export class MindTheGapController {
 
     for (var gap of this.cloze.gaps) {
       if ((!gap.isCorrect) && gap.enteredText != "")
-        gap.evaluate();
+        gap.evaluateEnteredAnswer();
     }
     this.refreshCloze();
     this.checkAndNotifyCompleteness();
   }
 
-  onShowHint = (event: Ractive.Event, gap: ClozeGap) => {
+  onShowHint = (event: Ractive.Event, gap: Blank) => {
     for (var highlightObject of this.cloze.highlightableObjects) {
       highlightObject.isHighlighted = false;
     }
@@ -157,17 +157,17 @@ export class MindTheGapController {
     this.refreshCloze();
   }
 
-  onCloseMessage = (event: Ractive.Event, gap: ClozeGap) => {
+  onCloseMessage = (event: Ractive.Event, gap: Blank) => {
     gap.removeTooltip();
     this.refreshCloze();
     this.jquery.find("#" + gap.id).focus();
   }
 
-  onCheckCloze = (event: Ractive.Event, gap: ClozeGap) => {
+  onCheckCloze = (event: Ractive.Event, gap: Blank) => {
     for (var highlightObject of this.cloze.highlightableObjects) {
       highlightObject.isHighlighted = false;
     }
-    gap.evaluate();
+    gap.evaluateEnteredAnswer();
     this.refreshCloze();
 
     if (!this.checkAndNotifyCompleteness()) {

@@ -1,5 +1,5 @@
 ﻿export enum ClozeElementType {
-  Gap,
+  Blank,
   Highlight
 }
 

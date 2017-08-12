@@ -1,5 +1,5 @@
 ﻿import { Message } from './message';
-import { ClozeHighlight } from './cloze-highlight';
+import { Highlight } from './cloze-highlight';
 import { Settings } from './settings';
 import { Evaluation } from './enums';
 import { Levensthein } from '../lib/levenshtein';
@@ -19,7 +19,7 @@ export class Answer {
     }
   }
 
-  linkHighlightIdsToObjects = (highlightsBefore: ClozeHighlight[], highlightsAfter: ClozeHighlight[]) => {
+  linkHighlightIdsToObjects = (highlightsBefore: Highlight[], highlightsAfter: Highlight[]) => {
     this.message.linkHighlights(highlightsBefore, highlightsAfter);
   }
 

@@ -1,6 +1,6 @@
 ﻿import { ClozeElement, ClozeElementType } from './cloze-element';
 
-export class ClozeHighlight extends ClozeElement {
+export class Highlight extends ClozeElement {
 	text: string;
 	isHighlighted: boolean;
 	id: string;

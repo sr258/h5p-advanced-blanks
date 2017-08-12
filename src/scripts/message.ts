@@ -1,8 +1,8 @@
-﻿import { ClozeHighlight } from "./cloze-highlight";
+﻿import { Highlight } from "./cloze-highlight";
 
 export class Message {
 	text: string;
-	highlightedElements: ClozeHighlight[];
+	highlightedElements: Highlight[];
 	private relativeHighlightPositions: number[];
 
 	constructor(text: string) {
@@ -23,7 +23,7 @@ export class Message {
 		this.text = workingText;
 	}
 
-	linkHighlights = (highlightsBefore: ClozeHighlight[], highlightsAfter: ClozeHighlight[]) => {
+	linkHighlights = (highlightsBefore: Highlight[], highlightsAfter: Highlight[]) => {
 		this.highlightedElements = new Array();
 		for (var relativePosition of this.relativeHighlightPositions) {
 			if (relativePosition < 0 && (0 - relativePosition - 1) < highlightsBefore.length) {

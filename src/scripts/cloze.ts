@@ -1,13 +1,13 @@
-﻿import { ClozeHighlight } from "./cloze-highlight";
-import { ClozeGap } from "./cloze-gap";
+﻿import { Highlight } from "./cloze-highlight";
+import { Blank } from "./cloze-gap";
 import { MediaElement, MediaType } from "./media-element";
 import { ClozeElement, ClozeElementType } from "./cloze-element";
-import { H5PLocalization, Labels } from "./localization";
+import { H5PLocalization, LocalizationLabels } from "./localization";
 
 export class Cloze {
   public html: string;
-  public highlightableObjects: ClozeHighlight[];
-  public gaps: ClozeGap[];
+  public highlightableObjects: Highlight[];
+  public gaps: Blank[];
 
   public checkCompleteness = (): boolean => {
     for (var cloze of this.gaps) {
@@ -18,11 +18,11 @@ export class Cloze {
     return true;
   }
 
-  public static clozeFromText(text: string, gaps: ClozeGap[], media: MediaElement[]): Cloze {
+  public static clozeFromText(text: string, gaps: Blank[], media: MediaElement[]): Cloze {
 
     var elementsList: ClozeElement[] = new Array();
-    var highlightObjects: ClozeHighlight[] = new Array();
-    var gapsInstances: ClozeGap[] = new Array();
+    var highlightObjects: Highlight[] = new Array();
+    var gapsInstances: Blank[] = new Array();
 
     // convert gap markings
     var underlineGapRegEx = new RegExp("_{3,}");
@@ -45,7 +45,7 @@ export class Cloze {
         break;
 
       if ((highlightMatch && highlightMatch.index < gapIndex) || (gapIndex < 0)) {
-        var highlight = new ClozeHighlight(highlightMatch[1], `highlight_${highlightCounter}`);
+        var highlight = new Highlight(highlightMatch[1], `highlight_${highlightCounter}`);
         highlightObjects.push(highlight);
         elementsList.push(highlight);
         html = html.replace(exclamationMarkRegExp, `<span id='container_highlight_${highlightCounter}'></span>`);
@@ -55,7 +55,7 @@ export class Cloze {
           html = html.replace("ANONGAPMARKER", "<span></span>");
           continue;
         }
-        var gapInstance = gaps[gapCounter].getContentClone();
+        var gapInstance = gaps[gapCounter].clone();
         gapInstance.id = "gap_" + gapCounter;
         gapsInstances.push(gapInstance);
         elementsList.push(gapInstance);
@@ -70,12 +70,12 @@ export class Cloze {
       var before = elementsList
         .slice(0, gapIndex)
         .filter(e => e.type === ClozeElementType.Highlight)
-        .map(e => e as ClozeHighlight)
+        .map(e => e as Highlight)
         .reverse();
       var after = elementsList
         .slice(gapIndex + 1)
         .filter(e => e.type === ClozeElementType.Highlight)
-        .map(e => e as ClozeHighlight);
+        .map(e => e as Highlight);
       gap.linkHighlightIdsToObjects(before, after);
     }
 

@@ -18,7 +18,7 @@ export default class AdvancedBlanks extends (H5P.EventDispatcher as { new(): any
     super();
 
     this.repository = new H5PDataRepository(config);
-    H5PLocalization.initialize(config);
+    H5PLocalization.getInstance(config);
   }
 
   /**
