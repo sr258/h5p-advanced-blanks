@@ -68,22 +68,6 @@ export class Blank extends ClozeElement {
       new Answer(text, reaction));
   }
 
-  /**
-   * Returns a cloned version of this object. This is not a deep clone in
-   * the sense that dependent objects are cloned as well! 
-   */
-  public clone(): Blank {
-    var newBlank = new Blank(this.settings, this.id);
-
-    newBlank.correctAnswers = this.correctAnswers;
-    newBlank.incorrectAnswers = this.incorrectAnswers;
-    newBlank.hint = this.hint;
-    newBlank.hasHint = this.hasHint;
-
-    newBlank.finishInitialization();
-    return newBlank;
-  }
-
   public replaceSnippets(snippets: string[]) {
     this.correctAnswers.concat(this.incorrectAnswers)
       .forEach(answer => answer.message.text = this.getStringWithSnippets(answer.message.text, snippets));

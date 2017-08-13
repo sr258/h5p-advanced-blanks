@@ -94,11 +94,10 @@ export class Cloze {
           html = html.replace(Cloze.normalizedBlankMarker, "<span></span>");
         }
         else {
-          var blankInstance = blanks[blankCounter].clone();
-          blankInstance.id = "blank_" + blankCounter;
-          blanksInstances.push(blankInstance);
-          orderedAllElementsList.push(blankInstance);
-          html = html.replace(Cloze.normalizedBlankMarker, `<span id='container_${blankInstance.id}'></span>`);
+          var blank = blanks[blankCounter];
+          blanksInstances.push(blank);
+          orderedAllElementsList.push(blank);
+          html = html.replace(Cloze.normalizedBlankMarker, `<span id='container_${blank.id}'></span>`);
           blankCounter++;
         }
       }
