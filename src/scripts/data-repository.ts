@@ -1,4 +1,4 @@
-﻿import { Blank } from "./cloze-gap";
+﻿import { Blank } from "./blank";
 import { MediaElement } from "./media-element";
 import { Settings } from "./settings";
 import { ClozeType } from "./enums";

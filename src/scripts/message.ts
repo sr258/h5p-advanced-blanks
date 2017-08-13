@@ -1,4 +1,4 @@
-﻿import { Highlight } from "./cloze-highlight";
+﻿import { Highlight } from "./highlight";
 
 export class Message {
 	text: string;

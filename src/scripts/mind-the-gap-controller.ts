@@ -4,8 +4,8 @@ import { IDataRepository } from "./data-repository";
 import { Settings } from "./settings";
 import { H5PLocalization, LocalizationLabels } from "./localization";
 import { ClozeType } from "./enums";
-import { Highlight } from "./cloze-highlight";
-import { Blank } from "./cloze-gap";
+import { Highlight } from "./highlight";
+import { Blank } from "./blank";
 import * as RactiveEventsKeys from "../lib/ractive-events-keys"
 
 import * as Ractive from 'ractive';
@@ -46,7 +46,7 @@ export class MindTheGapController {
     var snippets = this.repository.getSnippets();
     gaps.forEach(gap => gap.replaceSnippets(snippets));
     var mediaElements = this.repository.getMediaElements();
-    this.cloze = Cloze.clozeFromText(this.repository.getClozeText(), gaps, mediaElements);
+    this.cloze = Cloze.createCloze(this.repository.getClozeText(), gaps, mediaElements);
     clozeContainerElement.innerHTML = this.cloze.html;
     this.establishBindings();
   }
@@ -101,7 +101,7 @@ export class MindTheGapController {
       this.bindHighlight(highlight);
     }
 
-    for (var gap of this.cloze.gaps) {
+    for (var gap of this.cloze.blanks) {
       this.bindGap(gap);
     }
 
@@ -114,7 +114,7 @@ export class MindTheGapController {
       highlightRactive.set("object", highlight);
     }
 
-    for (var gap of this.cloze.gaps) {
+    for (var gap of this.cloze.blanks) {
       var gapRactive = this.gapRactives[gap.id];
       gapRactive.set("gap", gap);
     }
@@ -141,7 +141,7 @@ export class MindTheGapController {
       highlightObject.isHighlighted = false;
     }
 
-    for (var gap of this.cloze.gaps) {
+    for (var gap of this.cloze.blanks) {
       if ((!gap.isCorrect) && gap.enteredText != "")
         gap.evaluateEnteredAnswer();
     }
@@ -172,10 +172,10 @@ export class MindTheGapController {
 
     if (!this.checkAndNotifyCompleteness()) {
       if (gap.isCorrect) {
-        var index = this.cloze.gaps.indexOf(gap);
-        if (index + 1 >= this.cloze.gaps.length)
+        var index = this.cloze.blanks.indexOf(gap);
+        if (index + 1 >= this.cloze.blanks.length)
           return;
-        var nextId = this.cloze.gaps[index + 1].id;
+        var nextId = this.cloze.blanks[index + 1].id;
         this.jquery.find("#" + nextId).focus();
       }
     }

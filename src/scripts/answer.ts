@@ -1,18 +1,36 @@
 ﻿import { Message } from './message';
-import { Highlight } from './cloze-highlight';
+import { Highlight } from './highlight';
 import { Settings } from './settings';
 import { Evaluation } from './enums';
 import { Levensthein } from '../lib/levenshtein';
 
+/**
+ * Represents a possible answer the content author enters for a blank, e.g. the correct or an incorrect answer.
+ */
 export class Answer {
+  /**
+   * The alternatives are equivalent strings that the library should treat the same way, e.g. show the same feedback. 
+   */
   alternatives: string[];
+  
+  /**
+   * This is the message that is displayed when the answer was entered by the user.
+   */
   message: Message;
+  
+  /**
+   * Is true if the expected text for this answer is empty.
+   */
   appliesAlways: boolean;
-
-  constructor(answers: string, reaction: string) {
-    this.alternatives = answers.split(/[;|]/).map(s => s.trim());
+  
+  /**
+   * @param  {string} answerText - The expected answer. Alternatives are separated by | or ; . (e.g. "Alternative 1|Alternative 2|Alternative 3|..."  -or- "Alternative 1;Alternative 2;Alternative 3")
+   * @param  {string} reaction - The tooltip that should be displayed. Format: Tooltip Text;!!-1!! !!+1!!
+   */
+  constructor(answerText: string, reaction: string) {
+    this.alternatives = answerText.split(/[;|]/).map(s => s.trim());
     this.message = new Message(reaction);
-    if (answers.trim() === "") {
+    if (answerText.trim() === "") {
       this.appliesAlways = true;
     } else {
       this.appliesAlways = false;
@@ -30,9 +48,7 @@ export class Answer {
   }
 
   private getCleanedText(text: string) {
-    var caseSensitivity = Settings.instance.caseSensivitity;
-
-    if (caseSensitivity == false)
+    if (Settings.instance.caseSensivitity == false)
       return text.toLocaleLowerCase();
     else
       return text;

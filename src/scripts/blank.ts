@@ -1,7 +1,7 @@
 ﻿import { ClozeElement, ClozeElementType } from './cloze-element';
 import { Answer } from './answer';
 import { Message } from './message';
-import { Highlight } from './cloze-highlight';
+import { Highlight } from './highlight';
 import { Evaluation, MessageType, ClozeType } from './enums';
 import { H5PLocalization, LocalizationLabels } from './localization';
 import { Settings } from "./settings";
