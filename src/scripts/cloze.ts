@@ -29,7 +29,7 @@ export class Cloze {
     return true;
   }
   /**
-   * @param  {string} html - The html string that contains the cloze with gaps marking and highlight markings.
+   * @param  {string} html - The html string that contains the cloze with blanks marking and highlight markings.
    * @param  {Blank[]} blanks - All blanks as entered by the content author.
    * @param  {MediaElement[]} media - All media elements as entered by the content author.
    * @returns Cloze
@@ -39,13 +39,13 @@ export class Cloze {
     var highlightInstances: Highlight[] = new Array();
     var blanksInstances: Blank[] = new Array();
 
-    html = Cloze.normalizeGapMarkings(html);
+    html = Cloze.normalizeBlankMarkings(html);
 
-    var result = Cloze.convertMarkupToSpans(html, blanks);
-    html = result.html;
-    orderedAllElementsList = result.orderedAllElementsList;
-    highlightInstances = result.highlightInstances;
-    blanksInstances = result.blanksInstances;
+    var conversionResult = Cloze.convertMarkupToSpans(html, blanks);
+    html = conversionResult.html;
+    orderedAllElementsList = conversionResult.orderedAllElementsList;
+    highlightInstances = conversionResult.highlightInstances;
+    blanksInstances = conversionResult.blanksInstances;
 
     Cloze.linkHighlightsObjects(orderedAllElementsList, highlightInstances, blanksInstances);
 
@@ -57,8 +57,8 @@ export class Cloze {
     return cloze;
   }
   /**
-   * Converts !!signal!! highlight markup and ___  gap markup into <span>.
-   * Returns three lists of all active elements used in the cloze:
+   * Converts !!signal!! highlight markup and ___  blank markup into <span>...</span>.
+   * Returns the resulting html string and three lists of all active elements used in the cloze:
    *    orderedAllElements: highlights and blanks in the order of appearance in the html.
    *    highlightInstances: only highlights in the order of appearance
    *    blanksInstances: only blanks in the order of appearance
@@ -71,27 +71,24 @@ export class Cloze {
     var highlightInstances: Highlight[] = new Array();
     var blanksInstances: Blank[] = new Array();
 
-    var exclamationMarkRegExp = new RegExp("!!(.{1,40}?)!!", "i");
+    var exclamationMarkRegExp = /!!(.{1,40}?)!!/i;
     var highlightCounter = 0;
     let blankCounter = 0;
 
-    // Searches the html string for highlights and gaps and inserts spans. 
-    while (true) {
+    // Searches the html string for highlights and blanks and inserts spans. 
+    do {
       var nextHighlightMatch = html.match(exclamationMarkRegExp);
       var nextBlankIndex = html.indexOf(Cloze.normalizedBlankMarker);
 
-      if (!nextHighlightMatch && (nextBlankIndex < 0))
-        break;
-
-      if ((nextHighlightMatch && nextHighlightMatch.index < nextBlankIndex) || (nextBlankIndex < 0)) {
+      if (nextHighlightMatch && (nextHighlightMatch.index < nextBlankIndex) || (nextBlankIndex < 0)) {
         // next active element is a highlight
         var highlight = new Highlight(nextHighlightMatch[1], `highlight_${highlightCounter}`);
         highlightInstances.push(highlight);
         orderedAllElementsList.push(highlight);
         html = html.replace(exclamationMarkRegExp, `<span id='container_highlight_${highlightCounter}'></span>`);
         highlightCounter++;
-      } else {
-        // next active element is a gap
+      } else if (nextBlankIndex >= 0) {
+        // next active element is a blank
         if (blankCounter >= blanks.length) {
           // if the blank is not in the repository (The content author has marked too many blanks in the text, but not entered correct answers.)
           html = html.replace(Cloze.normalizedBlankMarker, "<span></span>");
@@ -106,6 +103,7 @@ export class Cloze {
         }
       }
     }
+    while (nextHighlightMatch && (nextBlankIndex >= 0));
 
     return {
       html: html,
@@ -115,9 +113,15 @@ export class Cloze {
     };
   }
 
+  /**
+   * Iterates through all blanks and calls their linkHighlightIdsToObjects(...).
+   * @param orderedAllElementsList 
+   * @param highlightInstances 
+   * @param blanksInstances 
+   */
   private static linkHighlightsObjects(orderedAllElementsList: ClozeElement[], highlightInstances: Highlight[], blanksInstances: Blank[]): void {
-    for (var gap of blanksInstances) {
-      var nextBlankIndexInArray = orderedAllElementsList.indexOf(gap);
+    for (var blank of blanksInstances) {
+      var nextBlankIndexInArray = orderedAllElementsList.indexOf(blank);
       var highlightsBeforeBlank = orderedAllElementsList
         .slice(0, nextBlankIndexInArray)
         .filter(e => e.type === ClozeElementType.Highlight)
@@ -127,16 +131,16 @@ export class Cloze {
         .slice(nextBlankIndexInArray + 1)
         .filter(e => e.type === ClozeElementType.Highlight)
         .map(e => e as Highlight);
-      gap.linkHighlightIdsToObjects(highlightsBeforeBlank, highlightsAfterBlank);
+      blank.linkHighlightIdsToObjects(highlightsBeforeBlank, highlightsAfterBlank);
     }
   }
 
   /**
-   * Looks for all instances of marked gaps and replaces them with ___. 
+   * Looks for all instances of marked blanks and replaces them with ___. 
    * @param  {string} html
    * @returns string
    */
-  private static normalizeGapMarkings(html: string): string {
+  private static normalizeBlankMarkings(html: string): string {
     var underlineBlankRegEx = /_{3,}/g;
     html = html.replace(underlineBlankRegEx, Cloze.normalizedBlankMarker);
     return html;
