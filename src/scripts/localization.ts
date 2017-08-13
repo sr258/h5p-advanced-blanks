@@ -3,7 +3,7 @@
   typoMessage,
   retryMessage,
   imageName,
-  gapName,
+  blankName,
   signalName
 }
 
@@ -19,7 +19,7 @@ export class H5PLocalization {
   private static instance: H5PLocalization;
   
   /**
-   * Creates or gets the singleton instance.
+   * Creates or gets the singleton instance. The first call must with the h5p configuration object.
    * @param  {any} h5pConfiguration
    */
   public static getInstance(h5pConfiguration?: any) {
@@ -47,7 +47,7 @@ export class H5PLocalization {
         return "Nochmal";
       case LocalizationLabels.imageName:
         return "Bild";
-      case LocalizationLabels.gapName:
+      case LocalizationLabels.blankName:
         return "Lücke";
       case LocalizationLabels.signalName:
         return "Signal";

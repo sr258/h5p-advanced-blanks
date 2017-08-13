@@ -1,5 +1,8 @@
 ﻿import { ClozeElement, ClozeElementType } from './cloze-element';
 
+/**
+ * Represents a highlight in the cloze.
+ */
 export class Highlight extends ClozeElement {
 	text: string;
 	isHighlighted: boolean;

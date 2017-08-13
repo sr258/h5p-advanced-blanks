@@ -1,10 +1,10 @@
 import * as $ from 'jquery';
 import { H5PDataRepository, IDataRepository } from './data-repository';
-import { MindTheGapController } from './mind-the-gap-controller';
+import { AdvancedBlanksController } from './advanced-blanks-controller';
 import { H5PLocalization } from "./localization";
 
 export default class AdvancedBlanks extends (H5P.EventDispatcher as { new(): any; }) {
-  private app: MindTheGapController;
+  private app: AdvancedBlanksController;
   private repository: IDataRepository;
 
   /**
@@ -28,7 +28,7 @@ export default class AdvancedBlanks extends (H5P.EventDispatcher as { new(): any
    */
   attach = function ($wrapper: JQuery) {
     $wrapper.get(0).classList.add('h5p-advanced-blanks');
-    this.app = new MindTheGapController(this.repository, $wrapper);
+    this.app = new AdvancedBlanksController(this.repository, $wrapper);
     this.app.initialize($wrapper.get(0));
   }
 }

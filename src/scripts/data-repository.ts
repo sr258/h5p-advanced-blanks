@@ -66,7 +66,7 @@ export class H5PDataRepository implements IDataRepository {
   }
 
   getBlanks(): Blank[] {
-    var gapRepository: Blank[] = new Array();
+    var blanks: Blank[] = new Array();
     for (var i = 0; i < this.h5pConfigData.blanksList.length; i++) {
       var h5pBlank = this.h5pConfigData.blanksList[i];
 
@@ -83,10 +83,10 @@ export class H5PDataRepository implements IDataRepository {
       }
 
       blank.finishInitialization();
-      gapRepository.push(blank);
+      blanks.push(blank);
     }
 
-    return gapRepository;
+    return blanks;
   }
 
   // TODO: implement

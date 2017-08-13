@@ -73,15 +73,15 @@ export class Blank extends ClozeElement {
    * the sense that dependent objects are cloned as well! 
    */
   public clone(): Blank {
-    var newGap = new Blank(this.settings, this.id);
+    var newBlank = new Blank(this.settings, this.id);
 
-    newGap.correctAnswers = this.correctAnswers;
-    newGap.incorrectAnswers = this.incorrectAnswers;
-    newGap.hint = this.hint;
-    newGap.hasHint = this.hasHint;
+    newBlank.correctAnswers = this.correctAnswers;
+    newBlank.incorrectAnswers = this.incorrectAnswers;
+    newBlank.hint = this.hint;
+    newBlank.hasHint = this.hasHint;
 
-    newGap.finishInitialization();
-    return newGap;
+    newBlank.finishInitialization();
+    return newBlank;
   }
 
   public replaceSnippets(snippets: string[]) {
@@ -151,8 +151,8 @@ export class Blank extends ClozeElement {
   }
   /**
    * Adds the highlight objects to the answers in the correct and incorrect answer list.
-   * @param  {Highlight[]} highlightsBefore - All highlights coming before the gap.
-   * @param  {Highlight[]} highlightsAfter - All highlights coming after the gap.
+   * @param  {Highlight[]} highlightsBefore - All highlights coming before the blank.
+   * @param  {Highlight[]} highlightsAfter - All highlights coming after the blank.
    */
   linkHighlightIdsToObjects = (highlightsBefore: Highlight[], highlightsAfter: Highlight[]) => {
     for (var answer of this.correctAnswers) {

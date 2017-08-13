@@ -9,7 +9,7 @@ import { H5PLocalization, LocalizationLabels } from "./localization";
  */
 export class Cloze {
   public html: string;
-  public highlightableObjects: Highlight[];
+  public highlights: Highlight[];
   public blanks: Blank[];
 
   private static normalizedBlankMarker = '___';
@@ -52,7 +52,7 @@ export class Cloze {
     var cloze = new Cloze();
     cloze.html = html;
     cloze.blanks = blanksInstances;
-    cloze.highlightableObjects = highlightInstances;
+    cloze.highlights = highlightInstances;
 
     return cloze;
   }
@@ -95,7 +95,7 @@ export class Cloze {
         }
         else {
           var blankInstance = blanks[blankCounter].clone();
-          blankInstance.id = "gap_" + blankCounter;
+          blankInstance.id = "blank_" + blankCounter;
           blanksInstances.push(blankInstance);
           orderedAllElementsList.push(blankInstance);
           html = html.replace(Cloze.normalizedBlankMarker, `<span id='container_${blankInstance.id}'></span>`);
