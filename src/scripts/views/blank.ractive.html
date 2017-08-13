@@ -1,25 +1,25 @@
 <span id="container{{id}}" class="cloze {{#blank.isCorrect}}correct{{/if}} {{#blank.isError}}error{{/if}} {{#blank.isRetry}}retry{{/if}}">
   {{#unless isSelectCloze}}
-    <input id="{{blank.id}}" type="text" value="{{blank.enteredText}}" size="{{blank.minTextLength}}" on-escape="closeMessage:{{blank}}" on-enter="checkCloze:{{blank}}" {{#blank.isCorrect}}disabled="disabled" {{/if}} />
-    {{#blank.hasHint}}<button on-click="showHint:{{blank}}" {{#blank.isCorrect}}disabled="disabled" {{/if}}><i class="fa fa-question-circle"></i></button>{{/if}}
+    <input id="{{blank.id}}" type="text" value="{{blank.enteredText}}" size="{{blank.minTextLength}}" on-escape="@this.fire('closeMessage', blank)" on-enter="@this.fire('checkCloze', blank)" {{#blank.isCorrect}}disabled="disabled" {{/if}} />
+    {{#blank.hasHint}}<button on-click="@this.fire('showHint', blank)" {{#blank.isCorrect}}disabled="disabled" {{/if}}><i class="fa fa-question-circle"></i></button>{{/if}}
   {{/unless}}
   {{#if isSelectCloze}}
     {{#blank.hasHint}}
-      <button on-click="showHint:{{blank}}" {{#blank.isCorrect}}disabled="disabled"{{/if}}>
+      <button on-click="@this.fire('showHint', blank)" {{#blank.isCorrect}}disabled="disabled"{{/if}}>
       <i class="fa fa-question-circle"></i></button>
     {{/if}}
-    <select id="{{blank.id}}" type="text" value="{{blank.enteredText}}" on-enter="checkCloze:{{blank}}" {{#blank.isCorrect}}disabled="disabled" {{/if}}size="1">
+    <select id="{{blank.id}}" type="text" value="{{blank.enteredText}}" on-enter="@this.fire('checkCloze', blank)" {{#blank.isCorrect}}disabled="disabled" {{/if}}size="1">
       {{#each blank.choices}}
         <option>{{this}}</option>
       {{/each}}
     </select>                    
-    <button on-click="checkCloze:{{blank}}" {{#blank.isCorrect}} disabled="disabled" {{/if}}>
+    <button on-click="@this.fire('checkCloze', blank)" {{#blank.isCorrect}} disabled="disabled" {{/if}}>
       <i class="fa fa-check"></i>
     </button>
   {{/if}}
   {{#blank.showMessage}}
     <span class="message">
-      <button on-click="closeMessage:{{blank}}">
+      <button on-click="@this.fire('closeMessage', blank)">
         <i class="fa fa-times"></i>
       </button>
       {{blank.message}}

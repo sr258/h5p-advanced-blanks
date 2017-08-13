@@ -149,7 +149,7 @@ export class AdvancedBlanksController {
     return false;
   }
 
-  onCheckAll = (event: Ractive.Event) => {
+  onCheckAll = () => {
     this.hideAllHighlights();
     for (var blank of this.cloze.blanks) {
       if ((!blank.isCorrect) && blank.enteredText != "")
@@ -159,19 +159,19 @@ export class AdvancedBlanksController {
     this.checkAndNotifyCompleteness();
   }
 
-  onShowHint = (event: Ractive.Event, blank: Blank) => {
+  onShowHint = (blank: Blank) => {
     this.hideAllHighlights();
     blank.showHint();
     this.refreshCloze();
   }
 
-  onRequestCloseHighlight = (event: Ractive.Event, blank: Blank) => {
+  onRequestCloseHighlight = (blank: Blank) => {
     blank.removeTooltip();
     this.refreshCloze();
     this.jquery.find("#" + blank.id).focus();
   }
 
-  onCheckBlank = (event: Ractive.Event, blank: Blank) => {
+  onCheckBlank = (blank: Blank) => {
     this.hideAllHighlights();
     blank.evaluateEnteredAnswer();
     this.refreshCloze();
