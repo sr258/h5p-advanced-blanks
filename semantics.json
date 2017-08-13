@@ -92,7 +92,7 @@
             "name": "incorrectAnswerGroup",
             "type": "group",
             "label": "Incorrect answer",
-            "description": "You can separate alternative answers with a semicolon (;).",                    
+            "description": "You can separate alternative answers with a semicolon (;).",
             "fields": [
               {
                 "name": "incorrectAnswerText",
@@ -104,11 +104,51 @@
                 "type": "text",
                 "label": "Feedback",
                 "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user entered."
+              },
+              {
+                "name": "referencesHighlight",
+                "type": "boolean",
+                "label": "Show highlight in the text when feedback is shown.",
+                "default": false,
+                "optional": true
+              },
+              {
+                "name": "highlight",
+                "type": "select",
+                "label": "Select highlight relative to blank:",
+                "optional": true,
+                "options": [
+                  {
+                    "value": -3,
+                    "label": "-3 (three highlights before the blank)"
+                  },
+                  {
+                    "value": -2,
+                    "label": "-2 (two highlights before the blank)"
+                  },
+                  {
+                    "value": -1,
+                    "label": "-1 (right before the blank)"
+                  },
+                  {
+                    "value": 1,
+                    "label": "+1 (right after the blank)"
+                  },
+                  {
+                    "value": 2,
+                    "label": "+2 (two highlights after the blank)"
+                  },
+                  {
+                    "value": 3,
+                    "label": "+3 (three highlights after the blank)"
+                  }
+                ],
+                "default": -1
               }
             ]
           }
         }
-      ] 
+      ]
     }
   }
 ]

@@ -26,21 +26,6 @@
       "machineName": "FontAwesome",
       "majorVersion": 4,
       "minorVersion": 5
-    },
-    {
-      "machineName": "H5P.Question",
-      "majorVersion": 1,
-      "minorVersion": 3
-    },
-    {
-      "machineName": "H5P.JoubelUI",
-      "majorVersion": 1,
-      "minorVersion": 3
-    },
-    {
-      "machineName": "H5P.TextUtilities",
-      "majorVersion": 1,
-      "minorVersion": 0
     }
   ],
   "editorDependencies": [
