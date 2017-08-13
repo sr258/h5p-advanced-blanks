@@ -2,7 +2,7 @@
 import { Highlight } from './highlight';
 import { Settings } from './settings';
 import { Evaluation } from './enums';
-import { Levensthein } from '../lib/levenshtein';
+import { Levensthein } from '../../lib/levenshtein';
 
 /**
  * Represents a possible answer the content author enters for a blank, e.g. the correct or an incorrect answer.

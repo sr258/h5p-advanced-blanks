@@ -1,13 +1,13 @@
-﻿import { Cloze } from "./cloze";
-import { Feedback } from "./feedback";
-import { IDataRepository } from "./data-repository";
-import { Settings } from "./settings";
-import { H5PLocalization, LocalizationLabels } from "./localization";
-import { ClozeType } from "./enums";
-import { Highlight } from "./highlight";
-import { Blank } from "./blank";
+﻿import { Cloze } from "../models/cloze";
+import { Feedback } from "../models/feedback";
+import { IDataRepository } from "../services/data-repository";
+import { Settings } from "../models/settings";
+import { H5PLocalization, LocalizationLabels } from "../services/localization";
+import { ClozeType } from "../models/enums";
+import { Highlight } from "../models/highlight";
+import { Blank } from "../models/blank";
 
-import * as RactiveEventsKeys from "../lib/ractive-events-keys"
+import * as RactiveEventsKeys from "../../lib/ractive-events-keys"
 import * as Ractive from 'ractive';
 
 export class AdvancedBlanksController {
@@ -64,7 +64,7 @@ export class AdvancedBlanksController {
   private createHighlightBinding(highlight: Highlight) {
     this.highlightRactives[highlight.id] = new Ractive({
       el: '#container_' + highlight.id,
-      template: require('../templates/highlight.ractive.html'),
+      template: require('../views/highlight.ractive.html'),
       data: {
         object: highlight
       }
@@ -74,7 +74,7 @@ export class AdvancedBlanksController {
   private createBlankBinding(blank: Blank) {
     var ractive = new Ractive({
       el: '#container_' + blank.id,
-      template: require('../templates/blank.ractive.html'),
+      template: require('../views/blank.ractive.html'),
       data: {
         isSelectCloze: this.isSelectCloze,
         blank: blank
@@ -94,7 +94,7 @@ export class AdvancedBlanksController {
   private bindStatic() {
     this.staticRactive = new Ractive({
       el: '#staticContainer',
-      template: require('../templates/static.ractive.html'),
+      template: require('../views/static.ractive.html'),
       data: {
         feedback: this.feedback,
         checkAllLabel: this.checkAllLabel,

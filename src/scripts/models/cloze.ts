@@ -2,7 +2,7 @@
 import { Blank } from "./blank";
 import { MediaElement, MediaType } from "./media-element";
 import { ClozeElement, ClozeElementType } from "./cloze-element";
-import { H5PLocalization, LocalizationLabels } from "./localization";
+import { H5PLocalization, LocalizationLabels } from "../services/localization";
 
 /**
  * Represents the cloze. Instantiate with static createCloze().

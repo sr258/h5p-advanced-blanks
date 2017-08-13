@@ -1,9 +1,9 @@
-﻿import { Blank } from "./blank";
-import { MediaElement } from "./media-element";
-import { Settings } from "./settings";
-import { ClozeType } from "./enums";
-import { Answer } from "./answer";
-import { Message } from "./message";
+﻿import { Blank } from "../models/blank";
+import { MediaElement } from "../models/media-element";
+import { Settings } from "../models/settings";
+import { ClozeType } from "../models/enums";
+import { Answer } from "../models/answer";
+import { Message } from "../models/message";
 
 export interface IDataRepository {
   getBlanks(): Blank[];

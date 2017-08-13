@@ -1,7 +1,7 @@
 import * as $ from 'jquery';
-import { H5PDataRepository, IDataRepository } from './data-repository';
-import { AdvancedBlanksController } from './advanced-blanks-controller';
-import { H5PLocalization } from "./localization";
+import { H5PDataRepository, IDataRepository } from './services/data-repository';
+import { AdvancedBlanksController } from './controllers/advanced-blanks-controller';
+import { H5PLocalization } from "./services/localization";
 
 export default class AdvancedBlanks extends (H5P.EventDispatcher as { new(): any; }) {
   private app: AdvancedBlanksController;

@@ -3,9 +3,9 @@ import { Answer } from './answer';
 import { Message } from './message';
 import { Highlight } from './highlight';
 import { Evaluation, MessageType, ClozeType } from './enums';
-import { H5PLocalization, LocalizationLabels } from './localization';
+import { H5PLocalization, LocalizationLabels } from '../services/localization';
 import { Settings } from "./settings";
-import { getLongestString, shuffleArray } from "../lib/helpers";
+import { getLongestString, shuffleArray } from "../../lib/helpers";
 
 export class Blank extends ClozeElement {
   // content
