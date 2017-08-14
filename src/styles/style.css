@@ -10,7 +10,7 @@
 
 /* Input */
 
-.h5p-advanced-blanks .cloze input {
+.h5p-advanced-blanks .blank input {
   font-family: H5PDroidSans, sans-serif;
   font-size: 1em;
   border-radius: 0.25em;
@@ -20,48 +20,30 @@
   white-space: nowrap;
 }
 
-/* Correctly answered input */
-.h5p-advanced-blanks .cloze input:focus {
+/* Focussed input */
+.h5p-advanced-blanks .blank input:focus {
   outline: none;
   box-shadow: 0 0 0.5em 0 #7fb8ff;
   border-color: #7fb8ff;
 }
 
-.h5p-advanced-blanks .cloze.correct input {
+/* Correctly answered input */
+.h5p-advanced-blanks .blank.correct input {
   background: #9dd8bb;
   border: 1px solid #9dd8bb;
   color: #255c41;
 }
 
-.h5p-advanced-blanks .cloze.correct:after {
-  position: absolute;
-  right: 0.5em;
-  top: 0;
-  text-decoration: none;
-  content: "\f00c";
-  font-family: 'H5PFontAwesome4';
-  color: #255c41;
-}
-
 /* Incorrect answers */
-.h5p-advanced-blanks .cloze.error input {
+.h5p-advanced-blanks .blank.error input {
   background-color: #f7d0d0;
   border: 1px solid #f7d0d0;
   color: #b71c1c;
   text-decoration: line-through;
 }
 
-.h5p-advanced-blanks .cloze.error input:after {
-  position: absolute;
-  right: 0.5em;
-  top: 0;
-  font-family: 'H5PFontAwesome4';
-  text-decoration: none;
-  content: "\f00d";
-  color: #b71c1c;
-}
-
-.h5p-advanced-blanks #cloze button {
+/* Buttons */
+.h5p-advanced-blanks .blank button {
 	padding-left: 5px;
 	padding-right: 5px;
 	border: none;
@@ -75,13 +57,13 @@
 	color: #303030;
 }
 
-.h5p-advanced-blanks .cloze .message button {
+.h5p-advanced-blanks .blank .message button {
 	font-size: smaller;
 	vertical-align: super;
 	float: right;
 }
 
-.h5p-advanced-blanks .cloze span.message {
+.h5p-advanced-blanks .blank span.message {
 	position: absolute;
 	max-width: 20em;
 	z-index: 100;
@@ -93,18 +75,18 @@
 	padding-bottom: 0.5em;
 }
 
-.h5p-advanced-blanks .cloze.correct span.message {
+.h5p-advanced-blanks .blank.correct span.message {
 	background-color: #7fff79;
 	border: 1px solid green;
 }
 
-.h5p-advanced-blanks .cloze.error span.message {
+.h5p-advanced-blanks .blank.error span.message {
 	background-color: #ff4d4d;
 	border: 1px solid #ff4d4d;
 	color: white;
 }
 
-.h5p-advanced-blanks .cloze.retry span.message {
+.h5p-advanced-blanks .blank.retry span.message {
 	background-color: #ffe774;
 	border: 1px solid #ffe774;
 	color: black;

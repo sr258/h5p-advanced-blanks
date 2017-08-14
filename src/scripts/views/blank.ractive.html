@@ -1,4 +1,4 @@
-<span id="container{{id}}" class="cloze {{#blank.isCorrect}}correct{{/if}} {{#blank.isError}}error{{/if}} {{#blank.isRetry}}retry{{/if}}">
+<span id="container{{id}}" class="blank {{#blank.isCorrect}}correct{{/if}} {{#blank.isError}}error{{/if}} {{#blank.isRetry}}retry{{/if}}">
   {{#unless isSelectCloze}}
     <input id="{{blank.id}}" type="text" value="{{blank.enteredText}}" size="{{blank.minTextLength}}" on-escape="@this.fire('closeMessage', blank)" on-enter="@this.fire('checkCloze', blank)" {{#blank.isCorrect}}disabled="disabled" {{/if}} />
     {{#blank.hasHint}}<button on-click="@this.fire('showHint', blank)" {{#blank.isCorrect}}disabled="disabled" {{/if}}><i class="fa fa-question-circle"></i></button>{{/if}}
