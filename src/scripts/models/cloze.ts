@@ -80,7 +80,7 @@ export class Cloze {
       var nextHighlightMatch = html.match(exclamationMarkRegExp);
       var nextBlankIndex = html.indexOf(Cloze.normalizedBlankMarker);
 
-      if (nextHighlightMatch && (nextHighlightMatch.index < nextBlankIndex) || (nextBlankIndex < 0)) {
+      if (nextHighlightMatch && ((nextHighlightMatch.index < nextBlankIndex) || (nextBlankIndex < 0))) {
         // next active element is a highlight
         var highlight = new Highlight(nextHighlightMatch[1], `highlight_${highlightCounter}`);
         highlightInstances.push(highlight);
@@ -102,7 +102,7 @@ export class Cloze {
         }
       }
     }
-    while (nextHighlightMatch && (nextBlankIndex >= 0));
+    while (nextHighlightMatch || (nextBlankIndex >= 0));
 
     return {
       html: html,
