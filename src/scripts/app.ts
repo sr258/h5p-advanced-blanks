@@ -8,6 +8,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   private app: AdvancedBlanksController;
   private repository: IDataRepository;
   private settings: ISettings;
+  private localization: H5PLocalization;
 
   private contentContainer: JQuery;
   private jQuery: JQuery = H5P.jQuery;
@@ -23,8 +24,8 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     super();
 
     this.settings = new H5PSettings(config);
-    this.repository = new H5PDataRepository(config, this.settings);
-    H5PLocalization.getInstance(config);
+    this.localization = new H5PLocalization(config);
+    this.repository = new H5PDataRepository(config, this.settings, this.localization);
   }
 
   /**
@@ -37,7 +38,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   attach = (function (original) {
     return function ($container) {
       original($container);
-      this.app = new AdvancedBlanksController(this.repository, $container, this.settings);
+      this.app = new AdvancedBlanksController(this.repository, $container, this.settings, this.localization);
       this.app.initialize(this.container.get(0));
     }
   })(this.attach);

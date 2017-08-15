@@ -4,6 +4,7 @@ import { ISettings } from "../services/settings";
 import { ClozeType } from "../models/enums";
 import { Answer } from "../models/answer";
 import { Message } from "../models/message";
+import { H5PLocalization } from "./localization";
 
 export interface IDataRepository {
   getBlanks(): Blank[];
@@ -18,7 +19,8 @@ export interface IDataRepository {
  * Wraps around the h5p config object and provides access to the content.
  */
 export class H5PDataRepository implements IDataRepository {
-  constructor(private h5pConfigData: any, private settings: ISettings) {
+  constructor(private h5pConfigData: any, private settings: ISettings,
+  private localization: H5PLocalization) {
 
   }
 
@@ -56,7 +58,7 @@ export class H5PDataRepository implements IDataRepository {
       if (correctText === "" || correctText === undefined)
         continue;
 
-      var blank = new Blank(this.settings, "cloze" + i, correctText, h5pBlank.hint);
+      var blank = new Blank(this.settings, this.localization, "cloze" + i, correctText, h5pBlank.hint);
 
       if (h5pBlank.incorrectAnswersList) {
         for (var h5pIncorrectAnswer of h5pBlank.incorrectAnswersList) {

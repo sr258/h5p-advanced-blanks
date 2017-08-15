@@ -36,7 +36,7 @@ export class Blank extends ClozeElement {
    * @param  {string} correctText?
    * @param  {string} hintText?
    */
-  constructor(private settings: ISettings, id: string, correctText?: string, hintText?: string) {
+  constructor(private settings: ISettings, private localization: H5PLocalization, id: string, correctText?: string, hintText?: string) {
     super();
     this.initializeAsEmpty();
 
@@ -190,7 +190,7 @@ export class Blank extends ClozeElement {
     }
 
     if (closeCorrectMatches.length > 0) {
-      this.displayTooltip(H5PLocalization.getInstance().getTextFromLabel(LocalizationLabels.typoMessage), MessageType.Retry);
+      this.displayTooltip(this.localization.getTextFromLabel(LocalizationLabels.typoMessage), MessageType.Retry);
       this.setAnswerState(MessageType.Retry);
       return;
     }

@@ -183,5 +183,58 @@
         "default": false
       }
     ]
+  },
+  {
+    "label": "Text for \"Show solutions\" button",
+    "name": "showSolutions",
+    "type": "text",
+    "default": "Show solution",
+    "common": true,
+    "optional": true
+  },
+  {
+    "label": "Text for \"Retry\" button",
+    "importance": "low",
+    "name": "tryAgain",
+    "type": "text",
+    "default": "Retry",
+    "common": true,
+    "optional": true
+  },
+  {
+    "label": "Text for \"Check\" button",
+    "importance": "low",
+    "name": "checkAnswer",
+    "type": "text",
+    "default": "Check",
+    "common": true,
+    "optional": true
+  },
+  {
+    "label": "Text for \"Not filled out\" message",
+    "importance": "low",
+    "name": "notFilledOut",
+    "type": "text",
+    "default": "Please fill in all blanks to view solution",
+    "common": true,
+    "optional": true
+  },
+  {
+    "label": "Tip icon label",
+    "importance": "low",
+    "name": "tipLabel",
+    "type": "text",
+    "default": "Tip",
+    "common": true,
+    "optional": true
+  },
+  {
+    "label": "Spelling mistake warning",
+    "importance": "low",
+    "name": "spellingMistakeWarning",
+    "type": "text",
+    "default": "You've made a spelling mistake.",
+    "common": true,
+    "optional": true
   }
 ]
