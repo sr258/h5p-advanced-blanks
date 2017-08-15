@@ -1,4 +1,5 @@
 * Find out where H5P.TextUtilities comes from
+* split deserializers and models
 * translation strings escape special characters: You&#039;ve made a spelling mistake.
 * Add H5P buttons:
   * check
@@ -16,10 +17,11 @@
 * disallow Enter when auto-check is false
 * take over from h5p-blanks
   * introduction
-  * image / video content on top
+  * image / video content on top + remove own implementation
 * auto-growing text-fields
 * react to resize event
 * score widget
+* feedback text
   
 soon:
 * put Ractive into library
@@ -34,6 +36,7 @@ soon:
   * notify about ...?
   * read data when loading
 * improve highlight markup in semantics
+* snippets
 
 later:
 * accessibility
