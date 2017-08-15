@@ -2,10 +2,13 @@ import * as $ from 'jquery';
 import { H5PDataRepository, IDataRepository } from './services/data-repository';
 import { AdvancedBlanksController } from './controllers/advanced-blanks-controller';
 import { H5PLocalization } from "./services/localization";
+import { ISettings, H5PSettings } from "./services/settings";
 
 export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   private app: AdvancedBlanksController;
   private repository: IDataRepository;
+  private settings: ISettings;
+
   private contentContainer: JQuery;
   private jQuery: JQuery = H5P.jQuery;
 
@@ -19,7 +22,8 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   constructor(config: any, contentId: string, contentData: any = {}) {
     super();
 
-    this.repository = new H5PDataRepository(config);
+    this.settings = new H5PSettings(config);
+    this.repository = new H5PDataRepository(config, this.settings);
     H5PLocalization.getInstance(config);
   }
 
@@ -33,7 +37,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   attach = (function (original) {
     return function ($container) {
       original($container);
-      this.app = new AdvancedBlanksController(this.repository, $container);
+      this.app = new AdvancedBlanksController(this.repository, $container, this.settings);
       this.app.initialize(this.container.get(0));
     }
   })(this.attach);

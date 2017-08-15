@@ -1,6 +1,6 @@
 ﻿import { Blank } from "../models/blank";
 import { MediaElement } from "../models/media-element";
-import { Settings } from "../models/settings";
+import { ISettings } from "../services/settings";
 import { ClozeType } from "../models/enums";
 import { Answer } from "../models/answer";
 import { Message } from "../models/message";
@@ -18,26 +18,8 @@ export interface IDataRepository {
  * Wraps around the h5p config object and provides access to the content.
  */
 export class H5PDataRepository implements IDataRepository {
-  private settings: Settings;
+  constructor(private h5pConfigData: any, private settings: ISettings) {
 
-  constructor(private h5pConfigData: any) {
-    this.settings = Settings.instance;
-    this.loadGeneralSettings(h5pConfigData, this.settings);
-  }
-
-  /**
-   * Loads settings from the configuration data. Settings are variables that are 
-   * not content.
-   */
-  private loadGeneralSettings(h5pConfigData: any, settings: Settings) {
-    settings.caseSensivitity = h5pConfigData.caseSensitivity;
-    if (h5pConfigData.mode === 'selection') {
-      settings.clozeType = ClozeType.Select;
-    }
-    else {
-      settings.clozeType = ClozeType.Type;
-    }
-    settings.acceptTypos = h5pConfigData.typoWarning;
   }
 
   /**

@@ -1,7 +1,7 @@
 ﻿import { Cloze } from "../models/cloze";
 import { Feedback } from "../models/feedback";
 import { IDataRepository } from "../services/data-repository";
-import { Settings } from "../models/settings";
+import { ISettings } from "../services/settings";
 import { H5PLocalization, LocalizationLabels } from "../services/localization";
 import { ClozeType } from "../models/enums";
 import { Highlight } from "../models/highlight";
@@ -21,14 +21,15 @@ export class AdvancedBlanksController {
   private blankRactives: { [id: string]: Ractive.Ractive } = {};
   private staticRactive: Ractive.Ractive;
 
-  constructor(private repository: IDataRepository, private jquery: JQuery) {
+  constructor(private repository: IDataRepository, private jquery: JQuery, private settings: ISettings) {
   }
+  
   /**
    * Sets up all blanks, the cloze itself and the ractive bindings.
    * @param  {HTMLElement} root
    */
   initialize(root: HTMLElement) {
-    this.isSelectCloze = Settings.instance.clozeType == ClozeType.Select ? true : false;
+    this.isSelectCloze = this.settings.clozeType == ClozeType.Select ? true : false;
     this.checkAllLabel = H5PLocalization.getInstance().getTextFromLabel(LocalizationLabels.checkAllButton);
     this.feedback = new Feedback(this.repository.getFeedbackText());
 

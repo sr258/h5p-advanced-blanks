@@ -4,7 +4,7 @@ import { Message } from './message';
 import { Highlight } from './highlight';
 import { Evaluation, MessageType, ClozeType } from './enums';
 import { H5PLocalization, LocalizationLabels } from '../services/localization';
-import { Settings } from "./settings";
+import { ISettings } from "../services/settings";
 import { getLongestString, shuffleArray } from "../../lib/helpers";
 
 export class Blank extends ClozeElement {
@@ -31,18 +31,18 @@ export class Blank extends ClozeElement {
   /**
    * Add incorrect answers after initializing the object. Call finishInitialization()
    * when done.
-   * @param  {Settings} settings
+   * @param  {ISettings} settings
    * @param  {string} id
    * @param  {string} correctText?
    * @param  {string} hintText?
    */
-  constructor(private settings: Settings, id: string, correctText?: string, hintText?: string) {
+  constructor(private settings: ISettings, id: string, correctText?: string, hintText?: string) {
     super();
     this.initializeAsEmpty();
 
     this.id = id;
     if (correctText) {
-      this.correctAnswers.push(new Answer(correctText, ""));
+      this.correctAnswers.push(new Answer(correctText, "", settings));
     }
     this.hint = new Message(hintText ? hintText : "");
     this.hasHint = this.hint.text != "";
@@ -65,7 +65,7 @@ export class Blank extends ClozeElement {
    */
   public addIncorrectAnswer(text: string, reaction: string): void {
     this.incorrectAnswers.push(
-      new Answer(text, reaction));
+      new Answer(text, reaction, this.settings));
   }
 
   public replaceSnippets(snippets: string[]) {

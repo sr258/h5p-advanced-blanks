@@ -17,19 +17,6 @@
     "default": "typing"
   },
   {
-    "name": "caseSensitivity",
-    "type": "boolean",
-    "label": "Answers are case sensitive.",
-    "default": false
-  },
-  {
-    "name": "typoWarning",
-    "type": "boolean",
-    "label": "Warn users if they've made a typing mistake.",
-    "description": "If a user enters a solution that is very similar to the real one, he is warned about the typing mistake.",
-    "default": true
-  },
-  {
     "name": "blanksText",
     "type": "text",
     "widget": "html",
@@ -92,7 +79,7 @@
             "name": "incorrectAnswerGroup",
             "type": "group",
             "label": "Incorrect answer",
-            "description": "You can separate alternative answers with a semicolon (;).",                    
+            "description": "You can separate alternative answers with a semicolon (;).",
             "fields": [
               {
                 "name": "incorrectAnswerText",
@@ -108,7 +95,93 @@
             ]
           }
         }
-      ] 
+      ]
     }
+  },
+  {
+    "name": "behaviour",
+    "type": "group",
+    "label": "Behavioural settings.",
+    "importance": "low",
+    "description": "These options will let you control how the task behaves.",
+    "optional": true,
+    "fields": [
+      {
+        "label": "Enable \"Retry\"",
+        "importance": "low",
+        "name": "enableRetry",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "Enable \"Show solutions\" button",
+        "importance": "low",
+        "name": "enableSolutionsButton",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "Automatically check answers after input",
+        "importance": "low",
+        "name": "autoCheck",
+        "type": "boolean",
+        "default": false,
+        "optional": true
+      },
+      {
+        "name": "caseSensitive",
+        "importance": "low",
+        "type": "boolean",
+        "default": true,
+        "label": "Case sensitive",
+        "description": "Makes sure the user input has to be exactly the same as the answer."
+      },
+      {
+        "name": "spellingErrorBehaviour",
+        "type": "select",
+        "label": "Behaviour when user makes a spelling error",
+        "importance": "low",
+        "options": [
+          {
+            "value": "accept",
+            "label": "Accept it as a correct solution"
+          },
+          {
+            "value": "warn",
+            "label": "Warn the user about the error"
+          },
+          {
+            "value": "mistake",
+            "label": "Consider it a regular mistake"
+          }
+        ],
+        "default": "mistake"
+      },
+      {
+        "label": "Require all fields to be answered before the solution can be viewed",
+        "importance": "low",
+        "name": "showSolutionsRequiresInput",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "Show confirmation dialog on \"Check\"",
+        "importance": "low",
+        "name": "confirmCheckDialog",
+        "type": "boolean",
+        "description": "This options is not compatible with the \"Automatically check answers after input\" option",
+        "default": false
+      },
+      {
+        "label": "Show confirmation dialog on \"Retry\"",
+        "importance": "low",
+        "name": "confirmRetryDialog",
+        "type": "boolean",
+        "default": false
+      }
+    ]
   }
 ]

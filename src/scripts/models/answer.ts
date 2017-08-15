@@ -1,6 +1,6 @@
 ﻿import { Message } from './message';
 import { Highlight } from './highlight';
-import { Settings } from './settings';
+import { ISettings } from '../services/settings';
 import { Evaluation } from './enums';
 import { Levensthein } from '../../lib/levenshtein';
 
@@ -27,7 +27,7 @@ export class Answer {
    * @param  {string} answerText - The expected answer. Alternatives are separated by | or ; . (e.g. "Alternative 1|Alternative 2|Alternative 3|..."  -or- "Alternative 1;Alternative 2;Alternative 3")
    * @param  {string} reaction - The tooltip that should be displayed. Format: Tooltip Text;!!-1!! !!+1!!
    */
-  constructor(answerText: string, reaction: string) {
+  constructor(answerText: string, reaction: string, private settings: ISettings) {
     this.alternatives = answerText.split(/[;|]/).map(s => s.trim());
     this.message = new Message(reaction);
     if (answerText.trim() === "") {
@@ -48,7 +48,7 @@ export class Answer {
   }
 
   private getCleanedText(text: string) {
-    if (Settings.instance.caseSensivitity == false)
+    if (this.settings.caseSensitive == false)
       return text.toLocaleLowerCase();
     else
       return text;
@@ -58,7 +58,7 @@ export class Answer {
     var cleanedEnteredText = this.getCleanedText(enteredText);
 
     var acceptableTypoCount: number;
-    if (Settings.instance.acceptTypos)
+    if (this.settings.warnSpellingErrors)
       acceptableTypoCount = Math.floor(enteredText.length / 10) + 1;
     else
       acceptableTypoCount = 0;
