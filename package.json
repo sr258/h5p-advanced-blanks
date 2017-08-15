@@ -8,7 +8,7 @@
     "build": "cross-env NODE_ENV='development' webpack",
     "watch": "webpack --watch",
     "dist": "cp library.json dist && cp semantics.json dist",
-    "deploy": "rsync -vaz --delete --rsh=\"ssh -l bitnami\" dist/* 192.168.1.207:~/h5p_dev/h5p-advanced-blanks",
+    "deploy": "rsync -vaz --delete --rsh=\"ssh -l $DEPLOY_USERNAME\" dist/* $DEPLOY_TARGET/h5p-advanced-blanks",
     "build+deploy": "npm run build && npm run deploy"
   },
   "repository": {
