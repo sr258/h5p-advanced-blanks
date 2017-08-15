@@ -1,2 +1,39 @@
 * Find out where H5P.TextUtilities comes from
 * translation strings escape special characters: You&#039;ve made a spelling mistake.
+* Add H5P buttons:
+  * check
+    * button
+    * implement functionality
+  * show solution
+    * button
+    * implement functionality
+  * retry
+    * button
+    * implement functionality
+* display buttons by state
+* confirmation dialogs for buttons
+* implement auto-check when tabbing away
+* disallow Enter when auto-check is false
+* take over from h5p-blanks
+  * introduction
+  * image / video content on top
+* auto-growing text-fields
+* react to resize event
+* score widget
+  
+soon:
+* put Ractive into library
+* position popups better
+* show +1 / -1 score calculator
+* implement xAPI
+  * notify about start
+  * notify about entered answer
+  * notify about check
+  * notify about retry
+  * send score
+  * notify about ...?
+  * read data when loading
+* improve highlight markup in semantics
+
+later:
+* accessibility
