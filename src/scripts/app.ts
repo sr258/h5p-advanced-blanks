@@ -3,9 +3,11 @@ import { H5PDataRepository, IDataRepository } from './services/data-repository';
 import { AdvancedBlanksController } from './controllers/advanced-blanks-controller';
 import { H5PLocalization } from "./services/localization";
 
-export default class AdvancedBlanks extends (H5P.EventDispatcher as { new(): any; }) {
+export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   private app: AdvancedBlanksController;
   private repository: IDataRepository;
+  private contentContainer: JQuery;
+  private jQuery: JQuery = H5P.jQuery;
 
   /**
    * @constructor
@@ -22,13 +24,25 @@ export default class AdvancedBlanks extends (H5P.EventDispatcher as { new(): any
   }
 
   /**
-   * Attach library to wrapper
-   *
-   * @param {jQuery} $wrapper
+   * Overrides the attach method of the superclass (H5P.Question) and calls it
+   * at the same time. (equivalent to super.attach($container)).
+   * This is necessary, as Ractive needs to be initialized with an existing DOM
+   * element. DOM elements are created in H5P.Question.attach, so initializing 
+   * Ractive in registerDomElements doesn't work.
    */
-  attach = function ($wrapper: JQuery) {
-    $wrapper.get(0).classList.add('h5p-advanced-blanks');
-    this.app = new AdvancedBlanksController(this.repository, $wrapper);
-    this.app.initialize($wrapper.get(0));
+  attach = (function (original) {
+    return function ($container) {
+      original($container);
+      this.app = new AdvancedBlanksController(this.repository, $container);
+      this.app.initialize(this.container.get(0));
+    }
+  })(this.attach);
+
+  /**
+   * Called by H5P.Question.attach(). 
+   */
+  registerDomElements = function () {
+    this.container = this.jQuery("<div/>", { "class": "h5p-advanced-blanks" });
+    this.setContent(this.container);
   }
 }
