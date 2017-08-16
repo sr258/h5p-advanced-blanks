@@ -21,6 +21,7 @@ export class Blank extends ClozeElement {
   isCorrect: boolean;
   isError: boolean;
   isRetry: boolean;
+  isShowingSolution: boolean;
   message: string;
   showMessage: boolean;
   minTextLength: number;
@@ -77,10 +78,19 @@ export class Blank extends ClozeElement {
   /**
    * Clears the blank from all entered content and hides popups.
    */
-  public reset(){
+  public reset() {
     this.enteredText = "";
     this.removeTooltip();
-    this.setAnswerState(MessageType.None);    
+    this.setAnswerState(MessageType.None);
+  }
+
+  public showSolution() {
+    this.evaluateEnteredAnswer();
+    this.removeTooltip();
+    if (this.isCorrect)
+      return;
+    this.enteredText = this.correctAnswers[0].alternatives[0];
+    this.setAnswerState(MessageType.ShowSolution);
   }
 
   private initializeAsEmpty(): void {
@@ -226,6 +236,7 @@ export class Blank extends ClozeElement {
     this.isCorrect = false;
     this.isError = false;
     this.isRetry = false;
+    this.isShowingSolution = false;
 
     switch (messageType) {
       case MessageType.Correct:
@@ -236,6 +247,9 @@ export class Blank extends ClozeElement {
         break;
       case MessageType.Retry:
         this.isRetry = true;
+        break;
+      case MessageType.ShowSolution:
+        this.isShowingSolution = true;
         break;
     }
   }
@@ -251,6 +265,9 @@ export class Blank extends ClozeElement {
    * Displays the hint in the tooltip.
    */
   public showHint() {
+    if (this.isShowingSolution || this.isCorrect)
+      return;
+
     this.removeTooltip();
     if (this.hint && this.hint.text != "") {
       this.displayTooltip(this.hint.text, MessageType.Retry);

@@ -2,6 +2,7 @@
   Error,
   Correct,
   Retry,
+  ShowSolution,
   None
 }
 

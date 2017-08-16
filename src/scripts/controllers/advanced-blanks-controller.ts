@@ -98,6 +98,11 @@ export class AdvancedBlanksController {
     this.refreshCloze();
   }
 
+  showSolutions = () => {
+    this.cloze.showSolutions();
+    this.refreshCloze();
+  }
+
   private createAndAddContainers(addTo: HTMLElement): { cloze: HTMLDivElement } {
     var clozeContainerElement = document.createElement('div');
     clozeContainerElement.id = 'clozeContainer';

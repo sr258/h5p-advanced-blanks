@@ -20,6 +20,13 @@
   white-space: nowrap;
 }
 
+/* Showing solution input */
+.h5p-advanced-blanks .blank.showing-solution input {
+  border: 1px dashed #9dd8bb;
+  color: #255c41;  
+  background: #FFFFFF;
+}
+
 /* Focussed input */
 .h5p-advanced-blanks .blank input:focus {
   outline: none;

@@ -1,11 +1,11 @@
-<span id="container{{id}}" class="blank {{#blank.isCorrect}}correct{{/if}} {{#blank.isError}}error{{/if}} {{#blank.isRetry}}retry{{/if}}">
+<span id="container{{id}}" class="blank {{#blank.isCorrect}}correct{{/if}} {{#blank.isError}}error{{/if}} {{#blank.isRetry}}retry{{/if}} {{#blank.isShowingSolution}}showing-solution{{/if}}">
   {{#unless isSelectCloze}}
-    <input id="{{blank.id}}" type="text" value="{{blank.enteredText}}" size="{{blank.minTextLength}}" on-escape="@this.fire('closeMessage', blank)" on-enter="@this.fire('checkCloze', blank)" {{#blank.isCorrect}}disabled="disabled" {{/if}} />
+    <input id="{{blank.id}}" type="text" value="{{blank.enteredText}}" size="{{blank.minTextLength}}" on-escape="@this.fire('closeMessage', blank)" on-enter="@this.fire('checkCloze', blank)" {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled" {{/if}} />
     {{#blank.hasHint}}<button on-click="@this.fire('showHint', blank)" {{#blank.isCorrect}}disabled="disabled" {{/if}}><i class="fa fa-question-circle"></i></button>{{/if}}
   {{/unless}}
   {{#if isSelectCloze}}
     {{#blank.hasHint}}
-      <button on-click="@this.fire('showHint', blank)" {{#blank.isCorrect}}disabled="disabled"{{/if}}>
+      <button on-click="@this.fire('showHint', blank)" {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled"{{/if}}>
       <i class="fa fa-question-circle"></i></button>
     {{/if}}
     <select id="{{blank.id}}" type="text" value="{{blank.enteredText}}" on-enter="@this.fire('checkCloze', blank)" {{#blank.isCorrect}}disabled="disabled" {{/if}}size="1">

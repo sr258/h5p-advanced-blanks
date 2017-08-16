@@ -6,7 +6,7 @@ import { ISettings, H5PSettings } from "./services/settings";
 enum States {
   ongoing = 'ongoing',
   checking = 'checking',
-  showing_solution = 'showing-solution',
+  showingSolutions = 'showing-solution',
   finished = 'finished'
 }
 
@@ -116,7 +116,10 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
     // Show solution button
     this.addButton('show-solution', this.localization.getTextFromLabel(LocalizationLabels.showSolutionButton),
-      () => { this.moveToState(States.showing_solution) }, this.settings.enableSolutionsButton);
+      () => {
+        this.moveToState(States.showingSolutions);
+        this.clozeController.showSolutions();
+      }, this.settings.enableSolutionsButton);
 
     // Try again button
     if (this.settings.enableRetry === true) {
@@ -153,7 +156,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     }
 
     if (this.settings.enableRetry) {
-      if (state === States.checking || state === States.showing_solution) {
+      if (state === States.checking || state === States.showingSolutions) {
         this.showButton('try-again');
       }
       else {

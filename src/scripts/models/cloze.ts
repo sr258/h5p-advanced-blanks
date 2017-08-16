@@ -64,6 +64,13 @@ export class Cloze {
     }
   }
 
+  public showSolutions() {
+    for (var blank of this.blanks) {
+      blank.showSolution();
+    }
+    this.hideAllHighlights();
+  }
+
   /**
    * Converts !!signal!! highlight markup and ___  blank markup into <span>...</span>.
    * Returns the resulting html string and three lists of all active elements used in the cloze:
