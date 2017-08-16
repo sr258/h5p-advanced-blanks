@@ -1,7 +1,8 @@
 ﻿export enum MessageType {
   Error,
   Correct,
-  Retry
+  Retry,
+  None
 }
 
 export enum ClozeType {

@@ -18,6 +18,18 @@ export class AdvancedBlanksController {
   private highlightRactives: { [id: string]: Ractive.Ractive } = {};
   private blankRactives: { [id: string]: Ractive.Ractive } = {};
 
+  public get maxScore(): number {
+    return this.cloze.blanks.length;
+  }
+
+  public get currentScore(): number {
+    return this.cloze.blanks.filter(b => b.isCorrect).length - this.cloze.blanks.filter(b => b.isError).length;
+  }
+
+  public get isSolved(): boolean {
+    return this.cloze.isSolved;
+  }
+
   constructor(private repository: IDataRepository, private jquery: JQuery, private settings: ISettings, private localization: H5PLocalization) {
   }
 
@@ -43,7 +55,7 @@ export class AdvancedBlanksController {
   }
 
   checkAll = () => {
-    this.hideAllHighlights();
+    this.cloze.hideAllHighlights();
     for (var blank of this.cloze.blanks) {
       if ((!blank.isCorrect) && blank.enteredText != "")
         blank.evaluateEnteredAnswer();
@@ -53,7 +65,7 @@ export class AdvancedBlanksController {
   }
 
   showHint = (blank: Blank) => {
-    this.hideAllHighlights();
+    this.cloze.hideAllHighlights();
     blank.showHint();
     this.refreshCloze();
   }
@@ -65,7 +77,7 @@ export class AdvancedBlanksController {
   }
 
   checkBlank = (blank: Blank) => {
-    this.hideAllHighlights();
+    this.cloze.hideAllHighlights();
     blank.evaluateEnteredAnswer();
     this.refreshCloze();
 
@@ -79,6 +91,11 @@ export class AdvancedBlanksController {
         this.jquery.find("#" + nextId).focus();
       }
     }
+  }
+
+  reset = () => {
+    this.cloze.reset();
+    this.refreshCloze();
   }
 
   private createAndAddContainers(addTo: HTMLElement): { cloze: HTMLDivElement } {
@@ -148,17 +165,11 @@ export class AdvancedBlanksController {
   }
 
   private checkAndNotifyCompleteness = (): boolean => {
-    if (this.cloze.checkCompleteness()) {
+    if (this.cloze.isSolved) {
       this.repository.setSolved();
       return true;
     }
 
     return false;
-  }
-
-  private hideAllHighlights(): void {
-    for (var highlight of this.cloze.highlights) {
-      highlight.isHighlighted = false;
-    }
   }
 }

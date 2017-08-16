@@ -74,6 +74,15 @@ export class Blank extends ClozeElement {
     this.hint.text = this.getStringWithSnippets(this.hint.text, snippets);
   }
 
+  /**
+   * Clears the blank from all entered content and hides popups.
+   */
+  public reset(){
+    this.enteredText = "";
+    this.removeTooltip();
+    this.setAnswerState(MessageType.None);    
+  }
+
   private initializeAsEmpty(): void {
     this.enteredText = "";
     this.correctAnswers = new Array();

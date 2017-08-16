@@ -19,13 +19,8 @@ export class Cloze {
    * Returns true if all blanks were entered correctly. 
    * @returns boolean
    */
-  public checkCompleteness = (): boolean => {
-    for (var cloze of this.blanks) {
-      if (cloze.isCorrect == undefined || cloze.isCorrect === false)
-        return false;
-    }
-
-    return true;
+  public get isSolved(): boolean {
+    return this.blanks.every(b => b.isCorrect === true);
   }
   /**
    * @param  {string} html - The html string that contains the cloze with blanks marking and highlight markings.
@@ -55,6 +50,20 @@ export class Cloze {
 
     return cloze;
   }
+
+  public hideAllHighlights(): void {
+    for (var highlight of this.highlights) {
+      highlight.isHighlighted = false;
+    }
+  }
+
+  public reset() {
+    this.hideAllHighlights();
+    for (var blank of this.blanks) {
+      blank.reset();
+    }
+  }
+
   /**
    * Converts !!signal!! highlight markup and ___  blank markup into <span>...</span>.
    * Returns the resulting html string and three lists of all active elements used in the cloze:

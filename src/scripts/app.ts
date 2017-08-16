@@ -12,7 +12,7 @@ enum States {
 
 export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
-  private app: AdvancedBlanksController;
+  private clozeController: AdvancedBlanksController;
   private repository: IDataRepository;
   private settings: ISettings;
   private localization: H5PLocalization;
@@ -50,8 +50,8 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   attach = (function (original) {
     return function ($container) {
       original($container);
-      this.app = new AdvancedBlanksController(this.repository, $container, this.settings, this.localization);
-      this.app.initialize(this.container.get(0));
+      this.clozeController = new AdvancedBlanksController(this.repository, $container, this.settings, this.localization);
+      this.clozeController.initialize(this.container.get(0));
     }
   })(this.attach);
 
@@ -64,7 +64,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.setContent(this.container);
     this.registerButtons();
 
-    this.toggleButtonVisibility(States.ongoing);
+    this.moveToState(States.ongoing);
   }
 
   /**
@@ -97,7 +97,14 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     if (!this.settings.autoCheck) {
       // Check answer button
       this.addButton('check-answer', this.localization.getTextFromLabel(LocalizationLabels.checkAllButton),
-        () => { this.moveToState(States.checking) }, true, {}, {
+        () => {
+          this.clozeController.checkAll();
+          if (this.clozeController.isSolved) {
+            this.moveToState(States.finished);
+          } else {
+            this.moveToState(States.checking);
+          }
+        }, true, {}, {
           confirmationDialog: {
             enable: this.settings.confirmCheckDialog,
             l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmCheck),
@@ -114,7 +121,10 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     // Try again button
     if (this.settings.enableRetry === true) {
       this.addButton('try-again', this.localization.getTextFromLabel(LocalizationLabels.retryButton),
-        () => { this.moveToState(States.ongoing) }, true, {}, {
+        () => {
+          this.clozeController.reset();
+          this.moveToState(States.ongoing);
+        }, true, {}, {
           confirmationDialog: {
             enable: this.settings.confirmRetryDialog,
             l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmRetry),
@@ -122,7 +132,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
             $parentElement: $container
           }
         });
-    }    
+    }
   }
 
   /**

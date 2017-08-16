@@ -3,9 +3,7 @@
 * split deserializers and models
 * translation strings escapes special characters: You&#039;ve made a spelling mistake.
 * Implement buttons functionality
-  * check
   * show solution
-  * retry
 * implement auto-check when tabbing away
 * disallow Enter when auto-check is false
 * take over from h5p-blanks
