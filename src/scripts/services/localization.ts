@@ -7,6 +7,11 @@
   typoMessage = "spellingMistakeWarning"
 }
 
+export enum LocalizationStructures {
+  confirmCheck = "confirmCheck",
+  confirmRetry = "confirmRetry"
+}
+
 /**
  * Provides localization services.
  */
@@ -35,5 +40,9 @@ export class H5PLocalization {
    */
   getTextFromLabel(label: LocalizationLabels): string {
     return this.getText(this.labelToString(label));
+  }
+
+  getObjectForStructure(structure: LocalizationStructures) : any {
+    return this.h5pConfiguration[structure.toString()];
   }
 }

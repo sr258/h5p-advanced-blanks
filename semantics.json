@@ -236,5 +236,95 @@
     "default": "You've made a spelling mistake.",
     "common": true,
     "optional": true
+  },
+  {
+    "label": "Check confirmation dialog",
+    "importance": "low",
+    "name": "confirmCheck",
+    "type": "group",
+    "common": true,
+    "fields": [
+      {
+        "label": "Header text",
+        "importance": "low",
+        "name": "header",
+        "type": "text",
+        "default": "Finish ?"
+      },
+      {
+        "label": "Body text",
+        "importance": "low",
+        "name": "body",
+        "type": "text",
+        "default": "Are you sure you wish to finish ?",
+        "widget": "html",
+        "enterMode": "p",
+        "tags": [
+          "strong",
+          "em",
+          "del",
+          "u"
+        ]
+      },
+      {
+        "label": "Cancel button label",
+        "importance": "low",
+        "name": "cancelLabel",
+        "type": "text",
+        "default": "Cancel"
+      },
+      {
+        "label": "Confirm button label",
+        "importance": "low",
+        "name": "confirmLabel",
+        "type": "text",
+        "default": "Finish"
+      }
+    ]
+  },
+  {
+    "label": "Retry confirmation dialog",
+    "importance": "low",
+    "name": "confirmRetry",
+    "type": "group",
+    "common": true,
+    "fields": [
+      {
+        "label": "Header text",
+        "importance": "low",
+        "name": "header",
+        "type": "text",
+        "default": "Retry ?"
+      },
+      {
+        "label": "Body text",
+        "importance": "low",
+        "name": "body",
+        "type": "text",
+        "default": "Are you sure you wish to retry ?",
+        "widget": "html",
+        "enterMode": "p",
+        "tags": [
+          "strong",
+          "em",
+          "del",
+          "u"
+        ]
+      },
+      {
+        "label": "Cancel button label",
+        "importance": "low",
+        "name": "cancelLabel",
+        "type": "text",
+        "default": "Cancel"
+      },
+      {
+        "label": "Confirm button label",
+        "importance": "low",
+        "name": "confirmLabel",
+        "type": "text",
+        "default": "Confirm"
+      }
+    ]
   }
 ]

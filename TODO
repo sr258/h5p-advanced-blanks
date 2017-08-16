@@ -1,18 +1,11 @@
-* Find out where H5P.TextUtilities comes from
+* think of a sensible way of splitting up cloze and general UI
+
 * split deserializers and models
-* translation strings escape special characters: You&#039;ve made a spelling mistake.
-* Add H5P buttons:
+* translation strings escapes special characters: You&#039;ve made a spelling mistake.
+* Implement buttons functionality
   * check
-    * button
-    * implement functionality
   * show solution
-    * button
-    * implement functionality
   * retry
-    * button
-    * implement functionality
-* display buttons by state
-* confirmation dialogs for buttons
 * implement auto-check when tabbing away
 * disallow Enter when auto-check is false
 * take over from h5p-blanks
@@ -22,6 +15,9 @@
 * react to resize event
 * score widget
 * feedback text
+* select mode --> marking of correct / error not working
+* select mode: random choice of other answers
+* change highlight colors to h5p style
   
 soon:
 * put Ractive into library
@@ -35,8 +31,10 @@ soon:
   * send score
   * notify about ...?
   * read data when loading
-* improve highlight markup in semantics
+* improve highlight markup in semantics (for incorrectAnswers & hint!)
 * snippets
+* Find out where H5P.TextUtilities comes from and use it instead of own Levenshtein implementation
 
 later:
 * accessibility
+* position feedback popups over highlight if any
