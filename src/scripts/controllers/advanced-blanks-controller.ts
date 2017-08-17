@@ -78,20 +78,21 @@ export class AdvancedBlanksController {
     this.jquery.find("#" + blank.id).focus();
   }
 
-  checkBlank = (blank: Blank) => {
-    this.cloze.hideAllHighlights();
-    blank.evaluateEnteredAnswer();
-    this.refreshCloze();
-
-    if (!this.checkAndNotifyCompleteness()) {
-      if (blank.isCorrect) {
-        // move to next blank
-        var index = this.cloze.blanks.indexOf(blank);
-        if (index + 1 >= this.cloze.blanks.length)
-          return;
-        var nextId = this.cloze.blanks[index + 1].id;
-        this.jquery.find("#" + nextId).focus();
-      }
+  checkBlank = (blank: Blank, cause: string) => {
+    if (this.settings.autoCheck) {
+      this.cloze.hideAllHighlights();
+      blank.evaluateEnteredAnswer();
+      this.refreshCloze();
+    }
+    if ((cause === 'enter')
+      && ((this.settings.autoCheck && blank.isCorrect && !this.isSolved)
+        || !this.settings.autoCheck)) {
+      // move to next blank
+      var index = this.cloze.blanks.indexOf(blank);
+      if (index + 1 >= this.cloze.blanks.length)
+        return;
+      var nextId = this.cloze.blanks[index + 1].id;
+      this.jquery.find("#" + nextId).focus();
     }
   }
 
@@ -138,7 +139,7 @@ export class AdvancedBlanksController {
         escape: RactiveEventsKeys.escape
       }
     });
-    ractive.on("checkCloze", this.checkBlank);
+    ractive.on("checkBlank", this.checkBlank);
     ractive.on("showHint", this.showHint);
     ractive.on("closeMessage", this.requestCloseTooltip);
 

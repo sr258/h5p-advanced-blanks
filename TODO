@@ -1,6 +1,5 @@
 * translation strings escapes special characters: You&#039;ve made a spelling mistake.
-* implement auto-check when tabbing away
-* disallow Enter when auto-check is false
+* show "Show solution" + "retry" in autocheck mode
 * take over from h5p-blanks
   * introduction
   * image / video content on top + remove own implementation
