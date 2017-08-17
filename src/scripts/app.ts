@@ -97,14 +97,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     if (!this.settings.autoCheck) {
       // Check answer button
       this.addButton('check-answer', this.localization.getTextFromLabel(LocalizationLabels.checkAllButton),
-        () => {
-          this.clozeController.checkAll();
-          if (this.clozeController.isSolved) {
-            this.moveToState(States.finished);
-          } else {
-            this.moveToState(States.checking);
-          }
-        }, true, {}, {
+        this.onCheckAnswer, true, {}, {
           confirmationDialog: {
             enable: this.settings.confirmCheckDialog,
             l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmCheck),
@@ -116,18 +109,12 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
     // Show solution button
     this.addButton('show-solution', this.localization.getTextFromLabel(LocalizationLabels.showSolutionButton),
-      () => {
-        this.moveToState(States.showingSolutions);
-        this.clozeController.showSolutions();
-      }, this.settings.enableSolutionsButton);
+      this.onShowSolution, this.settings.enableSolutionsButton);
 
     // Try again button
     if (this.settings.enableRetry === true) {
       this.addButton('try-again', this.localization.getTextFromLabel(LocalizationLabels.retryButton),
-        () => {
-          this.clozeController.reset();
-          this.moveToState(States.ongoing);
-        }, true, {}, {
+        this.onRetry, true, {}, {
           confirmationDialog: {
             enable: this.settings.confirmRetryDialog,
             l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmRetry),
@@ -136,6 +123,31 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
           }
         });
     }
+  }
+
+  private onCheckAnswer = () => {
+    this.clozeController.checkAll();
+
+    var maxScore = this.clozeController.maxScore;
+    var score = this.clozeController.currentScore;
+    this.setFeedback("", score, maxScore);
+
+    if (this.clozeController.isSolved) {
+      this.moveToState(States.finished);
+    } else {
+      this.moveToState(States.checking);
+    }
+  }
+
+  private onShowSolution = () => {
+    this.moveToState(States.showingSolutions);
+    this.clozeController.showSolutions();
+  }
+
+  private onRetry = () => {
+    this.removeFeedback();
+    this.clozeController.reset();
+    this.moveToState(States.ongoing);
   }
 
   /**

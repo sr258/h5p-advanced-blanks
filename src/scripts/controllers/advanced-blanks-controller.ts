@@ -25,7 +25,8 @@ export class AdvancedBlanksController {
   }
 
   public get currentScore(): number {
-    return this.cloze.blanks.filter(b => b.isCorrect).length - this.cloze.blanks.filter(b => b.isError).length;
+    var score = this.cloze.blanks.filter(b => b.isCorrect).length - this.cloze.blanks.filter(b => b.isError).length;
+    return Math.max(0, score);
   }
 
   public get isSolved(): boolean {

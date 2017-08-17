@@ -4,12 +4,12 @@
   * introduction
   * image / video content on top + remove own implementation
 * auto-growing text-fields
-* react to resize event
-* score widget
-* feedback text
+* react to resize event + send them when appropriate
+* use score widget also when auto-check is on
 * select mode --> marking of correct / error not working
 * select mode: random choice of other answers
 * change highlight colors to h5p style
+* new setting: allow further editing after 'check' / disallow
   
 soon:
 * put Ractive into library
@@ -26,6 +26,7 @@ soon:
 * improve highlight markup in semantics (for incorrectAnswers & hint!)
 * snippets
 * Find out where H5P.TextUtilities comes from and use it instead of own Levenshtein implementation
+* implement feedback ranges
 
 later:
 * accessibility
