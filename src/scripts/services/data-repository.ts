@@ -1,4 +1,5 @@
-﻿import { Blank } from "../models/blank";
+﻿import { BlankLoader } from '../content-loaders/blank-loader';
+import { Blank } from "../models/blank";
 import { MediaElement } from "../models/media-element";
 import { ISettings } from "../services/settings";
 import { ClozeType } from "../models/enums";
@@ -58,7 +59,7 @@ export class H5PDataRepository implements IDataRepository {
       if (correctText === "" || correctText === undefined)
         continue;
 
-      var blank = new Blank(this.settings, this.localization, "cloze" + i, correctText, h5pBlank.hint);
+      var blank = BlankLoader.createBlank(this.settings, this.localization, "cloze" + i, correctText, h5pBlank.hint);
 
       if (h5pBlank.incorrectAnswersList) {
         for (var h5pIncorrectAnswer of h5pBlank.incorrectAnswersList) {

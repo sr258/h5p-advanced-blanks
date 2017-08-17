@@ -26,9 +26,6 @@ export class Blank extends ClozeElement {
   showMessage: boolean;
   minTextLength: number;
 
-  // internal
-  private snippetRegex = new RegExp("-(\\d+)-");
-
   /**
    * Add incorrect answers after initializing the object. Call finishInitialization()
    * when done.
@@ -37,26 +34,36 @@ export class Blank extends ClozeElement {
    * @param  {string} correctText?
    * @param  {string} hintText?
    */
-  constructor(private settings: ISettings, private localization: H5PLocalization, id: string, correctText?: string, hintText?: string) {
+  constructor(private settings: ISettings, private localization: H5PLocalization, id: string) {
     super();
-    this.initializeAsEmpty();
+
+    this.enteredText = "";
+    this.correctAnswers = new Array();
+    this.incorrectAnswers = new Array();
+    this.choices = new Array();
+    this.showMessage = false;
+    this.type = ClozeElementType.Blank;
 
     this.id = id;
-    if (correctText) {
-      this.correctAnswers.push(new Answer(correctText, "", settings));
-    }
-    this.hint = new Message(hintText ? hintText : "");
-    this.hasHint = this.hint.text != "";
   }
 
-  /**
-   * Call this method when all incorrect answers have been added.
-   */
+ /**
+ * Call this method when all incorrect answers have been added.
+ */
   public finishInitialization(): void {
     if (this.settings.clozeType === ClozeType.Select) {
       this.loadChoices();
     }
     this.calculateMinTextLength();
+  }
+
+  public addCorrectAnswer(answer: Answer) {
+    this.correctAnswers.push(answer);
+  }
+
+  public setHint(message: Message) {
+    this.hint = message;
+    this.hasHint = this.hint.text != "";
   }
 
   /**
@@ -67,52 +74,6 @@ export class Blank extends ClozeElement {
   public addIncorrectAnswer(text: string, reaction: string): void {
     this.incorrectAnswers.push(
       new Answer(text, reaction, this.settings));
-  }
-
-  public replaceSnippets(snippets: string[]) {
-    this.correctAnswers.concat(this.incorrectAnswers)
-      .forEach(answer => answer.message.text = this.getStringWithSnippets(answer.message.text, snippets));
-    this.hint.text = this.getStringWithSnippets(this.hint.text, snippets);
-  }
-
-  /**
-   * Clears the blank from all entered content and hides popups.
-   */
-  public reset() {
-    this.enteredText = "";
-    this.removeTooltip();
-    this.setAnswerState(MessageType.None);
-  }
-
-  public showSolution() {
-    this.evaluateEnteredAnswer();
-    this.removeTooltip();
-    if (this.isCorrect)
-      return;
-    this.enteredText = this.correctAnswers[0].alternatives[0];
-    this.setAnswerState(MessageType.ShowSolution);
-  }
-
-  private initializeAsEmpty(): void {
-    this.enteredText = "";
-    this.correctAnswers = new Array();
-    this.incorrectAnswers = new Array();
-    this.choices = new Array();
-    this.showMessage = false;
-    this.type = ClozeElementType.Blank;
-  }
-
-  private getStringWithSnippets(text: string, snippets: string[]): string {
-    var match: RegExpMatchArray;
-    while ((match = text.match(this.snippetRegex))) {
-      var index = parseInt(match[1]) - 1;
-      let snippet = "";
-      if (index < snippets.length && index >= 0)
-        snippet = snippets[index];
-      text = text.replace(this.snippetRegex, snippet);
-    }
-
-    return text;
   }
 
   /**
@@ -152,21 +113,23 @@ export class Blank extends ClozeElement {
 
     return this.choices;
   }
+
   /**
-   * Adds the highlight objects to the answers in the correct and incorrect answer list.
-   * @param  {Highlight[]} highlightsBefore - All highlights coming before the blank.
-   * @param  {Highlight[]} highlightsAfter - All highlights coming after the blank.
-   */
-  linkHighlightIdsToObjects = (highlightsBefore: Highlight[], highlightsAfter: Highlight[]) => {
-    for (var answer of this.correctAnswers) {
-      answer.linkHighlightIdsToObjects(highlightsBefore, highlightsAfter);
-    }
+  * Clears the blank from all entered content and hides popups.
+  */
+  public reset() {
+    this.enteredText = "";
+    this.removeTooltip();
+    this.setAnswerState(MessageType.None);
+  }
 
-    for (var answer of this.incorrectAnswers) {
-      answer.linkHighlightIdsToObjects(highlightsBefore, highlightsAfter);
-    }
-
-    this.hint.linkHighlights(highlightsBefore, highlightsAfter);
+  public showSolution() {
+    this.evaluateEnteredAnswer();
+    this.removeTooltip();
+    if (this.isCorrect)
+      return;
+    this.enteredText = this.correctAnswers[0].alternatives[0];
+    this.setAnswerState(MessageType.ShowSolution);
   }
 
   private displayTooltip(message: string, type: MessageType) {

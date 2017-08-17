@@ -1,4 +1,6 @@
-﻿import { Cloze } from "../models/cloze";
+﻿import { BlankLoader } from '../content-loaders/blank-loader';
+import { ClozeLoader } from '../content-loaders/cloze-loader';
+import { Cloze } from "../models/cloze";
 import { IDataRepository } from "../services/data-repository";
 import { ISettings } from "../services/settings";
 import { H5PLocalization, LocalizationLabels } from "../services/localization";
@@ -6,7 +8,7 @@ import { ClozeType } from "../models/enums";
 import { Highlight } from "../models/highlight";
 import { Blank } from "../models/blank";
 
-import * as RactiveEventsKeys from "../../lib/ractive-events-keys"
+import * as RactiveEventsKeys from '../../lib/ractive-events-keys';
 import * as Ractive from 'ractive';
 
 export class AdvancedBlanksController {
@@ -43,11 +45,11 @@ export class AdvancedBlanksController {
     var blanks = this.repository.getBlanks();
 
     var snippets = this.repository.getSnippets();
-    blanks.forEach(blank => blank.replaceSnippets(snippets));
+    blanks.forEach(blank => BlankLoader.replaceSnippets(blank, snippets));
 
     var mediaElements = this.repository.getMediaElements();
 
-    this.cloze = Cloze.createCloze(this.repository.getClozeText(), blanks, mediaElements);
+    this.cloze = ClozeLoader.createCloze(this.repository.getClozeText(), blanks, mediaElements);
 
     var containers = this.createAndAddContainers(root);
     containers.cloze.innerHTML = this.cloze.html;
