@@ -12,6 +12,7 @@ export interface ISettings {
   showSolutionsRequiresInput: boolean;
   confirmCheckDialog: boolean;
   confirmRetryDialog: boolean;
+  disableImageZooming: boolean;
 }
 
 export class H5PSettings implements ISettings {
@@ -26,6 +27,7 @@ export class H5PSettings implements ISettings {
   public showSolutionsRequiresInput: boolean;
   public confirmCheckDialog: boolean;
   public confirmRetryDialog: boolean;
+  public disableImageZooming: boolean;
 
   constructor(h5pConfigData: any) {
    
@@ -45,5 +47,6 @@ export class H5PSettings implements ISettings {
     this.showSolutionsRequiresInput = h5pConfigData.behaviour.showSolutionsRequiresInput;
     this.confirmCheckDialog = h5pConfigData.behaviour.confirmCheckDialog;
     this.confirmRetryDialog = h5pConfigData.behaviour.confirmRetryDialog;
+    this.disableImageZooming = h5pConfigData.behaviour.disableImageZooming;
   }
 }

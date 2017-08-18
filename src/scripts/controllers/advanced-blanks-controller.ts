@@ -48,9 +48,7 @@ export class AdvancedBlanksController {
     var snippets = this.repository.getSnippets();
     blanks.forEach(blank => BlankLoader.replaceSnippets(blank, snippets));
 
-    var mediaElements = this.repository.getMediaElements();
-
-    this.cloze = ClozeLoader.createCloze(this.repository.getClozeText(), blanks, mediaElements);
+    this.cloze = ClozeLoader.createCloze(this.repository.getClozeText(), blanks);
 
     var containers = this.createAndAddContainers(root);
     containers.cloze.innerHTML = this.cloze.html;

@@ -1,8 +1,5 @@
 * translation strings escapes special characters: You&#039;ve made a spelling mistake.
 * show "Show solution" + "retry" in autocheck mode
-* take over from h5p-blanks
-  * introduction
-  * image / video content on top + remove own implementation
 * auto-growing text-fields
 * react to resize event + send them when appropriate
 * use score widget also when auto-check is on
@@ -12,6 +9,7 @@
 * new setting: allow further editing after 'check' / disallow
   
 soon:
+* hover over image --> no tooltip
 * put Ractive into library
 * position popups better
 * show +1 / -1 score calculator

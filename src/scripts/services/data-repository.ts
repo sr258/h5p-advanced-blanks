@@ -1,6 +1,5 @@
 ﻿import { BlankLoader } from '../content-loaders/blank-loader';
 import { Blank } from "../models/blank";
-import { MediaElement } from "../models/media-element";
 import { ISettings } from "../services/settings";
 import { ClozeType } from "../models/enums";
 import { Answer } from "../models/answer";
@@ -12,7 +11,8 @@ export interface IDataRepository {
   setSolved(): any;
   getClozeText(): string;
   getFeedbackText(): string;
-  getMediaElements(): MediaElement[];
+  getMedia(): any;
+  getTaskDescription(): string;
   getSnippets(): string[];
 }
 
@@ -21,7 +21,7 @@ export interface IDataRepository {
  */
 export class H5PDataRepository implements IDataRepository {
   constructor(private h5pConfigData: any, private settings: ISettings,
-  private localization: H5PLocalization) {
+    private localization: H5PLocalization) {
 
   }
 
@@ -45,9 +45,12 @@ export class H5PDataRepository implements IDataRepository {
   }
 
   // TODO: implement
-  getMediaElements(): MediaElement[] {
-    var mediaElements: MediaElement[] = new Array();
-    return mediaElements;
+  getMedia(): any {
+    return this.h5pConfigData.media;
+  }
+
+  getTaskDescription(): string {
+    return this.h5pConfigData.task;
   }
 
   getBlanks(): Blank[] {

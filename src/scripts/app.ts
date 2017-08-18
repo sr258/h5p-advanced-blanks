@@ -60,6 +60,9 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
    * with H5P.Question.
    */
   registerDomElements = function () {
+    this.registerMedia();
+    this.setIntroduction(this.repository.getTaskDescription());
+
     this.container = this.jQuery("<div/>", { "class": "h5p-advanced-blanks" });
     this.setContent(this.container);
     this.registerButtons();
@@ -89,6 +92,27 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     }
 
     return $container;
+  }
+
+  private registerMedia() {
+    var media = this.repository.getMedia();
+    if (!media || !media.library)
+      return;
+
+    var type = media.library.split(' ')[0];
+    if (type === 'H5P.Image') {
+      if (media.params.file) {
+        this.setImage(media.params.file.path, {
+          disableImageZooming: this.settings.disableImageZooming,
+          alt: media.params.alt
+        });
+      }
+    }
+    else if (type === 'H5P.Video') {
+      if (media.params.sources) {
+        this.setVideo(media);
+      }
+    }
   }
 
   private registerButtons() {

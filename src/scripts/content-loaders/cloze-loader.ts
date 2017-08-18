@@ -1,5 +1,4 @@
 import { BlankLoader } from './blank-loader';
-import { MediaElement } from '../models/media-element';
 import { ClozeElement, ClozeElementType } from '../models/cloze-element';
 import { Blank } from '../models/blank';
 import { Highlight } from '../models/highlight';
@@ -14,10 +13,9 @@ export class ClozeLoader {
   /**
    * @param  {string} html - The html string that contains the cloze with blanks marking and highlight markings.
    * @param  {Blank[]} blanks - All blanks as entered by the content author.
-   * @param  {MediaElement[]} media - All media elements as entered by the content author.
    * @returns Cloze
    */
-  public static createCloze(html: string, blanks: Blank[], media: MediaElement[]): Cloze {
+  public static createCloze(html: string, blanks: Blank[]): Cloze {
     var orderedAllElementsList: ClozeElement[] = new Array();
     var highlightInstances: Highlight[] = new Array();
     var blanksInstances: Blank[] = new Array();

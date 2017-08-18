@@ -17,10 +17,51 @@
     "default": "typing"
   },
   {
+    "name": "media",
+    "type": "group",
+    "label": "Media",
+    "importance": "medium",
+    "fields": [
+      {
+        "name": "type",
+        "type": "library",
+        "label": "Type",
+        "options": [
+          "H5P.Image 1.0",
+          "H5P.Video 1.3"
+        ],
+        "optional": true,
+        "description": "Optional media to display above the question."
+      }
+    ]
+  },
+  {
+    "label": "Task description",
+    "importance": "high",
+    "name": "task",
+    "type": "text",
+    "widget": "html",
+    "default": "Fill in the missing words",
+    "description": "A guide telling the user how to answer this task.",
+    "enterMode": "p",
+    "tags": [
+      "strong",
+      "em",
+      "u",
+      "a",
+      "ul",
+      "ol",
+      "h2",
+      "h3",
+      "hr"
+    ]
+  },
+  {
     "name": "blanksText",
     "type": "text",
     "widget": "html",
     "label": "Text with blanks",
+    "enterMode": "p",
     "description": "Enter the text here. Blanks must be marked with __________ (3 or more underscores).",
     "tags": [
       "strong",
@@ -101,7 +142,7 @@
   {
     "name": "behaviour",
     "type": "group",
-    "label": "Behavioural settings.",
+    "label": "Behavioural settings",
     "importance": "low",
     "description": "These options will let you control how the task behaves.",
     "optional": true,
@@ -165,6 +206,14 @@
         "name": "showSolutionsRequiresInput",
         "type": "boolean",
         "default": true,
+        "optional": true
+      },
+      {
+        "label": "Disable image zooming for question image",
+        "importance": "low",
+        "name": "disableImageZooming",
+        "type": "boolean",
+        "default": false,
         "optional": true
       },
       {

@@ -1,6 +1,5 @@
 ﻿import { Highlight } from "./highlight";
 import { Blank } from "./blank";
-import { MediaElement, MediaType } from "./media-element";
 import { ClozeElement, ClozeElementType } from "./cloze-element";
 
 /**
