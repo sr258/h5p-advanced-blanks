@@ -1,17 +1,18 @@
+now: 
+
+* implement spelling error tolerance / notification
 * translation strings escapes special characters: You&#039;ve made a spelling mistake.
 * show "Show solution" + "retry" in autocheck mode
-* auto-growing text-fields
 * react to resize event + send them when appropriate
-* use score widget also when auto-check is on
 * select mode --> marking of correct / error not working
 * select mode: random choice of other answers
-* change highlight colors to h5p style
 * new setting: allow further editing after 'check' / disallow
-  
+
 soon:
 * hover over image --> no tooltip
 * put Ractive into library
 * position popups better
+* show no popups when using global check --> use clickable icons
 * show +1 / -1 score calculator
 * implement xAPI
   * notify about start
@@ -29,3 +30,4 @@ soon:
 later:
 * accessibility
 * position feedback popups over highlight if any
+* auto-growing text-fields

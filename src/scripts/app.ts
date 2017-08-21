@@ -38,6 +38,20 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.settings = new H5PSettings(config);
     this.localization = new H5PLocalization(config);
     this.repository = new H5PDataRepository(config, this.settings, this.localization);
+    this.clozeController = new AdvancedBlanksController(this.repository, this.settings, this.localization);
+
+    this.clozeController.onScoreChanged = this.onScoreChanged;
+    this.clozeController.onSolved = this.onSolved;
+  }
+
+  private onScoreChanged = (score: number, maxScore: number) => {
+    this.setFeedback("", score, maxScore);
+    this.transitionState();
+    this.toggleButtonVisibility(this.state);      
+  }
+
+  private onSolved() {
+
   }
 
   /**
@@ -50,8 +64,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   attach = (function (original) {
     return function ($container) {
       original($container);
-      this.clozeController = new AdvancedBlanksController(this.repository, $container, this.settings, this.localization);
-      this.clozeController.initialize(this.container.get(0));
+      this.clozeController.initialize(this.container.get(0), $container);
     }
   })(this.attach);
 
@@ -151,15 +164,14 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
   private onCheckAnswer = () => {
     this.clozeController.checkAll();
+    this.transitionState();
+    if (this.state !== States.finished)
+      this.state = States.checking;
+  }
 
-    var maxScore = this.clozeController.maxScore;
-    var score = this.clozeController.currentScore;
-    this.setFeedback("", score, maxScore);
-
+  private transitionState = () => {
     if (this.clozeController.isSolved) {
       this.moveToState(States.finished);
-    } else {
-      this.moveToState(States.checking);
     }
   }
 
@@ -181,9 +193,14 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
    */
   private moveToState(state: States) {
     this.state = state;
+    this.toggleButtonVisibility(state);
+  }
 
+  private toggleButtonVisibility(state: States) {
     if (this.settings.enableSolutionsButton) {
-      if (state === States.checking) {
+      if (((state === States.checking)
+        || (this.settings.autoCheck && state === States.ongoing))
+        && (!this.settings.showSolutionsRequiresInput || this.clozeController.allBlanksEntered)) {
         this.showButton('show-solution');
       }
       else {
@@ -191,14 +208,13 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       }
     }
 
-    if (this.settings.enableRetry) {
-      if (state === States.checking || state === States.showingSolutions) {
-        this.showButton('try-again');
-      }
-      else {
-        this.hideButton('try-again');
-      }
+    if (this.settings.enableRetry && (state === States.checking || state === States.showingSolutions)) {
+      this.showButton('try-again');
     }
+    else {
+      this.hideButton('try-again');
+    }
+
 
     if (state === States.ongoing) {
       this.showButton('check-answer');
@@ -208,5 +224,5 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     }
 
     this.trigger('resize');
-  };
+  }
 }

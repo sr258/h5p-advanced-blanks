@@ -83,12 +83,12 @@
 }
 
 .h5p-advanced-blanks .blank.correct span.message {
-	background-color: #7fff79;
+	background-color: #9dd8bb;
 	border: 1px solid green;
 }
 
 .h5p-advanced-blanks .blank.error span.message {
-	background-color: #ff4d4d;
+	background-color: #f7d0d0;
 	border: 1px solid #ff4d4d;
 	color: white;
 }

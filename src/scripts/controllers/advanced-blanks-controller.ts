@@ -11,10 +11,23 @@ import { Blank } from "../models/blank";
 import * as RactiveEventsKeys from '../../lib/ractive-events-keys';
 import * as Ractive from 'ractive';
 
+interface ScoreChanged {
+  (score: number, maxScore: number): void;
+}
+
+interface Solved {
+  (): void;
+}
+
 export class AdvancedBlanksController {
+  private jquery: JQuery;
+
   private cloze: Cloze;
   private checkAllLabel: string;
   private isSelectCloze: boolean;
+
+  public onScoreChanged: ScoreChanged;
+  public onSolved: Solved;
 
   // Storage of the ractive objects that link models and views
   private highlightRactives: { [id: string]: Ractive.Ractive } = {};
@@ -29,18 +42,25 @@ export class AdvancedBlanksController {
     return Math.max(0, score);
   }
 
+  public get allBlanksEntered() {
+    if (this.cloze)
+      return this.cloze.blanks.every(blank => blank.isError || blank.isCorrect || blank.isRetry);
+    return false;
+  }
+
   public get isSolved(): boolean {
     return this.cloze.isSolved;
   }
 
-  constructor(private repository: IDataRepository, private jquery: JQuery, private settings: ISettings, private localization: H5PLocalization) {
+  constructor(private repository: IDataRepository, private settings: ISettings, private localization: H5PLocalization) {
   }
 
   /**
    * Sets up all blanks, the cloze itself and the ractive bindings.
    * @param  {HTMLElement} root
    */
-  initialize(root: HTMLElement) {
+  initialize(root: HTMLElement, jquery: JQuery) {
+    this.jquery = jquery;
     this.isSelectCloze = this.settings.clozeType == ClozeType.Select ? true : false;
 
     var blanks = this.repository.getBlanks();
@@ -79,8 +99,12 @@ export class AdvancedBlanksController {
 
   checkBlank = (blank: Blank, cause: string) => {
     if (this.settings.autoCheck) {
+      if (!blank.enteredText || blank.enteredText === "")
+        return;
+
       this.cloze.hideAllHighlights();
       blank.evaluateEnteredAnswer();
+      this.checkAndNotifyCompleteness();
       this.refreshCloze();
     }
     if ((cause === 'enter')
@@ -172,8 +196,13 @@ export class AdvancedBlanksController {
   }
 
   private checkAndNotifyCompleteness = (): boolean => {
+    if (this.onScoreChanged)
+      this.onScoreChanged(this.currentScore, this.maxScore);
+
     if (this.cloze.isSolved) {
       this.repository.setSolved();
+      if (this.onSolved)
+        this.onSolved();
       return true;
     }
 
