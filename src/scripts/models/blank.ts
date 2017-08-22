@@ -47,9 +47,9 @@ export class Blank extends ClozeElement {
     this.id = id;
   }
 
- /**
- * Call this method when all incorrect answers have been added.
- */
+  /**
+  * Call this method when all incorrect answers have been added.
+  */
   public finishInitialization(): void {
     if (this.settings.clozeType === ClozeType.Select) {
       this.loadChoices();
@@ -152,13 +152,10 @@ export class Blank extends ClozeElement {
   public evaluateEnteredAnswer() {
     this.removeTooltip();
 
-    var cleanedEnteredText = this.enteredText.trim();
-    cleanedEnteredText = cleanedEnteredText.replace(/\s{2,}/, " ");
-
-    var exactCorrectMatches = this.correctAnswers.filter(answer => answer.evaluateEnteredText(cleanedEnteredText) === Evaluation.ExactMatch);
-    var closeCorrectMatches = this.correctAnswers.filter(answer => answer.evaluateEnteredText(cleanedEnteredText) === Evaluation.CloseMatch);
-    var exactIncorrectMatches = this.incorrectAnswers.filter(answer => answer.evaluateEnteredText(cleanedEnteredText) === Evaluation.ExactMatch);
-    var closeIncorrectMatches = this.incorrectAnswers.filter(answer => answer.evaluateEnteredText(cleanedEnteredText) === Evaluation.CloseMatch);
+    var exactCorrectMatches = this.correctAnswers.filter(answer => answer.evaluateEnteredText(this.enteredText) === Evaluation.ExactMatch);
+    var closeCorrectMatches = this.correctAnswers.filter(answer => answer.evaluateEnteredText(this.enteredText) === Evaluation.CloseMatch);
+    var exactIncorrectMatches = this.incorrectAnswers.filter(answer => answer.evaluateEnteredText(this.enteredText) === Evaluation.ExactMatch);
+    var closeIncorrectMatches = this.incorrectAnswers.filter(answer => answer.evaluateEnteredText(this.enteredText) === Evaluation.CloseMatch);
 
     if (exactCorrectMatches.length > 0) {
       this.setAnswerState(MessageType.Correct);
@@ -172,9 +169,17 @@ export class Blank extends ClozeElement {
     }
 
     if (closeCorrectMatches.length > 0) {
-      this.displayTooltip(this.localization.getTextFromLabel(LocalizationLabels.typoMessage), MessageType.Retry);
-      this.setAnswerState(MessageType.Retry);
-      return;
+      if (this.settings.warnSpellingErrors) {
+        this.displayTooltip(this.localization.getTextFromLabel(LocalizationLabels.typoMessage), MessageType.Retry);
+        this.setAnswerState(MessageType.Retry);
+        return;
+      }
+      if (this.settings.acceptSpellingErrors) {
+        this.setAnswerState(MessageType.Correct);
+        this.enteredText = closeCorrectMatches[0].alternatives[0];
+        return;
+        // TODO: use closest match
+      }
     }
 
     if (closeIncorrectMatches.length > 0) {
