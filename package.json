@@ -23,6 +23,7 @@
   "license": "MIT",
   "devDependencies": {
     "@types/jquery": "^1.10.33",
+    "@types/ractive": "^0.7.27",
     "ava": "^0.19.1",
     "babel-cli": "^6.23.0",
     "babel-core": "^6.23.1",
@@ -31,12 +32,12 @@
     "babel-preset-latest": "^6.22.0",
     "cross-env": "^4.0.0",
     "css-loader": "^0.26.2",
+    "diff": "^3.3.0",
+    "html-loader": "^0.5.1",
     "ractive": "^0.8.14",
     "style-loader": "^0.13.2",
     "ts-loader": "^2.3.2",
     "typescript": "^2.4.2",
-    "webpack": "^2.2.1",
-    "@types/ractive": "^0.7.27",
-    "html-loader": "^0.5.1"
+    "webpack": "^2.2.1"
   }
 }

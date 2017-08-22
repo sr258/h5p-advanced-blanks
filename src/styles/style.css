@@ -99,6 +99,37 @@
 	color: black;
 }
 
+/* Highlight in spelling mistake marker */
+
+.spelling-mistake .missing-character, .spelling-mistake .mistaken-character {
+  color: red;
+  font-weight: bold;
+  -webkit-animation-duration: 500ms;
+	-moz-animation-duration: 500ms;
+	-ms-animation-duration: 500ms;
+	-o-animation-duration: 500ms;
+	animation-duration: 500ms;
+	-webkit-animation-name: blink;
+	-moz-animation-name: blink;
+	-ms-animation-name: blink;
+	-o-animation-name: blink;
+	animation-name: blink;
+	-webkit-animation-iteration-count: 13;
+	-moz-animation-iteration-count: 13;
+	-ms-animation-iteration-count: 13;
+	-o-animation-iteration-count: 13;
+	animation-iteration-count: 13;
+	-webkit-animation-direction: alternate;
+	-moz-animation-direction: alternate;
+	-ms-animation-direction: alternate;
+	-o-animation-direction: alternate;
+	animation-direction: alternate;
+}
+
+.spelling-mistake .mistaken-character {
+  text-decoration: line-through;
+}
+
 /* Highlights in text */
 
 .h5p-advanced-blanks .highlighted {
@@ -127,7 +158,7 @@
 
 @keyframes blink {
 	from {
-		color: black;
+		color: initial;
 	}
 
 	to {

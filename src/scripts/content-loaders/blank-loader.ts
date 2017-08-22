@@ -8,8 +8,8 @@ import { Message } from "../models/message";
 export class BlankLoader {
   private static snippetRegex = new RegExp("-(\\d+)-");
 
-  public static createBlank(settings: ISettings, localization: H5PLocalization, id: string, correctText: string, hintText: string): Blank {
-    var blank = new Blank(settings, localization, id)
+  public static createBlank(settings: ISettings, localization: H5PLocalization, jquery: JQueryStatic, id: string, correctText: string, hintText: string): Blank {
+    var blank = new Blank(settings, localization, jquery, id)
     if (correctText) {
       blank.addCorrectAnswer(new Answer(correctText, "", settings));
     }

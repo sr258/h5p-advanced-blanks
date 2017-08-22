@@ -1,8 +1,25 @@
 ﻿import { Message } from './message';
 import { Highlight } from './highlight';
 import { ISettings } from '../services/settings';
-import { Evaluation } from './enums';
 import { Levensthein } from '../../lib/levenshtein';
+
+export enum Correctness {
+  ExactMatch,
+  CloseMatch,
+  NoMatch
+}
+
+export class Evaluation {
+  public correctness: Correctness;
+  public characterDifferenceCount: number;
+  public usedAlternative: string;
+
+  constructor(public usedAnswer: Answer) {
+    this.correctness = Correctness.NoMatch;
+    this.characterDifferenceCount = 0;
+    this.usedAlternative = "";
+  }
+}
 
 /**
  * Represents a possible answer the content author enters for a blank, e.g. the correct or an incorrect answer.
@@ -66,19 +83,25 @@ export class Answer {
     else
       acceptableTypoCount = 0;
 
-    var bestEvaluation: Evaluation = Evaluation.NoMatch;
+    var evaluation = new Evaluation(this);
 
     for (var alternative of this.alternatives) {
       var cleanedAlternative = this.cleanString(alternative);
 
-      if (cleanedAlternative == cleanedEnteredText)
-        return Evaluation.ExactMatch;
+      if (cleanedAlternative === cleanedEnteredText) {
+        evaluation.usedAlternative = cleanedAlternative;
+        evaluation.correctness = Correctness.ExactMatch;
+        return evaluation;
+      }
 
       var necessaryChanges = Levensthein.getEditDistance(cleanedEnteredText, cleanedAlternative);
-      if (necessaryChanges <= acceptableTypoCount)
-        bestEvaluation = Evaluation.CloseMatch;
+      if (necessaryChanges <= acceptableTypoCount && (evaluation.characterDifferenceCount == 0 || necessaryChanges < evaluation.characterDifferenceCount)) {
+        evaluation.usedAlternative = cleanedAlternative;
+        evaluation.correctness = Correctness.CloseMatch;
+        evaluation.characterDifferenceCount = necessaryChanges;
+      }
     }
 
-    return bestEvaluation;
+    return evaluation;
   }
 }

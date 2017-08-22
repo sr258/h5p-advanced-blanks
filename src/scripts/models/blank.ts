@@ -1,11 +1,12 @@
 ﻿import { ClozeElement, ClozeElementType } from './cloze-element';
-import { Answer } from './answer';
+import { Answer, Correctness } from './answer';
 import { Message } from './message';
 import { Highlight } from './highlight';
-import { Evaluation, MessageType, ClozeType } from './enums';
+import { MessageType, ClozeType } from './enums';
 import { H5PLocalization, LocalizationLabels } from '../services/localization';
 import { ISettings } from "../services/settings";
 import { getLongestString, shuffleArray } from "../../lib/helpers";
+import * as jsdiff from 'diff';
 
 export class Blank extends ClozeElement {
   // content
@@ -34,7 +35,7 @@ export class Blank extends ClozeElement {
    * @param  {string} correctText?
    * @param  {string} hintText?
    */
-  constructor(private settings: ISettings, private localization: H5PLocalization, id: string) {
+  constructor(private settings: ISettings, private localization: H5PLocalization, private jquery: JQueryStatic, id: string) {
     super();
 
     this.enteredText = "";
@@ -145,6 +146,36 @@ export class Blank extends ClozeElement {
     this.displayTooltip(text, MessageType.Error);
   }
 
+  private getTypoMessage(expectedText: string, enteredText: string): string {
+    var message = this.localization.getTextFromLabel(LocalizationLabels.typoMessage)
+
+    var diff = jsdiff.diffChars(expectedText, enteredText);
+
+    var mistakeSpan = this.jquery("<span/>", { "class": "spelling-mistake" });
+    for (var index = 0; index < diff.length; index++) {
+      var part = diff[index];
+      var spanClass = '';
+      if (part.removed) {
+        if (index === diff.length - 1 || !diff[index + 1].added) {
+          part.value = part.value.replace(/./g, "_");
+          spanClass = 'missing-character';
+        }
+        else {
+          continue;
+        }
+      }
+      if (part.added) {
+        spanClass = 'mistaken-character';
+      }
+
+      var span = this.jquery("<span/>", { "class": spanClass, "text": part.value });
+      mistakeSpan.append(span);
+    }
+
+    message = message.replace("@mistake", this.jquery("<span/>").append(mistakeSpan).html());
+    return message;
+  }
+
   /**
    * Checks if the entered text is the correct answer or one of the 
    * incorrect ones and gives the user feedback accordingly.
@@ -152,10 +183,10 @@ export class Blank extends ClozeElement {
   public evaluateEnteredAnswer() {
     this.removeTooltip();
 
-    var exactCorrectMatches = this.correctAnswers.filter(answer => answer.evaluateEnteredText(this.enteredText) === Evaluation.ExactMatch);
-    var closeCorrectMatches = this.correctAnswers.filter(answer => answer.evaluateEnteredText(this.enteredText) === Evaluation.CloseMatch);
-    var exactIncorrectMatches = this.incorrectAnswers.filter(answer => answer.evaluateEnteredText(this.enteredText) === Evaluation.ExactMatch);
-    var closeIncorrectMatches = this.incorrectAnswers.filter(answer => answer.evaluateEnteredText(this.enteredText) === Evaluation.CloseMatch);
+    var exactCorrectMatches = this.correctAnswers.map(answer => answer.evaluateEnteredText(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.ExactMatch).sort(evaluation => evaluation.characterDifferenceCount);
+    var closeCorrectMatches = this.correctAnswers.map(answer => answer.evaluateEnteredText(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.CloseMatch).sort(evaluation => evaluation.characterDifferenceCount);
+    var exactIncorrectMatches = this.incorrectAnswers.map(answer => answer.evaluateEnteredText(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.ExactMatch).sort(evaluation => evaluation.characterDifferenceCount);
+    var closeIncorrectMatches = this.incorrectAnswers.map(answer => answer.evaluateEnteredText(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.CloseMatch).sort(evaluation => evaluation.characterDifferenceCount);
 
     if (exactCorrectMatches.length > 0) {
       this.setAnswerState(MessageType.Correct);
@@ -164,27 +195,26 @@ export class Blank extends ClozeElement {
 
     if (exactIncorrectMatches.length > 0) {
       this.setAnswerState(MessageType.Error);
-      this.showErrorTooltip(exactIncorrectMatches[0]);
+      this.showErrorTooltip(exactIncorrectMatches[0].usedAnswer);
       return;
     }
 
     if (closeCorrectMatches.length > 0) {
       if (this.settings.warnSpellingErrors) {
-        this.displayTooltip(this.localization.getTextFromLabel(LocalizationLabels.typoMessage), MessageType.Retry);
+        this.displayTooltip(this.getTypoMessage(closeCorrectMatches[0].usedAlternative, this.enteredText), MessageType.Retry);
         this.setAnswerState(MessageType.Retry);
         return;
       }
       if (this.settings.acceptSpellingErrors) {
         this.setAnswerState(MessageType.Correct);
-        this.enteredText = closeCorrectMatches[0].alternatives[0];
+        this.enteredText = closeCorrectMatches[0].usedAlternative;
         return;
-        // TODO: use closest match
       }
     }
 
     if (closeIncorrectMatches.length > 0) {
       this.setAnswerState(MessageType.Error);
-      this.showErrorTooltip(closeIncorrectMatches[0]);
+      this.showErrorTooltip(closeIncorrectMatches[0].usedAnswer);
       return;
     }
 

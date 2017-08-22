@@ -18,7 +18,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   private localization: H5PLocalization;
 
   private contentContainer: JQuery;
-  private jQuery = H5P.jQuery;
+  private jQuery;
 
   private contentId: string;
   private state: States;
@@ -33,11 +33,12 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   constructor(config: any, contentId: string, contentData: any = {}) {
     super();
 
+    this.jQuery = H5P.jQuery;
     this.contentId = contentId;
 
     this.settings = new H5PSettings(config);
     this.localization = new H5PLocalization(config);
-    this.repository = new H5PDataRepository(config, this.settings, this.localization);
+    this.repository = new H5PDataRepository(config, this.settings, this.localization, <JQueryStatic>this.jQuery);
     this.clozeController = new AdvancedBlanksController(this.repository, this.settings, this.localization);
 
     this.clozeController.onScoreChanged = this.onScoreChanged;

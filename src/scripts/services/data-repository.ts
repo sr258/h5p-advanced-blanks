@@ -21,7 +21,7 @@ export interface IDataRepository {
  */
 export class H5PDataRepository implements IDataRepository {
   constructor(private h5pConfigData: any, private settings: ISettings,
-    private localization: H5PLocalization) {
+    private localization: H5PLocalization, private jquery: JQueryStatic) {
 
   }
 
@@ -62,7 +62,7 @@ export class H5PDataRepository implements IDataRepository {
       if (correctText === "" || correctText === undefined)
         continue;
 
-      var blank = BlankLoader.createBlank(this.settings, this.localization, "cloze" + i, correctText, h5pBlank.hint);
+      var blank = BlankLoader.createBlank(this.settings, this.localization, this.jquery, "cloze" + i, correctText, h5pBlank.hint);
 
       if (h5pBlank.incorrectAnswersList) {
         for (var h5pIncorrectAnswer of h5pBlank.incorrectAnswersList) {

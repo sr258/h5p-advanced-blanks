@@ -1,8 +1,10 @@
 now: 
 
-* translation strings escapes special characters: You&#039;ve made a spelling mistake.
 * select mode --> marking of correct / error not working
 * select mode: random choice of other answers
+* sanatise all user entered strings
+* improve colours of popups
+* retry button when finished in auto-check mode
 
 soon:
 * hover over image --> no tooltip (bug in h5p library?)
