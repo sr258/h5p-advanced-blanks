@@ -1,13 +1,20 @@
 now: 
+====
 
-* select mode --> marking of correct / error not working
-* select mode: random choice of other answers
-* sanatise all user entered strings
-* improve colours of popups
-* spelling mistake at the end & last character is a space ==> removed by trim --> not a spelling mistake
+Bugfixes:
+  * auto-fix capitalization when ignoring case
+  * don't mark characters in wrong case as wrong in spelling hint, when ignoring case
+  * spelling mistake at the end & last character is a space ==> removed by trim --> not a spelling mistake
+  * hover over image --> no tooltip (bug in h5p library?)
+  * improve colours of popups
+
+Select mode:
+  * select mode: random choice of other answers
+  * select mode --> marking of correct / error not working
 
 soon:
-* hover over image --> no tooltip (bug in h5p library?)
+=====
+
 * put Ractive into library
 * position popups better
 * show no popups when using global check --> use clickable icons
@@ -19,18 +26,22 @@ soon:
   * notify about retry
   * send score
   * notify about ...?
-  * read data when loading
-* improve highlight markup in semantics (for incorrectAnswers & hint!)
-* snippets
+* serialize & deserialize user state
+* simplify highlight markup in semantics (for incorrectAnswers & hint!)
+* reimplement snippets
+* improve highlight marking (position popup next to it, show some kind of symbol)
 
 later:
+======
+
 * Find out where H5P.TextUtilities comes from and use it instead of own Levenshtein implementation
 * implement feedback ranges
-* accessibility
-* position feedback popups over highlight if any
+* take over accessibility from h5p-blanks
 * auto-growing text-fields
 
-reconsider if needed:
+(re)consider if needed:
+=======================
+
 * react to resize event + send them when appropriate
 * new setting: allow further editing after 'check' / disallow
-    
+* sanatise all user entered strings
