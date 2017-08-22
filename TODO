@@ -4,7 +4,7 @@ now:
 * select mode: random choice of other answers
 * sanatise all user entered strings
 * improve colours of popups
-* retry button when finished in auto-check mode
+* spelling mistake at the end & last character is a space ==> removed by trim --> not a spelling mistake
 
 soon:
 * hover over image --> no tooltip (bug in h5p library?)
@@ -22,10 +22,10 @@ soon:
   * read data when loading
 * improve highlight markup in semantics (for incorrectAnswers & hint!)
 * snippets
-* Find out where H5P.TextUtilities comes from and use it instead of own Levenshtein implementation
-* implement feedback ranges
 
 later:
+* Find out where H5P.TextUtilities comes from and use it instead of own Levenshtein implementation
+* implement feedback ranges
 * accessibility
 * position feedback popups over highlight if any
 * auto-growing text-fields

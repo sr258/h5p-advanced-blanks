@@ -209,7 +209,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       }
     }
 
-    if (this.settings.enableRetry && (state === States.checking || state === States.showingSolutions)) {
+    if (this.settings.enableRetry && (state === States.checking || state === States.finished || state === States.showingSolutions)) {
       this.showButton('try-again');
     }
     else {
