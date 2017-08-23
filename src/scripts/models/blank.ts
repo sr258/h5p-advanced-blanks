@@ -158,7 +158,7 @@ export class Blank extends ClozeElement {
       if (part.removed) {
         if (index === diff.length - 1 || !diff[index + 1].added) {
           part.value = part.value.replace(/./g, "_");
-          spanClass = 'missing-character';
+          spanClass = 'missing-character';          
         }
         else {
           continue;
@@ -168,7 +168,7 @@ export class Blank extends ClozeElement {
         spanClass = 'mistaken-character';
       }
 
-      var span = this.jquery("<span/>", { "class": spanClass, "text": part.value });
+      var span = this.jquery("<span/>", { "class": spanClass, "html": part.value.replace(" ", "&nbsp;") });
       mistakeSpan.append(span);
     }
 
@@ -190,6 +190,9 @@ export class Blank extends ClozeElement {
 
     if (exactCorrectMatches.length > 0) {
       this.setAnswerState(MessageType.Correct);
+      if (!this.settings.caseSensitive) {
+        this.enteredText = exactCorrectMatches[0].usedAlternative;
+      }
       return;
     }
 

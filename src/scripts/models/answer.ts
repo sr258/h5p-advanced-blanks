@@ -1,7 +1,7 @@
 ﻿import { Message } from './message';
 import { Highlight } from './highlight';
 import { ISettings } from '../services/settings';
-import { Levensthein } from '../../lib/levenshtein';
+import * as jsdiff from 'diff';
 
 export enum Correctness {
   ExactMatch,
@@ -65,36 +65,66 @@ export class Answer {
   }
 
   private cleanString(text: string) {
-    if (this.settings.caseSensitive == false)
-      text = text.toLocaleLowerCase();
-
     text = text.replace(/\s{2,}/g, " ");
-    text = text.trim();
 
     return text;
+  }
+
+  private getChangeCountFromDiff(diff: [{ added?: boolean, removed?: boolean, value: string }]): number {
+    var diffCount = 0;
+    var lastType = "";
+    var lastCount = 0;
+
+    diff.forEach(element => {
+      if (element.removed) {
+        diffCount += element.value.length;
+        lastCount = element.value.length;
+      }
+      if (element.added) {
+        if (lastType === "removed") {
+          if (lastCount < element.value.length) {
+            diffCount += element.value.length - lastCount;
+          }
+        } else {
+          diffCount += element.value.length;
+        }
+        lastCount = element.value.length;
+      }
+
+      if (element.added)
+        lastType = "added";
+      else if (element.removed)
+        lastType = "removed";
+      else
+        lastType = "same";
+    });
+
+    return diffCount;
   }
 
   public evaluateEnteredText(enteredText: string): Evaluation {
     var cleanedEnteredText = this.cleanString(enteredText);
 
-    var acceptableTypoCount: number;
-    if (this.settings.warnSpellingErrors || this.settings.acceptSpellingErrors) // TODO: consider removal
-      acceptableTypoCount = Math.floor(enteredText.length / 10) + 1;
-    else
-      acceptableTypoCount = 0;
-
     var evaluation = new Evaluation(this);
 
     for (var alternative of this.alternatives) {
+      var acceptableTypoCount: number;
+      if (this.settings.warnSpellingErrors || this.settings.acceptSpellingErrors) // TODO: consider removal
+        acceptableTypoCount = Math.floor(alternative.length / 10) + 1;
+      else
+        acceptableTypoCount = 0;
+
       var cleanedAlternative = this.cleanString(alternative);
 
-      if (cleanedAlternative === cleanedEnteredText) {
+      var diff = jsdiff.diffChars(cleanedAlternative, cleanedEnteredText, { ignoreCase: !this.settings.caseSensitive });
+      var necessaryChanges = this.getChangeCountFromDiff(diff);
+
+      if (necessaryChanges == 0) {
         evaluation.usedAlternative = cleanedAlternative;
         evaluation.correctness = Correctness.ExactMatch;
         return evaluation;
       }
 
-      var necessaryChanges = Levensthein.getEditDistance(cleanedEnteredText, cleanedAlternative);
       if (necessaryChanges <= acceptableTypoCount && (evaluation.characterDifferenceCount == 0 || necessaryChanges < evaluation.characterDifferenceCount)) {
         evaluation.usedAlternative = cleanedAlternative;
         evaluation.correctness = Correctness.CloseMatch;
