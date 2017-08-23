@@ -3,7 +3,6 @@ now:
 
 Bugfixes:
   * auto-fix capitalization when ignoring case
-  * don't mark characters in wrong case as wrong in spelling hint, when ignoring case
   * spelling mistake at the end & last character is a space ==> removed by trim --> not a spelling mistake
   * hover over image --> no tooltip (bug in h5p library?)
   * improve colours of popups

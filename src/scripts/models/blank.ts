@@ -149,7 +149,7 @@ export class Blank extends ClozeElement {
   private getTypoMessage(expectedText: string, enteredText: string): string {
     var message = this.localization.getTextFromLabel(LocalizationLabels.typoMessage)
 
-    var diff = jsdiff.diffChars(expectedText, enteredText);
+    var diff = jsdiff.diffChars(expectedText, enteredText, { ignoreCase: !this.settings.caseSensitive });
 
     var mistakeSpan = this.jquery("<span/>", { "class": "spelling-mistake" });
     for (var index = 0; index < diff.length; index++) {
