@@ -53,85 +53,105 @@ export class Answer {
       this.appliesAlways = false;
     }
   }
-
-  linkHighlightIdsToObjects = (highlightsBefore: Highlight[], highlightsAfter: Highlight[]) => {
+  
+  /**
+   * Looks through the object's message ids and stores the references to the highlight object for these ids.
+   * @param  {Highlight[]} highlightsBefore
+   * @param  {Highlight[]} highlightsAfter
+   */
+  public linkHighlightIdsToObjects(highlightsBefore: Highlight[], highlightsAfter: Highlight[]) {
     this.message.linkHighlights(highlightsBefore, highlightsAfter);
   }
-
-  activateHighlights = () => {
+  /**
+   * Turns on the highlights set by the content author for this answer.
+   */
+  public activateHighlights() {
     for (var highlightedObject of this.message.highlightedElements) {
       highlightedObject.isHighlighted = true;
     }
   }
 
-  private cleanString(text: string) {
-    text = text.replace(/\s{2,}/g, " ");
-
-    return text;
+  private cleanString(text: string): string {
+    return text.replace(/\s{2,}/g, " ");
   }
-
-  private getChangeCountFromDiff(diff: [{ added?: boolean, removed?: boolean, value: string }]): number {
-    var diffCount = 0;
+  /**
+   * Looks through the diff and checks how many character change operations are needed to turn one string into the other. Should return the same results as the Levensthein distance. 
+   * @param  {[{added?:boolean, boolean: removed?, string: value}]} diff - as returned by jsdiff
+   * @returns number - the count of changes (replace, add, delete) needed to change the text from one string to the other 
+   */
+  private getChangesCountFromDiff(diff: [{ added?: boolean, removed?: boolean, value: string }]): number {
+    var totalChangesCount = 0;
     var lastType = "";
     var lastCount = 0;
 
-    diff.forEach(element => {
+    for (var element of diff) {
       if (element.removed) {
-        diffCount += element.value.length;
-        lastCount = element.value.length;
+        totalChangesCount += element.value.length;
+        lastType = "removed";
       }
-      if (element.added) {
+      else if (element.added) {
         if (lastType === "removed") {
           if (lastCount < element.value.length) {
-            diffCount += element.value.length - lastCount;
+            totalChangesCount += element.value.length - lastCount;
           }
         } else {
-          diffCount += element.value.length;
+          totalChangesCount += element.value.length;
         }
-        lastCount = element.value.length;
-      }
-
-      if (element.added)
         lastType = "added";
-      else if (element.removed)
-        lastType = "removed";
-      else
+      }
+      else {
         lastType = "same";
-    });
+      }
+      lastCount = element.value.length;
+    }
 
-    return diffCount;
+    return totalChangesCount;
   }
+  /**
+   * Returns how many characters can be wrong to still be counted as a spelling mistake.
+   * If spelling mistakes are turned off through the settings, it will return 0.
+   * @param  {string} text
+   * @returns number
+   */
 
-  public evaluateEnteredText(enteredText: string): Evaluation {
-    var cleanedEnteredText = this.cleanString(enteredText);
+  private getAcceptableSpellingMistakes(text: string): number {
+    var acceptableTypoCount: number;
+    if (this.settings.warnSpellingErrors || this.settings.acceptSpellingErrors) // TODO: consider removal
+      acceptableTypoCount = Math.floor(text.length / 10) + 1;
+    else
+      acceptableTypoCount = 0;
 
+    return acceptableTypoCount;
+  }
+  /**
+   * Checks if the text entered by the user in an ettempt is matched by the answer,
+   * @param  {string} attempt The text entered by the user.
+   * @returns Evaluation indicates if the entered text is matched by the answer.
+   */
+  public evaluateAttempt(attempt: string): Evaluation {
+    var cleanedAttempt = this.cleanString(attempt);
     var evaluation = new Evaluation(this);
 
     for (var alternative of this.alternatives) {
-      var acceptableTypoCount: number;
-      if (this.settings.warnSpellingErrors || this.settings.acceptSpellingErrors) // TODO: consider removal
-        acceptableTypoCount = Math.floor(alternative.length / 10) + 1;
-      else
-        acceptableTypoCount = 0;
-
       var cleanedAlternative = this.cleanString(alternative);
 
-      var diff = jsdiff.diffChars(cleanedAlternative, cleanedEnteredText, { ignoreCase: !this.settings.caseSensitive });
-      var necessaryChanges = this.getChangeCountFromDiff(diff);
+      var diff = jsdiff.diffChars(cleanedAlternative, cleanedAttempt,
+        { ignoreCase: !this.settings.caseSensitive });
+      var changeCount = this.getChangesCountFromDiff(diff);
 
-      if (necessaryChanges == 0) {
+      if (changeCount === 0) {
         evaluation.usedAlternative = cleanedAlternative;
         evaluation.correctness = Correctness.ExactMatch;
         return evaluation;
       }
 
-      if (necessaryChanges <= acceptableTypoCount && (evaluation.characterDifferenceCount == 0 || necessaryChanges < evaluation.characterDifferenceCount)) {
+      if (changeCount <= this.getAcceptableSpellingMistakes(alternative)
+        && (evaluation.characterDifferenceCount == 0 || changeCount < evaluation.characterDifferenceCount)) {
         evaluation.usedAlternative = cleanedAlternative;
         evaluation.correctness = Correctness.CloseMatch;
-        evaluation.characterDifferenceCount = necessaryChanges;
+        evaluation.characterDifferenceCount = changeCount;
       }
     }
-
     return evaluation;
   }
 }

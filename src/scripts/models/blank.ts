@@ -116,7 +116,7 @@ export class Blank extends ClozeElement {
   }
 
   /**
-  * Clears the blank from all entered content and hides popups.
+  * Clears the blank from all entered text and hides popups.
   */
   public reset() {
     this.enteredText = "";
@@ -124,8 +124,12 @@ export class Blank extends ClozeElement {
     this.setAnswerState(MessageType.None);
   }
 
+  /**
+   * Sets the blank to a state in which the correct solution if shown if the user
+   * hasn't entered a correct one so far.
+   */
   public showSolution() {
-    this.evaluateEnteredAnswer();
+    this.evaluateAttempt();
     this.removeTooltip();
     if (this.isCorrect)
       return;
@@ -146,7 +150,7 @@ export class Blank extends ClozeElement {
     this.displayTooltip(text, MessageType.Error);
   }
 
-  private getTypoMessage(expectedText: string, enteredText: string): string {
+  private getSpellingMistakeMessage(expectedText: string, enteredText: string): string {
     var message = this.localization.getTextFromLabel(LocalizationLabels.typoMessage)
 
     var diff = jsdiff.diffChars(expectedText, enteredText, { ignoreCase: !this.settings.caseSensitive });
@@ -158,7 +162,7 @@ export class Blank extends ClozeElement {
       if (part.removed) {
         if (index === diff.length - 1 || !diff[index + 1].added) {
           part.value = part.value.replace(/./g, "_");
-          spanClass = 'missing-character';          
+          spanClass = 'missing-character';
         }
         else {
           continue;
@@ -180,13 +184,13 @@ export class Blank extends ClozeElement {
    * Checks if the entered text is the correct answer or one of the 
    * incorrect ones and gives the user feedback accordingly.
    */
-  public evaluateEnteredAnswer() {
+  public evaluateAttempt() {
     this.removeTooltip();
 
-    var exactCorrectMatches = this.correctAnswers.map(answer => answer.evaluateEnteredText(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.ExactMatch).sort(evaluation => evaluation.characterDifferenceCount);
-    var closeCorrectMatches = this.correctAnswers.map(answer => answer.evaluateEnteredText(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.CloseMatch).sort(evaluation => evaluation.characterDifferenceCount);
-    var exactIncorrectMatches = this.incorrectAnswers.map(answer => answer.evaluateEnteredText(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.ExactMatch).sort(evaluation => evaluation.characterDifferenceCount);
-    var closeIncorrectMatches = this.incorrectAnswers.map(answer => answer.evaluateEnteredText(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.CloseMatch).sort(evaluation => evaluation.characterDifferenceCount);
+    var exactCorrectMatches = this.correctAnswers.map(answer => answer.evaluateAttempt(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.ExactMatch).sort(evaluation => evaluation.characterDifferenceCount);
+    var closeCorrectMatches = this.correctAnswers.map(answer => answer.evaluateAttempt(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.CloseMatch).sort(evaluation => evaluation.characterDifferenceCount);
+    var exactIncorrectMatches = this.incorrectAnswers.map(answer => answer.evaluateAttempt(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.ExactMatch).sort(evaluation => evaluation.characterDifferenceCount);
+    var closeIncorrectMatches = this.incorrectAnswers.map(answer => answer.evaluateAttempt(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.CloseMatch).sort(evaluation => evaluation.characterDifferenceCount);
 
     if (exactCorrectMatches.length > 0) {
       this.setAnswerState(MessageType.Correct);
@@ -204,7 +208,7 @@ export class Blank extends ClozeElement {
 
     if (closeCorrectMatches.length > 0) {
       if (this.settings.warnSpellingErrors) {
-        this.displayTooltip(this.getTypoMessage(closeCorrectMatches[0].usedAlternative, this.enteredText), MessageType.Retry);
+        this.displayTooltip(this.getSpellingMistakeMessage(closeCorrectMatches[0].usedAlternative, this.enteredText), MessageType.Retry);
         this.setAnswerState(MessageType.Retry);
         return;
       }

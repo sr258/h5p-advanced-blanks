@@ -79,7 +79,7 @@ export class AdvancedBlanksController {
     this.cloze.hideAllHighlights();
     for (var blank of this.cloze.blanks) {
       if ((!blank.isCorrect) && blank.enteredText != "")
-        blank.evaluateEnteredAnswer();
+        blank.evaluateAttempt();
     }
     this.refreshCloze();
     this.checkAndNotifyCompleteness();
@@ -103,7 +103,7 @@ export class AdvancedBlanksController {
         return;
 
       this.cloze.hideAllHighlights();
-      blank.evaluateEnteredAnswer();
+      blank.evaluateAttempt();
       this.checkAndNotifyCompleteness();
       this.refreshCloze();
     }
