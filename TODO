@@ -2,6 +2,7 @@ now:
 ====
 
 Bugfixes:
+  * trim whitespaces of user input
   * hover over image --> no tooltip (bug in h5p library?)
   * improve colours of popups
 
@@ -12,17 +13,15 @@ Select mode:
 soon:
 =====
 
+* focus check button (Question.focusButton) when cloze is filled out entirely
 * put Ractive into library
-* position popups better
+* position popups better (use privatre Question.positionFeedbackPopup / feedback / setExplanation)
 * show no popups when using global check --> use clickable icons
 * show +1 / -1 score calculator
 * implement xAPI
-  * notify about start
-  * notify about entered answer
-  * notify about check
-  * notify about retry
-  * send score
-  * notify about ...?
+  * answered + answer serialization (= check all pressed) --> stores all answers
+  * interacted (= auto-check, simple event): check if this stores user state in h5p-blanks or if this is only done when pressing check 
+  * implement getXAPIData contract (for report rendering engines)
 * serialize & deserialize user state
 * simplify highlight markup in semantics (for incorrectAnswers & hint!)
 * reimplement snippets

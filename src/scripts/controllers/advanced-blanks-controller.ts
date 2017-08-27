@@ -208,4 +208,13 @@ export class AdvancedBlanksController {
 
     return false;
   }
+
+  public serializeCloze() {
+    return this.cloze.serialize();
+  }
+
+  public deserializeCloze(data: any) {
+    this.cloze.deserialize(data);
+    this.refreshCloze();
+  }
 }

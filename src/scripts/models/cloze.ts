@@ -39,5 +39,23 @@ export class Cloze {
       blank.showSolution();
     }
     this.hideAllHighlights();
-  } 
+  }
+
+  public serialize() {
+    var cloze = [];
+    for (var blank of this.blanks) {
+      cloze.push(blank.serialize());
+    }
+
+    return cloze;
+  }
+
+  public deserialize(data: any) {
+    for (var index = 0; index < data.length; index++) {
+      if (index >= this.blanks.length)
+        return;
+      var blank = this.blanks[index];
+      blank.deserialize(data[index]);
+    }
+  }
 }

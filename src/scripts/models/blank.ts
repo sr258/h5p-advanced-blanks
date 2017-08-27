@@ -18,6 +18,7 @@ export class Blank extends ClozeElement {
   hasHint: boolean;
 
   // viewmodel stuff
+
   enteredText: string;
   isCorrect: boolean;
   isError: boolean;
@@ -280,5 +281,13 @@ export class Blank extends ClozeElement {
         this.hint.highlightedElements.forEach((highlight) => highlight.isHighlighted = true);
       this.isRetry = true;
     }
+  }
+
+  public serialize() {
+    return this.enteredText;
+  }
+
+  public deserialize(data: any) {
+    this.enteredText = data;
   }
 }

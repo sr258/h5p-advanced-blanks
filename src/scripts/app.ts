@@ -43,12 +43,16 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
     this.clozeController.onScoreChanged = this.onScoreChanged;
     this.clozeController.onSolved = this.onSolved;
+
+    if (contentData && contentData.length > 0)
+      this.clozeController.deserializeCloze(contentData);
   }
 
   private onScoreChanged = (score: number, maxScore: number) => {
+    this.triggerXAPI('interacted');    
     this.setFeedback("", score, maxScore);
     this.transitionState();
-    this.toggleButtonVisibility(this.state);      
+    this.toggleButtonVisibility(this.state);
   }
 
   private onSolved() {
@@ -165,6 +169,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
   private onCheckAnswer = () => {
     this.clozeController.checkAll();
+    this.triggerXAPI('interacted');   
     this.transitionState();
     if (this.state !== States.finished)
       this.state = States.checking;
@@ -226,4 +231,8 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
     this.trigger('resize');
   }
+
+  public getCurrentState = () => {
+    return this.clozeController.serializeCloze();
+  };
 }
