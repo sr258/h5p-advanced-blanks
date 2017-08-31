@@ -20,6 +20,10 @@ interface Solved {
   (): void;
 }
 
+interface Typed {
+  (): void;
+}
+
 export class ClozeController {
   private jquery: JQuery;
 
@@ -29,6 +33,7 @@ export class ClozeController {
 
   public onScoreChanged: ScoreChanged;
   public onSolved: Solved;
+  public onTyped: Typed;
 
   // Storage of the ractive objects that link models and views
   private highlightRactives: { [id: string]: Ractive.Ractive } = {};
@@ -80,7 +85,7 @@ export class ClozeController {
     this.cloze.hideAllHighlights();
     for (var blank of this.cloze.blanks) {
       if ((!blank.isCorrect) && blank.enteredText != "")
-        blank.evaluateAttempt(true);
+        blank.evaluateAttempt(true, true);
     }
     this.refreshCloze();
     this.checkAndNotifyCompleteness();
@@ -88,6 +93,13 @@ export class ClozeController {
 
   textTyped = (blank: Blank) => {
     blank.onTyped();
+    if (this.onTyped)
+      this.onTyped();
+    this.refreshCloze();
+  }
+
+  focus = (blank: Blank) => {
+    blank.onFocussed();
     this.refreshCloze();
   }
 
@@ -177,6 +189,7 @@ export class ClozeController {
     ractive.on("showHint", this.showHint);
     ractive.on("textTyped", this.textTyped);
     ractive.on("closeMessage", this.requestCloseTooltip);
+    ractive.on("focus", this.focus);
 
     this.blankRactives[blank.id] = ractive;
   }
@@ -225,11 +238,12 @@ export class ClozeController {
     return this.cloze.serialize();
   }
 
-  public deserializeCloze(data: any) {
-    if (!this.cloze)
-      return;
+  public deserializeCloze(data: any): boolean {
+    if (!this.cloze || !data)
+      return false;
     this.cloze.deserialize(data);
     this.checkAll();
     this.refreshCloze();
+    return true;
   }
 }

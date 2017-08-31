@@ -4,7 +4,6 @@ now:
 Bugfixes:
   * trim whitespaces of user input
   * hover over image --> no tooltip (bug in h5p library?)
-  * improve colours of popups 
 
 Select mode:
   * select mode: random choice of other answers
@@ -15,7 +14,6 @@ soon:
 
 * focus check button (Question.focusButton) when cloze is filled out entirely
 * put Ractive into library
-* show no popups when using global check --> use clickable icons
 * show +1 / -1 score calculator
 * implement xAPI
   * answered + answer serialization (= check all pressed) --> stores all answers
@@ -37,3 +35,4 @@ later:
 * new setting: allow further editing after 'check' / disallow
 * sanatise all user entered strings
 * replace ractive with jquery views
+* does the user need to be notified that there is feedback in check all mode?

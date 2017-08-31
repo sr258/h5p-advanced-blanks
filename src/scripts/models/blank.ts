@@ -141,6 +141,12 @@ export class Blank extends ClozeElement {
     this.setAnswerState(MessageType.ShowSolution);
   }
 
+  public onFocussed() {
+    if (this.hasPendingFeedback) {
+      this.evaluateAttempt(false);
+    }
+  }
+
   private displayTooltip(message: string, type: MessageType, surpressTooltip: boolean, id?: string) {
     if (!surpressTooltip)
       this.messageService.show(id ? id : this.id, message, this, type);
@@ -196,11 +202,12 @@ export class Blank extends ClozeElement {
    * Checks if the entered text is the correct answer or one of the 
    * incorrect ones and gives the user feedback accordingly.
    */
-  public evaluateAttempt(surpressTooltips: boolean) {
-    if (this.lastCheckedText === this.enteredText)
+  public evaluateAttempt(surpressTooltips: boolean, forceCheck?: boolean) {
+    if (!this.hasPendingFeedback && this.lastCheckedText === this.enteredText && !forceCheck)
       return;
 
     this.lastCheckedText = this.enteredText.toString();
+    this.hasPendingFeedback = false;
     this.removeTooltip();
 
     var exactCorrectMatches = this.correctAnswers.map(answer => answer.evaluateAttempt(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.ExactMatch).sort(evaluation => evaluation.characterDifferenceCount);
@@ -266,7 +273,6 @@ export class Blank extends ClozeElement {
    * @param messageType 
    */
   private setAnswerState(messageType: MessageType) {
-    this.hasPendingFeedback = false;
     this.isCorrect = false;
     this.isError = false;
     this.isRetry = false;

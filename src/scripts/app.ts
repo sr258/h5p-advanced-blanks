@@ -44,13 +44,15 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.settings = new H5PSettings(config);
     this.localization = new H5PLocalization(config);
     this.repository = new H5PDataRepository(config, this.settings, this.localization, <JQueryStatic>this.jQuery);
-    this.messageService = new MessageService(this.jQuery);    
+    this.messageService = new MessageService(this.jQuery);
     BlankLoader.initialize(this.settings, this.localization, this.jQuery, this.messageService);
 
     this.clozeController = new ClozeController(this.repository, this.settings, this.localization, this.messageService);
 
     this.clozeController.onScoreChanged = this.onScoreChanged;
     this.clozeController.onSolved = this.onSolved;
+    if (!this.settings.autoCheck)
+      this.clozeController.onTyped = this.onTyped;
 
     if (contentData && contentData.previousState)
       this.previousState = contentData.previousState;
@@ -67,6 +69,13 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
   }
 
+  private onTyped = () => {
+    if (this.state == States.checking) {
+      this.state = States.ongoing;
+      this.toggleButtonVisibility(this.state);
+    }
+  }
+
   /**
    * Overrides the attach method of the superclass (H5P.Question) and calls it
    * at the same time. (equivalent to super.attach($container)).
@@ -78,7 +87,12 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     return function ($container) {
       original($container);
       this.clozeController.initialize(this.container.get(0), $container);
-      this.clozeController.deserializeCloze(this.previousState);
+      if (this.clozeController.deserializeCloze(this.previousState)) {
+        this.transitionState();
+        if (this.clozeController.allBlanksEntered && this.state !== States.finished)
+          this.state = States.checking;
+        this.toggleButtonVisibility(this.state);
+      }
     }
   })(this.attach);
 
@@ -182,6 +196,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.transitionState();
     if (this.state !== States.finished)
       this.state = States.checking;
+    this.toggleButtonVisibility(this.state);
   }
 
   private transitionState = () => {
