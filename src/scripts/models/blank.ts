@@ -19,6 +19,7 @@ export class Blank extends ClozeElement {
 
   // viewmodel stuff
 
+  lastCheckedText: string;
   enteredText: string;
   isCorrect: boolean;
   isError: boolean;
@@ -121,6 +122,7 @@ export class Blank extends ClozeElement {
   */
   public reset() {
     this.enteredText = "";
+    this.lastCheckedText = "";
     this.removeTooltip();
     this.setAnswerState(MessageType.None);
   }
@@ -186,6 +188,10 @@ export class Blank extends ClozeElement {
    * incorrect ones and gives the user feedback accordingly.
    */
   public evaluateAttempt() {
+    if (this.lastCheckedText === this.enteredText)
+      return;
+
+    this.lastCheckedText = this.enteredText;
     this.removeTooltip();
 
     var exactCorrectMatches = this.correctAnswers.map(answer => answer.evaluateAttempt(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.ExactMatch).sort(evaluation => evaluation.characterDifferenceCount);
@@ -231,7 +237,7 @@ export class Blank extends ClozeElement {
       this.showErrorTooltip(alwaysApplyingAnswers[0]);
     }
 
-    this.setAnswerState(MessageType.Error);
+    this.setAnswerState(MessageType.Error);    
   }
 
   public onTyped(): void {

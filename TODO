@@ -15,14 +15,12 @@ soon:
 
 * focus check button (Question.focusButton) when cloze is filled out entirely
 * put Ractive into library
-* position popups better (use privatre Question.positionFeedbackPopup / feedback / setExplanation)
+* position popups better (use private Question.positionFeedbackPopup / feedback / setExplanation)
 * show no popups when using global check --> use clickable icons
 * show +1 / -1 score calculator
 * implement xAPI
   * answered + answer serialization (= check all pressed) --> stores all answers
-  * interacted (= auto-check, simple event): check if this stores user state in h5p-blanks or if this is only done when pressing check 
   * implement getXAPIData contract (for report rendering engines)
-* serialize & deserialize user state
 * simplify highlight markup in semantics (for incorrectAnswers & hint!)
 * reimplement snippets
 * improve highlight marking (position popup next to it, show some kind of symbol)
