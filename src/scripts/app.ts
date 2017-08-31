@@ -1,5 +1,5 @@
 import { H5PDataRepository, IDataRepository } from './services/data-repository';
-import { AdvancedBlanksController } from './controllers/advanced-blanks-controller';
+import { ClozeController } from './controllers/cloze-controller';
 import { H5PLocalization, LocalizationLabels, LocalizationStructures } from "./services/localization";
 import { ISettings, H5PSettings } from "./services/settings";
 
@@ -12,7 +12,7 @@ enum States {
 
 export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
-  private clozeController: AdvancedBlanksController;
+  private clozeController: ClozeController;
   private repository: IDataRepository;
   private settings: ISettings;
   private localization: H5PLocalization;
@@ -39,7 +39,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.settings = new H5PSettings(config);
     this.localization = new H5PLocalization(config);
     this.repository = new H5PDataRepository(config, this.settings, this.localization, <JQueryStatic>this.jQuery);
-    this.clozeController = new AdvancedBlanksController(this.repository, this.settings, this.localization);
+    this.clozeController = new ClozeController(this.repository, this.settings, this.localization);
 
     this.clozeController.onScoreChanged = this.onScoreChanged;
     this.clozeController.onSolved = this.onSolved;

@@ -4,11 +4,14 @@ now:
 Bugfixes:
   * trim whitespaces of user input
   * hover over image --> no tooltip (bug in h5p library?)
-  * improve colours of popups
+  * improve colours of popups 
 
 Select mode:
   * select mode: random choice of other answers
   * select mode --> marking of correct / error not working
+
+Others:
+  * remove error marking when typing after incorrect answer
 
 soon:
 =====

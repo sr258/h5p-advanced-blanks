@@ -19,7 +19,7 @@ interface Solved {
   (): void;
 }
 
-export class AdvancedBlanksController {
+export class ClozeController {
   private jquery: JQuery;
 
   private cloze: Cloze;
