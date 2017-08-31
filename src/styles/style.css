@@ -10,43 +10,68 @@
 
 /* Input */
 
-.h5p-advanced-blanks .blank input {
+.h5p-advanced-blanks .h5p-input-wrapper {
+  display: inline-block;
+  position: relative;
+}
+
+.h5p-advanced-blanks .blank .h5p-text-input {
   font-family: H5PDroidSans, sans-serif;
   font-size: 1em;
   border-radius: 0.25em;
   border: 1px solid #a0a0a0;
   padding: 0.1875em 1em 0.1875em 0.5em;
+  text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
 }
 
 /* Showing solution input */
-.h5p-advanced-blanks .blank.showing-solution input {
+.h5p-advanced-blanks .blank.showing-solution .h5p-text-input {
   border: 1px dashed #9dd8bb;
   color: #255c41;  
   background: #FFFFFF;
 }
 
 /* Focussed input */
-.h5p-advanced-blanks .blank input:focus {
+.h5p-advanced-blanks .blank .h5p-text-input:focus {
   outline: none;
   box-shadow: 0 0 0.5em 0 #7fb8ff;
   border-color: #7fb8ff;
 }
 
 /* Correctly answered input */
-.h5p-advanced-blanks .blank.correct input {
+.h5p-advanced-blanks .blank.correct .h5p-text-input {
   background: #9dd8bb;
   border: 1px solid #9dd8bb;
   color: #255c41;
 }
 
+.h5p-advanced-blanks .blank.correct .h5p-input-wrapper:after {
+  position: absolute;
+  right: 0.5em;
+  top: 0;
+  text-decoration: none;
+  content: "\f00c";
+  font-family: 'H5PFontAwesome4';
+  color: #255c41;
+}
+
 /* Incorrect answers */
-.h5p-advanced-blanks .blank.error input {
+.h5p-advanced-blanks .blank.error .h5p-text-input {
   background-color: #f7d0d0;
   border: 1px solid #f7d0d0;
   color: #b71c1c;
   text-decoration: line-through;
+}
+.h5p-advanced-blanks .blank.error .h5p-input-wrapper:after {
+  position: absolute;
+  right: 0.5em;
+  top: 0;
+  font-family: 'H5PFontAwesome4';
+  text-decoration: none;
+  content: "\f00d";
+  color: #b71c1c;
 }
 
 /* Buttons */
@@ -170,4 +195,24 @@
 
 .h5p-advanced-blanks .invisible {
 	visibility: collapse;
+}
+
+/* Tips */
+.h5p-advanced-blanks .h5p-tip-container {
+  position: absolute;
+  top: 0;
+  right: 0.4em;
+  font-size: 1em; 
+}
+
+.h5p-advanced-blanks .blank.has-tip .h5p-text-input {
+  padding-right: 2.25em;
+}
+.h5p-advanced-blanks .blank.has-tip.correct .h5p-input-wrapper:after,
+.h5p-advanced-blanks .blank.has-tip.error .h5p-input-wrapper:after {
+  right: 2.25em;
+}
+.h5p-advanced-blanks .blank.has-tip.correct .h5p-text-input,
+.h5p-advanced-blanks .blank.has-tip.error .h5p-text-input {
+  padding-right: 3.5em;
 }

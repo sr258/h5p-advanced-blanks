@@ -44,3 +44,4 @@ later:
 * react to resize event + send them when appropriate
 * new setting: allow further editing after 'check' / disallow
 * sanatise all user entered strings
+* replace ractive with jquery views
