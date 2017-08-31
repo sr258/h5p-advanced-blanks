@@ -30,13 +30,5 @@
     <button on-click="@this.fire('checkBlank', blank, 'button')" {{#blank.isCorrect}} disabled="disabled" {{/if}}>
       <i class="fa fa-check"></i>
     </button>
-  {{/if}}
-  {{#blank.showMessage}}
-    <span class="message">
-      <button on-click="@this.fire('closeMessage', blank)">
-        <i class="fa fa-times"></i>
-      </button>
-      {{{blank.message}}}
-    </span>
-  {{/if}}
+  {{/if}} 
 </span>

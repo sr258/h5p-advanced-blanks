@@ -1,4 +1,5 @@
-﻿import { BlankLoader } from '../content-loaders/blank-loader';
+﻿import { MessageService } from '../services/message-service';
+import { BlankLoader } from '../content-loaders/blank-loader';
 import { ClozeLoader } from '../content-loaders/cloze-loader';
 import { Cloze } from "../models/cloze";
 import { IDataRepository } from "../services/data-repository";
@@ -52,7 +53,7 @@ export class ClozeController {
     return this.cloze.isSolved;
   }
 
-  constructor(private repository: IDataRepository, private settings: ISettings, private localization: H5PLocalization) {
+  constructor(private repository: IDataRepository, private settings: ISettings, private localization: H5PLocalization, private MessageService: MessageService) {
   }
 
   /**
@@ -66,7 +67,7 @@ export class ClozeController {
     var blanks = this.repository.getBlanks();
 
     var snippets = this.repository.getSnippets();
-    blanks.forEach(blank => BlankLoader.replaceSnippets(blank, snippets));
+    blanks.forEach(blank => BlankLoader.instance.replaceSnippets(blank, snippets));
 
     this.cloze = ClozeLoader.createCloze(this.repository.getClozeText(), blanks);
 
@@ -103,6 +104,10 @@ export class ClozeController {
   }
 
   checkBlank = (blank: Blank, cause: string) => {
+    if ((cause === 'blur')) {
+      blank.lostFocus();
+    }
+    
     if (this.settings.autoCheck) {
       if (!blank.enteredText || blank.enteredText === "")
         return;
@@ -121,7 +126,7 @@ export class ClozeController {
         return;
       var nextId = this.cloze.blanks[index + 1].id;
       this.jquery.find("#" + nextId).focus();
-    }
+    }    
   }
 
   reset = () => {
@@ -225,6 +230,6 @@ export class ClozeController {
       return;
     this.cloze.deserialize(data);
     this.checkAll();
-    this.refreshCloze();    
+    this.refreshCloze();
   }
 }

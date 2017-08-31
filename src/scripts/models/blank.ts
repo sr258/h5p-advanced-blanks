@@ -1,4 +1,5 @@
-﻿import { ClozeElement, ClozeElementType } from './cloze-element';
+﻿import { MessageService } from '../services/message-service';
+import { ClozeElement, ClozeElementType } from './cloze-element';
 import { Answer, Correctness } from './answer';
 import { Message } from './message';
 import { Highlight } from './highlight';
@@ -26,8 +27,8 @@ export class Blank extends ClozeElement {
   isRetry: boolean;
   isShowingSolution: boolean;
   message: string;
-  showMessage: boolean;
   minTextLength: number;
+  speechBubble: any;
 
   /**
    * Add incorrect answers after initializing the object. Call finishInitialization()
@@ -37,14 +38,13 @@ export class Blank extends ClozeElement {
    * @param  {string} correctText?
    * @param  {string} hintText?
    */
-  constructor(private settings: ISettings, private localization: H5PLocalization, private jquery: JQueryStatic, id: string) {
+  constructor(private settings: ISettings, private localization: H5PLocalization, private jquery: JQueryStatic, private messageService: MessageService, id: string) {
     super();
 
     this.enteredText = "";
     this.correctAnswers = new Array();
     this.incorrectAnswers = new Array();
     this.choices = new Array();
-    this.showMessage = false;
     this.type = ClozeElementType.Blank;
 
     this.id = id;
@@ -140,17 +140,21 @@ export class Blank extends ClozeElement {
     this.setAnswerState(MessageType.ShowSolution);
   }
 
-  private displayTooltip(message: string, type: MessageType) {
-    this.showMessage = true;
-    this.message = message;    
+  private displayTooltip(message: string, type: MessageType, id?: string) {
+    this.messageService.show(id ? id : this.id, message, this, type);
   }
 
   public removeTooltip() {
-    this.showMessage = false;
+    this.messageService.hide();
   }
 
-  private setTooltipErrorText(text: string) {
-    this.displayTooltip(text, MessageType.Error);
+  private setTooltipErrorText(message: Message) {
+    if (message.highlightedElements.length > 0) {
+      this.displayTooltip(message.text, MessageType.Error, message.highlightedElements[message.highlightedElements.length - 1].id);
+    }
+    else {
+      this.displayTooltip(message.text, MessageType.Error);
+    }
   }
 
   private getSpellingMistakeMessage(expectedText: string, enteredText: string): string {
@@ -191,7 +195,7 @@ export class Blank extends ClozeElement {
     if (this.lastCheckedText === this.enteredText)
       return;
 
-    this.lastCheckedText = this.enteredText;
+    this.lastCheckedText = this.enteredText.toString();
     this.removeTooltip();
 
     var exactCorrectMatches = this.correctAnswers.map(answer => answer.evaluateAttempt(this.enteredText)).filter(evaluation => evaluation.correctness === Correctness.ExactMatch).sort(evaluation => evaluation.characterDifferenceCount);
@@ -237,13 +241,19 @@ export class Blank extends ClozeElement {
       this.showErrorTooltip(alwaysApplyingAnswers[0]);
     }
 
-    this.setAnswerState(MessageType.Error);    
+    this.setAnswerState(MessageType.Error);
   }
 
   public onTyped(): void {
     this.setAnswerState(MessageType.None);
     this.lastCheckedText = "";
     this.removeTooltip();
+  }
+
+  public lostFocus(): void {
+    if (this.messageService.isActive(this)) {
+      this.messageService.hide();
+    }
   }
 
   /**
@@ -274,7 +284,7 @@ export class Blank extends ClozeElement {
 
   private showErrorTooltip(answer: Answer) {
     if (answer.message && answer.message.text) {
-      this.setTooltipErrorText(answer.message.text);
+      this.setTooltipErrorText(answer.message);
     }
     answer.activateHighlights();
   }

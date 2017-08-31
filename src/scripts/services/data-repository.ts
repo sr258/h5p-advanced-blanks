@@ -62,7 +62,7 @@ export class H5PDataRepository implements IDataRepository {
       if (correctText === "" || correctText === undefined)
         continue;
 
-      var blank = BlankLoader.createBlank(this.settings, this.localization, this.jquery, "cloze" + i, correctText, h5pBlank.hint);
+      var blank = BlankLoader.instance.createBlank("cloze" + i, correctText, h5pBlank.hint);
 
       if (h5pBlank.incorrectAnswersList) {
         for (var h5pIncorrectAnswer of h5pBlank.incorrectAnswersList) {

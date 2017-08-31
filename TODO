@@ -15,7 +15,6 @@ soon:
 
 * focus check button (Question.focusButton) when cloze is filled out entirely
 * put Ractive into library
-* position popups better (use private Question.positionFeedbackPopup / feedback / setExplanation)
 * show no popups when using global check --> use clickable icons
 * show +1 / -1 score calculator
 * implement xAPI
@@ -23,7 +22,6 @@ soon:
   * implement getXAPIData contract (for report rendering engines)
 * simplify highlight markup in semantics (for incorrectAnswers & hint!)
 * reimplement snippets
-* improve highlight marking (position popup next to it, show some kind of symbol)
 
 later:
 ======

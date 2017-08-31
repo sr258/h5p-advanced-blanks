@@ -1,7 +1,10 @@
+import { BlankLoader } from './content-loaders/blank-loader';
 import { H5PDataRepository, IDataRepository } from './services/data-repository';
 import { ClozeController } from './controllers/cloze-controller';
 import { H5PLocalization, LocalizationLabels, LocalizationStructures } from "./services/localization";
 import { ISettings, H5PSettings } from "./services/settings";
+import { MessageService } from './services/message-service';
+
 
 enum States {
   ongoing = 'ongoing',
@@ -16,6 +19,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   private repository: IDataRepository;
   private settings: ISettings;
   private localization: H5PLocalization;
+  private messageService: MessageService;
 
   private contentContainer: JQuery;
   private jQuery;
@@ -40,7 +44,10 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.settings = new H5PSettings(config);
     this.localization = new H5PLocalization(config);
     this.repository = new H5PDataRepository(config, this.settings, this.localization, <JQueryStatic>this.jQuery);
-    this.clozeController = new ClozeController(this.repository, this.settings, this.localization);
+    this.messageService = new MessageService(this.jQuery);    
+    BlankLoader.initialize(this.settings, this.localization, this.jQuery, this.messageService);
+
+    this.clozeController = new ClozeController(this.repository, this.settings, this.localization, this.messageService);
 
     this.clozeController.onScoreChanged = this.onScoreChanged;
     this.clozeController.onSolved = this.onSolved;
@@ -50,7 +57,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   }
 
   private onScoreChanged = (score: number, maxScore: number) => {
-    this.triggerXAPI('interacted');    
+    this.triggerXAPI('interacted');
     this.setFeedback("", score, maxScore);
     this.transitionState();
     this.toggleButtonVisibility(this.state);
@@ -171,7 +178,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
   private onCheckAnswer = () => {
     this.clozeController.checkAll();
-    this.triggerXAPI('interacted');   
+    this.triggerXAPI('interacted');
     this.transitionState();
     if (this.state !== States.finished)
       this.state = States.checking;

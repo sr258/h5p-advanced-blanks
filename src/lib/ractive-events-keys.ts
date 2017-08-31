@@ -12,7 +12,7 @@ function makeKeyDefinition(code?: number) {
           original: event
         });
       }
-      else if (!code && [13, 9, 27, 32, 37, 39, 40, 38].filter(c => c === which).length === 0) {
+      else if (!code && [16, 17, 18, 35, 36, 13, 9, 27, 32, 37, 39, 40, 38].filter(c => c === which).length === 0) {
         fire({
           node,
           original: event
