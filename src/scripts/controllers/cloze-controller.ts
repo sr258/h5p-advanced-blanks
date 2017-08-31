@@ -224,6 +224,7 @@ export class ClozeController {
     if (!this.cloze)
       return;
     this.cloze.deserialize(data);
-    this.refreshCloze();
+    this.checkAll();
+    this.refreshCloze();    
   }
 }
