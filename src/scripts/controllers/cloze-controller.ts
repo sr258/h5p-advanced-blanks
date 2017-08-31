@@ -85,6 +85,11 @@ export class ClozeController {
     this.checkAndNotifyCompleteness();
   }
 
+  textTyped = (blank: Blank) => {
+    blank.onTyped();
+    this.refreshCloze();
+  }
+
   showHint = (blank: Blank) => {
     this.cloze.hideAllHighlights();
     blank.showHint();
@@ -159,11 +164,13 @@ export class ClozeController {
       },
       events: {
         enter: RactiveEventsKeys.enter,
-        escape: RactiveEventsKeys.escape
+        escape: RactiveEventsKeys.escape,
+        anykey: RactiveEventsKeys.anykey
       }
     });
     ractive.on("checkBlank", this.checkBlank);
     ractive.on("showHint", this.showHint);
+    ractive.on("textTyped", this.textTyped);
     ractive.on("closeMessage", this.requestCloseTooltip);
 
     this.blankRactives[blank.id] = ractive;

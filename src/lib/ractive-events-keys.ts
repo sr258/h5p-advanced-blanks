@@ -1,12 +1,18 @@
 ﻿// TODO can we just declare the keydownHandler once? using `this`?
-function makeKeyDefinition(code) {
+function makeKeyDefinition(code?: number) {
   return (node, fire) => {
     function keydownHandler(event) {
       var which = event.which || event.keyCode;
 
-      if (which === code) {
+      if (code && which === code) {
         event.preventDefault();
 
+        fire({
+          node,
+          original: event
+        });
+      }
+      else if (!code && [13, 9, 27, 32, 37, 39, 40, 38].filter(c => c === which).length === 0) {
         fire({
           node,
           original: event
@@ -33,3 +39,5 @@ export const leftarrow = makeKeyDefinition(37);
 export const rightarrow = makeKeyDefinition(39);
 export const downarrow = makeKeyDefinition(40);
 export const uparrow = makeKeyDefinition(38);
+
+export const anykey = makeKeyDefinition();

@@ -3,7 +3,9 @@
     <span class="h5p-input-wrapper">
       <input id="{{blank.id}}" type="text" value="{{blank.enteredText}}" 
              size="{{blank.minTextLength}}" on-escape="@this.fire('closeMessage', blank)" 
-             on-enter="@this.fire('checkBlank', blank, 'enter')" on-blur="@this.fire('checkBlank', blank, 'blur')" 
+             on-enter="@this.fire('checkBlank', blank, 'enter')" 
+             on-blur="@this.fire('checkBlank', blank, 'blur')" 
+             on-anykey="@this.fire('textTyped', blank)"
              {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled" {{/if}}
              class="h5p-text-input"/>
       {{#blank.hasHint}}

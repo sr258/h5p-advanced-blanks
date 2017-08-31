@@ -234,6 +234,11 @@ export class Blank extends ClozeElement {
     this.setAnswerState(MessageType.Error);
   }
 
+  public onTyped(): void {
+    this.setAnswerState(MessageType.None);
+    this.removeTooltip();
+  }
+
   /**
    * Sets the boolean properties isCorrect, is Error and isRetry according to thepassed  messageType.
    * @param messageType 
