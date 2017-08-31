@@ -142,7 +142,7 @@ export class Blank extends ClozeElement {
 
   private displayTooltip(message: string, type: MessageType) {
     this.showMessage = true;
-    this.message = message;
+    this.message = message;    
   }
 
   public removeTooltip() {
@@ -242,6 +242,7 @@ export class Blank extends ClozeElement {
 
   public onTyped(): void {
     this.setAnswerState(MessageType.None);
+    this.lastCheckedText = "";
     this.removeTooltip();
   }
 

@@ -28,7 +28,6 @@ soon:
 later:
 ======
 
-* Find out where H5P.TextUtilities comes from and use it instead of own Levenshtein implementation
 * implement feedback ranges
 * take over accessibility from h5p-blanks
 * auto-growing text-fields
