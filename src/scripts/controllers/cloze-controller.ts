@@ -80,7 +80,7 @@ export class ClozeController {
     this.cloze.hideAllHighlights();
     for (var blank of this.cloze.blanks) {
       if ((!blank.isCorrect) && blank.enteredText != "")
-        blank.evaluateAttempt();
+        blank.evaluateAttempt(true);
     }
     this.refreshCloze();
     this.checkAndNotifyCompleteness();
@@ -107,13 +107,13 @@ export class ClozeController {
     if ((cause === 'blur')) {
       blank.lostFocus();
     }
-    
+
     if (this.settings.autoCheck) {
       if (!blank.enteredText || blank.enteredText === "")
         return;
 
       this.cloze.hideAllHighlights();
-      blank.evaluateAttempt();
+      blank.evaluateAttempt(false);
       this.checkAndNotifyCompleteness();
       this.refreshCloze();
     }
@@ -126,7 +126,7 @@ export class ClozeController {
         return;
       var nextId = this.cloze.blanks[index + 1].id;
       this.jquery.find("#" + nextId).focus();
-    }    
+    }
   }
 
   reset = () => {

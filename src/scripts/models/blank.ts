@@ -25,6 +25,7 @@ export class Blank extends ClozeElement {
   isCorrect: boolean;
   isError: boolean;
   isRetry: boolean;
+  hasPendingFeedback: boolean;
   isShowingSolution: boolean;
   message: string;
   minTextLength: number;
@@ -132,7 +133,7 @@ export class Blank extends ClozeElement {
    * hasn't entered a correct one so far.
    */
   public showSolution() {
-    this.evaluateAttempt();
+    this.evaluateAttempt(true);
     this.removeTooltip();
     if (this.isCorrect)
       return;
@@ -140,20 +141,24 @@ export class Blank extends ClozeElement {
     this.setAnswerState(MessageType.ShowSolution);
   }
 
-  private displayTooltip(message: string, type: MessageType, id?: string) {
-    this.messageService.show(id ? id : this.id, message, this, type);
+  private displayTooltip(message: string, type: MessageType, surpressTooltip: boolean, id?: string) {
+    if (!surpressTooltip)
+      this.messageService.show(id ? id : this.id, message, this, type);
+    else {
+      this.hasPendingFeedback = true;
+    }
   }
 
   public removeTooltip() {
     this.messageService.hide();
   }
 
-  private setTooltipErrorText(message: Message) {
+  private setTooltipErrorText(message: Message, surpressTooltip: boolean) {
     if (message.highlightedElements.length > 0) {
-      this.displayTooltip(message.text, MessageType.Error, message.highlightedElements[message.highlightedElements.length - 1].id);
+      this.displayTooltip(message.text, MessageType.Error, surpressTooltip, message.highlightedElements[message.highlightedElements.length - 1].id);
     }
     else {
-      this.displayTooltip(message.text, MessageType.Error);
+      this.displayTooltip(message.text, MessageType.Error, surpressTooltip);
     }
   }
 
@@ -191,7 +196,7 @@ export class Blank extends ClozeElement {
    * Checks if the entered text is the correct answer or one of the 
    * incorrect ones and gives the user feedback accordingly.
    */
-  public evaluateAttempt() {
+  public evaluateAttempt(surpressTooltips: boolean) {
     if (this.lastCheckedText === this.enteredText)
       return;
 
@@ -213,13 +218,13 @@ export class Blank extends ClozeElement {
 
     if (exactIncorrectMatches.length > 0) {
       this.setAnswerState(MessageType.Error);
-      this.showErrorTooltip(exactIncorrectMatches[0].usedAnswer);
+      this.showErrorTooltip(exactIncorrectMatches[0].usedAnswer, surpressTooltips);
       return;
     }
 
     if (closeCorrectMatches.length > 0) {
       if (this.settings.warnSpellingErrors) {
-        this.displayTooltip(this.getSpellingMistakeMessage(closeCorrectMatches[0].usedAlternative, this.enteredText), MessageType.Retry);
+        this.displayTooltip(this.getSpellingMistakeMessage(closeCorrectMatches[0].usedAlternative, this.enteredText), MessageType.Retry, surpressTooltips);
         this.setAnswerState(MessageType.Retry);
         return;
       }
@@ -232,13 +237,13 @@ export class Blank extends ClozeElement {
 
     if (closeIncorrectMatches.length > 0) {
       this.setAnswerState(MessageType.Error);
-      this.showErrorTooltip(closeIncorrectMatches[0].usedAnswer);
+      this.showErrorTooltip(closeIncorrectMatches[0].usedAnswer, surpressTooltips);
       return;
     }
 
     var alwaysApplyingAnswers = this.incorrectAnswers.filter(a => a.appliesAlways);
     if (alwaysApplyingAnswers && alwaysApplyingAnswers.length > 0) {
-      this.showErrorTooltip(alwaysApplyingAnswers[0]);
+      this.showErrorTooltip(alwaysApplyingAnswers[0], surpressTooltips);
     }
 
     this.setAnswerState(MessageType.Error);
@@ -261,6 +266,7 @@ export class Blank extends ClozeElement {
    * @param messageType 
    */
   private setAnswerState(messageType: MessageType) {
+    this.hasPendingFeedback = false;
     this.isCorrect = false;
     this.isError = false;
     this.isRetry = false;
@@ -282,11 +288,13 @@ export class Blank extends ClozeElement {
     }
   }
 
-  private showErrorTooltip(answer: Answer) {
+  private showErrorTooltip(answer: Answer, surpressTooltip: boolean) {
     if (answer.message && answer.message.text) {
-      this.setTooltipErrorText(answer.message);
+      this.setTooltipErrorText(answer.message, surpressTooltip);
     }
-    answer.activateHighlights();
+    if (!surpressTooltip) {
+      answer.activateHighlights();
+    }
   }
 
   /**
@@ -298,7 +306,7 @@ export class Blank extends ClozeElement {
 
     this.removeTooltip();
     if (this.hint && this.hint.text != "") {
-      this.displayTooltip(this.hint.text, MessageType.Retry);
+      this.displayTooltip(this.hint.text, MessageType.Retry, false);
       if (this.hint.highlightedElements)
         this.hint.highlightedElements.forEach((highlight) => highlight.isHighlighted = true);
       this.isRetry = true;
