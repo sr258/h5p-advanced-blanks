@@ -214,6 +214,8 @@ export class ClozeController {
   }
 
   public deserializeCloze(data: any) {
+    if (!this.cloze)
+      return;
     this.cloze.deserialize(data);
     this.refreshCloze();
   }

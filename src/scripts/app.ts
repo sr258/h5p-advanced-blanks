@@ -22,6 +22,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
   private contentId: string;
   private state: States;
+  private previousState: any;
 
   /**
    * @constructor
@@ -44,8 +45,8 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.clozeController.onScoreChanged = this.onScoreChanged;
     this.clozeController.onSolved = this.onSolved;
 
-    if (contentData && contentData.length > 0)
-      this.clozeController.deserializeCloze(contentData);
+    if (contentData && contentData.previousState)
+      this.previousState = contentData.previousState;
   }
 
   private onScoreChanged = (score: number, maxScore: number) => {
@@ -70,6 +71,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     return function ($container) {
       original($container);
       this.clozeController.initialize(this.container.get(0), $container);
+      this.clozeController.deserializeCloze(this.previousState);
     }
   })(this.attach);
 
