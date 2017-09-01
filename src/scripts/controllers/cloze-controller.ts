@@ -134,10 +134,15 @@ export class ClozeController {
         || !this.settings.autoCheck)) {
       // move to next blank
       var index = this.cloze.blanks.indexOf(blank);
-      if (index + 1 >= this.cloze.blanks.length)
-        return;
-      var nextId = this.cloze.blanks[index + 1].id;
-      this.jquery.find("#" + nextId).focus();
+      var nextId;
+      do {
+        index++;
+        if (!this.cloze.blanks[index].isCorrect)
+          nextId = this.cloze.blanks[index].id;
+      } while (index < this.cloze.blanks.length && !nextId);
+
+      if (nextId)
+        this.jquery.find("#" + nextId).focus();
     }
   }
 
