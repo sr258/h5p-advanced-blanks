@@ -34,6 +34,7 @@
     "css-loader": "^0.26.2",
     "diff": "^3.3.0",
     "html-loader": "^0.5.1",
+    "postcss-loader": "^2.0.6",
     "ractive": "^0.8.14",
     "style-loader": "^0.13.2",
     "ts-loader": "^2.3.2",
