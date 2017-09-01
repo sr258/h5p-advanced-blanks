@@ -132,6 +132,55 @@
                 "type": "text",
                 "label": "Feedback",
                 "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user entered."
+              },
+              {
+                "name": "showHighlight",
+                "type": "boolean",
+                "label": "Show highlight in the text when feedback is shown",
+                "description": "Highlights must be marked with !! at the beginning and !! at the end of the highlight. (e.g. !!Highlight 1!!)",
+                "default": false,
+                "optional": false
+              },
+              {
+                "name": "highlight",
+                "type": "select",
+                "label": "Select highlight position relative to blank:",
+                "widget": "showWhen",
+                "showWhen": {
+                  "rules": [
+                    {
+                      "field": "showHighlight",
+                      "equals": true
+                    }
+                  ]
+                },
+                "options": [
+                  {
+                    "value": -1,
+                    "label": "- 1 (right before the blank)"
+                  },
+                  {
+                    "value": -2,
+                    "label": "- 2 (two highlights before the blank)"
+                  },
+                  {
+                    "value": -3,
+                    "label": "- 3 (three highlights before the blank)"
+                  },                               
+                  {
+                    "value": 1,
+                    "label": "+ 1 (right after the blank)"
+                  },
+                  {
+                    "value": 2,
+                    "label": "+ 2 (two highlights after the blank)"
+                  },
+                  {
+                    "value": 3,
+                    "label": "+ 3 (three highlights after the blank)"
+                  }
+                ],
+                "default": -1
               }
             ]
           }
