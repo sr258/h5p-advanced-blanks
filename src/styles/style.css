@@ -130,10 +130,21 @@
   color: red;
   font-weight: bold;
   animation-duration: 500ms;	
-	animation-name: blink;	
+	animation-name: blink-color;	
 	animation-iteration-count: 13;	
 	animation-direction: alternate;
 }
+
+@keyframes blink-color {
+	from {
+		color: initial;
+	}
+
+	to {
+		color: red;
+	}
+}
+
 
 .spelling-mistake .mistaken-character {
   text-decoration: line-through;
@@ -142,24 +153,23 @@
 /* Highlights in text */
 
 .h5p-advanced-blanks .highlighted {
-  color: red;
   background-color: rgba(255,0,0,0.2);
   padding: 0.4em;
   margin: -0.4em;
 
-	animation-duration: 500ms;	
-	animation-name: blink;	
-	animation-iteration-count: 13;	
+	animation-duration: 1000ms;	
+	animation-name: blink-background-color;	
+	animation-iteration-count: 3;	
 	animation-direction: alternate;
 }
 
-@keyframes blink {
+@keyframes blink-background-color {
 	from {
-		color: initial;
+    background-color: initial;    
 	}
 
 	to {
-		color: red;
+    background-color: rgba(255,0,0,0.2);    
 	}
 }
 
@@ -198,4 +208,20 @@
   text-decoration: none;
   content: "\f05a";
   color: #b71c1c;
+
+  animation-duration: 2000ms;	
+	animation-name: inverted-blink-color;
+	animation-iteration-count: 3;
+  animation-direction: alternate;
+  animation-timing-function: cubic-bezier(cubic-bezier(0.755, 0.05, 0.855, 0.06))
+}
+
+@keyframes inverted-blink-color {
+	from {
+		color: transparent;
+	}
+
+	to {
+		color: #b71c1c;
+	}
 }

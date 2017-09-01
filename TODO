@@ -5,6 +5,7 @@ Bugfixes:
   * trim whitespaces of user input
   * hover over image --> no tooltip (bug in h5p library?)
   * resize event not handled correctly --> important for feedback popup
+  * moving focus doesn't work when next blank is already correct
 
 Select mode:
   * select mode: random choice of other answers
