@@ -1,4 +1,4 @@
-<span id="container{{id}}" class="blank {{#blank.hasHint}}has-tip{{/if}} {{#blank.isCorrect}}correct{{/if}} {{#blank.isError}}error{{/if}} {{#blank.isRetry}}retry{{/if}} {{#blank.isShowingSolution}}showing-solution{{/if}}">
+<span id="container{{id}}" class="blank {{#blank.hasPendingFeedback}}has-pending-feedback{{/if}} {{#blank.hasHint}}has-tip{{/if}} {{#blank.isCorrect}}correct{{/if}} {{#blank.isError}}error{{/if}} {{#blank.isRetry}}retry{{/if}} {{#blank.isShowingSolution}}showing-solution{{/if}}">
   {{#unless isSelectCloze}}
     <span class="h5p-input-wrapper">
       <input id="{{blank.id}}" type="text" value="{{blank.enteredText}}" 

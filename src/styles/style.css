@@ -220,3 +220,14 @@
 .h5p-advanced-blanks .blank.has-tip.error .h5p-text-input {
   padding-right: 3.5em;
 }
+
+/* pending feedbcak marker */
+.h5p-advanced-blanks .blank.error.has-pending-feedback .h5p-input-wrapper:before {
+  position: absolute;
+  left: -0.4em;
+  top: -0.7em;
+  font-family: 'H5PFontAwesome4';
+  text-decoration: none;
+  content: "\f05a";
+  color: #b71c1c;
+}
