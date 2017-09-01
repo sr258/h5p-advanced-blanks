@@ -135,11 +135,11 @@ export class ClozeController {
       // move to next blank
       var index = this.cloze.blanks.indexOf(blank);
       var nextId;
-      do {
+      while (index < this.cloze.blanks.length - 1 && !nextId) {
         index++;
         if (!this.cloze.blanks[index].isCorrect)
           nextId = this.cloze.blanks[index].id;
-      } while (index < this.cloze.blanks.length && !nextId);
+      }
 
       if (nextId)
         this.jquery.find("#" + nextId).focus();

@@ -199,7 +199,7 @@
   padding-right: 3.5em;
 }
 
-/* pending feedbcak marker */
+/* pending feedback marker */
 .h5p-advanced-blanks .blank.error.has-pending-feedback .h5p-input-wrapper:before {
   position: absolute;
   left: -0.4em;
@@ -209,19 +209,27 @@
   content: "\f05a";
   color: #b71c1c;
 
-  animation-duration: 2000ms;	
-	animation-name: inverted-blink-color;
-	animation-iteration-count: 3;
-  animation-direction: alternate;
-  animation-timing-function: cubic-bezier(cubic-bezier(0.755, 0.05, 0.855, 0.06))
+  animation: shake 3s cubic-bezier(.36,.07,.19,.97) reverse;  
+  animation-iteration-count: 2;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
-@keyframes inverted-blink-color {
-	from {
-		color: transparent;
-	}
+@keyframes shake {
+  2%, 20% {
+    transform: translate3d(-0.5px, 0, 0);
+  }
+  
+  4%, 17% {
+    transform: translate3d(1px, 0, 0);
+  }
 
-	to {
-		color: #b71c1c;
-	}
+  6%, 10%, 15% {
+    transform: translate3d(-2px, 0, 0);
+  }
+
+  9%, 13% {
+    transform: translate3d(2px, 0, 0);
+  }
 }
