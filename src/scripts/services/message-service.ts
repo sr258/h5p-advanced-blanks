@@ -1,7 +1,5 @@
 import { Blank } from '../models/blank';
-import { anykey } from '../../lib/ractive-events-keys';
 import { MessageType } from '../models/enums';
-import { Message } from '../models/message';
 
 export class MessageService {
   private speechBubble: any;

@@ -4,7 +4,7 @@ import { ClozeLoader } from '../content-loaders/cloze-loader';
 import { Cloze } from "../models/cloze";
 import { IDataRepository } from "../services/data-repository";
 import { ISettings } from "../services/settings";
-import { H5PLocalization, LocalizationLabels } from "../services/localization";
+import { H5PLocalization } from "../services/localization";
 import { ClozeType } from "../models/enums";
 import { Highlight } from "../models/highlight";
 import { Blank } from "../models/blank";
@@ -28,7 +28,6 @@ export class ClozeController {
   private jquery: JQuery;
 
   private cloze: Cloze;
-  private checkAllLabel: string;
   private isSelectCloze: boolean;
 
   public onScoreChanged: ScoreChanged;
@@ -67,7 +66,7 @@ export class ClozeController {
    */
   initialize(root: HTMLElement, jquery: JQuery) {
     this.jquery = jquery;
-    this.isSelectCloze = this.settings.clozeType == ClozeType.Select ? true : false;
+    this.isSelectCloze = this.settings.clozeType === ClozeType.Select ? true : false;
 
     var blanks = this.repository.getBlanks();
 
@@ -84,7 +83,7 @@ export class ClozeController {
   checkAll = () => {
     this.cloze.hideAllHighlights();
     for (var blank of this.cloze.blanks) {
-      if ((!blank.isCorrect) && blank.enteredText != "")
+      if ((!blank.isCorrect) && blank.enteredText !== "")
         blank.evaluateAttempt(true, true);
     }
     this.refreshCloze();

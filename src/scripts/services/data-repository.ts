@@ -1,9 +1,6 @@
 ﻿import { BlankLoader } from '../content-loaders/blank-loader';
 import { Blank } from "../models/blank";
 import { ISettings } from "../services/settings";
-import { ClozeType } from "../models/enums";
-import { Answer } from "../models/answer";
-import { Message } from "../models/message";
 import { H5PLocalization } from "./localization";
 
 export interface IDataRepository {

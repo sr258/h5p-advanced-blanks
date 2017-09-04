@@ -146,7 +146,7 @@ export class Answer {
       }
 
       if (changeCount <= this.getAcceptableSpellingMistakes(alternative)
-        && (evaluation.characterDifferenceCount == 0 || changeCount < evaluation.characterDifferenceCount)) {
+        && (evaluation.characterDifferenceCount === 0 || changeCount < evaluation.characterDifferenceCount)) {
         evaluation.usedAlternative = cleanedAlternative;
         evaluation.correctness = Correctness.CloseMatch;
         evaluation.characterDifferenceCount = changeCount;

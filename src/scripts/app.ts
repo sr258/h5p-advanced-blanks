@@ -21,7 +21,6 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   private localization: H5PLocalization;
   private messageService: MessageService;
 
-  private contentContainer: JQuery;
   private jQuery;
 
   private contentId: string;
@@ -70,7 +69,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   }
 
   private onTyped = () => {
-    if (this.state == States.checking) {
+    if (this.state === States.checking) {
       this.state = States.ongoing;
       this.toggleButtonVisibility(this.state);
     }

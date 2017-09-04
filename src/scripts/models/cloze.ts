@@ -1,6 +1,5 @@
 ﻿import { Highlight } from "./highlight";
 import { Blank } from "./blank";
-import { ClozeElement, ClozeElementType } from "./cloze-element";
 
 /**
  * Represents the cloze. Instantiate with static createCloze().

@@ -1,4 +1,3 @@
-import { ClozeController } from '../controllers/cloze-controller';
 import { MessageService } from '../services/message-service';
 import { Highlight } from '../models/highlight';
 import { Answer } from '../models/answer';
@@ -61,11 +60,11 @@ export class BlankLoader {
    * @param  {Highlight[]} highlightsAfter - All highlights coming after the blank.
    */
   public linkHighlightIdsToObjects(blank: Blank, highlightsBefore: Highlight[], highlightsAfter: Highlight[]) {
-    for (var answer of blank.correctAnswers) {
+    for (let answer of blank.correctAnswers) {
       answer.linkHighlightIdsToObjects(highlightsBefore, highlightsAfter);
     }
 
-    for (var answer of blank.incorrectAnswers) {
+    for (let answer of blank.incorrectAnswers) {
       answer.linkHighlightIdsToObjects(highlightsBefore, highlightsAfter);
     }
 

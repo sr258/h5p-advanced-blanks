@@ -2,7 +2,6 @@
 import { ClozeElement, ClozeElementType } from './cloze-element';
 import { Answer, Correctness } from './answer';
 import { Message } from './message';
-import { Highlight } from './highlight';
 import { MessageType, ClozeType } from './enums';
 import { H5PLocalization, LocalizationLabels } from '../services/localization';
 import { ISettings } from "../services/settings";
@@ -67,7 +66,7 @@ export class Blank extends ClozeElement {
 
   public setHint(message: Message) {
     this.hint = message;
-    this.hasHint = this.hint.text != "";
+    this.hasHint = this.hint.text !== "";
   }
 
   /**
@@ -100,14 +99,14 @@ export class Blank extends ClozeElement {
    */
   private loadChoices(): string[] {
     this.choices = new Array();
-    for (var answer of this.correctAnswers) {
-      for (var alternative of answer.alternatives) {
+    for (let answer of this.correctAnswers) {
+      for (let alternative of answer.alternatives) {
         this.choices.push(alternative);
       }
     }
 
-    for (var answer of this.incorrectAnswers) {
-      for (var alternative of answer.alternatives) {
+    for (let answer of this.incorrectAnswers) {
+      for (let alternative of answer.alternatives) {
         this.choices.push(alternative);
       }
     }
@@ -311,7 +310,7 @@ export class Blank extends ClozeElement {
       return;
 
     this.removeTooltip();
-    if (this.hint && this.hint.text != "") {
+    if (this.hint && this.hint.text !== "") {
       this.displayTooltip(this.hint.text, MessageType.Retry, false);
       if (this.hint.highlightedElements)
         this.hint.highlightedElements.forEach((highlight) => highlight.isHighlighted = true);
