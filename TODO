@@ -15,11 +15,11 @@ soon:
 
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
 ☐ put Ractive into library
-☐ show +1 / -1 score calculator
+✘ show +1 / -1 score calculator
 ☐ implement xAPI
   ☐ answered + answer serialization (= check all pressed) --> stores all answers
   ☐ implement getXAPIData contract (for report rendering engines)
-☐ simplify highlight markup in semantics (for incorrectAnswers & hint!)
+✔ simplify highlight markup in semantics (for incorrectAnswers)
 ☐ reimplement snippets
 
 later:
@@ -36,4 +36,5 @@ later:
 ☐ new setting: allow further editing after 'check' / disallow
 ☐ sanatise all user entered strings
 ☐ replace ractive with jquery views
+☐ add highlight for hints
 ✔ popup for (i) icon when notifying of surpressed popups?

@@ -44,31 +44,30 @@ export class Answer {
    * @param  {string} answerText - The expected answer. Alternatives are separated by | or ; . (e.g. "Alternative 1|Alternative 2|Alternative 3|..."  -or- "Alternative 1;Alternative 2;Alternative 3")
    * @param  {string} reaction - The tooltip that should be displayed. Format: Tooltip Text;!!-1!! !!+1!!
    */
-  constructor(answerText: string, reaction: string, private settings: ISettings) {
+  constructor(answerText: string, reaction: string, showHighlight: boolean, highlight: number, private settings: ISettings) {
     this.alternatives = answerText.split(/[;|]/).map(s => s.trim());
-    this.message = new Message(reaction);
+    this.message = new Message(reaction, showHighlight, highlight);
     if (answerText.trim() === "") {
       this.appliesAlways = true;
     } else {
       this.appliesAlways = false;
     }
   }
-  
+
   /**
    * Looks through the object's message ids and stores the references to the highlight object for these ids.
    * @param  {Highlight[]} highlightsBefore
    * @param  {Highlight[]} highlightsAfter
    */
-  public linkHighlightIdsToObjects(highlightsBefore: Highlight[], highlightsAfter: Highlight[]) {
-    this.message.linkHighlights(highlightsBefore, highlightsAfter);
+  public linkHighlightIdToObject(highlightsBefore: Highlight[], highlightsAfter: Highlight[]) {
+    this.message.linkHighlight(highlightsBefore, highlightsAfter);
   }
   /**
    * Turns on the highlights set by the content author for this answer.
    */
-  public activateHighlights() {
-    for (var highlightedObject of this.message.highlightedElements) {
-      highlightedObject.isHighlighted = true;
-    }
+  public activateHighlight() {
+    if (this.message.highlightedElement)
+      this.message.highlightedElement.isHighlighted = true;
   }
 
   private cleanString(text: string): string {

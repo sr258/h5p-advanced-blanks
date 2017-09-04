@@ -5,7 +5,6 @@ import { H5PLocalization } from "./localization";
 
 export interface IDataRepository {
   getBlanks(): Blank[];
-  setSolved(): any;
   getClozeText(): string;
   getFeedbackText(): string;
   getMedia(): any;
@@ -23,13 +22,6 @@ export class H5PDataRepository implements IDataRepository {
   }
 
   /**
-   * Called when all blanks were entered correctly.
-   */
-  setSolved() {
-    // TODO
-  }
-
-  /**
    * Returns the blank text of the cloze (as HTML markup).
    */
   getClozeText(): string {
@@ -41,7 +33,6 @@ export class H5PDataRepository implements IDataRepository {
     return "";
   }
 
-  // TODO: implement
   getMedia(): any {
     return this.h5pConfigData.media;
   }
@@ -63,7 +54,7 @@ export class H5PDataRepository implements IDataRepository {
 
       if (h5pBlank.incorrectAnswersList) {
         for (var h5pIncorrectAnswer of h5pBlank.incorrectAnswersList) {
-          blank.addIncorrectAnswer(h5pIncorrectAnswer.incorrectAnswerText, h5pIncorrectAnswer.incorrectAnswerFeedback);
+          blank.addIncorrectAnswer(h5pIncorrectAnswer.incorrectAnswerText, h5pIncorrectAnswer.incorrectAnswerFeedback, h5pIncorrectAnswer.showHighlight, h5pIncorrectAnswer.highlight);
         }
       }
 

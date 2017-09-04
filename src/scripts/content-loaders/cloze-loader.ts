@@ -123,7 +123,7 @@ export class ClozeLoader {
         .slice(nextBlankIndexInArray + 1)
         .filter(e => e.type === ClozeElementType.Highlight)
         .map(e => e as Highlight);
-      BlankLoader.instance.linkHighlightIdsToObjects(blank, highlightsBeforeBlank, highlightsAfterBlank);
+      BlankLoader.instance.linkHighlightIdToObject(blank, highlightsBeforeBlank, highlightsAfterBlank);
     }
   }
 }

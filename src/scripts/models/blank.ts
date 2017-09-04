@@ -74,9 +74,9 @@ export class Blank extends ClozeElement {
    * @param text - What the user must enter.
    * @param reaction  - What the user gets displayed when he enteres the text.
    */
-  public addIncorrectAnswer(text: string, reaction: string): void {
+  public addIncorrectAnswer(text: string, reaction: string, showHighlight: boolean, highlight: number): void {
     this.incorrectAnswers.push(
-      new Answer(text, reaction, this.settings));
+      new Answer(text, reaction, showHighlight, highlight, this.settings));
   }
 
   /**
@@ -159,8 +159,8 @@ export class Blank extends ClozeElement {
   }
 
   private setTooltipErrorText(message: Message, surpressTooltip: boolean) {
-    if (message.highlightedElements.length > 0) {
-      this.displayTooltip(message.text, MessageType.Error, surpressTooltip, message.highlightedElements[message.highlightedElements.length - 1].id);
+    if (message.highlightedElement) {
+      this.displayTooltip(message.text, MessageType.Error, surpressTooltip, message.highlightedElement.id);
     }
     else {
       this.displayTooltip(message.text, MessageType.Error, surpressTooltip);
@@ -298,7 +298,7 @@ export class Blank extends ClozeElement {
       this.setTooltipErrorText(answer.message, surpressTooltip);
     }
     if (!surpressTooltip) {
-      answer.activateHighlights();
+      answer.activateHighlight();
     }
   }
 
@@ -312,8 +312,8 @@ export class Blank extends ClozeElement {
     this.removeTooltip();
     if (this.hint && this.hint.text !== "") {
       this.displayTooltip(this.hint.text, MessageType.Retry, false);
-      if (this.hint.highlightedElements)
-        this.hint.highlightedElements.forEach((highlight) => highlight.isHighlighted = true);
+      if (this.hint.highlightedElement)
+        this.hint.highlightedElement.isHighlighted = true;
       this.isRetry = true;
     }
   }

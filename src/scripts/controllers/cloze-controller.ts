@@ -228,8 +228,7 @@ export class ClozeController {
     if (this.onScoreChanged)
       this.onScoreChanged(this.currentScore, this.maxScore);
 
-    if (this.cloze.isSolved) {
-      this.repository.setSolved();
+    if (this.cloze.isSolved) {      
       if (this.onSolved)
         this.onSolved();
       return true;

@@ -28,9 +28,9 @@ export class BlankLoader {
   public createBlank(id: string, correctText: string, hintText: string): Blank {
     var blank = new Blank(this.settings, this.localization, this.jquery, this.messageService, id)
     if (correctText) {
-      blank.addCorrectAnswer(new Answer(correctText, "", this.settings));
+      blank.addCorrectAnswer(new Answer(correctText, "", false, 0, this.settings));
     }
-    blank.setHint(new Message(hintText ? hintText : ""));
+    blank.setHint(new Message(hintText ? hintText : "", false, 0));
 
     return blank;
   }
@@ -59,16 +59,16 @@ export class BlankLoader {
    * @param  {Highlight[]} highlightsBefore - All highlights coming before the blank.
    * @param  {Highlight[]} highlightsAfter - All highlights coming after the blank.
    */
-  public linkHighlightIdsToObjects(blank: Blank, highlightsBefore: Highlight[], highlightsAfter: Highlight[]) {
+  public linkHighlightIdToObject(blank: Blank, highlightsBefore: Highlight[], highlightsAfter: Highlight[]) {
     for (let answer of blank.correctAnswers) {
-      answer.linkHighlightIdsToObjects(highlightsBefore, highlightsAfter);
+      answer.linkHighlightIdToObject(highlightsBefore, highlightsAfter);
     }
 
     for (let answer of blank.incorrectAnswers) {
-      answer.linkHighlightIdsToObjects(highlightsBefore, highlightsAfter);
+      answer.linkHighlightIdToObject(highlightsBefore, highlightsAfter);
     }
 
-    blank.hint.linkHighlights(highlightsBefore, highlightsAfter);
+    blank.hint.linkHighlight(highlightsBefore, highlightsAfter);
   }
 
 }
