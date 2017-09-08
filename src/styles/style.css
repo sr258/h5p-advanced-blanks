@@ -82,48 +82,6 @@
 	background: none;
 }
 
-/* Tooltips */
-.h5p-advanced-blanks .tooltiperror, .h5p-advanced-blanks .tooltipcorrect, .h5p-advanced-blanks .tooltipretry {
-	padding: 10px;
-	max-width: 300px;
-	color: #303030;
-}
-
-.h5p-advanced-blanks .blank .message button {
-	font-size: smaller;
-	vertical-align: super;
-	float: right;
-}
-
-.h5p-advanced-blanks .blank span.message {
-	position: absolute;
-	max-width: 20em;
-	z-index: 100;
-	-ms-border-radius: 0.5em;
-	border-radius: 0.5em;
-	padding-left: 1em;
-	padding-right: 0.5em;
-	padding-top: 0.5em;
-	padding-bottom: 0.5em;
-}
-
-.h5p-advanced-blanks .blank.correct span.message {
-	background-color: #9dd8bb;
-	border: 1px solid green;
-}
-
-.h5p-advanced-blanks .blank.error span.message {
-	background-color: #f7d0d0;
-	border: 1px solid #ff4d4d;
-	color: white;
-}
-
-.h5p-advanced-blanks .blank.retry span.message {
-	background-color: #ffe774;
-	border: 1px solid #ffe774;
-	color: black;
-}
-
 /* Highlight in spelling mistake marker */
 
 .spelling-mistake .missing-character, .spelling-mistake .mistaken-character {

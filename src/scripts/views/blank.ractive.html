@@ -7,11 +7,11 @@
              on-blur="@this.fire('checkBlank', blank, 'blur')" 
              on-focus="@this.fire('focus', blank)"
              on-anykey="@this.fire('textTyped', blank)"
-             {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled" {{/if}}
+             {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled"{{/if}}
              class="h5p-text-input"/>
       {{#blank.hasHint}}
         <span class="h5p-tip-container">
-          <button on-click="@this.fire('showHint', blank)" {{#blank.isCorrect}}disabled="disabled" {{/if}}>
+          <button on-click="@this.fire('showHint', blank)" {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled" {{/if}}>
             <i class="fa fa-question-circle"></i>
           </button>
         </span>
@@ -19,17 +19,25 @@
     </span>    
   {{/unless}}
   {{#if isSelectCloze}}
-    {{#blank.hasHint}}
-      <button on-click="@this.fire('showHint', blank)" {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled"{{/if}}>
-      <i class="fa fa-question-circle"></i></button>
-    {{/if}}
-    <select id="{{blank.id}}" type="text" value="{{blank.enteredText}}" on-enter="@this.fire('checkBlank', blank, 'enter')" on-blur="@this.fire('checkBlank', blank, 'blur')" {{#blank.isCorrect}}disabled="disabled" {{/if}}size="1">
-      {{#each blank.choices}}
-        <option>{{this}}</option>
-      {{/each}}
-    </select>                    
-    <button on-click="@this.fire('checkBlank', blank, 'button')" {{#blank.isCorrect}} disabled="disabled" {{/if}}>
-      <i class="fa fa-check"></i>
-    </button>
-  {{/if}} 
+    <span class="h5p-input-wrapper">      
+      <select id="{{blank.id}}" type="text" value="{{blank.enteredText}}"
+              on-enter="@this.fire('checkBlank', blank, 'enter')" 
+              on-change="@this.fire('checkBlank', blank, 'blur')"
+              on-focus="@this.fire('focus', blank)"
+              {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled"{{/if}} 
+              size="1"
+              class="h5p-text-input">
+        {{#each blank.choices}}
+          <option>{{this}}</option>
+        {{/each}}
+      </select>                     
+      {{#blank.hasHint}}
+        <span class="h5p-tip-container">
+          <button on-click="@this.fire('showHint', blank)" {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled"{{/if}}>
+            <i class="fa fa-question-circle"></i>
+          </button>
+        </span>
+      {{/if}}     
+    </span>
+  {{/if}}
 </span>
