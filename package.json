@@ -6,6 +6,7 @@
   "scripts": {
     "test": "ava",
     "build": "cross-env NODE_ENV='development' webpack",
+    "build:prod": "cross-env NODE_ENV='production' webpack -p",
     "watch": "webpack --watch",
     "dist": "cp library.json dist && cp semantics.json dist",
     "deploy": "rsync -vaz --delete dist/* $DEPLOY_TARGET/h5p-advanced-blanks",

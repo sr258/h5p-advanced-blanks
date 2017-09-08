@@ -29,7 +29,13 @@ var config = {
       },
       {
         test: /\.ractive.html$/,
-        use: 'html-loader'
+        use: {
+          loader: 'html-loader',
+          options: {
+            ignoreCustomFragments: [/\{\{.*?}}/],
+            minimize: false
+          }
+        }
       }
     ]
   },
