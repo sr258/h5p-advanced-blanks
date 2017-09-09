@@ -23,7 +23,6 @@
   padding: 0.1875em 1em 0.1875em 0.5em;
   text-overflow: ellipsis;
   overflow: hidden;
-  white-space: nowrap;
 }
 
 /* Showing solution input */

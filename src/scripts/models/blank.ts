@@ -144,6 +144,10 @@ export class Blank extends ClozeElement {
     if (this.hasPendingFeedback) {
       this.evaluateAttempt(false);
     }
+    if (this.settings.clozeType === ClozeType.Select) {
+      this.setAnswerState(MessageType.None);
+      this.lastCheckedText = "";
+    }
   }
 
   private displayTooltip(message: string, type: MessageType, surpressTooltip: boolean, id?: string) {

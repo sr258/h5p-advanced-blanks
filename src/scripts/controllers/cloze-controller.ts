@@ -115,8 +115,12 @@ export class ClozeController {
   }
 
   checkBlank = (blank: Blank, cause: string) => {
-    if ((cause === 'blur')) {
+    if ((cause === 'blur' || cause === 'change')) {
       blank.lostFocus();
+    }
+
+    if (cause === 'change' && this.onTyped) {
+      this.onTyped();
     }
 
     if (this.settings.autoCheck) {
@@ -228,7 +232,7 @@ export class ClozeController {
     if (this.onScoreChanged)
       this.onScoreChanged(this.currentScore, this.maxScore);
 
-    if (this.cloze.isSolved) {      
+    if (this.cloze.isSolved) {
       if (this.onSolved)
         this.onSolved();
       return true;

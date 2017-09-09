@@ -5,26 +5,30 @@ Bugfixes:
   ☐ trim whitespaces of user input
   ☐ hover over image --> no tooltip (bug in h5p library?)
   ☐ resize event not handled correctly --> important for feedback popup    
+  ☐ check mode --> spelling mistake: no marking of box
 
 Select mode:
   ☐ select mode: random choice of other answers
-  ☐ select mode --> marking of correct / error not working
+  ☐ feedback popup hidden by combobox
   ☐ dropdown icon is on top of other icons
-  ☐ blank should revert to "neutral" state when it was wrong and is opened
-  ☐ bug: empty selection --> line is too high
-
+  ✔ blank should revert to "neutral" state when it was wrong and is opened
+  ✔ bug: empty selection --> line is too high
+  ✔ no "check" button after it was pressed and there were errors (because the changed error blank aren't reset to neutral)
+  ✔ select mode --> marking of correct / error not working
+  
 soon:
 =====
 
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
 ☐ put Ractive into library
-✘ show +1 / -1 score calculator
 ☐ implement xAPI
   ☐ answered + answer serialization (= check all pressed) --> stores all answers
   ☐ implement getXAPIData contract (for report rendering engines)
-✔ simplify highlight markup in semantics (for incorrectAnswers)
 ☐ reimplement snippets
 ☐ better tip icon
+☐ feedback popup is too large --> auto-size
+✘ show +1 / -1 score calculator
+✔ simplify highlight markup in semantics (for incorrectAnswers)
 
 later:
 ======
@@ -41,7 +45,7 @@ later:
 ☐ sanatise all user entered strings
 ☐ replace ractive with jquery views
 ☐ add highlight for hints
-✔ popup for (i) icon when notifying of surpressed popups?
 ☐ hide tip icon if blank was answered correctly
 ☐ show "check" button in auto-answer mode when last gap is being filled (to avoid confusion of what to do at the end; user might not be aware of the concept of "losing focus")
 ☐ auto-check in select mode: does this work with keyboard select?
+✔ popup for (i) icon when notifying of surpressed popups?

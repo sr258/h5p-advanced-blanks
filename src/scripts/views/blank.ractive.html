@@ -22,7 +22,7 @@
     <span class="h5p-input-wrapper">      
       <select id="{{blank.id}}" type="text" value="{{blank.enteredText}}"
               on-enter="@this.fire('checkBlank', blank, 'enter')" 
-              on-change="@this.fire('checkBlank', blank, 'blur')"
+              on-change="@this.fire('checkBlank', blank, 'change')"
               on-focus="@this.fire('focus', blank)"
               {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled"{{/if}} 
               size="1"
