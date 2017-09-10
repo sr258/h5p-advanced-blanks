@@ -331,7 +331,7 @@
     "importance": "low",
     "name": "spellingMistakeWarning",
     "type": "text",
-    "default": "You've made a spelling mistake.",
+    "default": "You've made a spelling mistake: @mistake",
     "common": true,
     "optional": true
   },

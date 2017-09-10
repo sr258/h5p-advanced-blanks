@@ -5,7 +5,8 @@ Bugfixes:
   ☐ trim whitespaces of user input
   ☐ hover over image --> no tooltip (bug in h5p library?)
   ☐ resize event not handled correctly --> important for feedback popup    
-  ☐ check mode --> spelling mistake: no marking of box
+  ☐ select box / input box not long enough for long input --> overlap with symbols
+  ✔ check mode --> spelling mistake: no marking of box
 
 Select mode:
   ☐ select mode: random choice of other answers

@@ -78,6 +78,23 @@ select.h5p-text-input {
   color: #b71c1c;
 }
 
+
+/* Spelling errors */
+.h5p-advanced-blanks .blank.retry .h5p-text-input {
+  background-color: #ffff99;
+  border: 1px solid #ffff99;
+  color: black;
+}
+.h5p-advanced-blanks .blank.retry .h5p-input-wrapper:after {
+  position: absolute;
+  right: 0.5em;
+  top: 0;
+  font-family: 'H5PFontAwesome4';
+  text-decoration: none;
+  content: "\f00d";
+  color: #b71c1c;
+}
+
 /* Buttons */
 .h5p-advanced-blanks .blank button {
 	padding-left: 5px;
@@ -153,29 +170,39 @@ select.h5p-text-input {
   padding-right: 2.25em;
 }
 .h5p-advanced-blanks .blank.has-tip.correct .h5p-input-wrapper:after,
-.h5p-advanced-blanks .blank.has-tip.error .h5p-input-wrapper:after {
+.h5p-advanced-blanks .blank.has-tip.error .h5p-input-wrapper:after,
+.h5p-advanced-blanks .blank.has-tip.retry .h5p-input-wrapper:after {
   right: 2.25em;
 }
 .h5p-advanced-blanks .blank.has-tip.correct .h5p-text-input,
-.h5p-advanced-blanks .blank.has-tip.error .h5p-text-input {
+.h5p-advanced-blanks .blank.has-tip.error .h5p-text-input
+.h5p-advanced-blanks .blank.has-tip.retry .h5p-text-input {
   padding-right: 3.5em;
 }
 
 /* pending feedback marker */
-.h5p-advanced-blanks .blank.error.has-pending-feedback .h5p-input-wrapper:before {
+.h5p-advanced-blanks .blank.has-pending-feedback .h5p-input-wrapper:before {
   position: absolute;
   left: -0.4em;
   top: -0.7em;
   font-family: 'H5PFontAwesome4';
   text-decoration: none;
-  content: "\f05a";
-  color: #b71c1c;
+  content: "\f05a"; 
 
   animation: shake 3s cubic-bezier(.36,.07,.19,.97) reverse;  
   animation-iteration-count: 2;
   transform: translate3d(0, 0, 0);
   backface-visibility: hidden;
   perspective: 1000px;
+}
+
+.h5p-advanced-blanks .blank.error.has-pending-feedback .h5p-input-wrapper:before { 
+  color: #b71c1c;
+}
+
+.h5p-advanced-blanks .blank.retry.has-pending-feedback .h5p-input-wrapper:before { 
+  color: #ffff00;  
+  text-shadow: 0px 0px 0.5em black;
 }
 
 @keyframes shake {
