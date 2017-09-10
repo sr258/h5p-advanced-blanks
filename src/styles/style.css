@@ -20,9 +20,14 @@
   font-size: 1em;
   border-radius: 0.25em;
   border: 1px solid #a0a0a0;
-  padding: 0.1875em 1em 0.1875em 0.5em;
+  padding: 0.1875em 1.5em 0.1875em 0.5em;
   text-overflow: ellipsis;
   overflow: hidden;
+}
+
+/* Select mode */
+select.h5p-text-input {
+  appearance: button;
 }
 
 /* Showing solution input */

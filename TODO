@@ -10,7 +10,7 @@ Bugfixes:
 Select mode:
   ☐ select mode: random choice of other answers
   ☐ feedback popup hidden by combobox
-  ☐ dropdown icon is on top of other icons
+  ✔ dropdown icon is on top of other icons
   ✔ blank should revert to "neutral" state when it was wrong and is opened
   ✔ bug: empty selection --> line is too high
   ✔ no "check" button after it was pressed and there were errors (because the changed error blank aren't reset to neutral)
