@@ -71,6 +71,7 @@ export class Answer {
   }
 
   private cleanString(text: string): string {
+    text = text.trim();
     return text.replace(/\s{2,}/g, " ");
   }
   /**

@@ -2,21 +2,14 @@ now:
 ====
 
 Bugfixes:
-  ☐ trim whitespaces of user input
+  ✔ trim whitespaces of user input
   ☐ hover over image --> no tooltip (bug in h5p library?)
   ☐ resize event not handled correctly --> important for feedback popup    
-  ☐ select box / input box not long enough for long input --> overlap with symbols
-  ✔ clicking hint --> cloze is always marked as retry
-  ✔ check mode --> spelling mistake: no marking of box
+  ☐ select box / input box not long enough for long input --> overlap with symbols 
 
 Select mode:
   ☐ select mode: random choice of other answers
   ☐ feedback popup hidden by combobox
-  ✔ dropdown icon is on top of other icons
-  ✔ blank should revert to "neutral" state when it was wrong and is opened
-  ✔ bug: empty selection --> line is too high
-  ✔ no "check" button after it was pressed and there were errors (because the changed error blank aren't reset to neutral)
-  ✔ select mode --> marking of correct / error not working
   
 soon:
 =====
@@ -30,8 +23,6 @@ soon:
 ☐ reimplement snippets
 ☐ better tip icon
 ☐ feedback popup is too large --> auto-size
-✘ show +1 / -1 score calculator
-✔ simplify highlight markup in semantics (for incorrectAnswers)
 
 later:
 ======
@@ -51,4 +42,18 @@ later:
 ☐ hide tip icon if blank was answered correctly
 ☐ show "check" button in auto-answer mode when last gap is being filled (to avoid confusion of what to do at the end; user might not be aware of the concept of "losing focus")
 ☐ auto-check in select mode: does this work with keyboard select?
-✔ popup for (i) icon when notifying of surpressed popups?
+☐ if correct answer is: "Correct 1" and user enters "Correct " it is not considered a spelling mistake
+
+done log:
+=========
+
+  ✔ clicking hint --> cloze is always marked as retry
+  ✔ check mode --> spelling mistake: no marking of box
+  ✔ dropdown icon is on top of other icons
+  ✔ blank should revert to "neutral" state when it was wrong and is opened
+  ✔ bug: empty selection --> line is too high
+  ✔ no "check" button after it was pressed and there were errors (because the changed error blank aren't reset to neutral)
+  ✔ select mode --> marking of correct / error not working
+  ✘ show +1 / -1 score calculator
+  ✔ simplify highlight markup in semantics (for incorrectAnswers)
+  ✔ popup for (i) icon when notifying of surpressed popups?  
