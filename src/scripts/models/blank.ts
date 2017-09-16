@@ -323,9 +323,9 @@ export class Blank extends ClozeElement {
     this.removeTooltip();
     if (this.hint && this.hint.text !== "") {
       this.displayTooltip(this.hint.text, MessageType.Retry, false);
-      if (this.hint.highlightedElement)
+      if (this.hint.highlightedElement) {
         this.hint.highlightedElement.isHighlighted = true;
-      this.isRetry = true;
+      }
     }
   }
 

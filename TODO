@@ -6,7 +6,7 @@ Bugfixes:
   ☐ hover over image --> no tooltip (bug in h5p library?)
   ☐ resize event not handled correctly --> important for feedback popup    
   ☐ select box / input box not long enough for long input --> overlap with symbols
-  ☐ clicking hint --> cloze is always marked as retry
+  ✔ clicking hint --> cloze is always marked as retry
   ✔ check mode --> spelling mistake: no marking of box
 
 Select mode:
