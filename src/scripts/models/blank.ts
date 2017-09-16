@@ -85,9 +85,16 @@ export class Blank extends ClozeElement {
   // TODO: refactor
   private calculateMinTextLength(): void {
     var answers: string[] = new Array();
-    for (var correctAnswer of this.correctAnswers) {
+    for (let correctAnswer of this.correctAnswers) {
       answers.push(getLongestString(correctAnswer.alternatives));
     }
+
+    if (this.settings.clozeType === ClozeType.Select) {
+      for (let incorrectAnswer of this.incorrectAnswers) {
+        answers.push(getLongestString(incorrectAnswer.alternatives));
+      }
+    }
+
     var longestAnswer = getLongestString(answers);
     var l = longestAnswer.length;
     this.minTextLength = Math.max(10, l - (l % 10) + 10);

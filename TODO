@@ -6,6 +6,7 @@ Bugfixes:
   ☐ hover over image --> no tooltip (bug in h5p library?)
   ☐ resize event not handled correctly --> important for feedback popup    
   ☐ select box / input box not long enough for long input --> overlap with symbols
+  ☐ clicking hint --> cloze is always marked as retry
   ✔ check mode --> spelling mistake: no marking of box
 
 Select mode:
@@ -20,6 +21,7 @@ Select mode:
 soon:
 =====
 
+☐ reference audio/video library in library.json
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
 ☐ put Ractive into library
 ☐ implement xAPI
