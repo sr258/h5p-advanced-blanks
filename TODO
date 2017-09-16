@@ -4,8 +4,11 @@ now:
 Bugfixes:
   ✔ trim whitespaces of user input
   ☐ hover over image --> no tooltip (bug in h5p library?)
-  ☐ resize event not handled correctly --> important for feedback popup    
+  ☐ check if resize events are called and handled correctly   
+      feedback popup sometimes is shifted to the wrong position if buttons become are visible
   ☐ select box / input box not long enough for long input --> overlap with symbols 
+      requires an estimate of width by text length (should implemented in an isolated way)
+  ✔ hide message surpression indicator when clicking retry
 
 Select mode:
   ☐ select mode: random choice of other answers

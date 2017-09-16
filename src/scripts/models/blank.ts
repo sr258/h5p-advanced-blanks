@@ -132,6 +132,7 @@ export class Blank extends ClozeElement {
     this.lastCheckedText = "";
     this.removeTooltip();
     this.setAnswerState(MessageType.None);
+    this.hasPendingFeedback = false;
   }
 
   /**
@@ -286,7 +287,7 @@ export class Blank extends ClozeElement {
     this.isCorrect = false;
     this.isError = false;
     this.isRetry = false;
-    this.isShowingSolution = false;
+    this.isShowingSolution = false;    
 
     switch (messageType) {
       case MessageType.Correct:
