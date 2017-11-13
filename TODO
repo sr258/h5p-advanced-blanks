@@ -1,23 +1,38 @@
-now: 
-====
+Observations in beta test:
+======================
+  ☐ was not/wasn't --> only was not is accepted as solution (it's not an issue with alternatives, though. It's must be about the apostrophe.)
+  ☐ It would be useful to have a text pasting option that accepts regular blanks.
+  ☐ Alternative markup should be / instead of ; to align the content with the normal h5p content type.
+  ☐ It would be useful to have HTML markup in feedback texts.
+  ☐ The 'case sensitive' option should be off by default.
+  ☐ It would be useful to have an inbuilt language intelligence that can deal with typical issues:
+      ☐ wrongly used apostrophes: ´` instead of '
+      ☐ auto-alternatives for short forms (with option to disable it); requires intelligent checking of what is before the gap to avoid weird short forms like "Chris's done that before."
+      ☐ auto-feedback for irregular verbs and typical misspellings
+      ☐ autogeneration of incorrect answers for tenses which the content creator can select + generic auto-feedback texts defined by the user.
+  ☐ Answer mode should become a regular option.
+
+High priority: 
+==============
 
 Bugfixes:
   ✔ trim whitespaces of user input
   ☐ hover over image --> no tooltip (bug in h5p library?)
   ☐ check if resize events are called and handled correctly   
       feedback popup sometimes is shifted to the wrong position if buttons become are visible
+      reason is that its position is set as relative to the bottom, which changes after the popup was positioned
   ☐ select box / input box not long enough for long input --> overlap with symbols 
       requires an estimate of width by text length (should implemented in an isolated way)
   ✔ hide message surpression indicator when clicking retry
+  ☐ empty feedback --> crash
 
 Select mode:
   ☐ select mode: random choice of other answers
   ☐ feedback popup hidden by combobox
   
-soon:
-=====
+Medium priority:
+================
 
-☐ reference audio/video library in library.json
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
 ☐ put Ractive into library
 ☐ implement xAPI
@@ -27,8 +42,8 @@ soon:
 ☐ better tip icon
 ☐ feedback popup is too large --> auto-size
 
-later:
-======
+Low priority:
+=============
 
 ☐ implement feedback ranges
 ☐ take over accessibility from h5p-blanks
