@@ -10,7 +10,9 @@ Observations in beta test:
       ☐ auto-alternatives for short forms (with option to disable it); requires intelligent checking of what is before the gap to avoid weird short forms like "Chris's done that before."
       ☐ auto-feedback for irregular verbs and typical misspellings
       ☐ autogeneration of incorrect answers for tenses which the content creator can select + generic auto-feedback texts defined by the user.
+      ☐ autogeneration of incorrect answers for plural / singular
   ☐ Answer mode should become a regular option.
+  ☐ Line high should not be 1.0. The touching boxes look bad.
 
 High priority: 
 ==============
