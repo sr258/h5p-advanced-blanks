@@ -10,7 +10,8 @@
     "watch": "webpack --watch",
     "dist": "cp library.json dist && cp semantics.json dist",
     "deploy": "rsync -vaz --delete dist/* $DEPLOY_TARGET/h5p-advanced-blanks",
-    "build+deploy": "npm run build && npm run deploy"
+    "build+deploy": "npm run build && npm run deploy",
+    "bdd": "npm run build && npm run dist && npm run deploy"
   },
   "repository": {
     "type": "git",

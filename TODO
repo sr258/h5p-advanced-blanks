@@ -1,8 +1,8 @@
 Observations in beta test:
 ======================
-  ☐ was not/wasn't --> only was not is accepted as solution (it's not an issue with alternatives, though. It's must be about the apostrophe.)
+  ✔ was not/wasn't --> only was not is accepted as solution (it's not an issue with alternatives, though. It's must be about the apostrophe.) @done(17-12-27 21:52)
   ☐ It would be useful to have a text pasting option that accepts regular blanks.
-  ☐ Alternative markup should be / instead of ; to align the content with the normal h5p content type.
+  ✔ Alternative markup should be / instead of ; to align the content with the normal h5p content type. @done(17-12-27 21:52)
   ☐ It would be useful to have HTML markup in feedback texts.
   ☐ The 'case sensitive' option should be off by default.
   ☐ It would be useful to have an inbuilt language intelligence that can deal with typical issues:
@@ -12,7 +12,7 @@ Observations in beta test:
       ☐ autogeneration of incorrect answers for tenses which the content creator can select + generic auto-feedback texts defined by the user.
       ☐ autogeneration of incorrect answers for plural / singular
   ☐ Answer mode should become a regular option.
-  ☐ Line high should not be 1.0. The touching boxes look bad.
+  ☐ Line height should not be 1.0. The touching boxes look bad.
 
 High priority: 
 ==============

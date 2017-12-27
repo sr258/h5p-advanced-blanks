@@ -25,12 +25,25 @@ export class BlankLoader {
 
   private snippetRegex = new RegExp("-(\\d+)-");
 
-  public createBlank(id: string, correctText: string, hintText: string): Blank {
+  private decodeHtml(html: string): string {
+    var elem = document.createElement('textarea');
+    elem.innerHTML = html;
+    return elem.value;
+  }
+
+  public createBlank(id: string, correctText: string, hintText: string, incorrectAnswers: any[]): Blank {
     var blank = new Blank(this.settings, this.localization, this.jquery, this.messageService, id)
     if (correctText) {
+      correctText = this.decodeHtml(correctText);
       blank.addCorrectAnswer(new Answer(correctText, "", false, 0, this.settings));
     }
     blank.setHint(new Message(hintText ? hintText : "", false, 0));
+
+    if (incorrectAnswers) {
+      for (var h5pIncorrectAnswer of incorrectAnswers) {
+        blank.addIncorrectAnswer(this.decodeHtml(h5pIncorrectAnswer.incorrectAnswerText), h5pIncorrectAnswer.incorrectAnswerFeedback, h5pIncorrectAnswer.showHighlight, h5pIncorrectAnswer.highlight);
+      }
+    }
 
     return blank;
   }

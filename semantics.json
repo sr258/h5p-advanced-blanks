@@ -101,7 +101,7 @@
           "name": "correctAnswerText",
           "type": "text",
           "label": "Correct answer",
-          "description": "You can separate alternative answers with a semicolon (;)."
+          "description": "You can separate alternative answers with a slash (/)."
         },
         {
           "name": "hint",
@@ -120,7 +120,7 @@
             "name": "incorrectAnswerGroup",
             "type": "group",
             "label": "Incorrect answer",
-            "description": "You can separate alternative answers with a semicolon (;).",
+            "description": "You can separate alternative answers with a slash (/).",
             "fields": [
               {
                 "name": "incorrectAnswerText",

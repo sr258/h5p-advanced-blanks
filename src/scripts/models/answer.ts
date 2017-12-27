@@ -45,7 +45,7 @@ export class Answer {
    * @param  {string} reaction - The tooltip that should be displayed. Format: Tooltip Text;!!-1!! !!+1!!
    */
   constructor(answerText: string, reaction: string, showHighlight: boolean, highlight: number, private settings: ISettings) {
-    this.alternatives = answerText.split(/[;|]/).map(s => s.trim());
+    this.alternatives = answerText.split(/\//).map(s => s.trim());
     this.message = new Message(reaction, showHighlight, highlight);
     if (answerText.trim() === "") {
       this.appliesAlways = true;
