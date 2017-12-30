@@ -12,15 +12,14 @@ High priority:
 ==============
 
 Bugfixes:
-  ✔ trim whitespaces of user input
-  ☐ hover over image --> no tooltip (bug in h5p library?)
+  ✔ trim whitespaces of user input  
   ☐ check if resize events are called and handled correctly   
       feedback popup sometimes is shifted to the wrong position if buttons become are visible
       reason is that its position is set as relative to the bottom, which changes after the popup was positioned
   ☐ select box / input box not long enough for long input --> overlap with symbols 
       requires an estimate of width by text length (should implemented in an isolated way)
   ✔ hide message surpression indicator when clicking retry
-  ☐ empty feedback --> crash
+  ✔ empty feedback --> crash @done(17-12-30 14:13)
 
 Select mode:
   ☐ select mode: random choice of other answers
@@ -44,6 +43,7 @@ Low priority:
 ☐ implement feedback ranges
 ☐ take over accessibility from h5p-blanks
 ☐ auto-growing text-fields
+☐ hover over image --> no tooltip (bug in h5p library?)
 ☐ It would be useful to have an inbuilt language intelligence that can deal with typical issues:
       ☐ wrongly used apostrophes: ´` instead of '
       ☐ auto-alternatives for short forms (with option to disable it); requires intelligent checking of what is before the gap to avoid weird short forms like "Chris's done that before."

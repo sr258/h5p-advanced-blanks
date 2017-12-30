@@ -56,6 +56,9 @@ export class BlankLoader {
 
   private getStringWithSnippets(text: string, snippets: string[]): string {
     var match: RegExpMatchArray;
+    if(!text || text === undefined)
+      return "";
+
     while ((match = text.match(this.snippetRegex))) {
       var index = parseInt(match[1]) - 1;
       let snippet = "";
