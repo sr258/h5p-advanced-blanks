@@ -7,7 +7,7 @@ Observations in beta test:
   ✔ The 'case sensitive' option should be off by default. @done(17-12-30 14:07)
     ✔ Answer mode should become a regular option. @done(17-12-30 14:07)
   ☐ Line height should not be 1.0. The touching boxes look bad.
-
+  
 High priority: 
 ==============
 
@@ -23,9 +23,13 @@ Bugfixes:
 
 Select mode:
   ✔ select mode: random choice of other answers @done(17-12-30 16:16)
-  ☐ remove duplicate choices
-  ☐ don't show typing mistake error message in select mode
-  ☐ feedback popup hidden by combobox
+  ✔ remove duplicate choices @done(17-12-30 16:22)
+  ✔ don't show typing mistake error message in select mode @done(17-12-30 18:17)
+  ☐ hide "option restriction setting" when not appropriate (showWhen doesn't work for selectAlternatives for some reason)
+  ☐ feedback popup hidden by combobox (is this still an issue?)
+
+General todo:
+  ☐ check appearance in Firefox, Chrome, Edge and IE
   
 Medium priority:
 ================
