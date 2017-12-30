@@ -69,12 +69,13 @@ export class ClozeController {
     this.isSelectCloze = this.settings.clozeType === ClozeType.Select ? true : false;
 
     var blanks = this.repository.getBlanks();    
-    /*
+        
     if(this.isSelectCloze && this.settings.selectAlternatives === SelectAlternatives.All) {
       for(var blank of blanks) {
-        blank.loadChoicesFromOtherBlanks( blanks.filter(v => v !== blank) );
+        let otherBlanks = blanks.filter(v => v !== blank);
+        blank.loadChoicesFromOtherBlanks(otherBlanks);
       }
-    }*/
+    }
 
     var snippets = this.repository.getSnippets();
     blanks.forEach(blank => BlankLoader.instance.replaceSnippets(blank, snippets));

@@ -22,7 +22,9 @@ Bugfixes:
   ✔ empty feedback --> crash @done(17-12-30 14:13)
 
 Select mode:
-  ☐ select mode: random choice of other answers
+  ✔ select mode: random choice of other answers @done(17-12-30 16:16)
+  ☐ remove duplicate choices
+  ☐ don't show typing mistake error message in select mode
   ☐ feedback popup hidden by combobox
   
 Medium priority:

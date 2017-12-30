@@ -124,10 +124,10 @@ export class Blank extends ClozeElement {
     return this.choices;
   }
 
-  private onlyUnique(value, index, self) { 
-    return self.indexOf(value) === index;
-  }
-
+  /**
+   * Creates a list of choices from all correct answers of the cloze.
+   * @param otherBlanks All OTHER blanks in the cloze. (excludes the current one!)
+   */
   public loadChoicesFromOtherBlanks(otherBlanks: Blank[]): string[] {
     let ownChoices = new Array();
     for (let answer of this.correctAnswers) {
@@ -145,19 +145,16 @@ export class Blank extends ClozeElement {
       }
     }
 
-    otherChoices = otherChoices.filter((value) => { ownChoices.indexOf(value) === -1 });
     otherChoices = shuffleArray(otherChoices);
-    let maxChoices;
-    if(this.settings.selectAlternativeRestriction === 0){
-      maxChoices = ownChoices.length + otherChoices.length;
-    }
-    else{
-      maxChoices = Math.max(this.settings.selectAlternativeRestriction, ownChoices.length + 1);
-    }
-    for (let x = ownChoices.length; x++; x < Math.min(maxChoices, otherChoices.length)) {
-      ownChoices.push(otherChoices[x]);
-    }
 
+    let maxChoices = this.settings.selectAlternativeRestriction;
+    if(maxChoices == undefined || maxChoices == 0)
+      maxChoices = ownChoices.length + otherChoices.length;
+    
+    let  leftOverChoices = maxChoices - ownChoices.length;
+    for(let x = 0; x < leftOverChoices && x < otherChoices.length; x++)
+      ownChoices.push(otherChoices[x]);
+    
     this.choices = shuffleArray(ownChoices);
     this.choices.unshift("");
 
