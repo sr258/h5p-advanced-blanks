@@ -1,22 +1,5 @@
 [
   {
-    "name": "mode",
-    "type": "select",
-    "label": "Answer mode",
-    "description": "Indicates in what way the user enters answers.",
-    "options": [
-      {
-        "value": "selection",
-        "label": "The users selects from options."
-      },
-      {
-        "value": "typing",
-        "label": "The users types in the answers."
-      }
-    ],
-    "default": "typing"
-  },
-  {
     "name": "media",
     "type": "group",
     "label": "Media",
@@ -197,6 +180,24 @@
     "optional": true,
     "fields": [
       {
+        "name": "mode",
+        "type": "select",
+        "label": "Answer mode",
+        "description": "Indicates in what way the user enters answers.",
+        "optional": false,
+        "options": [
+          {
+            "value": "selection",
+            "label": "The users selects from options."
+          },
+          {
+            "value": "typing",
+            "label": "The users types in the answers."
+          }
+        ],
+        "default": "typing"
+      },
+      {
         "label": "Enable \"Retry\"",
         "importance": "low",
         "name": "enableRetry",
@@ -224,7 +225,7 @@
         "name": "caseSensitive",
         "importance": "low",
         "type": "boolean",
-        "default": true,
+        "default": false,
         "label": "Case sensitive",
         "description": "Makes sure the user input has to be exactly the same as the answer."
       },

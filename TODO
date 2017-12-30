@@ -4,14 +4,8 @@ Observations in beta test:
   ☐ It would be useful to have a text pasting option that accepts regular blanks.
   ✔ Alternative markup should be / instead of ; to align the content with the normal h5p content type. @done(17-12-27 21:52)
   ☐ It would be useful to have HTML markup in feedback texts.
-  ☐ The 'case sensitive' option should be off by default.
-  ☐ It would be useful to have an inbuilt language intelligence that can deal with typical issues:
-      ☐ wrongly used apostrophes: ´` instead of '
-      ☐ auto-alternatives for short forms (with option to disable it); requires intelligent checking of what is before the gap to avoid weird short forms like "Chris's done that before."
-      ☐ auto-feedback for irregular verbs and typical misspellings
-      ☐ autogeneration of incorrect answers for tenses which the content creator can select + generic auto-feedback texts defined by the user.
-      ☐ autogeneration of incorrect answers for plural / singular
-  ☐ Answer mode should become a regular option.
+  ✔ The 'case sensitive' option should be off by default. @done(17-12-30 14:07)
+    ✔ Answer mode should become a regular option. @done(17-12-30 14:07)
   ☐ Line height should not be 1.0. The touching boxes look bad.
 
 High priority: 
@@ -50,6 +44,12 @@ Low priority:
 ☐ implement feedback ranges
 ☐ take over accessibility from h5p-blanks
 ☐ auto-growing text-fields
+☐ It would be useful to have an inbuilt language intelligence that can deal with typical issues:
+      ☐ wrongly used apostrophes: ´` instead of '
+      ☐ auto-alternatives for short forms (with option to disable it); requires intelligent checking of what is before the gap to avoid weird short forms like "Chris's done that before."
+      ☐ auto-feedback for irregular verbs and typical misspellings
+      ☐ autogeneration of incorrect answers for tenses which the content creator can select + generic auto-feedback texts defined by the user.
+      ☐ autogeneration of incorrect answers for plural / singular
 
 (re)consider if needed:
 =======================

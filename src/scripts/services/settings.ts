@@ -31,7 +31,7 @@ export class H5PSettings implements ISettings {
 
   constructor(h5pConfigData: any) {
    
-    if (h5pConfigData.mode === 'selection') {
+    if (h5pConfigData.behaviour.mode === 'selection') {
       this.clozeType = ClozeType.Select;
     }
     else {
