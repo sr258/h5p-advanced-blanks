@@ -139,7 +139,7 @@ export class Blank extends ClozeElement {
     let otherChoices = new Array();
     for (let otherBlank of otherBlanks) {
       for (let answer of otherBlank.correctAnswers) {
-        for (let alternative of answer.alternatives) {          
+        for (let alternative of answer.alternatives) {
           otherChoices.push(alternative);
         }
       }
@@ -148,13 +148,18 @@ export class Blank extends ClozeElement {
     otherChoices = shuffleArray(otherChoices);
 
     let maxChoices = this.settings.selectAlternativeRestriction;
-    if(maxChoices == undefined || maxChoices == 0)
+    if (maxChoices == undefined || maxChoices == 0)
       maxChoices = ownChoices.length + otherChoices.length;
-    
-    let  leftOverChoices = maxChoices - ownChoices.length;
-    for(let x = 0; x < leftOverChoices && x < otherChoices.length; x++)
-      ownChoices.push(otherChoices[x]);
-    
+
+    let leftOverChoices = maxChoices - ownChoices.length;
+    for (let x = 0; x < leftOverChoices && x < otherChoices.length; x++) {
+      if (ownChoices.indexOf(otherChoices[x]) >= 0) {
+        leftOverChoices++;
+      } else {
+        ownChoices.push(otherChoices[x]);
+      }
+    }
+
     this.choices = shuffleArray(ownChoices);
     this.choices.unshift("");
 
@@ -324,7 +329,7 @@ export class Blank extends ClozeElement {
     this.isCorrect = false;
     this.isError = false;
     this.isRetry = false;
-    this.isShowingSolution = false;    
+    this.isShowingSolution = false;
 
     switch (messageType) {
       case MessageType.Correct:
