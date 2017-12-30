@@ -2,7 +2,7 @@
 import { ClozeElement, ClozeElementType } from './cloze-element';
 import { Answer, Correctness } from './answer';
 import { Message } from './message';
-import { MessageType, ClozeType } from './enums';
+import { MessageType, ClozeType, SelectAlternatives } from './enums';
 import { H5PLocalization, LocalizationLabels } from '../services/localization';
 import { ISettings } from "../services/settings";
 import { getLongestString, shuffleArray } from "../../lib/helpers";
@@ -54,8 +54,8 @@ export class Blank extends ClozeElement {
   * Call this method when all incorrect answers have been added.
   */
   public finishInitialization(): void {
-    if (this.settings.clozeType === ClozeType.Select) {
-      this.loadChoices();
+    if (this.settings.clozeType === ClozeType.Select && this.settings.selectAlternatives === SelectAlternatives.Alternatives) {
+      this.loadChoicesFromOwnAlternatives();
     }
     this.calculateMinTextLength();
   }
@@ -104,7 +104,7 @@ export class Blank extends ClozeElement {
    * Creates a list of choices from all alternatives provided by
    * the correct and incorrect answers.
    */
-  private loadChoices(): string[] {
+  private loadChoicesFromOwnAlternatives(): string[] {
     this.choices = new Array();
     for (let answer of this.correctAnswers) {
       for (let alternative of answer.alternatives) {
@@ -119,6 +119,46 @@ export class Blank extends ClozeElement {
     }
 
     this.choices = shuffleArray(this.choices);
+    this.choices.unshift("");
+
+    return this.choices;
+  }
+
+  private onlyUnique(value, index, self) { 
+    return self.indexOf(value) === index;
+  }
+
+  public loadChoicesFromOtherBlanks(otherBlanks: Blank[]): string[] {
+    let ownChoices = new Array();
+    for (let answer of this.correctAnswers) {
+      for (let alternative of answer.alternatives) {
+        ownChoices.push(alternative);
+      }
+    }
+
+    let otherChoices = new Array();
+    for (let otherBlank of otherBlanks) {
+      for (let answer of otherBlank.correctAnswers) {
+        for (let alternative of answer.alternatives) {          
+          otherChoices.push(alternative);
+        }
+      }
+    }
+
+    otherChoices = otherChoices.filter((value) => { ownChoices.indexOf(value) === -1 });
+    otherChoices = shuffleArray(otherChoices);
+    let maxChoices;
+    if(this.settings.selectAlternativeRestriction === 0){
+      maxChoices = ownChoices.length + otherChoices.length;
+    }
+    else{
+      maxChoices = Math.max(this.settings.selectAlternativeRestriction, ownChoices.length + 1);
+    }
+    for (let x = ownChoices.length; x++; x < Math.min(maxChoices, otherChoices.length)) {
+      ownChoices.push(otherChoices[x]);
+    }
+
+    this.choices = shuffleArray(ownChoices);
     this.choices.unshift("");
 
     return this.choices;

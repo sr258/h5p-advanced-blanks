@@ -10,3 +10,8 @@ export enum ClozeType {
   Type,
   Select
 }
+
+export enum SelectAlternatives {
+  Alternatives,
+  All
+}

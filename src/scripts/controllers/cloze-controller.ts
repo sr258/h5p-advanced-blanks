@@ -5,7 +5,7 @@ import { Cloze } from "../models/cloze";
 import { IDataRepository } from "../services/data-repository";
 import { ISettings } from "../services/settings";
 import { H5PLocalization } from "../services/localization";
-import { ClozeType } from "../models/enums";
+import { ClozeType, SelectAlternatives } from "../models/enums";
 import { Highlight } from "../models/highlight";
 import { Blank } from "../models/blank";
 
@@ -65,10 +65,16 @@ export class ClozeController {
    * @param  {HTMLElement} root
    */
   initialize(root: HTMLElement, jquery: JQuery) {
-    this.jquery = jquery;
+    this.jquery = jquery;    
     this.isSelectCloze = this.settings.clozeType === ClozeType.Select ? true : false;
 
-    var blanks = this.repository.getBlanks();
+    var blanks = this.repository.getBlanks();    
+    /*
+    if(this.isSelectCloze && this.settings.selectAlternatives === SelectAlternatives.All) {
+      for(var blank of blanks) {
+        blank.loadChoicesFromOtherBlanks( blanks.filter(v => v !== blank) );
+      }
+    }*/
 
     var snippets = this.repository.getSnippets();
     blanks.forEach(blank => BlankLoader.instance.replaceSnippets(blank, snippets));

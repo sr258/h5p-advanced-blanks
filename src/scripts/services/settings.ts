@@ -1,8 +1,9 @@
-﻿import { ClozeType } from "../models/enums";
+﻿import { ClozeType, SelectAlternatives } from "../models/enums";
 
 export interface ISettings {
   clozeType: ClozeType;
-
+  selectAlternatives: SelectAlternatives;
+  selectAlternativeRestriction: number;
   enableRetry: boolean;
   enableSolutionsButton: boolean;
   autoCheck: boolean;
@@ -17,7 +18,8 @@ export interface ISettings {
 
 export class H5PSettings implements ISettings {
   public clozeType: ClozeType;
-
+  public selectAlternatives: SelectAlternatives;
+  public selectAlternativeRestriction: number;
   public enableRetry: boolean;
   public enableSolutionsButton: boolean;
   public autoCheck: boolean;
@@ -38,6 +40,16 @@ export class H5PSettings implements ISettings {
       this.clozeType = ClozeType.Type;
     }
 
+    if(h5pConfigData.behaviour.selectAlternatives === 'all') {
+        this.selectAlternatives = SelectAlternatives.All;
+    } else if (h5pConfigData.behaviour.selectAlternatives === 'alternatives') {
+        this.selectAlternatives = SelectAlternatives.Alternatives;
+    }
+    else {
+      this.selectAlternatives = SelectAlternatives.All;
+    }
+
+    this.selectAlternativeRestriction = h5pConfigData.behaviour.selectAlternativeRestriction;   
     this.enableRetry = h5pConfigData.behaviour.enableRetry;
     this.enableSolutionsButton = h5pConfigData.behaviour.enableSolutionsButton;
     this.autoCheck = h5pConfigData.behaviour.autoCheck;

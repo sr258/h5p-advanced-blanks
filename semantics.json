@@ -198,6 +198,51 @@
         "default": "typing"
       },
       {
+        "name": "selectAlternatives",
+        "type": "select",
+        "label": "Alternatives offered for selection",
+        "optional": false,
+        "widget": "showWhen",        
+        "showWhen": {
+          "rules": [
+            {
+              "field": "mode",
+              "equals": "selection"
+            }
+          ]
+        },
+        "options": [
+          {
+            "value": "alternatives",
+            "label": "The incorrect answers entered for the blank"
+          },
+          {
+            "value": "all",
+            "label": "The correct answers entered for all other blanks"
+          }
+        ],
+        "default": "alternatives"
+      },      
+      {
+        "name": "selectAlternativeRestriction",
+        "type": "number",
+        "label": "Maximum number of alternatives from other blanks offered for selection",
+        "description": "Enter 0 to set no limit.",
+        "min": 0,
+        "step": 1,
+        "default": 5,
+        "widget": "showWhen",
+        "showWhen": 
+        {
+          "rules": [
+            {
+              "field": "mode",
+              "equals": "selection" 
+            }
+          ]
+        }
+      },
+      {
         "label": "Enable \"Retry\"",
         "importance": "low",
         "name": "enableRetry",
