@@ -149,7 +149,7 @@
                   {
                     "value": -3,
                     "label": "- 3 (three highlights before the blank)"
-                  },                               
+                  },
                   {
                     "value": 1,
                     "label": "+ 1 (right after the blank)"
@@ -198,36 +198,48 @@
         "default": "typing"
       },
       {
-        "label": "Enable \"Retry\"",
-        "importance": "low",
-        "name": "enableRetry",
-        "type": "boolean",
-        "default": true,
-        "optional": true
+        "name": "selectAlternatives",
+        "type": "select",
+        "label": "Alternatives offered for selection",
+        "optional": false,
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "mode",
+              "equals": "selection"
+            }
+          ]
+        },
+        "options": [
+          {
+            "value": "alternatives",
+            "label": "The incorrect answers entered for the blank"
+          },
+          {
+            "value": "all",
+            "label": "The correct answers entered for all other blanks"
+          }
+        ],
+        "default": "alternatives"
       },
       {
-        "label": "Enable \"Show solutions\" button",
-        "importance": "low",
-        "name": "enableSolutionsButton",
-        "type": "boolean",
-        "default": true,
-        "optional": true
-      },
-      {
-        "label": "Automatically check answers after input",
-        "importance": "low",
-        "name": "autoCheck",
-        "type": "boolean",
-        "default": false,
-        "optional": true
-      },
-      {
-        "name": "caseSensitive",
-        "importance": "low",
-        "type": "boolean",
-        "default": false,
-        "label": "Case sensitive",
-        "description": "Makes sure the user input has to be exactly the same as the answer."
+        "name": "selectAlternativeRestriction",
+        "type": "number",
+        "label": "Maximum number of alternatives from other blanks offered for selection",
+        "description": "Enter 0 to set no limit.",
+        "min": 0,
+        "step": 1,
+        "default": 5,
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "mode",
+              "equals": "selection"
+            }
+          ]
+        }
       },
       {
         "name": "spellingErrorBehaviour",
@@ -248,12 +260,62 @@
             "label": "Consider it a regular mistake"
           }
         ],
-        "default": "mistake"
+        "default": "mistake",
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "mode",
+              "equals": "typing"
+            }
+          ]
+        }
+      },
+      {
+        "name": "caseSensitive",
+        "importance": "low",
+        "type": "boolean",
+        "default": false,
+        "label": "Case sensitive",
+        "description": "If enabled, capitalization that is different from the solution is considered an error.",
+        "widget": "showWhen",
+        "showWhen": {
+          "rules": [
+            {
+              "field": "mode",
+              "equals": "typing"
+            }
+          ]
+        }
+      },
+      {
+        "label": "Automatically check answers after input",
+        "importance": "low",
+        "name": "autoCheck",
+        "type": "boolean",
+        "default": false,
+        "optional": true
+      },
+      {
+        "label": "Enable \"Show solutions\" button",
+        "importance": "low",
+        "name": "enableSolutionsButton",
+        "type": "boolean",
+        "default": true,
+        "optional": true
       },
       {
         "label": "Require all fields to be answered before the solution can be viewed",
         "importance": "low",
         "name": "showSolutionsRequiresInput",
+        "type": "boolean",
+        "default": true,
+        "optional": true
+      },
+      {
+        "label": "Enable \"Retry\"",
+        "importance": "low",
+        "name": "enableRetry",
         "type": "boolean",
         "default": true,
         "optional": true

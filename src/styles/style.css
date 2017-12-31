@@ -3,8 +3,8 @@
 }
 
 /* Text */
-.h5p-advanced-blanks #cloze p, .h5p-advanced-blanks #cloze div {
-  line-height: 1.75em;
+.h5p-advanced-blanks #h5p-cloze-container p, .h5p-advanced-blanks #h5p-cloze-container div {
+  line-height: 1.8em;
   margin: 0 0 1em;
 }
 

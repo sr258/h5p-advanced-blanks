@@ -2,7 +2,7 @@
 import { ClozeElement, ClozeElementType } from './cloze-element';
 import { Answer, Correctness } from './answer';
 import { Message } from './message';
-import { MessageType, ClozeType } from './enums';
+import { MessageType, ClozeType, SelectAlternatives } from './enums';
 import { H5PLocalization, LocalizationLabels } from '../services/localization';
 import { ISettings } from "../services/settings";
 import { getLongestString, shuffleArray } from "../../lib/helpers";
@@ -54,8 +54,8 @@ export class Blank extends ClozeElement {
   * Call this method when all incorrect answers have been added.
   */
   public finishInitialization(): void {
-    if (this.settings.clozeType === ClozeType.Select) {
-      this.loadChoices();
+    if (this.settings.clozeType === ClozeType.Select && this.settings.selectAlternatives === SelectAlternatives.Alternatives) {
+      this.loadChoicesFromOwnAlternatives();
     }
     this.calculateMinTextLength();
   }
@@ -104,7 +104,7 @@ export class Blank extends ClozeElement {
    * Creates a list of choices from all alternatives provided by
    * the correct and incorrect answers.
    */
-  private loadChoices(): string[] {
+  private loadChoicesFromOwnAlternatives(): string[] {
     this.choices = new Array();
     for (let answer of this.correctAnswers) {
       for (let alternative of answer.alternatives) {
@@ -119,6 +119,48 @@ export class Blank extends ClozeElement {
     }
 
     this.choices = shuffleArray(this.choices);
+    this.choices.unshift("");
+
+    return this.choices;
+  }
+
+  /**
+   * Creates a list of choices from all correct answers of the cloze.
+   * @param otherBlanks All OTHER blanks in the cloze. (excludes the current one!)
+   */
+  public loadChoicesFromOtherBlanks(otherBlanks: Blank[]): string[] {
+    let ownChoices = new Array();
+    for (let answer of this.correctAnswers) {
+      for (let alternative of answer.alternatives) {
+        ownChoices.push(alternative);
+      }
+    }
+
+    let otherChoices = new Array();
+    for (let otherBlank of otherBlanks) {
+      for (let answer of otherBlank.correctAnswers) {
+        for (let alternative of answer.alternatives) {
+          otherChoices.push(alternative);
+        }
+      }
+    }
+
+    otherChoices = shuffleArray(otherChoices);
+
+    let maxChoices = this.settings.selectAlternativeRestriction;
+    if (maxChoices == undefined || maxChoices == 0)
+      maxChoices = ownChoices.length + otherChoices.length;
+
+    let leftOverChoices = maxChoices - ownChoices.length;
+    for (let x = 0; x < leftOverChoices && x < otherChoices.length; x++) {
+      if (ownChoices.indexOf(otherChoices[x]) >= 0) {
+        leftOverChoices++;
+      } else {
+        ownChoices.push(otherChoices[x]);
+      }
+    }
+
+    this.choices = shuffleArray(ownChoices);
     this.choices.unshift("");
 
     return this.choices;
@@ -287,7 +329,7 @@ export class Blank extends ClozeElement {
     this.isCorrect = false;
     this.isError = false;
     this.isRetry = false;
-    this.isShowingSolution = false;    
+    this.isShowingSolution = false;
 
     switch (messageType) {
       case MessageType.Correct:

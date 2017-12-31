@@ -1,8 +1,9 @@
-﻿import { ClozeType } from "../models/enums";
+﻿import { ClozeType, SelectAlternatives } from "../models/enums";
 
 export interface ISettings {
   clozeType: ClozeType;
-
+  selectAlternatives: SelectAlternatives;
+  selectAlternativeRestriction: number;
   enableRetry: boolean;
   enableSolutionsButton: boolean;
   autoCheck: boolean;
@@ -17,7 +18,8 @@ export interface ISettings {
 
 export class H5PSettings implements ISettings {
   public clozeType: ClozeType;
-
+  public selectAlternatives: SelectAlternatives;
+  public selectAlternativeRestriction: number;
   public enableRetry: boolean;
   public enableSolutionsButton: boolean;
   public autoCheck: boolean;
@@ -30,7 +32,6 @@ export class H5PSettings implements ISettings {
   public disableImageZooming: boolean;
 
   constructor(h5pConfigData: any) {
-   
     if (h5pConfigData.behaviour.mode === 'selection') {
       this.clozeType = ClozeType.Select;
     }
@@ -38,6 +39,16 @@ export class H5PSettings implements ISettings {
       this.clozeType = ClozeType.Type;
     }
 
+    if (h5pConfigData.behaviour.selectAlternatives === 'all') {
+      this.selectAlternatives = SelectAlternatives.All;
+    } else if (h5pConfigData.behaviour.selectAlternatives === 'alternatives') {
+      this.selectAlternatives = SelectAlternatives.Alternatives;
+    }
+    else {
+      this.selectAlternatives = SelectAlternatives.All;
+    }
+
+    this.selectAlternativeRestriction = h5pConfigData.behaviour.selectAlternativeRestriction;
     this.enableRetry = h5pConfigData.behaviour.enableRetry;
     this.enableSolutionsButton = h5pConfigData.behaviour.enableSolutionsButton;
     this.autoCheck = h5pConfigData.behaviour.autoCheck;
@@ -48,5 +59,24 @@ export class H5PSettings implements ISettings {
     this.confirmCheckDialog = h5pConfigData.behaviour.confirmCheckDialog;
     this.confirmRetryDialog = h5pConfigData.behaviour.confirmRetryDialog;
     this.disableImageZooming = h5pConfigData.behaviour.disableImageZooming;
+
+    this.enforceLogic();
+  }
+
+  /**
+   * This method sets sensible default values for settings hidden with showWhen
+   */
+  private enforceLogic() {
+    if (this.clozeType === ClozeType.Type) {
+      this.selectAlternatives = SelectAlternatives.All;
+      this.selectAlternativeRestriction = 0;
+    } else {
+      if (this.selectAlternativeRestriction === SelectAlternatives.Alternatives) {
+        this.selectAlternativeRestriction = 0;
+      }
+      this.warnSpellingErrors = false;
+      this.acceptSpellingErrors = false;
+      this.caseSensitive = false;
+    }
   }
 }
