@@ -168,7 +168,7 @@ export class ClozeController {
 
   private createAndAddContainers(addTo: HTMLElement): { cloze: HTMLDivElement } {
     var clozeContainerElement = document.createElement('div');
-    clozeContainerElement.id = 'clozeContainer';
+    clozeContainerElement.id = 'h5p-cloze-container';
     addTo.appendChild(clozeContainerElement);
 
     return {
