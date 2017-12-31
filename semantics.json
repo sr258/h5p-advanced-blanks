@@ -189,6 +189,42 @@
     }
   },
   {
+    "name": "snippets",
+    "type": "list",
+    "label": "Snippets",
+    "description": "You can insert snippets into feedback texts by typing @name",
+    "entity": "snippet",
+    "min": 0,    
+    "field": {
+      "name": "snippetGroup",
+      "type": "group",
+      "label": "Snippet",
+      "fields": [
+        {
+          "name": "snippetName",
+          "type": "text",
+          "label": "Name"
+        },
+        {
+          "name": "snippetText",
+          "type": "text",
+          "label": "Text",
+          "widget": "html",
+          "tags": [
+            "strong",
+            "em",
+            "u",
+            "a",
+            "ul",
+            "ol",
+            "sub",
+            "sup"
+          ]
+        }      
+      ]
+    }
+  },
+  {
     "name": "behaviour",
     "type": "group",
     "label": "Behavioural settings",
