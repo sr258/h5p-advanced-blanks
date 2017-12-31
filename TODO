@@ -14,17 +14,20 @@ General todo:
     Firefox: selection boxes have a strange border on the right (probably an artifact of -moz-appearance: button; which doesn't work)
     is the hint in select mode accessible for mobile / touch?
   ☐ beautify editor screen
-    ☐ make parts collapsible
-    ☐ unify headings
+    ☐ make parts as collapsible (with groups)
+    ☐ unify headings (through importance)
     ☐ add "important" blocks to explain how the content type works
   
 Medium priority:
 ================
 
 ☐ It would be useful to have a text pasting option that accepts regular blanks.
+    This is rather complicated as the "widgets" attribute is not implemented for groups, only for lists. The easiest way might be to extend
+    the H5P core for groups to have the "widgets" attribute! (this would be done by changing the inheritance structure of the group editor widget to
+    derive from SemanticStructure and by finding out what the default editor widget for group would be)
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
 ☐ put Ractive into library
-☐ reimplement snippets
+✔ reimplement snippets @done(17-12-31 16:07)
 ☐ better tip icon
 ☐ select mode: think of better way of showing feedback than reopening the drop down menu
 
