@@ -34,6 +34,7 @@
       "a",
       "ul",
       "ol",
+      "h1",
       "h2",
       "h3",
       "hr"
@@ -54,7 +55,12 @@
       "ul",
       "ol",
       "table",
-      "hr"
+      "h1",
+      "h2",
+      "h3",
+      "hr",
+      "sub",
+      "sup"
     ],
     "font": {
       "size": true,
@@ -114,7 +120,18 @@
                 "name": "incorrectAnswerFeedback",
                 "type": "text",
                 "label": "Feedback",
-                "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user entered."
+                "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user entered.",
+                "widget": "html",
+                "tags": [
+                  "strong",
+                  "em",
+                  "u",
+                  "a",
+                  "ul",
+                  "ol",
+                  "sub",
+                  "sup"
+                ]
               },
               {
                 "name": "showHighlight",
