@@ -1,5 +1,6 @@
 ﻿import { BlankLoader } from '../content-loaders/blank-loader';
 import { Blank } from "../models/blank";
+import { Snippet } from "../models/snippet";
 import { ISettings } from "../services/settings";
 import { H5PLocalization } from "./localization";
 
@@ -9,7 +10,7 @@ export interface IDataRepository {
   getFeedbackText(): string;
   getMedia(): any;
   getTaskDescription(): string;
-  getSnippets(): string[];
+  getSnippets(): Snippet[];
 }
 
 /**
@@ -60,15 +61,14 @@ export class H5PDataRepository implements IDataRepository {
     return blanks;
   }
 
-  // TODO: implement
-  getSnippets(): string[] {
-    var returnValue: string[] = new Array();
-    var snippets = new Array();
-    for (var snippet of snippets) {
-      if (snippet.value === "")
-        continue;
-      returnValue.push(snippet.value);
+  getSnippets(): Snippet[] {
+    var snippets: Snippet[] = new Array();
+    
+    for (var i = 0; i < this.h5pConfigData.snippets.length; i++) {
+      var raw_snippet = this.h5pConfigData.snippets[i];
+      var snippet = new Snippet(raw_snippet.snippetName, raw_snippet.snippetText);
+      snippets.push(snippet);
     }
-    return returnValue;
+    return snippets;
   }
 }

@@ -5,6 +5,7 @@ import { Blank } from '../models/blank';
 import { H5PLocalization } from '../services/localization';
 import { ISettings } from '../services/settings';
 import { Message } from "../models/message";
+import { Snippet } from '../models/snippet';
 
 export class BlankLoader {
 
@@ -22,8 +23,6 @@ export class BlankLoader {
 
     throw "BlankLoader must be initialized before use.";
   }
-
-  private snippetRegex = new RegExp("-(\\d+)-");
 
   private decodeHtml(html: string): string {
     var elem = document.createElement('textarea');
@@ -48,23 +47,20 @@ export class BlankLoader {
     return blank;
   }
 
-  public replaceSnippets(blank: Blank, snippets: string[]) {
+  public replaceSnippets(blank: Blank, snippets: Snippet[]) {
     blank.correctAnswers.concat(blank.incorrectAnswers)
       .forEach(answer => answer.message.text = this.getStringWithSnippets(answer.message.text, snippets));
     blank.hint.text = this.getStringWithSnippets(blank.hint.text, snippets);
   }
 
-  private getStringWithSnippets(text: string, snippets: string[]): string {
-    var match: RegExpMatchArray;
-    if(!text || text === undefined)
+  private getStringWithSnippets(text: string, snippets: Snippet[]): string {
+    if (!text || text === undefined)
       return "";
 
-    while ((match = text.match(this.snippetRegex))) {
-      var index = parseInt(match[1]) - 1;
-      let snippet = "";
-      if (index < snippets.length && index >= 0)
-        snippet = snippets[index];
-      text = text.replace(this.snippetRegex, snippet);
+    for (var snippet of snippets) {
+      if (snippet.name === undefined || snippet.name === "" || snippet.text === undefined || snippet.text === "")
+        continue;
+      text = text.replace("@" + snippet.name, snippet.text);
     }
 
     return text;
