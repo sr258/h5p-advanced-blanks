@@ -35,6 +35,11 @@
       "machineName": "H5P.JoubelUI",
       "majorVersion": 1,
       "minorVersion": 3
+    },
+    {
+      "machineName": "RactiveJS",
+      "majorVersion": 0,
+      "minorVersion": 8
     }
   ],
   "editorDependencies": [

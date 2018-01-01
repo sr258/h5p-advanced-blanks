@@ -26,7 +26,7 @@ Medium priority:
     the H5P core for groups to have the "widgets" attribute! (this would be done by changing the inheritance structure of the group editor widget to
     derive from SemanticStructure and by finding out what the default editor widget for group would be)
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
-☐ put Ractive into library
+✔ put Ractive into library @done(18-01-01 14:51)
 ✔ reimplement snippets @done(17-12-31 16:07)
 ☐ better tip icon
 ☐ select mode: think of better way of showing feedback than reopening the drop down menu

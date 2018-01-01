@@ -9,7 +9,7 @@
     "build:prod": "cross-env NODE_ENV='production' webpack -p",
     "watch": "webpack --watch",
     "dist": "cp library.json dist && cp semantics.json dist",
-    "deploy": "rsync -vaz --delete dist/* $DEPLOY_TARGET/h5p-advanced-blanks",
+    "deploy": "rsync -vaz --delete dist/* ../remote/h5p-advanced-blanks",
     "build+deploy": "npm run build && npm run deploy",
     "bdd": "npm run build && npm run dist && npm run deploy"
   },
@@ -37,7 +37,6 @@
     "diff": "^3.3.0",
     "html-loader": "^0.5.1",
     "postcss-loader": "^2.0.6",
-    "ractive": "^0.8.14",
     "style-loader": "^0.13.2",
     "ts-loader": "^2.3.2",
     "typescript": "^2.4.2",

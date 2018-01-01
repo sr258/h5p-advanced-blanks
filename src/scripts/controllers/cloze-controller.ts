@@ -10,7 +10,6 @@ import { Highlight } from "../models/highlight";
 import { Blank } from "../models/blank";
 
 import * as RactiveEventsKeys from '../../lib/ractive-events-keys';
-import * as Ractive from 'ractive';
 
 interface ScoreChanged {
   (score: number, maxScore: number): void;
