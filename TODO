@@ -13,20 +13,31 @@ Bugfixes:
 
 General todo:
   ☐ check appearance in Firefox, Chrome, Edge and IE and mobile: usability, font sizes, resizing, is the hint in select mode accessible for mobile / touch?
-    Firefox 57: selection boxes have a strange border on the right (probably an artifact of -moz-appearance: button; which doesn't work)
-    Safari iOS 11 on iPhone: - typing mode: error indicator overlaps with text
-                             - typing mode: auto-capitalization of gaps
-                             - typing mode: when there's a popup, the reference element should be focussed
-                             - typing mode: the color of correctly solved gaps are wrong (the text is much too light)
-                             - typing mode: the alignment of the (in)correct symbol is broken: it's too far up
-                             - typing mode: the cursor is visible on top of popups if they overlap (happens a lot)
-                             - very long selection / textareas are clipped if they go out of bounds
-                             - consider auto-growing boxes and block alignment to avoid "combing" on small screens
-                   
+    Firefox 57: 
+      - selection boxes have a strange border on the right (probably an artifact of -moz-appearance: button; which doesn't work, see firefox_select.png + firefox_select_2.png)
+    Safari iOS 11 on iPhone and iPad:
+      - typing mode: error indicator overlaps with text
+      - typing mode: auto-capitalization of gaps
+      - typing mode: when there's a popup, the reference element should be focussed
+      - typing mode: the color of correctly solved gaps are wrong (the text is much too light)
+      - typing mode: the alignment of the (in)correct symbol is broken: it's too far up
+      - typing mode: the cursor is visible on top of popups if they overlap (happens a lot)
+      - very long selection / textareas are clipped if they go out of bounds
+      - consider auto-growing boxes and block alignment to avoid "combing" on small screens
+    Chrome / Samsung Internet on Android (Samsung Galaxy S7):
+      - select & typing mode: overlap of text with symbols in selection boxes with hints and incorrect answer (overlap1.png)
+      - typing mode: part of the cursor is visible on top of popups if they overlap (happens a lot, not as ugly as on iOS)
+      - clipping of popups (small amount, no content clipped) in certain cases
+      - highlight of text + textarea directly below --> no space between them
+      - popup and textarea / select should be focussed when popup is shown
+    Chrome 62:
+      - no errors
+        
   ☐ beautify editor screen
     ☐ make parts as collapsible (with groups)
     ☐ unify headings (through importance)
     ☐ add "important" blocks to explain how the content type works
+    ☐ add "@mistake" hint for "Spelling mistake warning" label
   
 Medium priority:
 ================
