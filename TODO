@@ -32,6 +32,20 @@ General todo:
       - popup and textarea / select should be focussed when popup is shown
     Chrome 62:
       - no errors
+    Edge 41 + Internet Explorer 10/11:
+      - hover over hint button: textbox select cursor instead of "hand" cursor displayed (in select mode)
+      - highlight blink animation doesn't work
+      - select mode: when selecting an option, all options in the list are displayed with the in/correct style (displayed only for a short time)
+      - typing mode: the textbox displays a "clear" button it is not correctly aligned to the right because of the space for the incorrect / correct symbol; can this be hidden? the h5p blanks content type doesn't have this issue)
+    only Edge 41:
+      - hover over hint button: textbox select cursor instead of "hand" cursor displayed (in select mode)
+      - hover over correct symbol: textbox select cursor displayed (instead of none)
+      - big left margin for select boxes      
+      - typing mode: hint button aligned to the bottom      
+    only Internet Explorer 10/11:
+      - select mode: UI override of select boxes doesn't work: displays chevron (a problem if there is a hint, because it is on top of the in/correct symbol)
+      - select mode: correct answer: text too light (dark gray), not an issue in typing mode           
+      - typing mode: textbox calculation too small
         
   ☐ beautify editor screen
     ☐ make parts as collapsible (with groups)
@@ -53,6 +67,7 @@ Medium priority:
 ☐ select mode: think of better way of showing feedback than reopening the drop down menu
 ☐ implement Question type contract (https://h5p.org/documentation/developers/contracts)
 ☐ add placeholders to input boxes
+☐ give smart UI hints: Esc + Enter button, Tab when not used
 
 Low priority:
 =============
