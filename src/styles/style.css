@@ -22,7 +22,16 @@
   border: 1px solid #a0a0a0;
   padding: 0.1875em 1.5em 0.1875em 0.5em;
   text-overflow: ellipsis;
-  overflow: hidden;
+  overflow: hidden; 
+}
+
+/* IE + Chrome specific fixes */ 
+.h5p-text-input::-ms-clear {
+  display: none;
+}
+
+:not(.correct).blank.has-tip button {
+  cursor: pointer;
 }
 
 /* Select mode */

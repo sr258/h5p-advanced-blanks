@@ -8,7 +8,9 @@
              on-focus="@this.fire('focus', blank)"
              on-anykey="@this.fire('textTyped', blank)"
              {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled"{{/if}}
-             class="h5p-text-input"/>
+             class="h5p-text-input"
+             autocomplete="off"
+             autocapitalize="off"/>
       {{#blank.hasHint}}
         <span class="h5p-tip-container">
           <button on-click="@this.fire('showHint', blank)" {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled" {{/if}}>
