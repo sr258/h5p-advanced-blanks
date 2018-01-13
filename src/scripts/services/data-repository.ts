@@ -66,6 +66,7 @@ export class H5PDataRepository implements IDataRepository {
 
     if (!this.h5pConfigData.snippets)
       return snippets;
+      
     for (var i = 0; i < this.h5pConfigData.snippets.length; i++) {
       var raw_snippet = this.h5pConfigData.snippets[i];
       var snippet = new Snippet(raw_snippet.snippetName, raw_snippet.snippetText);
