@@ -37,6 +37,8 @@
 /* Select mode */
 select.h5p-text-input {
   appearance: button;
+  -moz-appearance: button;
+  -webkit-appearance: button;
 }
 
 /* Showing solution input */
@@ -175,7 +177,7 @@ select.h5p-text-input {
   font-size: 1em; 
 }
 
-.h5p-advanced-blanks .blank.has-tip .h5p-text-input {
+.h5p-advanced-blanks .blank.has-tip:not(.correct):not(.error):not(.retry) .h5p-text-input {
   padding-right: 2.25em;
 }
 .h5p-advanced-blanks .blank.has-tip.correct .h5p-input-wrapper:after,
@@ -183,9 +185,9 @@ select.h5p-text-input {
 .h5p-advanced-blanks .blank.has-tip.retry .h5p-input-wrapper:after {
   right: 2.25em;
 }
-.h5p-advanced-blanks .blank.has-tip.correct .h5p-text-input,
-.h5p-advanced-blanks .blank.has-tip.error .h5p-text-input
-.h5p-advanced-blanks .blank.has-tip.retry .h5p-text-input {
+.h5p-advanced-blanks .blank.correct.has-tip .h5p-text-input,
+.h5p-advanced-blanks .blank.error.has-tip .h5p-text-input,
+.h5p-advanced-blanks .blank.retry.has-tip .h5p-text-input {
   padding-right: 3.5em;
 }
 

@@ -25,7 +25,7 @@ General todo:
       - very long selection / textareas are clipped if they go out of bounds
       - consider auto-growing boxes and block alignment to avoid "combing" on small screens
     Chrome / Samsung Internet on Android (Samsung Galaxy S7):
-      - select & typing mode: overlap of text with symbols in selection boxes with hints and incorrect answer (overlap1.png)
+      ✔ select & typing mode: overlap of text with symbols in selection boxes with hints and incorrect answer (overlap1.png) @done(18-01-13 16:22)
       - typing mode: part of the cursor is visible on top of popups if they overlap (happens a lot, not as ugly as on iOS)
       - clipping of popups (small amount, no content clipped) in certain cases
       - highlight of text + textarea directly below --> no space between them
