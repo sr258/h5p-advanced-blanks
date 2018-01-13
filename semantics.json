@@ -22,7 +22,7 @@
     "name": "content",
     "type": "group",
     "label": "Blank content",
-    "importance": "medium",    
+    "importance": "medium",
     "expanded": true,
     "fields": [
       {
@@ -54,7 +54,11 @@
         "label": "Text with blanks",
         "importance": "high",
         "enterMode": "p",
-        "description": "Enter the text here. Blanks must be marked with __________ (3 or more underscores).",
+        "important": {
+          "description": "<ul><li>Blanks must be marked with __________ (three or more underscores).</li><li>Do not put the solutions into the text.</li></ul>",
+          "example": "I have _________ wanted to visit Norway."
+        },
+        "description": "",
         "tags": [
           "strong",
           "em",
@@ -211,7 +215,7 @@
         "type": "list",
         "label": "Snippet list",
         "importance": "high",
-        "description": "Snippets are texts that can be reused in feedback texts by inserting @snippetname there.",
+        "description": "Snippets are texts that can be reused in feedback texts by inserting @snippetname into the it.",
         "entity": "snippet",
         "optional": true,
         "min": 0,
