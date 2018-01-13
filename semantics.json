@@ -120,6 +120,7 @@
                 "name": "incorrectAnswerFeedback",
                 "type": "text",
                 "label": "Feedback",
+                "optional": true,
                 "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user entered.",
                 "widget": "html",
                 "tags": [
@@ -194,6 +195,7 @@
     "label": "Snippets",
     "description": "You can insert snippets into feedback texts by typing @name",
     "entity": "snippet",
+    "optional": true,
     "min": 0,    
     "field": {
       "name": "snippetGroup",

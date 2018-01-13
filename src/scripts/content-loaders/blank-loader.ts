@@ -57,6 +57,9 @@ export class BlankLoader {
     if (!text || text === undefined)
       return "";
 
+    if(!snippets)
+      return text;    
+
     for (var snippet of snippets) {
       if (snippet.name === undefined || snippet.name === "" || snippet.text === undefined || snippet.text === "")
         continue;

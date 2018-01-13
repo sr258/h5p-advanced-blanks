@@ -52,7 +52,7 @@ export class H5PDataRepository implements IDataRepository {
         continue;
 
       var blank = BlankLoader.instance.createBlank("cloze" + i, correctText,
-       h5pBlank.hint, h5pBlank.incorrectAnswersList);
+        h5pBlank.hint, h5pBlank.incorrectAnswersList);
 
       blank.finishInitialization();
       blanks.push(blank);
@@ -63,7 +63,9 @@ export class H5PDataRepository implements IDataRepository {
 
   getSnippets(): Snippet[] {
     var snippets: Snippet[] = new Array();
-    
+
+    if (!this.h5pConfigData.snippets)
+      return snippets;
     for (var i = 0; i < this.h5pConfigData.snippets.length; i++) {
       var raw_snippet = this.h5pConfigData.snippets[i];
       var snippet = new Snippet(raw_snippet.snippetName, raw_snippet.snippetText);
