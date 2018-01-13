@@ -45,6 +45,7 @@
     "type": "text",
     "widget": "html",
     "label": "Text with blanks",
+    "importance": "high",
     "enterMode": "p",
     "description": "Enter the text here. Blanks must be marked with __________ (3 or more underscores).",
     "tags": [
@@ -73,6 +74,7 @@
     "name": "blanksList",
     "type": "list",
     "label": "Blanks used in the text",
+    "importance": "high",
     "entity": "blank",
     "min": 1,
     "widgets": [
@@ -193,6 +195,7 @@
     "name": "snippets",
     "type": "list",
     "label": "Snippets",
+    "importance": "high",
     "description": "You can insert snippets into feedback texts by typing @name",
     "entity": "snippet",
     "optional": true,
@@ -450,6 +453,7 @@
   },
   {
     "label": "Spelling mistake warning",
+    "description": "This is the message shown to the user when he makes a spelling mistake. Insert @mistake to show the user what he did wrong.",
     "importance": "low",
     "name": "spellingMistakeWarning",
     "type": "text",
