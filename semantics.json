@@ -19,177 +19,186 @@
     ]
   },
   {
-    "label": "Task description",
-    "importance": "high",
-    "name": "task",
-    "type": "text",
-    "widget": "html",
-    "default": "Fill in the missing words",
-    "description": "A guide telling the user how to answer this task.",
-    "enterMode": "p",
-    "tags": [
-      "strong",
-      "em",
-      "u",
-      "a",
-      "ul",
-      "ol",
-      "h1",
-      "h2",
-      "h3",
-      "hr"
-    ]
-  },
-  {
-    "name": "blanksText",
-    "type": "text",
-    "widget": "html",
-    "label": "Text with blanks",
-    "importance": "high",
-    "enterMode": "p",
-    "description": "Enter the text here. Blanks must be marked with __________ (3 or more underscores).",
-    "tags": [
-      "strong",
-      "em",
-      "u",
-      "strike",
-      "ul",
-      "ol",
-      "table",
-      "h1",
-      "h2",
-      "h3",
-      "hr",
-      "sub",
-      "sup"
-    ],
-    "font": {
-      "size": true,
-      "family": true,
-      "color": true,
-      "background": true
-    }
-  },
-  {
-    "name": "blanksList",
-    "type": "list",
-    "label": "Blanks used in the text",
-    "importance": "high",
-    "entity": "blank",
-    "min": 1,
-    "widgets": [
+    "name": "content",
+    "type": "group",
+    "label": "Blank content",
+    "importance": "medium",    
+    "expanded": true,
+    "fields": [
       {
-        "name": "VerticalTabs",
-        "label": "Default"
-      }
-    ],
-    "field": {
-      "name": "blankGroup",
-      "type": "group",
-      "label": "Blank",
-      "fields": [
-        {
-          "name": "correctAnswerText",
-          "type": "text",
-          "label": "Correct answer",
-          "description": "You can separate alternative answers with a slash (/)."
-        },
-        {
-          "name": "hint",
-          "type": "text",
-          "label": "Hint",
-          "optional": true
-        },
-        {
-          "name": "incorrectAnswersList",
-          "type": "list",
-          "label": "Incorrect answers",
-          "entity": "incorrect answer",
-          "optional": true,
-          "min": 0,
-          "field": {
-            "name": "incorrectAnswerGroup",
-            "type": "group",
-            "label": "Incorrect answer",
-            "description": "You can separate alternative answers with a slash (/).",
-            "fields": [
-              {
-                "name": "incorrectAnswerText",
-                "type": "text",
-                "label": "Incorrect answer text"
-              },
-              {
-                "name": "incorrectAnswerFeedback",
-                "type": "text",
-                "label": "Feedback",
-                "optional": true,
-                "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user entered.",
-                "widget": "html",
-                "tags": [
-                  "strong",
-                  "em",
-                  "u",
-                  "a",
-                  "ul",
-                  "ol",
-                  "sub",
-                  "sup"
-                ]
-              },
-              {
-                "name": "showHighlight",
-                "type": "boolean",
-                "label": "Show highlight in the text when feedback is shown",
-                "description": "Highlights must be marked with !! at the beginning and !! at the end of the highlight. (e.g. !!Highlight 1!!)",
-                "default": false,
-                "optional": false
-              },
-              {
-                "name": "highlight",
-                "type": "select",
-                "label": "Select highlight position relative to blank:",
-                "widget": "showWhen",
-                "showWhen": {
-                  "rules": [
-                    {
-                      "field": "showHighlight",
-                      "equals": true
-                    }
-                  ]
-                },
-                "options": [
-                  {
-                    "value": -1,
-                    "label": "- 1 (right before the blank)"
-                  },
-                  {
-                    "value": -2,
-                    "label": "- 2 (two highlights before the blank)"
-                  },
-                  {
-                    "value": -3,
-                    "label": "- 3 (three highlights before the blank)"
-                  },
-                  {
-                    "value": 1,
-                    "label": "+ 1 (right after the blank)"
-                  },
-                  {
-                    "value": 2,
-                    "label": "+ 2 (two highlights after the blank)"
-                  },
-                  {
-                    "value": 3,
-                    "label": "+ 3 (three highlights after the blank)"
-                  }
-                ],
-                "default": -1
-              }
-            ]
-          }
+        "label": "Task description",
+        "importance": "high",
+        "name": "task",
+        "type": "text",
+        "widget": "html",
+        "default": "Fill in the missing words.",
+        "description": "A guide telling the user how to answer this task.",
+        "enterMode": "p",
+        "tags": [
+          "strong",
+          "em",
+          "u",
+          "a",
+          "ul",
+          "ol",
+          "h1",
+          "h2",
+          "h3",
+          "hr"
+        ]
+      },
+      {
+        "name": "blanksText",
+        "type": "text",
+        "widget": "html",
+        "label": "Text with blanks",
+        "importance": "high",
+        "enterMode": "p",
+        "description": "Enter the text here. Blanks must be marked with __________ (3 or more underscores).",
+        "tags": [
+          "strong",
+          "em",
+          "u",
+          "strike",
+          "ul",
+          "ol",
+          "table",
+          "h1",
+          "h2",
+          "h3",
+          "hr",
+          "sub",
+          "sup"
+        ],
+        "font": {
+          "size": true,
+          "family": true,
+          "color": true,
+          "background": true
         }
-      ]
-    }
+      },
+      {
+        "name": "blanksList",
+        "type": "list",
+        "label": "Blanks used in the text",
+        "importance": "high",
+        "entity": "blank",
+        "min": 1,
+        "widgets": [
+          {
+            "name": "VerticalTabs",
+            "label": "Default"
+          }
+        ],
+        "field": {
+          "name": "blankGroup",
+          "type": "group",
+          "label": "Blank",
+          "fields": [
+            {
+              "name": "correctAnswerText",
+              "type": "text",
+              "label": "Correct answer",
+              "description": "You can separate alternative answers with a slash (/)."
+            },
+            {
+              "name": "hint",
+              "type": "text",
+              "label": "Hint",
+              "optional": true
+            },
+            {
+              "name": "incorrectAnswersList",
+              "type": "list",
+              "label": "Incorrect answers",
+              "entity": "incorrect answer",
+              "optional": true,
+              "min": 0,
+              "field": {
+                "name": "incorrectAnswerGroup",
+                "type": "group",
+                "label": "Incorrect answer",
+                "description": "You can separate alternative answers with a slash (/).",
+                "fields": [
+                  {
+                    "name": "incorrectAnswerText",
+                    "type": "text",
+                    "label": "Incorrect answer text"
+                  },
+                  {
+                    "name": "incorrectAnswerFeedback",
+                    "type": "text",
+                    "label": "Feedback",
+                    "optional": true,
+                    "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user entered.",
+                    "widget": "html",
+                    "tags": [
+                      "strong",
+                      "em",
+                      "u",
+                      "a",
+                      "ul",
+                      "ol",
+                      "sub",
+                      "sup"
+                    ]
+                  },
+                  {
+                    "name": "showHighlight",
+                    "type": "boolean",
+                    "label": "Show highlight in the text when feedback is shown",
+                    "description": "Highlights must be marked with !! at the beginning and !! at the end of the highlight. (e.g. !!Highlight 1!!)",
+                    "default": false,
+                    "optional": false
+                  },
+                  {
+                    "name": "highlight",
+                    "type": "select",
+                    "label": "Select highlight position relative to blank:",
+                    "widget": "showWhen",
+                    "showWhen": {
+                      "rules": [
+                        {
+                          "field": "showHighlight",
+                          "equals": true
+                        }
+                      ]
+                    },
+                    "options": [
+                      {
+                        "value": -1,
+                        "label": "- 1 (right before the blank)"
+                      },
+                      {
+                        "value": -2,
+                        "label": "- 2 (two highlights before the blank)"
+                      },
+                      {
+                        "value": -3,
+                        "label": "- 3 (three highlights before the blank)"
+                      },
+                      {
+                        "value": 1,
+                        "label": "+ 1 (right after the blank)"
+                      },
+                      {
+                        "value": 2,
+                        "label": "+ 2 (two highlights after the blank)"
+                      },
+                      {
+                        "value": 3,
+                        "label": "+ 3 (three highlights after the blank)"
+                      }
+                    ],
+                    "default": -1
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      }
+    ]
   },
   {
     "name": "snippets",

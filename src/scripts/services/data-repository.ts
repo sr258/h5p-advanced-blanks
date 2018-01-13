@@ -26,7 +26,7 @@ export class H5PDataRepository implements IDataRepository {
    * Returns the blank text of the cloze (as HTML markup).
    */
   getClozeText(): string {
-    return this.h5pConfigData.blanksText;
+    return this.h5pConfigData.content.blanksText;
   }
 
   // TODO: remove or implement
@@ -39,13 +39,17 @@ export class H5PDataRepository implements IDataRepository {
   }
 
   getTaskDescription(): string {
-    return this.h5pConfigData.task;
+    return this.h5pConfigData.content.task;
   }
 
   getBlanks(): Blank[] {
     var blanks: Blank[] = new Array();
-    for (var i = 0; i < this.h5pConfigData.blanksList.length; i++) {
-      var h5pBlank = this.h5pConfigData.blanksList[i];
+
+    if (!this.h5pConfigData.content.blanksList)
+      return blanks;
+
+    for (var i = 0; i < this.h5pConfigData.content.blanksList.length; i++) {
+      var h5pBlank = this.h5pConfigData.content.blanksList[i];
 
       var correctText = h5pBlank.correctAnswerText;
       if (correctText === "" || correctText === undefined)
@@ -66,7 +70,7 @@ export class H5PDataRepository implements IDataRepository {
 
     if (!this.h5pConfigData.snippets)
       return snippets;
-      
+
     for (var i = 0; i < this.h5pConfigData.snippets.length; i++) {
       var raw_snippet = this.h5pConfigData.snippets[i];
       var snippet = new Snippet(raw_snippet.snippetName, raw_snippet.snippetText);

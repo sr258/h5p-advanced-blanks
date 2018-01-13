@@ -10,6 +10,7 @@ Bugfixes:
   ☐ hide "option restriction setting" when not appropriate (showWhen doesn't work for selectAlternatives for some reason)
   ✔ snippets are obligatory --> make optional @done(18-01-13 16:37)
   ☐ line-height doesn't work in selection mode
+  ☐ snippets are always in their own paragraph (because they are html elements and receive a paragraph around them)
 
 General todo:
   ☐ check appearance in Firefox, Chrome, Edge and IE and mobile: usability, font sizes, resizing, is the hint in select mode accessible for mobile / touch?
@@ -47,7 +48,7 @@ General todo:
       - typing mode: textbox calculation too small
         
   ☐ beautify editor screen
-    ☐ make parts as collapsible (with groups)
+    ✔ make parts as collapsible (with groups) @done(18-01-13 17:27)
     ✔ unify headings (through importance) @done(18-01-13 16:40)
     ☐ add "important" blocks to explain how the content type works
     ✔ add "@mistake" hint for "Spelling mistake warning" label @done(18-01-13 16:38)
