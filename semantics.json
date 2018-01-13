@@ -193,45 +193,53 @@
   },
   {
     "name": "snippets",
-    "type": "list",
+    "type": "group",
     "label": "Snippets",
-    "importance": "high",
-    "description": "You can insert snippets into feedback texts by typing @name",
-    "entity": "snippet",
-    "optional": true,
-    "min": 0,    
-    "field": {
-      "name": "snippetGroup",
-      "type": "group",
-      "label": "Snippet",
-      "fields": [
-        {
-          "name": "snippetName",
-          "type": "text",
-          "label": "Name",
-          "description": "You can only use letters and numbers for the name. ",
-          "regexp": {
-            "pattern": "^[\\w\\d]*$"
-          }
-        },
-        {
-          "name": "snippetText",
-          "type": "text",
-          "label": "Text",
-          "widget": "html",
-          "tags": [
-            "strong",
-            "em",
-            "u",
-            "a",
-            "ul",
-            "ol",
-            "sub",
-            "sup"
+    "importance": "medium",
+    "fields": [
+      {
+        "name": "list",
+        "type": "list",
+        "label": "Snippet list",
+        "importance": "high",
+        "description": "Snippets are texts that can be reused in feedback texts by inserting @snippetname there.",
+        "entity": "snippet",
+        "optional": true,
+        "min": 0,
+        "field": {
+          "name": "snippetGroup",
+          "type": "group",
+          "label": "Snippet",
+          "fields": [
+            {
+              "name": "snippetName",
+              "type": "text",
+              "label": "Name",
+              "description": "You can only use letters and numbers for the name. ",
+              "regexp": {
+                "pattern": "^[\\w\\d]*$"
+              }
+            },
+            {
+              "name": "snippetText",
+              "type": "text",
+              "label": "Text",
+              "widget": "html",
+              "tags": [
+                "strong",
+                "em",
+                "u",
+                "a",
+                "ul",
+                "ol",
+                "sub",
+                "sup"
+              ]
+            }
           ]
-        }      
-      ]
-    }
+        }
+      }
+    ]
   },
   {
     "name": "behaviour",
