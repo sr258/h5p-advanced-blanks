@@ -48,7 +48,7 @@ Medium priority:
 
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
 ☐ better tip icon
-☐ select mode: think of better way of showing feedback than reopening the drop down menu
+✔ select mode: think of better way of showing feedback than reopening the drop down menu @done(18-01-19 18:26)
 ☐ implement Question type contract (https://h5p.org/documentation/developers/contracts)
 ☐ add placeholders to input boxes
 ☐ implement xAPI

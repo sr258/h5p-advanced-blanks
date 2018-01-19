@@ -64,13 +64,13 @@ export class ClozeController {
    * @param  {HTMLElement} root
    */
   initialize(root: HTMLElement, jquery: JQuery) {
-    this.jquery = jquery;    
+    this.jquery = jquery;
     this.isSelectCloze = this.settings.clozeType === ClozeType.Select ? true : false;
 
-    var blanks = this.repository.getBlanks();    
-        
-    if(this.isSelectCloze && this.settings.selectAlternatives === SelectAlternatives.All) {
-      for(var blank of blanks) {
+    var blanks = this.repository.getBlanks();
+
+    if (this.isSelectCloze && this.settings.selectAlternatives === SelectAlternatives.All) {
+      for (var blank of blanks) {
         let otherBlanks = blanks.filter(v => v !== blank);
         blank.loadChoicesFromOtherBlanks(otherBlanks);
       }
@@ -107,6 +107,12 @@ export class ClozeController {
     blank.onFocussed();
     this.refreshCloze();
   }
+
+  displayFeedback = (blank: Blank) => {
+    blank.onDisplayFeedback();
+    this.refreshCloze();
+  }
+
 
   showHint = (blank: Blank) => {
     this.cloze.hideAllHighlights();
@@ -168,6 +174,11 @@ export class ClozeController {
   private createAndAddContainers(addTo: HTMLElement): { cloze: HTMLDivElement } {
     var clozeContainerElement = document.createElement('div');
     clozeContainerElement.id = 'h5p-cloze-container';
+    if (this.settings.clozeType === ClozeType.Select) {
+      clozeContainerElement.className = 'h5p-advanced-blanks-select-mode';
+    } else {
+      clozeContainerElement.className = 'h5p-advanced-blanks-type-mode';
+    }
     addTo.appendChild(clozeContainerElement);
 
     return {
@@ -204,6 +215,7 @@ export class ClozeController {
     ractive.on("textTyped", this.textTyped);
     ractive.on("closeMessage", this.requestCloseTooltip);
     ractive.on("focus", this.focus);
+    ractive.on("displayFeedback", this.displayFeedback);
 
     this.blankRactives[blank.id] = ractive;
   }

@@ -200,6 +200,12 @@ export class Blank extends ClozeElement {
     }
   }
 
+  public onDisplayFeedback() {
+    if (this.hasPendingFeedback) {
+      this.evaluateAttempt(false);
+    }    
+  }
+
   private displayTooltip(message: string, type: MessageType, surpressTooltip: boolean, id?: string) {
     if (!surpressTooltip)
       this.messageService.show(id ? id : this.id, message, this, type);

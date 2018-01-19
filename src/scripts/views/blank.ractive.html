@@ -21,11 +21,14 @@
     </span>    
   {{/unless}}
   {{#if isSelectCloze}}
-    <span class="h5p-input-wrapper">      
+      <button class="h5p-notification" on-click="@this.fire('displayFeedback', blank)">
+        &#xf05a;
+      </button>
+      <span class="h5p-input-wrapper">      
       <select id="{{blank.id}}" type="text" value="{{blank.enteredText}}"
               on-enter="@this.fire('checkBlank', blank, 'enter')" 
               on-change="@this.fire('checkBlank', blank, 'change')"
-              on-focus="@this.fire('focus', blank)"
+              on-focus="@this.fire('focus', blank)"              
               {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled"{{/if}} 
               size="1"
               class="h5p-text-input">
