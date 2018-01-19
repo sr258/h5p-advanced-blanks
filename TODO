@@ -2,37 +2,33 @@ High priority:
 ==============
 
 Bugfixes:  
-  ☐ fix feedback popup positioning
-    feedback popup sometimes is shifted to the wrong position if buttons become are visible (reason is that its position is set as relative to the bottom, which changes after the popup was positioned)
-    resizing of screen -> no repositioning
-    check if resize events are called and handled correctly   
+  ✔ fix feedback popup positioning @done(18-01-14 11:54)
+    ✔ feedback popup sometimes is shifted to the wrong position if buttons become visible (reason is that its position is set as relative to the bottom, which changes after the popup was positioned) @done(18-01-14 11:54)
+    ✔ resizing of screen -> no repositioning @done(18-01-14 11:54)
+    ✔ check if resize events are called and handled correctly @done(18-01-14 11:54)
   ☐ mode selection allows "-" selector (+ option below)
   ☐ hide "option restriction setting" when not appropriate (showWhen doesn't work for selectAlternatives for some reason)
-  ✔ snippets are obligatory --> make optional @done(18-01-13 16:37)
   ☐ line-height doesn't work in selection mode
   ☐ snippets are always in their own paragraph (because they are html elements and receive a paragraph around them)
 
 General todo:
-  ☐ check appearance in Firefox, Chrome, Edge and IE and mobile: usability, font sizes, resizing, is the hint in select mode accessible for mobile / touch?
-    Firefox 57: 
-      - selection boxes have a strange border on the right (probably an artifact of -moz-appearance: button; which doesn't work, see firefox_select.png + firefox_select_2.png)
+  ☐ very long selection / textareas are clipped if they go out of bounds
+  ✔ consider auto-growing boxes and block alignment to avoid "combing" on small screens @done(18-01-19 17:48)
+  Firefox 57: 
+      ✔ selection boxes have a strange border on the right (probably an artifact of -moz-appearance: button; which doesn't work, see firefox_select.png + firefox_select_2.png) @done(18-01-19 17:24)
     Safari iOS 11 on iPhone and iPad:
       - typing mode: error indicator overlaps with text
       ✔ typing mode: auto-capitalization of gaps @done(18-01-10 21:17)
       - typing mode: when there's a popup, the reference element should be focussed
       - typing mode: the color of correctly solved gaps are wrong (the text is much too light)
-      - typing mode: the alignment of the (in)correct symbol is broken: it's too far up
-      - typing mode: the cursor is visible on top of popups if they overlap (happens a lot)
-      - very long selection / textareas are clipped if they go out of bounds
-      - consider auto-growing boxes and block alignment to avoid "combing" on small screens
+      - typing mode: the alignment of the (in)correct symbol is broken: it's too far up (minor issue)
+      - typing mode: the cursor is visible on top of popups if they overlap (happens a lot)      
     Chrome / Samsung Internet on Android (Samsung Galaxy S7):
       ✔ select & typing mode: overlap of text with symbols in selection boxes with hints and incorrect answer (overlap1.png) @done(18-01-13 16:22)
       - typing mode: part of the cursor is visible on top of popups if they overlap (happens a lot, not as ugly as on iOS)
       - clipping of popups (small amount, no content clipped) in certain cases
       - highlight of text + textarea directly below --> no space between them
       - popup and textarea / select should be focussed when popup is shown
-    Chrome 62:
-      - no errors
     Edge 41 + Internet Explorer 10/11:
       ✔ hover over hint button: textbox select cursor instead of "hand" cursor displayed (in select mode) @done(18-01-10 21:07)
       - highlight blink animation doesn't work
@@ -46,35 +42,28 @@ General todo:
       - select mode: UI override of select boxes doesn't work: displays chevron (a problem if there is a hint, because it is on top of the in/correct symbol)
       - select mode: correct answer: text too light (dark gray), not an issue in typing mode           
       - typing mode: textbox calculation too small
-        
-  ☐ beautify editor screen
-    ✔ make parts as collapsible (with groups) @done(18-01-13 17:27)
-    ✔ unify headings (through importance) @done(18-01-13 16:40)
-    ✔ add "important" blocks to explain how the content type works @done(18-01-13 17:47)
-    ✔ add "@mistake" hint for "Spelling mistake warning" label @done(18-01-13 16:38)
-  
+          
 Medium priority:
 ================
 
-☐ It would be useful to have a text pasting option that accepts regular blanks.
-    This is rather complicated as the "widgets" attribute is not implemented for groups, only for lists. The easiest way might be to extend
-    the H5P core for groups to have the "widgets" attribute! (this would be done by changing the inheritance structure of the group editor widget to
-    derive from SemanticStructure and by finding out what the default editor widget for group would be)
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
-✔ put Ractive into library @done(18-01-01 14:51)
-✔ reimplement snippets @done(17-12-31 16:07)
 ☐ better tip icon
 ☐ select mode: think of better way of showing feedback than reopening the drop down menu
 ☐ implement Question type contract (https://h5p.org/documentation/developers/contracts)
 ☐ add placeholders to input boxes
-☐ give smart UI hints: Esc + Enter button, Tab when not used
+☐ implement xAPI
+  ☐ answered + answer serialization (= check all pressed) --> stores all answers
+  ☐ implement getXAPIData contract (for report rendering engines)
+
 
 Low priority:
 =============
 
-☐ implement xAPI
-  ☐ answered + answer serialization (= check all pressed) --> stores all answers
-  ☐ implement getXAPIData contract (for report rendering engines)
+☐ give smart UI hints: Esc + Enter button, Tab when not used
+☐ It would be useful to have a text pasting option that accepts regular blanks.
+    This is rather complicated as the "widgets" attribute is not implemented for groups, only for lists. The easiest way might be to extend
+    the H5P core for groups to have the "widgets" attribute! (this would be done by changing the inheritance structure of the group editor widget to
+    derive from SemanticStructure and by finding out what the default editor widget for group would be)
 ☐ implement feedback ranges
 ☐ take over accessibility from h5p-blanks
 ☐ auto-growing text-fields
@@ -131,3 +120,11 @@ done log:
   ✔ select mode: random choice of other answers @done(17-12-30 16:16)
   ✔ remove duplicate choices @done(17-12-30 16:22)
   ✔ don't show typing mistake error message in select mode @done(17-12-30 18:17)
+  ✔ beautify editor screen @done(18-01-13 17:52)
+    ✔ make parts as collapsible (with groups) @done(18-01-13 17:27)
+    ✔ unify headings (through importance) @done(18-01-13 16:40)
+    ✔ add "important" blocks to explain how the content type works @done(18-01-13 17:47)
+    ✔ add "@mistake" hint for "Spelling mistake warning" label @done(18-01-13 16:38)
+  ✔ snippets are obligatory --> make optional @done(18-01-13 16:37)
+  ✔ put Ractive into library @done(18-01-01 14:51)
+  ✔ reimplement snippets @done(17-12-31 16:07)
