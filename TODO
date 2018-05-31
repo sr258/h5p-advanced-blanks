@@ -2,38 +2,29 @@ High priority:
 ==============
 
 Bugfixes:  
-  ✔ fix feedback popup positioning @done(18-01-14 11:54)
-    ✔ feedback popup sometimes is shifted to the wrong position if buttons become visible (reason is that its position is set as relative to the bottom, which changes after the popup was positioned) @done(18-01-14 11:54)
-    ✔ resizing of screen -> no repositioning @done(18-01-14 11:54)
-    ✔ check if resize events are called and handled correctly @done(18-01-14 11:54)
   ☐ mode selection allows "-" selector (+ option below)
   ☐ hide "option restriction setting" when not appropriate (showWhen doesn't work for selectAlternatives for some reason)
   ☐ line-height doesn't work in selection mode
   ☐ snippets are always in their own paragraph (because they are html elements and receive a paragraph around them)
+  ☐ you can press "Check" in Selection mode even if nothing has been selected so far
 
 General todo:
   ☐ very long selection / textareas are clipped if they go out of bounds
-  ✔ consider auto-growing boxes and block alignment to avoid "combing" on small screens @done(18-01-19 17:48)
   Firefox 57: 
-      ✔ selection boxes have a strange border on the right (probably an artifact of -moz-appearance: button; which doesn't work, see firefox_select.png + firefox_select_2.png) @done(18-01-19 17:24)
     Safari iOS 11 on iPhone and iPad:
       - typing mode: error indicator overlaps with text
-      ✔ typing mode: auto-capitalization of gaps @done(18-01-10 21:17)
       - typing mode: when there's a popup, the reference element should be focussed
       - typing mode: the color of correctly solved gaps are wrong (the text is much too light)
       - typing mode: the alignment of the (in)correct symbol is broken: it's too far up (minor issue)
       - typing mode: the cursor is visible on top of popups if they overlap (happens a lot)      
     Chrome / Samsung Internet on Android (Samsung Galaxy S7):
-      ✔ select & typing mode: overlap of text with symbols in selection boxes with hints and incorrect answer (overlap1.png) @done(18-01-13 16:22)
       - typing mode: part of the cursor is visible on top of popups if they overlap (happens a lot, not as ugly as on iOS)
       - clipping of popups (small amount, no content clipped) in certain cases
       - highlight of text + textarea directly below --> no space between them
       - popup and textarea / select should be focussed when popup is shown
     Edge 41 + Internet Explorer 10/11:
-      ✔ hover over hint button: textbox select cursor instead of "hand" cursor displayed (in select mode) @done(18-01-10 21:07)
       - highlight blink animation doesn't work
       - select mode: when selecting an option, all options in the list are displayed with the in/correct style (displayed only for a short time)
-      ✔ typing mode: the textbox displays a "clear" button it is not correctly aligned to the right because of the space for the incorrect / correct symbol; can this be hidden? the h5p blanks content type doesn't have this issue) @done(18-01-10 21:07)
     only Edge 41:
       - hover over correct symbol: textbox select cursor displayed (instead of none)
       - big left margin for select boxes      
@@ -45,10 +36,8 @@ General todo:
           
 Medium priority:
 ================
-
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
 ☐ better tip icon
-✔ select mode: think of better way of showing feedback than reopening the drop down menu @done(18-01-19 18:26)
 ☐ implement Question type contract (https://h5p.org/documentation/developers/contracts)
 ☐ add placeholders to input boxes
 ☐ implement xAPI
@@ -58,7 +47,6 @@ Medium priority:
 
 Low priority:
 =============
-
 ☐ give smart UI hints: Esc + Enter button, Tab when not used
 ☐ It would be useful to have a text pasting option that accepts regular blanks.
     This is rather complicated as the "widgets" attribute is not implemented for groups, only for lists. The easiest way might be to extend
@@ -95,7 +83,10 @@ Far future:
 
 done log:
 =========
-
+  ✔ fix feedback popup positioning @done(18-01-14 11:54)
+  ✔ feedback popup sometimes is shifted to the wrong position if buttons become visible (reason is that its position is set as relative to the bottom, which changes after the popup was positioned) @done(18-01-14 11:54)
+  ✔ resizing of screen -> no repositioning @done(18-01-14 11:54)
+  ✔ check if resize events are called and handled correctly @done(18-01-14 11:54)
   ✔ clicking hint --> cloze is always marked as retry
   ✔ check mode --> spelling mistake: no marking of box
   ✔ dropdown icon is on top of other icons
@@ -128,3 +119,10 @@ done log:
   ✔ snippets are obligatory --> make optional @done(18-01-13 16:37)
   ✔ put Ractive into library @done(18-01-01 14:51)
   ✔ reimplement snippets @done(17-12-31 16:07)
+  ✔ consider auto-growing boxes and block alignment to avoid "combing" on small screens @done(18-01-19 17:48)
+  ✔ selection boxes have a strange border on the right (probably an artifact of -moz-appearance: button; which doesn't work, see firefox_select.png + firefox_select_2.png) @done(18-01-19 17:24)
+  ✔ typing mode: auto-capitalization of gaps @done(18-01-10 21:17)
+  ✔ select & typing mode: overlap of text with symbols in selection boxes with hints and incorrect answer (overlap1.png) @done(18-01-13 16:22)
+  ✔ hover over hint button: textbox select cursor instead of "hand" cursor displayed (in select mode) @done(18-01-10 21:07)
+  ✔ typing mode: the textbox displays a "clear" button it is not correctly aligned to the right because of the space for the incorrect / correct symbol; can this be hidden? the h5p blanks content type doesn't have this issue) @done(18-01-10 21:07)
+  ✔ select mode: think of better way of showing feedback than reopening the drop down menu @done(18-01-19 18:26)
