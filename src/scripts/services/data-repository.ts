@@ -3,6 +3,7 @@ import { Blank } from "../models/blank";
 import { Snippet } from "../models/snippet";
 import { ISettings } from "../services/settings";
 import { H5PLocalization } from "./localization";
+import { Unrwapper } from '../helpers/unwrapper';
 
 export interface IDataRepository {
   getBlanks(): Blank[];
@@ -18,7 +19,8 @@ export interface IDataRepository {
  */
 export class H5PDataRepository implements IDataRepository {
   constructor(private h5pConfigData: any, private settings: ISettings,
-    private localization: H5PLocalization, private jquery: JQueryStatic) {
+    private localization: H5PLocalization, private jquery: JQueryStatic, 
+    private unwrapper: Unrwapper) {
 
   }
 
@@ -73,7 +75,7 @@ export class H5PDataRepository implements IDataRepository {
 
     for (var i = 0; i < this.h5pConfigData.snippets.length; i++) {
       var raw_snippet = this.h5pConfigData.snippets[i];
-      var snippet = new Snippet(raw_snippet.snippetName, raw_snippet.snippetText);
+      var snippet = new Snippet(raw_snippet.snippetName, this.unwrapper.unwrap(raw_snippet.snippetText));
       snippets.push(snippet);
     }
     return snippets;

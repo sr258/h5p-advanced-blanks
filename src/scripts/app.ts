@@ -4,6 +4,7 @@ import { ClozeController } from './controllers/cloze-controller';
 import { H5PLocalization, LocalizationLabels, LocalizationStructures } from "./services/localization";
 import { ISettings, H5PSettings } from "./services/settings";
 import { MessageService } from './services/message-service';
+import { Unrwapper } from './helpers/unwrapper';
 
 
 enum States {
@@ -40,9 +41,11 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.jQuery = H5P.jQuery;
     this.contentId = contentId;
 
+    let unwrapper = new Unrwapper(this.jQuery);
+
     this.settings = new H5PSettings(config);
     this.localization = new H5PLocalization(config);
-    this.repository = new H5PDataRepository(config, this.settings, this.localization, <JQueryStatic>this.jQuery);
+    this.repository = new H5PDataRepository(config, this.settings, this.localization, <JQueryStatic>this.jQuery, unwrapper);
     this.messageService = new MessageService(this.jQuery);
     BlankLoader.initialize(this.settings, this.localization, this.jQuery, this.messageService);
 
