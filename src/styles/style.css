@@ -37,6 +37,13 @@
     overflow: hidden;
 }
 
+.h5p-advanced-blanks .blank input.h5p-text-input {
+  max-width: calc(100vw - 64px);
+}
+
+.h5p-advanced-blanks .blank select.h5p-text-input {
+  max-width: calc(100vw - 36px);
+}
 
 /* IE + Chrome specific fixes */
 
