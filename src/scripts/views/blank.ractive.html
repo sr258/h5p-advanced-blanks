@@ -14,7 +14,7 @@
       {{#blank.hasHint}}
         <span class="h5p-tip-container">
           <button on-click="@this.fire('showHint', blank)" {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled" {{/if}}>
-            <i class="fa fa-question-circle"></i>
+            <span class="joubel-tip-container" title="Tip" aria-label="Tip" aria-expanded="true" role="button" tabindex="0"><span class="joubel-icon-tip-normal "><span class="h5p-icon-shadow"></span><span class="h5p-icon-speech-bubble"></span><span class="h5p-icon-info"></span></span></span>
           </button>
         </span>
         {{/if}}
@@ -39,7 +39,7 @@
       {{#blank.hasHint}}
         <span class="h5p-tip-container">
           <button on-click="@this.fire('showHint', blank)" {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled"{{/if}}>
-            <i class="fa fa-question-circle"></i>
+            <span class="joubel-tip-container" title="Tip" aria-label="Tip" aria-expanded="true" role="button" tabindex="0"><span class="joubel-icon-tip-normal "><span class="h5p-icon-shadow"></span><span class="h5p-icon-speech-bubble"></span><span class="h5p-icon-info"></span></span></span>
           </button>
         </span>
       {{/if}}     

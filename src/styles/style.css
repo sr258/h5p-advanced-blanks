@@ -213,7 +213,8 @@ select.h5p-text-input {
 
 .h5p-advanced-blanks .h5p-tip-container {
   position: absolute;
-  top: 0;
+  top: 50%;
+  transform: translateY(-50%);
   right: 0.4em;
   font-size: 1em;
 }
@@ -234,6 +235,11 @@ select.h5p-text-input {
     padding-right: 3.5em;
 }
 
+/* improves appearance of h5p tip shadows */
+.h5p-advanced-blanks .joubel-icon-tip-normal .h5p-icon-shadow:before {
+  color: black;
+  opacity: 0.13;
+}
 
 /* pending feedback marker */
 

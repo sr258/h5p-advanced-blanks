@@ -16,11 +16,10 @@ General todo:
   ✔ very long selection / textareas are clipped if they go out of bounds @done(18-06-02 20:58)
   Firefox 57: 
     Safari iOS 11 on iPhone and iPad:
-      - typing mode: error indicator overlaps with text
-      - typing mode: when there's a popup, the reference element should be focussed
-      - typing mode: the color of correctly solved gaps are wrong (the text is much too light)
-        the same in other H5P content types
-      - typing mode: the alignment of the (in)correct symbol is broken: it's too far up (minor issue)
+      ✘ typing mode: error indicator overlaps with text @cancelled(18-06-29 17:02) not reproducable
+      - typing mode: when there's a popup, the reference element should be focussed (still needed?)
+      ✔ typing mode: the color of correctly solved gaps are wrong (the text is much too light) @done(18-06-29 17:02)
+      ✔ typing mode: the alignment of the (in)correct symbol is broken: it's too far up (minor issue) @done(18-06-29 17:02)
       - typing mode: the cursor is visible on top of popups if they overlap (happens a lot)      
     Chrome / Samsung Internet on Android (Samsung Galaxy S7):
       - typing mode: part of the cursor is visible on top of popups if they overlap (happens a lot, not as ugly as on iOS)
@@ -42,7 +41,7 @@ General todo:
 Medium priority:
 ================
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
-☐ better tip icon
+✔ better tip icon @done(18-06-29 17:57)
 ☐ implement Question type contract (https://h5p.org/documentation/developers/contracts)
 ☐ add placeholders to input boxes
 ☐ implement xAPI
