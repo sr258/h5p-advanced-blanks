@@ -93,8 +93,9 @@ select.h5p-text-input {
 
 .h5p-advanced-blanks .blank.correct .h5p-input-wrapper:after {
     position: absolute;
-    right: 0.5em;
-    top: 0;
+    right: 0.5em;    
+    top: 50%;
+    transform: translateY(-50%);
     text-decoration: none;
     content: "\f00c";
     font-family: 'H5PFontAwesome4';
@@ -114,7 +115,8 @@ select.h5p-text-input {
 .h5p-advanced-blanks .blank.error .h5p-input-wrapper:after {
     position: absolute;
     right: 0.5em;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     font-family: 'H5PFontAwesome4';
     text-decoration: none;
     content: "\f00d";
@@ -133,7 +135,8 @@ select.h5p-text-input {
 .h5p-advanced-blanks .blank.retry .h5p-input-wrapper:after {
     position: absolute;
     right: 0.5em;
-    top: 0;
+    top: 50%;
+    transform: translateY(-50%);
     font-family: 'H5PFontAwesome4';
     text-decoration: none;
     content: "\f00d";
@@ -209,10 +212,10 @@ select.h5p-text-input {
 /* Tips */
 
 .h5p-advanced-blanks .h5p-tip-container {
-    position: absolute;
-    top: 0;
-    right: 0.4em;
-    font-size: 1em;
+  position: absolute;
+  top: 0;
+  right: 0.4em;
+  font-size: 1em;
 }
 
 .h5p-advanced-blanks .blank.has-tip:not(.correct):not(.error):not(.retry) .h5p-text-input {

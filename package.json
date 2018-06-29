@@ -26,9 +26,9 @@
   "devDependencies": {
     "@types/jquery": "^1.10.33",
     "@types/ractive": "^0.7.27",
-    "ava": "^0.19.1",
-    "babel-cli": "^6.23.0",
-    "babel-core": "^6.23.1",
+    "ava": "^0.25.0",
+    "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-loader": "^6.3.2",
     "babel-plugin-transform-object-assign": "^6.22.0",
     "babel-preset-latest": "^6.22.0",
@@ -38,6 +38,7 @@
     "html-loader": "^0.5.1",
     "postcss-loader": "^2.0.6",
     "style-loader": "^0.13.2",
+    "ts-lint": "^4.5.1",
     "ts-loader": "^2.3.2",
     "typescript": "^2.4.2",
     "webpack": "^2.2.1"
