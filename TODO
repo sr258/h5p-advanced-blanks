@@ -11,6 +11,7 @@ Bugfixes:
   ✘ you can press "Check" in Selection mode even if nothing has been selected so far @cancelled(18-06-02 20:38)
 
 General todo:
+  ☐ check state storage mechanism: is the current state fully saved & restored?
   ✔ make sure semantics naming is consistent with other H5P libraries @done(18-07-07 17:59)
   ✔ very long selection / textareas are clipped if they go out of bounds @done(18-06-02 20:58)
   Firefox 57: 
@@ -44,8 +45,14 @@ Medium priority:
 ✔ better tip icon @done(18-06-29 17:57)
 ☐ implement feedback ranges
 ☐ implement Question type contract (https://h5p.org/documentation/developers/contracts)
+    ☐ getAnswerGiven()
+    ☐ getScore()
+    ☐ getMaxScore()
+    ☐ showSolutions()
+    ☐ resetTask()
+    ☐ getXAPIData() 
 ☐ add placeholders to input boxes
-☐ implement xAPI
+☐ fully implement xAPI
   ☐ answered + answer serialization (= check all pressed) --> stores all answers
   ☐ implement getXAPIData contract (for report rendering engines)
 

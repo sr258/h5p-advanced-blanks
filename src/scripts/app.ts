@@ -261,4 +261,34 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   public getCurrentState = () => {
     return this.clozeController.serializeCloze();
   };
+
+  /****************************************
+   * Implementation of Question contract  *
+   ****************************************/
+  public getAnswerGiven = () : boolean => {
+    return true;
+    // TODO: implement
+  }
+
+  public getScore = () : number => {
+    return this.clozeController.currentScore;
+  }
+
+  public getMaxScore = () : number => {
+    return this.clozeController.maxScore;
+  }
+
+  public showSolutions = () => {
+    this.onShowSolution();
+    // TODO: hide all buttons
+  }
+
+  public resetTask = () => {
+    this.onRetry();
+  }
+
+  public getXAPIData = () => {
+    return null;
+    // TODO: implement
+  }
 }
