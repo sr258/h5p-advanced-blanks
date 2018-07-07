@@ -11,7 +11,7 @@ Bugfixes:
   ✘ you can press "Check" in Selection mode even if nothing has been selected so far @cancelled(18-06-02 20:38)
 
 General todo:
-  ☐ make sure semantics naming is consistent with other H5P libraries
+  ✔ make sure semantics naming is consistent with other H5P libraries @done(18-07-07 17:59)
   ✔ very long selection / textareas are clipped if they go out of bounds @done(18-06-02 20:58)
   Firefox 57: 
     Safari iOS 11 on iPhone and iPad:
@@ -39,8 +39,10 @@ General todo:
           
 Medium priority:
 ================
+☐ add "not-filled out" warning
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
 ✔ better tip icon @done(18-06-29 17:57)
+☐ implement feedback ranges
 ☐ implement Question type contract (https://h5p.org/documentation/developers/contracts)
 ☐ add placeholders to input boxes
 ☐ implement xAPI
@@ -55,7 +57,6 @@ Low priority:
     This is rather complicated as the "widgets" attribute is not implemented for groups, only for lists. The easiest way might be to extend
     the H5P core for groups to have the "widgets" attribute! (this would be done by changing the inheritance structure of the group editor widget to
     derive from SemanticStructure and by finding out what the default editor widget for group would be)
-☐ implement feedback ranges
 ☐ take over accessibility from h5p-blanks
 ☐ auto-growing text-fields
 ☐ hover over image --> no tooltip (bug in h5p library?)
