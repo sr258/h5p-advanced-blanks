@@ -11,7 +11,8 @@ enum States {
   ongoing = 'ongoing',
   checking = 'checking',
   showingSolutions = 'showing-solution',
-  finished = 'finished'
+  finished = 'finished',
+  showingSolutionsEmbedded ='showing-solution-embedded'
 }
 
 export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
@@ -26,7 +27,11 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
   private contentId: string;
   private state: States;
-  private previousState: any;
+
+  /**
+   * Indicates if user has entered any answer so far.
+   */
+  private answered: boolean = false;
 
   /**
    * @constructor
@@ -76,6 +81,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       this.state = States.ongoing;
       this.toggleButtonVisibility(this.state);
     }
+    this.answered = true;
   }
 
   /**
@@ -255,6 +261,12 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       this.hideButton('check-answer');
     }
 
+    if(state === States.showingSolutionsEmbedded) {
+      this.hideButton('check-answer');
+      this.hideButton('try-again');
+      this.hideButton('show-solution');
+    }    
+
     this.trigger('resize');
   }
 
@@ -266,8 +278,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
    * Implementation of Question contract  *
    ****************************************/
   public getAnswerGiven = () : boolean => {
-    return true;
-    // TODO: implement
+    return this.answered || this.clozeController.maxScore === 0;
   }
 
   public getScore = () : number => {
@@ -280,7 +291,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
   public showSolutions = () => {
     this.onShowSolution();
-    // TODO: hide all buttons
+    this.moveToState(States.showingSolutionsEmbedded);
   }
 
   public resetTask = () => {
