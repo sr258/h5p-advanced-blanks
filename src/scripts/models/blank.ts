@@ -64,6 +64,14 @@ export class Blank extends ClozeElement {
     this.correctAnswers.push(answer);
   }
 
+  public getCorrectAnswers(): string[] {
+    let result = [];
+    for (let answer of this.correctAnswers) {
+      result.concat(answer.alternatives);
+    }
+    return result;
+  }
+
   public setHint(message: Message) {
     this.hint = message;
     this.hasHint = this.hint.text !== "";
@@ -203,7 +211,7 @@ export class Blank extends ClozeElement {
   public onDisplayFeedback() {
     if (this.hasPendingFeedback) {
       this.evaluateAttempt(false);
-    }    
+    }
   }
 
   private displayTooltip(message: string, type: MessageType, surpressTooltip: boolean, id?: string) {

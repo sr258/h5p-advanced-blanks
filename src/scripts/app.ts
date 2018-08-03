@@ -5,6 +5,8 @@ import { H5PLocalization, LocalizationLabels, LocalizationStructures } from "./s
 import { ISettings, H5PSettings } from "./services/settings";
 import { MessageService } from './services/message-service';
 import { Unrwapper } from './helpers/unwrapper';
+import { XAPIActivityDefinition } from './models/xapi';
+import { createPermutations } from './helpers/permutations';
 
 
 enum States {
@@ -12,7 +14,7 @@ enum States {
   checking = 'checking',
   showingSolutions = 'showing-solution',
   finished = 'finished',
-  showingSolutionsEmbedded ='showing-solution-embedded'
+  showingSolutionsEmbedded = 'showing-solution-embedded'
 }
 
 export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
@@ -69,6 +71,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.triggerXAPI('interacted');
     this.setFeedback("", score, maxScore);
     this.transitionState();
+    this.triggerXapiAnswered();
     this.toggleButtonVisibility(this.state);
   }
 
@@ -206,7 +209,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       this.state = States.checking;
 
     var scoreText = H5P.Question.determineOverallFeedback(this.localization.getObjectForStructure(LocalizationStructures.overallFeedback), this.clozeController.currentScore / this.clozeController.maxScore).replace('@score', this.clozeController.currentScore).replace('@total', this.clozeController.maxScore);
-    this.setFeedback(scoreText, this.clozeController.currentScore, this.clozeController.maxScore, this.localization.getTextFromLabel(LocalizationLabels.scoreBarLabel)); 
+    this.setFeedback(scoreText, this.clozeController.currentScore, this.clozeController.maxScore, this.localization.getTextFromLabel(LocalizationLabels.scoreBarLabel));
 
     this.toggleButtonVisibility(this.state);
   }
@@ -265,31 +268,31 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       this.hideButton('check-answer');
     }
 
-    if(state === States.showingSolutionsEmbedded) {
+    if (state === States.showingSolutionsEmbedded) {
       this.hideButton('check-answer');
       this.hideButton('try-again');
       this.hideButton('show-solution');
-    }    
+    }
 
     this.trigger('resize');
   }
 
-  public getCurrentState = () => {
+  public getCurrentState = (): string[] => {
     return this.clozeController.serializeCloze();
   };
 
   /****************************************
    * Implementation of Question contract  *
    ****************************************/
-  public getAnswerGiven = () : boolean => {
+  public getAnswerGiven = (): boolean => {
     return this.answered || this.clozeController.maxScore === 0;
   }
 
-  public getScore = () : number => {
+  public getScore = (): number => {
     return this.clozeController.currentScore;
   }
 
-  public getMaxScore = () : number => {
+  public getMaxScore = (): number => {
     return this.clozeController.maxScore;
   }
 
@@ -302,8 +305,84 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.onRetry();
   }
 
-  public getXAPIData = () => {
-    return null;
-    // TODO: implement
-  }
+  /***
+   * XApi implementation
+   */
+
+
+  /**
+   * Trigger xAPI answered event
+   */
+  triggerXapiAnswered = (): void => {
+    this.answered = true;
+    var xAPIEvent = this.createXAPIEventTemplate('answered');
+    this.addQuestionToXAPI(xAPIEvent);
+    this.addResponseToXAPI(xAPIEvent);
+    this.trigger(xAPIEvent);
+  };
+
+  /**
+   * Get xAPI data.
+   * Contract used by report rendering engine.
+   *
+   * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
+   */
+  getXAPIData = () => {
+    var xAPIEvent = this.createXAPIEventTemplate('answered');
+    this.addQuestionToXAPI(xAPIEvent);
+    this.addResponseToXAPI(xAPIEvent);
+    return {
+      statement: xAPIEvent.data.statement
+    };
+  };
+
+  /**
+   * Generate xAPI object definition used in xAPI statements.
+   * @return {Object}
+   */
+  getxAPIDefinition = (): XAPIActivityDefinition => { 
+    var definition = new XAPIActivityDefinition();
+    definition.description = {
+      'en-US': this.repository.getTaskDescription() + this.repository.getClozeText()
+    };
+    definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
+    definition.interactionType = 'fill-in'; // TODO: add selection mode
+    definition.correctResponsesPattern = [];    
+    let correctResponsesPatternPrefix = '{case_matters=' + this.settings.caseSensitive + '}';
+    // xAPI forces us to create solution patterns for all possible solution combinations
+    let correctAnswerPermutations = createPermutations(this.clozeController.getCorrectAnswerList());
+    for (let permutation of correctAnswerPermutations) {
+      definition.correctResponsesPattern.push(correctResponsesPatternPrefix + permutation.join('[,]'));
+    }
+    return definition;
+  };
+
+  /**
+   * Add the question itself to the definition part of an xAPIEvent
+   */
+  addQuestionToXAPI = (xAPIEvent) => {
+    var definition = xAPIEvent.getVerifiedStatementValue(['object', 'definition']);
+    $.extend(definition, this.getxAPIDefinition());
+  };
+
+
+  /**
+   * Add the response part to an xAPI event
+   *
+   * @param {H5P.XAPIEvent} xAPIEvent
+   *  The xAPI event we will add a response to
+   */
+  addResponseToXAPI = (xAPIEvent) => {
+    xAPIEvent.setScoredResult(this.clozeController.currentScore, this.clozeController.maxScore, this);
+    xAPIEvent.data.statement.result.response = this.getxAPIResponse();
+  };
+
+  /**
+   * Generate xAPI user response, used in xAPI statements.
+   * @return {string} User answers separated by the "[,]" pattern
+   */
+  getxAPIResponse = (): string => {
+    var usersAnswers = this.getCurrentState();
+    return usersAnswers.join('[,]');
+  };
 }

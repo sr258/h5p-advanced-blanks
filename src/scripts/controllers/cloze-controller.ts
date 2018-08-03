@@ -113,7 +113,6 @@ export class ClozeController {
     this.refreshCloze();
   }
 
-
   showHint = (blank: Blank) => {
     this.cloze.hideAllHighlights();
     blank.showHint();
@@ -259,7 +258,7 @@ export class ClozeController {
     return false;
   }
 
-  public serializeCloze() {
+  public serializeCloze(): string[] {
     return this.cloze.serialize();
   }
 
@@ -270,5 +269,16 @@ export class ClozeController {
     this.checkAll();
     this.refreshCloze();
     return true;
+  }
+
+  public getCorrectAnswerList(): string[][] {
+    if (!this.cloze || this.cloze.blanks.length === 0)
+      return [[]];
+    let result = [];
+    for (var blank of this.cloze.blanks) {
+      result.push(blank.getCorrectAnswers());
+    }
+
+    return result;
   }
 }

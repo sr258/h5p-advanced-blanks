@@ -40,7 +40,7 @@ export class Cloze {
     this.hideAllHighlights();
   }
 
-  public serialize() {
+  public serialize() : string[] {
     var cloze = [];
     for (var blank of this.blanks) {
       cloze.push(blank.serialize());
