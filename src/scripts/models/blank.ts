@@ -67,7 +67,7 @@ export class Blank extends ClozeElement {
   public getCorrectAnswers(): string[] {
     let result = [];
     for (let answer of this.correctAnswers) {
-      result.concat(answer.alternatives);
+      result = result.concat(answer.alternatives);
     }
     return result;
   }
@@ -156,7 +156,7 @@ export class Blank extends ClozeElement {
     otherChoices = shuffleArray(otherChoices);
 
     let maxChoices = this.settings.selectAlternativeRestriction;
-    if (maxChoices == undefined || maxChoices == 0)
+    if (maxChoices === undefined || maxChoices === 0)
       maxChoices = ownChoices.length + otherChoices.length;
 
     let leftOverChoices = maxChoices - ownChoices.length;

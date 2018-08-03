@@ -60,6 +60,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
     this.clozeController.onScoreChanged = this.onScoreChanged;
     this.clozeController.onSolved = this.onSolved;
+    this.clozeController.onAutoChecked = this.onAutoChecked;
     if (!this.settings.autoCheck)
       this.clozeController.onTyped = this.onTyped;
 
@@ -68,10 +69,8 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   }
 
   private onScoreChanged = (score: number, maxScore: number) => {
-    this.triggerXAPI('interacted');
     this.setFeedback("", score, maxScore);
     this.transitionState();
-    this.triggerXapiAnswered();
     this.toggleButtonVisibility(this.state);
   }
 
@@ -85,6 +84,11 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       this.toggleButtonVisibility(this.state);
     }
     this.answered = true;
+  }
+
+  private onAutoChecked = () => {
+    this.triggerXAPI('interacted');
+    this.triggerXAPIAnswered();
   }
 
   /**
@@ -203,15 +207,17 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
   private onCheckAnswer = () => {
     this.clozeController.checkAll();
+
     this.triggerXAPI('interacted');
+    this.triggerXAPIAnswered();
+
     this.transitionState();
     if (this.state !== States.finished)
-      this.state = States.checking;
-
+      this.state = States.checking;    
+      
     var scoreText = H5P.Question.determineOverallFeedback(this.localization.getObjectForStructure(LocalizationStructures.overallFeedback), this.clozeController.currentScore / this.clozeController.maxScore).replace('@score', this.clozeController.currentScore).replace('@total', this.clozeController.maxScore);
     this.setFeedback(scoreText, this.clozeController.currentScore, this.clozeController.maxScore, this.localization.getTextFromLabel(LocalizationLabels.scoreBarLabel));
-
-    this.toggleButtonVisibility(this.state);
+    this.toggleButtonVisibility(this.state);    
   }
 
   private transitionState = () => {
@@ -313,7 +319,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   /**
    * Trigger xAPI answered event
    */
-  triggerXapiAnswered = (): void => {
+  public triggerXAPIAnswered = (): void => {
     this.answered = true;
     var xAPIEvent = this.createXAPIEventTemplate('answered');
     this.addQuestionToXAPI(xAPIEvent);
@@ -327,7 +333,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
    *
    * @see contract at {@link https://h5p.org/documentation/developers/contracts#guides-header-6}
    */
-  getXAPIData = () => {
+  public getXAPIData = () => {
     var xAPIEvent = this.createXAPIEventTemplate('answered');
     this.addQuestionToXAPI(xAPIEvent);
     this.addResponseToXAPI(xAPIEvent);
@@ -340,14 +346,14 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
    * Generate xAPI object definition used in xAPI statements.
    * @return {Object}
    */
-  getxAPIDefinition = (): XAPIActivityDefinition => { 
+  public getxAPIDefinition = (): XAPIActivityDefinition => {
     var definition = new XAPIActivityDefinition();
     definition.description = {
       'en-US': this.repository.getTaskDescription() + this.repository.getClozeText()
     };
     definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
     definition.interactionType = 'fill-in'; // TODO: add selection mode
-    definition.correctResponsesPattern = [];    
+    definition.correctResponsesPattern = [];
     let correctResponsesPatternPrefix = '{case_matters=' + this.settings.caseSensitive + '}';
     // xAPI forces us to create solution patterns for all possible solution combinations
     let correctAnswerPermutations = createPermutations(this.clozeController.getCorrectAnswerList());
@@ -360,11 +366,10 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   /**
    * Add the question itself to the definition part of an xAPIEvent
    */
-  addQuestionToXAPI = (xAPIEvent) => {
+  public addQuestionToXAPI = (xAPIEvent) => {
     var definition = xAPIEvent.getVerifiedStatementValue(['object', 'definition']);
-    $.extend(definition, this.getxAPIDefinition());
+    this.jQuery.extend(definition, this.getxAPIDefinition());
   };
-
 
   /**
    * Add the response part to an xAPI event
@@ -372,7 +377,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
    * @param {H5P.XAPIEvent} xAPIEvent
    *  The xAPI event we will add a response to
    */
-  addResponseToXAPI = (xAPIEvent) => {
+  public addResponseToXAPI = (xAPIEvent) => {
     xAPIEvent.setScoredResult(this.clozeController.currentScore, this.clozeController.maxScore, this);
     xAPIEvent.data.statement.result.response = this.getxAPIResponse();
   };
@@ -381,7 +386,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
    * Generate xAPI user response, used in xAPI statements.
    * @return {string} User answers separated by the "[,]" pattern
    */
-  getxAPIResponse = (): string => {
+  public getxAPIResponse = (): string => {
     var usersAnswers = this.getCurrentState();
     return usersAnswers.join('[,]');
   };

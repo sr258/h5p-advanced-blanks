@@ -15,6 +15,10 @@ interface ScoreChanged {
   (score: number, maxScore: number): void;
 }
 
+interface AutoChecked {
+  (): void;
+}
+
 interface Solved {
   (): void;
 }
@@ -30,6 +34,7 @@ export class ClozeController {
   private isSelectCloze: boolean;
 
   public onScoreChanged: ScoreChanged;
+  public onAutoChecked: AutoChecked;
   public onSolved: Solved;
   public onTyped: Typed;
 
@@ -142,6 +147,7 @@ export class ClozeController {
       blank.evaluateAttempt(false);
       this.checkAndNotifyCompleteness();
       this.refreshCloze();
+      this.onAutoChecked();
     }
     if ((cause === 'enter')
       && ((this.settings.autoCheck && blank.isCorrect && !this.isSolved)
