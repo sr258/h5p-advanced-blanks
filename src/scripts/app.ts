@@ -352,9 +352,10 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       'en-US': this.repository.getTaskDescription() + this.repository.getClozeText()
     };
     definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
-    definition.interactionType = 'fill-in'; // TODO: add selection mode
+    definition.interactionType = 'fill-in'; // We use the 'fill-in' type even in select mode, as the xAPI format for selections doesn't really cater for sequences.
     definition.correctResponsesPattern = [];
     let correctResponsesPatternPrefix = '{case_matters=' + this.settings.caseSensitive + '}';
+
     // xAPI forces us to create solution patterns for all possible solution combinations
     let correctAnswerPermutations = createPermutations(this.clozeController.getCorrectAnswerList());
     for (let permutation of correctAnswerPermutations) {

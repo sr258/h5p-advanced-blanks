@@ -5,8 +5,7 @@ Bugfixes:
   ✔ mode selection allows "-" selector (+ option below) @done(18-06-29 18:13)
   ☐ hide "option restriction setting" when not appropriate (showWhen doesn't work for selectAlternatives for some reason)
     possibly bug in H5P core library
-  ☐ line-height doesn't work in selection mode
-    unclear if still an issue (2018-06-02)
+  ✘ line-height doesn't work in selection mode @cancelled(18-08-03 23:28)
   ✔ snippets are always in their own paragraph (because they are html elements and receive a paragraph around them) @done(18-06-02 20:36)
   ✘ you can press "Check" in Selection mode even if nothing has been selected so far @cancelled(18-06-02 20:38)
 
@@ -44,17 +43,17 @@ Medium priority:
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
 ✔ better tip icon @done(18-06-29 17:57)
 ✔ implement feedback ranges @done(18-08-03 16:44)
-☐ implement Question type contract (https://h5p.org/documentation/developers/contracts)
+✔ implement Question type contract (https://h5p.org/documentation/developers/contracts) @done(18-08-03 23:19)
     ✔ getAnswerGiven() @done(18-08-03 16:24)
     ✔ getScore() @done(18-08-03 16:24)
     ✔ getMaxScore() @done(18-08-03 16:24)
     ✔ showSolutions() @done(18-08-03 16:24)
     ✔ resetTask() @done(18-08-03 16:24)
-    ☐ getXAPIData() 
+    ✔ getXAPIData() @done(18-08-03 23:19)
 ☐ add placeholders to input boxes
-☐ fully implement xAPI
-  ☐ answered + answer serialization (= check all pressed) --> stores all answers
-  ☐ implement getXAPIData contract (for report rendering engines)
+✔ fully implement xAPI @done(18-08-03 23:28)
+  ✔ answered + answer serialization (= check all pressed) --> stores all answers @done(18-08-03 23:19)
+  ✔ implement getXAPIData contract (for report rendering engines) @done(18-08-03 23:19)
 
 
 Low priority:
