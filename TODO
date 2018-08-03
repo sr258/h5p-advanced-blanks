@@ -43,13 +43,13 @@ Medium priority:
 ☐ add "not-filled out" warning
 ☐ focus check button (Question.focusButton) when cloze is filled out entirely
 ✔ better tip icon @done(18-06-29 17:57)
-☐ implement feedback ranges
+✔ implement feedback ranges @done(18-08-03 16:44)
 ☐ implement Question type contract (https://h5p.org/documentation/developers/contracts)
-    ☐ getAnswerGiven()
-    ☐ getScore()
-    ☐ getMaxScore()
-    ☐ showSolutions()
-    ☐ resetTask()
+    ✔ getAnswerGiven() @done(18-08-03 16:24)
+    ✔ getScore() @done(18-08-03 16:24)
+    ✔ getMaxScore() @done(18-08-03 16:24)
+    ✔ showSolutions() @done(18-08-03 16:24)
+    ✔ resetTask() @done(18-08-03 16:24)
     ☐ getXAPIData() 
 ☐ add placeholders to input boxes
 ☐ fully implement xAPI

@@ -4,12 +4,14 @@
   checkAllButton = "checkAnswer",
   notFilledOutWarning = "notFilledOut",
   tipButton ="tipLabel",
-  typoMessage = "spellingMistakeWarning"
+  typoMessage = "spellingMistakeWarning",
+  scoreBarLabel = "scoreBarLabel"  
 }
 
 export enum LocalizationStructures {
   confirmCheck = "confirmCheck",
-  confirmRetry = "confirmRetry"
+  confirmRetry = "confirmRetry",
+  overallFeedback = "overallFeedback"
 }
 
 /**

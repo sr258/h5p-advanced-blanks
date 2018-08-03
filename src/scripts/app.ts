@@ -204,6 +204,10 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.transitionState();
     if (this.state !== States.finished)
       this.state = States.checking;
+
+    var scoreText = H5P.Question.determineOverallFeedback(this.localization.getObjectForStructure(LocalizationStructures.overallFeedback), this.clozeController.currentScore / this.clozeController.maxScore).replace('@score', this.clozeController.currentScore).replace('@total', this.clozeController.maxScore);
+    this.setFeedback(scoreText, this.clozeController.currentScore, this.clozeController.maxScore, this.localization.getTextFromLabel(LocalizationLabels.scoreBarLabel)); 
+
     this.toggleButtonVisibility(this.state);
   }
 
