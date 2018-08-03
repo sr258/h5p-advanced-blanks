@@ -10,7 +10,11 @@ Bugfixes:
   ✘ you can press "Check" in Selection mode even if nothing has been selected so far @cancelled(18-06-02 20:38)
 
 General todo:
-  ☐ check state storage mechanism: is the current state fully saved & restored?
+  ☐ check behavior of content type when used in...
+    ☐ Course Presentation
+    ☐ Question Set
+    ☐ other aggregates?
+  ✔ check state storage mechanism: is the current state fully saved & restored? @done(18-08-03 23:30)
   ✔ make sure semantics naming is consistent with other H5P libraries @done(18-07-07 17:59)
   ✔ very long selection / textareas are clipped if they go out of bounds @done(18-06-02 20:58)
   Firefox 57: 
@@ -50,7 +54,6 @@ Medium priority:
     ✔ showSolutions() @done(18-08-03 16:24)
     ✔ resetTask() @done(18-08-03 16:24)
     ✔ getXAPIData() @done(18-08-03 23:19)
-☐ add placeholders to input boxes
 ✔ fully implement xAPI @done(18-08-03 23:28)
   ✔ answered + answer serialization (= check all pressed) --> stores all answers @done(18-08-03 23:19)
   ✔ implement getXAPIData contract (for report rendering engines) @done(18-08-03 23:19)

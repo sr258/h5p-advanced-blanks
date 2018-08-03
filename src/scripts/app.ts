@@ -349,7 +349,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   public getxAPIDefinition = (): XAPIActivityDefinition => {
     var definition = new XAPIActivityDefinition();
     definition.description = {
-      'en-US': this.repository.getTaskDescription() + this.repository.getClozeText()
+      'en-US': '<p>' + this.repository.getTaskDescription() + '</p>' + this.repository.getClozeText()
     };
     definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
     definition.interactionType = 'fill-in'; // We use the 'fill-in' type even in select mode, as the xAPI format for selections doesn't really cater for sequences.
