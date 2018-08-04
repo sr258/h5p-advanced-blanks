@@ -19,7 +19,8 @@ General todo:
   ☐ check behavior of content type when used in...
     ☐ Course Presentation
     ☐ Question Set
-      ☐ restore state with all correct answers --> shows retry & doesn't allow changes in answers + getAnswerGiven is incorrect  
+      ☐ restore state with all correct answers --> shows retry & doesn't allow changes in answers + getAnswerGiven is incorrect
+        what we need: fill in answers, but don't check them + getAnswerGiven must be true
       ✔ "override check button" --> doesn't work as expected @done(18-08-04 14:47)
         ✔ disabled --> should not show check button & give no feedback @done(18-08-04 14:44)
         ✔ bug: doesn't proceed to next step @done(18-08-04 14:44)        

@@ -272,7 +272,6 @@ export class ClozeController {
     if (!this.cloze || !data)
       return false;
     this.cloze.deserialize(data);
-    this.checkAll();
     this.refreshCloze();
     return true;
   }
@@ -286,5 +285,11 @@ export class ClozeController {
     }
 
     return result;
+  }
+
+  public checkIsFilledOut() {
+    if (!this.cloze || this.cloze.blanks.length === 0)
+      return true;
+    return this.cloze.blanks.some(b => b.enteredText !== '');
   }
 }

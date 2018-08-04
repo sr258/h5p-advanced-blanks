@@ -28,6 +28,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   private jQuery;
 
   private contentId: string;
+  private previousState: any;
   private state: States;
 
   /**
@@ -104,9 +105,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       original($container);
       this.clozeController.initialize(this.container.get(0), $container);
       if (this.clozeController.deserializeCloze(this.previousState)) {
-        this.transitionState();
-        if (this.clozeController.allBlanksEntered && this.state !== States.finished)
-          this.state = States.checking;
+        this.answered = this.clozeController.checkIsFilledOut();
         this.toggleButtonVisibility(this.state);
       }
     }
@@ -236,6 +235,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   private onRetry = () => {
     this.removeFeedback();
     this.clozeController.reset();
+    this.answered = false;
     this.moveToState(States.ongoing);
   }
 
