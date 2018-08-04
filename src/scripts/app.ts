@@ -69,8 +69,19 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       this.previousState = contentData.previousState;
   }
 
+  /**
+   * Called from outside when the score of the cloze has changed.
+   */
   private onScoreChanged = (score: number, maxScore: number) => {
-    this.setFeedback("", score, maxScore);
+    if (this.clozeController.isFullyFilledOut) {
+      this.transitionState();
+      if (this.state !== States.finished)
+        this.state = States.checking;
+      this.showFeedback();
+    }
+    else {
+      this.setFeedback("", score, maxScore);
+    }
     this.transitionState();
     this.toggleButtonVisibility(this.state);
   }
@@ -100,12 +111,14 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
    * element. DOM elements are created in H5P.Question.attach, so initializing 
    * Ractive in registerDomElements doesn't work.
    */
-  attach = (function (original) {
-    return function ($container) {
+  attach = ((original) => {
+    return ($container) => {
       original($container);
       this.clozeController.initialize(this.container.get(0), $container);
       if (this.clozeController.deserializeCloze(this.previousState)) {
-        this.answered = this.clozeController.checkIsFilledOut();
+        this.answered = this.clozeController.isFilledOut;
+        if (this.settings.autoCheck)
+          this.onCheckAnswer();
         this.toggleButtonVisibility(this.state);
       }
     }
@@ -213,11 +226,11 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
     this.transitionState();
     if (this.state !== States.finished)
-      this.state = States.checking;    
-    
+      this.state = States.checking;
+
     this.showFeedback();
 
-    this.toggleButtonVisibility(this.state);    
+    this.toggleButtonVisibility(this.state);
   }
 
   private transitionState = () => {

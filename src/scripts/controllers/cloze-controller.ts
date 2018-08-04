@@ -61,6 +61,18 @@ export class ClozeController {
     return this.cloze.isSolved;
   }
 
+  public get isFilledOut() {
+    if (!this.cloze || this.cloze.blanks.length === 0)
+      return true;
+    return this.cloze.blanks.some(b => b.enteredText !== '');
+  }
+
+  public get isFullyFilledOut() {
+    if (!this.cloze || this.cloze.blanks.length === 0)
+      return true;
+    return this.cloze.blanks.every(b => b.enteredText !== '');
+  }
+
   constructor(private repository: IDataRepository, private settings: ISettings, private localization: H5PLocalization, private MessageService: MessageService) {
   }
 
@@ -285,11 +297,5 @@ export class ClozeController {
     }
 
     return result;
-  }
-
-  public checkIsFilledOut() {
-    if (!this.cloze || this.cloze.blanks.length === 0)
-      return true;
-    return this.cloze.blanks.some(b => b.enteredText !== '');
-  }
+  }  
 }
