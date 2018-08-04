@@ -10,9 +10,19 @@ Bugfixes:
   ✘ you can press "Check" in Selection mode even if nothing has been selected so far @cancelled(18-06-02 20:38)
 
 General todo:
+  ☐ make "retry" behavior consistent to other content types + check if it needs it's own option
+  ☐ App.onScoreChanged --> setting feedback??
+  ☐ add 'general feedback' functionality for auto-check (or is this consistent with other content types?)
+  ☐ write German translation of semantics
+  ☐ make example content types
+  ☐ make test content types for regression testing
   ☐ check behavior of content type when used in...
     ☐ Course Presentation
     ☐ Question Set
+      ☐ restore state with all correct answers --> shows retry & doesn't allow changes in answers + getAnswerGiven is incorrect  
+      ✔ "override check button" --> doesn't work as expected @done(18-08-04 14:47)
+        ✔ disabled --> should not show check button & give no feedback @done(18-08-04 14:44)
+        ✔ bug: doesn't proceed to next step @done(18-08-04 14:44)        
     ☐ other aggregates?
   ✔ check state storage mechanism: is the current state fully saved & restored? @done(18-08-03 23:30)
   ✔ make sure semantics naming is consistent with other H5P libraries @done(18-07-07 17:59)

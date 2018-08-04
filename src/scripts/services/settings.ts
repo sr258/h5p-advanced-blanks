@@ -6,6 +6,7 @@ export interface ISettings {
   selectAlternativeRestriction: number;
   enableRetry: boolean;
   enableSolutionsButton: boolean;
+  enableCheckButton: boolean;
   autoCheck: boolean;
   caseSensitive: boolean;
   warnSpellingErrors: boolean;
@@ -22,6 +23,7 @@ export class H5PSettings implements ISettings {
   public selectAlternativeRestriction: number;
   public enableRetry: boolean;
   public enableSolutionsButton: boolean;
+  enableCheckButton: boolean;
   public autoCheck: boolean;
   public caseSensitive: boolean;
   public warnSpellingErrors: boolean;
@@ -51,6 +53,7 @@ export class H5PSettings implements ISettings {
     this.selectAlternativeRestriction = h5pConfigData.behaviour.selectAlternativeRestriction;
     this.enableRetry = h5pConfigData.behaviour.enableRetry;
     this.enableSolutionsButton = h5pConfigData.behaviour.enableSolutionsButton;
+    this.enableCheckButton = h5pConfigData.behaviour.enableCheckButton;
     this.autoCheck = h5pConfigData.behaviour.autoCheck;
     this.caseSensitive = h5pConfigData.behaviour.caseSensitive;
     this.warnSpellingErrors = h5pConfigData.behaviour.spellingErrorBehaviour === "warn";

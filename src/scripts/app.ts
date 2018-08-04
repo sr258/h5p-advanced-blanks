@@ -83,6 +83,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       this.state = States.ongoing;
       this.toggleButtonVisibility(this.state);
     }
+    this.triggerXAPI('interacted');
     this.answered = true;
   }
 
@@ -214,9 +215,9 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.transitionState();
     if (this.state !== States.finished)
       this.state = States.checking;    
-      
-    var scoreText = H5P.Question.determineOverallFeedback(this.localization.getObjectForStructure(LocalizationStructures.overallFeedback), this.clozeController.currentScore / this.clozeController.maxScore).replace('@score', this.clozeController.currentScore).replace('@total', this.clozeController.maxScore);
-    this.setFeedback(scoreText, this.clozeController.currentScore, this.clozeController.maxScore, this.localization.getTextFromLabel(LocalizationLabels.scoreBarLabel));
+    
+    this.showFeedback();
+
     this.toggleButtonVisibility(this.state);    
   }
 
@@ -229,12 +230,18 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   private onShowSolution = () => {
     this.moveToState(States.showingSolutions);
     this.clozeController.showSolutions();
+    this.showFeedback();
   }
 
   private onRetry = () => {
     this.removeFeedback();
     this.clozeController.reset();
     this.moveToState(States.ongoing);
+  }
+
+  private showFeedback() {
+    var scoreText = H5P.Question.determineOverallFeedback(this.localization.getObjectForStructure(LocalizationStructures.overallFeedback), this.clozeController.currentScore / this.clozeController.maxScore).replace('@score', this.clozeController.currentScore).replace('@total', this.clozeController.maxScore);
+    this.setFeedback(scoreText, this.clozeController.currentScore, this.clozeController.maxScore, this.localization.getTextFromLabel(LocalizationLabels.scoreBarLabel));
   }
 
   /**
@@ -267,7 +274,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     }
 
 
-    if (state === States.ongoing) {
+    if (state === States.ongoing && this.settings.enableCheckButton) {
       this.showButton('check-answer');
     }
     else {
@@ -295,6 +302,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   }
 
   public getScore = (): number => {
+    this.onCheckAnswer();
     return this.clozeController.currentScore;
   }
 
@@ -303,6 +311,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   }
 
   public showSolutions = () => {
+    this.onCheckAnswer();
     this.onShowSolution();
     this.moveToState(States.showingSolutionsEmbedded);
   }

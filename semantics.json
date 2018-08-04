@@ -462,6 +462,15 @@
         "optional": true
       },
       {
+        "name": "enableCheckButton",
+        "type": "boolean",
+        "label": "Enable \"Check\" button",
+        "widget": "none",
+        "importance": "low",
+        "default": true,
+        "optional": true
+      },
+      {
         "label": "Disable image zooming for question image",
         "importance": "low",
         "name": "disableImageZooming",
