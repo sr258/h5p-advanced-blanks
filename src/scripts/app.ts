@@ -62,8 +62,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.clozeController.onScoreChanged = this.onScoreChanged;
     this.clozeController.onSolved = this.onSolved;
     this.clozeController.onAutoChecked = this.onAutoChecked;
-    if (!this.settings.autoCheck)
-      this.clozeController.onTyped = this.onTyped;
+    this.clozeController.onTyped = this.onTyped;
 
     if (contentData && contentData.previousState)
       this.previousState = contentData.previousState;
