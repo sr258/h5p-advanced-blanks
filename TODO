@@ -22,9 +22,10 @@ General todo:
   ☐ make test content types for regression testing
   ☐ check behavior of content type when used in...
     ☐ Course Presentation
+      how to add it? Doesn't really work.
     ☐ Interactive Video
-    ☐ Accordion
     ☐ Column
+      ☐ ractive elements aren't added to dom!
     ✔ Question Set @done(18-08-04 16:35)
       ✔ restore state with all correct answers --> shows retry & doesn't allow changes in answers + getAnswerGiven is incorrect @done(18-08-04 16:35)
         ✔ what we need: fill in answers, but don't check them + getAnswerGiven must be true @done(18-08-04 16:35)
