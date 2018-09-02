@@ -134,7 +134,7 @@
                     "type": "text",
                     "label": "Feedback",
                     "optional": true,
-                    "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user entered.",
+                    "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user has entered.",
                     "widget": "html",
                     "tags": [
                       "strong",
@@ -151,14 +151,14 @@
                     "name": "showHighlight",
                     "type": "boolean",
                     "label": "Show highlight in the text when feedback is shown",
-                    "description": "Highlights must be marked with !! at the beginning and !! at the end of the highlight. (e.g. !!Highlight 1!!)",
+                    "description": "Put !! before and after a piece of text to mark it as a highlight. (e.g. This is !!a highlight!!)",
                     "default": false,
                     "optional": false
                   },
                   {
                     "name": "highlight",
                     "type": "select",
-                    "label": "Select highlight position relative to blank:",
+                    "label": "Highlight position relative to blank:",
                     "widget": "showWhen",
                     "showWhen": {
                       "rules": [
@@ -228,7 +228,7 @@
               "name": "snippetName",
               "type": "text",
               "label": "Name",
-              "description": "You can only use letters and numbers for the name. ",
+              "description": "You can only use letters and numbers for the snippet name.",
               "regexp": {
                 "pattern": "^[\\w\\d]*$"
               }
@@ -324,7 +324,7 @@
         "name": "mode",
         "type": "select",
         "label": "Answer mode",
-        "description": "Indicates in what way the user enters answers.",
+        "description": "Indicates in what way the user gives answers.",
         "optional": false,
         "options": [
           {
@@ -359,7 +359,7 @@
           },
           {
             "value": "all",
-            "label": "The correct answers entered for all other blanks"
+            "label": "The correct answers of all other blanks"
           }
         ],
         "default": "alternatives"
@@ -367,7 +367,7 @@
       {
         "name": "selectAlternativeRestriction",
         "type": "number",
-        "label": "Maximum number of alternatives from other blanks offered for selection",
+        "label": "Maximum number of alternatives of other blanks offered for selection",
         "description": "Enter 0 to set no limit.",
         "min": 0,
         "step": 1,
@@ -390,7 +390,7 @@
         "options": [
           {
             "value": "accept",
-            "label": "Accept it as a correct solution"
+            "label": "Accept it as a correct answer"
           },
           {
             "value": "warn",
@@ -541,11 +541,11 @@
   },
   {
     "label": "Spelling mistake warning",
-    "description": "This is the message shown to the user when he makes a spelling mistake. Insert @mistake to show the user what he did wrong.",
+    "description": "This is the message shown to users when they make a spelling mistake. Insert @mistake to show them what they did wrong.",
     "importance": "low",
     "name": "spellingMistakeWarning",
     "type": "text",
-    "default": "You've made a spelling mistake: @mistake",
+    "default": "Check your spelling: @mistake",
     "common": true,
     "optional": true
   },
@@ -561,14 +561,14 @@
         "importance": "low",
         "name": "header",
         "type": "text",
-        "default": "Finish ?"
+        "default": "Finish?"
       },
       {
         "label": "Body text",
         "importance": "low",
         "name": "body",
         "type": "text",
-        "default": "Are you sure you wish to finish ?",
+        "default": "Are you sure you wish to finish?",
         "widget": "html",
         "enterMode": "p",
         "tags": [
@@ -606,14 +606,14 @@
         "importance": "low",
         "name": "header",
         "type": "text",
-        "default": "Retry ?"
+        "default": "Retry?"
       },
       {
         "label": "Body text",
         "importance": "low",
         "name": "body",
         "type": "text",
-        "default": "Are you sure you wish to retry ?",
+        "default": "Are you sure you wish to retry?",
         "widget": "html",
         "enterMode": "p",
         "tags": [
