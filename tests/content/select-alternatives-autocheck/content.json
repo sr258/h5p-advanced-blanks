@@ -1,0 +1,92 @@
+{
+  "media": {
+    "params": {}
+  },
+  "content": {
+    "task": "Fill in the missing words.",
+    "blanksList": [
+      {
+        "correctAnswerText": "Correct 1",
+        "incorrectAnswersList": [
+          {
+            "incorrectAnswerText": "Incorrect 1-1",
+            "incorrectAnswerFeedback": "Feedback 1-1"
+          },
+          {
+            "incorrectAnswerText": "Incorrect 1-2",
+            "incorrectAnswerFeedback": "Feedback 1-2"
+          }
+        ]
+      },
+      {
+        "correctAnswerText": "Correct 2",
+        "incorrectAnswersList": [
+          {
+            "incorrectAnswerText": "Incorrect 2-1",
+            "incorrectAnswerFeedback": "Feedback 2-1"
+          },
+          {
+            "incorrectAnswerText": "Incorrect 2-2",
+            "incorrectAnswerFeedback": "Feedback 2-2"
+          }
+        ]
+
+      },
+      {
+        "correctAnswerText": "Correct 3",
+        "incorrectAnswersList": [
+          {
+            "incorrectAnswerText": "Incorrect 3",
+            "incorrectAnswerFeedback": "Feedback 3"
+          }
+        ]
+      },
+      {
+        "correctAnswerText": "Correct 4",
+        "hint": "Hint for #4"
+      }
+    ],
+    "blanksText": "<p>Blank 1: _____</p>\n<p>Blank 2: _____</p>\n<p>Blank 3: _____</p>\n<p>Blank 4: _____</p>\n"
+  },
+  "overallFeedback": [
+    {
+      "from": 0,
+      "to": 100,
+      "feedback": "Feedback"
+    }
+  ],
+  "behaviour": {
+    "mode": "selection",
+    "selectAlternatives": "alternatives",
+    "selectAlternativeRestriction": 5,
+    "spellingErrorBehaviour": "mistake",
+    "caseSensitive": false,
+    "autoCheck": true,
+    "enableSolutionsButton": true,
+    "showSolutionsRequiresInput": true,
+    "enableRetry": true,
+    "enableCheckButton": true,
+    "disableImageZooming": false,
+    "confirmCheckDialog": false,
+    "confirmRetryDialog": false
+  },
+  "showSolutions": "Show solution",
+  "tryAgain": "Retry",
+  "checkAnswer": "Check",
+  "notFilledOut": "Please fill in all blanks to view solution",
+  "tipLabel": "Tip",
+  "spellingMistakeWarning": "You've made a spelling mistake: @mistake",
+  "confirmCheck": {
+    "header": "Finish ?",
+    "body": "Are you sure you wish to finish ?",
+    "cancelLabel": "Cancel",
+    "confirmLabel": "Finish"
+  },
+  "confirmRetry": {
+    "header": "Retry ?",
+    "body": "Are you sure you wish to retry ?",
+    "cancelLabel": "Cancel",
+    "confirmLabel": "Confirm"
+  },
+  "scoreBarLabel": "You got :num out of :total points"
+}

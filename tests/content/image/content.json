@@ -1,0 +1,111 @@
+{
+  "media": {
+    "params": {
+      "contentName": "Image",
+      "file": {
+        "path": "images/file-5885c18261805.jpg",
+        "mime": "image/jpeg",
+        "copyright": {
+          "license": "CC BY-ND",
+          "author": "Mikko Muinonen",
+          "source": "https://www.flickr.com/photos/mikeancient/5685771257/in/photolist-9Er4GV-GcqY5c-jypoL-7iS4Pv-JAoL7U-9BdfQX-9W889C-8AzZqc-JAoRvQ-nEPeF-gdtgb9-cUGvXs-757zpW-6J6quh-J5MPKo-2rma9X-8AD5h3-6J2kJg-JS1MiG-mYhroH-JUmgEF-JAoGLA-6J6qGo-JYdrRQ-8AzYet-6J2kec-JAnJWQ-5g",
+          "title": "A bucketful of freshly picked bilberries.",
+          "version": "4.0"
+        },
+        "width": 1588,
+        "height": 458
+      },
+      "alt": "Image of blueberries",
+      "title": "Image of blueberries"
+    },
+    "library": "H5P.Image 1.0",
+    "subContentId": "a3ed0e6c-d9b0-4330-b4fa-9ed3c328d1e5"
+  },
+  "content": {
+    "task": "Fill in the missing words.",
+    "blanksList": [
+      {
+        "correctAnswerText": "Correct 1",
+        "incorrectAnswersList": [
+          {
+            "incorrectAnswerText": "Incorrect 1-1",
+            "incorrectAnswerFeedback": "Feedback 1-1"
+          },
+          {
+            "incorrectAnswerText": "Incorrect 1-2",
+            "incorrectAnswerFeedback": "Feedback 1-2"
+          }
+        ]
+      },
+      {
+        "correctAnswerText": "Correct 2",
+        "incorrectAnswersList": [
+          {
+            "incorrectAnswerText": "Incorrect 2-1",
+            "incorrectAnswerFeedback": "Feedback 2-1"
+          },
+          {
+            "incorrectAnswerText": "Incorrect 2-2",
+            "incorrectAnswerFeedback": "Feedback 2-2"
+          }
+        ]
+
+      },
+      {
+        "correctAnswerText": "Correct 3",
+        "incorrectAnswersList": [
+          {
+            "incorrectAnswerText": "Incorrect 3",
+            "incorrectAnswerFeedback": "Feedback 3"
+          }
+        ]
+      },
+      {
+        "correctAnswerText": "Correct 4",
+        "hint": "Hint for #4"
+      }
+    ],
+    "blanksText": "<p>Blank 1: _____</p>\n<p>Blank 2: _____</p>\n<p>Blank 3: _____</p>\n<p>Blank 4: _____</p>\n"
+  },
+  "overallFeedback": [
+    {
+      "from": 0,
+      "to": 100,
+      "feedback": "Feedback"
+    }
+  ],
+  "behaviour": {
+    "mode": "typing",
+    "selectAlternatives": "alternatives",
+    "selectAlternativeRestriction": 5,
+    "spellingErrorBehaviour": "mistake",
+    "caseSensitive": false,
+    "autoCheck": false,
+    "enableSolutionsButton": true,
+    "showSolutionsRequiresInput": true,
+    "enableRetry": true,
+    "enableCheckButton": true,
+    "disableImageZooming": false,
+    "confirmCheckDialog": false,
+    "confirmRetryDialog": false
+  },
+  "showSolutions": "Show solution",
+  "tryAgain": "Retry",
+  "checkAnswer": "Check",
+  "notFilledOut": "Please fill in all blanks to view solution",
+  "tipLabel": "Tip",
+  "spellingMistakeWarning": "You've made a spelling mistake: @mistake",
+  "confirmCheck": {
+    "header": "Finish ?",
+    "body": "Are you sure you wish to finish ?",
+    "cancelLabel": "Cancel",
+    "confirmLabel": "Finish"
+  },
+  "confirmRetry": {
+    "header": "Retry ?",
+    "body": "Are you sure you wish to retry ?",
+    "cancelLabel": "Cancel",
+    "confirmLabel": "Confirm"
+  },
+  "scoreBarLabel": "You got :num out of :total points"
+}

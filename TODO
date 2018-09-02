@@ -18,12 +18,18 @@ General todo:
   ✔ add 'general feedback' functionality for auto-check (or is this consistent with other content types?) @done(18-08-04 16:54)
   ✔ auto-check + complete cloze + change text of blank --> state should go back to 'entering' @done(18-08-05 12:17)
   ✔ write German translation of semantics @done(18-08-21 21:04)
+  ☐ test German localization
   ☐ set default values in code
   ☐ make example content types
-  ☐ make test content types for regression testing
-  ☐ test all options
+  ☐ test all options (for regression testing)
     ☐ check if "show solutions requires input" is handled in the same way as in other content types
-    ☐ check why confirm dialogs don't work in h5p-cli server test setting
+    ✔ check why confirm dialogs don't work in h5p-cli server test setting --> H5P.ConfirmationDialog is undefined even though it should exist... this is an issue with the h5p-cli server, not this content type @done(18-09-02 18:21)
+    ☐ write tests for:
+       ✔ select mode: alternatives @done(18-09-02 18:12)
+       ✔ select mode: others + no restriction @done(18-09-02 18:17)
+       ✔ select mode: others + restrictions @done(18-09-02 18:17)
+       ✔ disable image zoom @done(18-09-02 18:21)
+       ☐ highlights
   ☐ check behavior of content type when used in...
     ☐ Course Presentation
       how to add it? Doesn't really work.
