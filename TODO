@@ -19,7 +19,7 @@ General todo:
   ✔ auto-check + complete cloze + change text of blank --> state should go back to 'entering' @done(18-08-05 12:17)
   ✔ write German translation of semantics @done(18-08-21 21:04)
   ☐ test German localization
-  ☐ set default values in code
+  ✔ set default values in code @done(18-09-07 17:45)
   ☐ make example content types
   ☐ test all options (for regression testing)
     ☐ check if "show solutions requires input" is handled in the same way as in other content types

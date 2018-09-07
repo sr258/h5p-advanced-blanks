@@ -18,20 +18,20 @@ export interface ISettings {
 }
 
 export class H5PSettings implements ISettings {
-  public clozeType: ClozeType;
-  public selectAlternatives: SelectAlternatives;
-  public selectAlternativeRestriction: number;
-  public enableRetry: boolean;
-  public enableSolutionsButton: boolean;
-  enableCheckButton: boolean;
-  public autoCheck: boolean;
-  public caseSensitive: boolean;
-  public warnSpellingErrors: boolean;
-  public acceptSpellingErrors: boolean;
-  public showSolutionsRequiresInput: boolean;
-  public confirmCheckDialog: boolean;
-  public confirmRetryDialog: boolean;
-  public disableImageZooming: boolean;
+  public clozeType: ClozeType = ClozeType.Type;
+  public selectAlternatives: SelectAlternatives = SelectAlternatives.Alternatives;
+  public selectAlternativeRestriction: number = 5;
+  public enableRetry: boolean = true;
+  public enableSolutionsButton: boolean = true;
+  public enableCheckButton: boolean = true;
+  public autoCheck: boolean = false;
+  public caseSensitive: boolean = false;
+  public warnSpellingErrors: boolean = true;
+  public acceptSpellingErrors: boolean = false;
+  public showSolutionsRequiresInput: boolean = true;
+  public confirmCheckDialog: boolean = false;
+  public confirmRetryDialog: boolean = false;
+  public disableImageZooming: boolean = false;
 
   constructor(h5pConfigData: any) {
     if (h5pConfigData.behaviour.mode === 'selection') {
