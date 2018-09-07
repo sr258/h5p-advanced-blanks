@@ -18,9 +18,10 @@ General todo:
   ✔ add 'general feedback' functionality for auto-check (or is this consistent with other content types?) @done(18-08-04 16:54)
   ✔ auto-check + complete cloze + change text of blank --> state should go back to 'entering' @done(18-08-05 12:17)
   ✔ write German translation of semantics @done(18-08-21 21:04)
-  ☐ test German localization
+  ✔ test German localization @done(18-09-07 17:53)
   ✔ set default values in code @done(18-09-07 17:45)
-  ☐ make example content types
+  ✔ make example content types @done(18-09-07 18:26)
+  ☐ check necessity of content updates
   ☐ test all options (for regression testing)
     ☐ check if "show solutions requires input" is handled in the same way as in other content types
     ✔ check why confirm dialogs don't work in h5p-cli server test setting --> H5P.ConfirmationDialog is undefined even though it should exist... this is an issue with the h5p-cli server, not this content type @done(18-09-02 18:21)
