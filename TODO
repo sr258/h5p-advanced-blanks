@@ -11,6 +11,8 @@ Bugfixes:
   ✘ you can press "Check" in Selection mode even if nothing has been selected so far @cancelled(18-06-02 20:38)
 
 General todo:
+  ☐ make ! clickable
+  ☐ make ! clickable when showing solutions (currently disabled)
   ✔ make "retry" behavior consistent to other content types + check if it needs it's own option @done(18-08-04 16:38)
   ✔ App.onScoreChanged --> setting feedback when fully done @done(18-08-04 16:54)
   ✔ resume with state + auto-check behavior @done(18-08-04 16:54)

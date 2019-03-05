@@ -79,7 +79,7 @@ export class Answer {
    * @param  {[{added?:boolean, boolean: removed?, string: value}]} diff - as returned by jsdiff
    * @returns number - the count of changes (replace, add, delete) needed to change the text from one string to the other 
    */
-  private getChangesCountFromDiff(diff: [{ added?: boolean, removed?: boolean, value: string }]): number {
+  private getChangesCountFromDiff(diff: jsdiff.Change[]): number {
     var totalChangesCount = 0;
     var lastType = "";
     var lastCount = 0;
