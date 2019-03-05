@@ -2,6 +2,7 @@ High priority:
 ==============
 
 Bugfixes:  
+  ☐ library.json: remove "preloadedCss": [ ] (also in Ractive)
   ✔ mode selection allows "-" selector (+ option below) @done(18-06-29 18:13)
   ☐ hide "option restriction setting" when not appropriate (showWhen doesn't work for selectAlternatives for some reason)
     possibly bug in H5P core library
