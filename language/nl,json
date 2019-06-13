@@ -1,0 +1,321 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optionele media die boven de vragen wordt getoond."
+        }
+      ]
+    },
+    {
+      "label": "Lege inhoud",
+      "fields": [
+        {
+          "label": "Beschrijving opgave",
+          "default": "Vul de ontbrekende woorden in.",
+          "description": "Een uitleg die de gebruiker vertelt hoe deze opgave moet worden beantwoord."
+        },
+        {
+          "label": "Tekst met liggende streepjes",
+          "important": {
+            "description": "<ul><li>Lege plekken moeten worden gemarkeerd met _____ (3 of meer liggende streepjes).</li><li>Plaats geen oplossingen in de tekst.</li></ul>"
+          },
+          "description": "",
+          "font": {}
+        },
+        {
+          "label": "Lege plekken die in de tekst worden gebruikt",
+          "entity": "lege plek",
+          "widgets": [
+            {
+              "label": "Standaard"
+            }
+          ],
+          "field": {
+            "label": "Leeg",
+            "fields": [
+              {
+                "label": "Juist antwoord",
+                "description": "Je kunt alternatieve antwoorden scheiden met een schuine streep (/)."
+              },
+              {
+                "label": "Hint"
+              },
+              {
+                "label": "Onjuiste antwoorden",
+                "entity": "onjuist antwoord",
+                "field": {
+                  "label": "Onjuist antwoord",
+                  "description": "Je kunt alternatieve antwoorden scheiden met een schuine streep (/).",
+                  "fields": [
+                    {
+                      "label": "Tekst onjuist antwoord"
+                    },
+                    {
+                      "label": "Feedback",
+                      "description": "De feedback moet de gebruiker helpen het juiste antwoord te vinden en moet idealiter zijn afgestemd op het antwoord dat de gebruiker heeft ingevoerd."
+                    },
+                    {
+                      "label": "Geef de markering in de tekst weer wanneer feedback wordt getoond",
+                      "description": "Plaats !! voor en na een stuk tekst om het als opvallend kenmerk te markeren. (bijvoorbeeld Dit is !!een opvallend kenmerk!!)"
+                    },
+                    {
+                      "label": "Markeer de positie ten opzichte van een lege plek:",
+                      "showWhen": {
+                        "rules": [
+                          {}
+                        ]
+                      },
+                      "options": [
+                        {
+                          "label": "- 1 (vlak voor de lege plek)"
+                        },
+                        {
+                          "label": "- 2 (twee accenten voor de lege plek)"
+                        },
+                        {
+                          "label": "- 3 (drie accenten voor de lege plek)"
+                        },
+                        {
+                          "label": "+ 1 (direct na de lege plek)"
+                        },
+                        {
+                          "label": "+ 2 (twee accenten na de lege plek)"
+                        },
+                        {
+                          "label": "+ 3 (drie accenten voor de lege plek)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Fragmenten",
+      "fields": [
+        {
+          "label": "Fragementenlijst",
+          "description": "Fragmenten zijn teksten die kunnen worden hergebruikt in feedbackteksten door de @fragmentnaam eraan toe te voegen.",
+          "entity": "fragment",
+          "field": {
+            "label": "Fragment",
+            "fields": [
+              {
+                "label": "Naam",
+                "description": "Je kunt alleen letters en cijfers gebruiken voor de naam van het fragment.",
+                "regexp": {}
+              },
+              {
+                "label": "Tekst"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Algehele feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Standaard"
+            }
+          ],
+          "label": "Definieer aangepaste feedback voor elke score reeks",
+          "description": "Druk op de \"Voeg scorereeks\" knop om zoveel reeksen toe te voegen als nodig. Voorbeeld: 0-20% Onvoldoende, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
+          "entity": "reeks",
+          "field": {
+            "fields": [
+              {
+                "label": "Score reeks"
+              },
+              {},
+              {
+                "label": "Feedback voor de gedefinieerde scorereeks",
+                "placeholder": "Vul de aangepaste feedback in"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Gedragsinstellingen",
+      "description": "Met deze opties kun je bepalen hoe de opgave zich gedraagt.",
+      "fields": [
+        {
+          "label": "Antwoordmodus",
+          "description": "Duidt aan op welke manier de gebruiker antwoorden geeft.",
+          "options": [
+            {
+              "label": "De gebruikers maken keuze uit diverse opties."
+            },
+            {
+              "label": "De gebruikers typen de antwoorden in."
+            }
+          ],
+          "default": "intypen"
+        },
+        {
+          "label": "De alternatieven die voor selectie worden aangeboden",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          },
+          "options": [
+            {
+              "label": "De onjuiste antwoorden die zijn ingevoerd voor de lege plek"
+            },
+            {
+              "label": "De juiste antwoorden van alle andere lege plekken"
+            }
+          ],
+          "default": "alternatieven"
+        },
+        {
+          "label": "Het maximaal aantal alternatieven voor andere lege plekken, die voor de selectie worden aangeboden",
+          "description": "Om geen limiet in te stellen vul je 0 in.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Gedrag wanneer een gebruiker een spelfout maakt in de spelling",
+          "options": [
+            {
+              "label": "Accepteer het als een correct antwoord"
+            },
+            {
+              "label": "Waarschuw de gebruiker voor de fout"
+            },
+            {
+              "label": "Beschouw het als een normale fout"
+            }
+          ],
+          "default": "fout",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Hoofdlettergevoelig",
+          "description": "Indien ingeschakeld, wordt het hoofdlettergebruik dat afwijkt van de oplossing als een fout beschouwd.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Controleer automatisch de antwoorden na invoer"
+        },
+        {
+          "label": "Activeer de knop \"Toon oplossingen\""
+        },
+        {
+          "label": "Het is een vereiste dat alle velden moeten worden beantwoord voordat de oplossing kan worden bekeken."
+        },
+        {
+          "label": "Activeer de knop \"Opnieuw\""
+        },
+        {
+          "label": "Activeer de knop \"Controleer\""
+        },
+        {
+          "label": "Deactiveer het zoomen van de afbeelding tijdens het tonen van de opgave"
+        },
+        {
+          "label": "Toon bevestigingsvenster bij "Controleer",
+          "description": "Deze optie is niet verenigbaar met de \"Controleer automatisch de antwoorden na invoer\" optie"
+        },
+        {
+          "label": "Toon bevestigingsvenster bij \"Opnieuw\""
+        }
+      ]
+    },
+    {
+      "label": "Tekst voor de knop \"Toon oplossing\"",
+      "default": "Toon oplossing"
+    },
+    {
+      "label": "Tekst voor de knop \"Opnieuw\"",
+      "default": "Opnieuw"
+    },
+    {
+      "label": "Tekst voor de knop \"Controleer\"",
+      "default": "Controleer"
+    },
+    {
+      "label": "Tekst voor het bericht \"Niet ingevuld\"",
+      "default": "Alle velden moeten worden ingevuld voordat de oplossing kan worden getoond"
+    },
+    {
+      "label": "Tekst voor het pictogram 'Tip'",
+      "default": "Tip"
+    },
+    {
+      "label": "Waarschuwing voor spelfouten",
+      "description": "Dit is de boodschap die aan gebruikers wordt getoond wanneer zij een spelfout maken. Voeg @fout in om te laten zien wat ze verkeerd hebben gedaan.",
+      "default": "Controleer je spelling: @fout"
+    },
+    {
+      "label": "Controleer de bevestigingsdialoog",
+      "fields": [
+        {
+          "label": "Koptekst",
+          "default": "Klaar?"
+        },
+        {
+          "label": "Hoofdtekst",
+          "default": "Ben je er zeker van dat je wilt stoppen?"
+        },
+        {
+          "label": "Label annuleerknop",
+          "default": "Annuleer"
+        },
+        {
+          "label": "Label bevestigingsknop",
+          "default": "Klaar"
+        }
+      ]
+    },
+    {
+      "label": "Bevestigingsdialoogvenster opnieuw proberen",
+      "fields": [
+        {
+          "label": "Koptekst",
+          "default": "Opnieuw?"
+        },
+        {
+          "label": "Hoofdtekst",
+          "default": "Ben je er zeker van dat je het opnieuw wil proberen?"
+        },
+        {
+          "label": "Label annuleerknop",
+          "default": "Annuleer"
+        },
+        {
+          "label": "Label bevestigingknop",
+          "default": "Bevestig"
+        }
+      ]
+    },
+    {
+      "label": "ekstuele weergave van de scorebalk voor diegenen die gebruik maken van een readspeaker",
+      "default": "Je hebt :aantal van het :totaal aantal punten"
+    }
+  ]
+}
