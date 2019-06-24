@@ -1,0 +1,321 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optional media to display above the question."
+        }
+      ]
+    },
+    {
+      "label": "Blank content",
+      "fields": [
+        {
+          "label": "Task description",
+          "default": "Fill in the missing words.",
+          "description": "A guide telling the user how to answer this task."
+        },
+        {
+          "label": "Text with blanks",
+          "important": {
+            "description": "<ul><li>Blanks must be marked with __________ (three or more underscores).</li><li>Do not put the solutions into the text.</li></ul>"
+          },
+          "description": "",
+          "font": {}
+        },
+        {
+          "label": "Blanks used in the text",
+          "entity": "blank",
+          "widgets": [
+            {
+              "label": "Default"
+            }
+          ],
+          "field": {
+            "label": "Blank",
+            "fields": [
+              {
+                "label": "Correct answer",
+                "description": "You can separate alternative answers with a slash (/)."
+              },
+              {
+                "label": "Hint"
+              },
+              {
+                "label": "Incorrect answers",
+                "entity": "incorrect answer",
+                "field": {
+                  "label": "Incorrect answer",
+                  "description": "You can separate alternative answers with a slash (/).",
+                  "fields": [
+                    {
+                      "label": "Incorrect answer text"
+                    },
+                    {
+                      "label": "Feedback",
+                      "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user has entered."
+                    },
+                    {
+                      "label": "Show highlight in the text when feedback is shown",
+                      "description": "Put !! before and after a piece of text to mark it as a highlight. (e.g. This is !!a highlight!!)"
+                    },
+                    {
+                      "label": "Highlight position relative to blank:",
+                      "showWhen": {
+                        "rules": [
+                          {}
+                        ]
+                      },
+                      "options": [
+                        {
+                          "label": "- 1 (right before the blank)"
+                        },
+                        {
+                          "label": "- 2 (two highlights before the blank)"
+                        },
+                        {
+                          "label": "- 3 (three highlights before the blank)"
+                        },
+                        {
+                          "label": "+ 1 (right after the blank)"
+                        },
+                        {
+                          "label": "+ 2 (two highlights after the blank)"
+                        },
+                        {
+                          "label": "+ 3 (three highlights after the blank)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Snippets",
+      "fields": [
+        {
+          "label": "Snippet list",
+          "description": "Snippets are texts that can be reused in feedback texts by inserting @snippetname into the it.",
+          "entity": "snippet",
+          "field": {
+            "label": "Snippet",
+            "fields": [
+              {
+                "label": "Name",
+                "description": "You can only use letters and numbers for the snippet name.",
+                "regexp": {}
+              },
+              {
+                "label": "Text"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Overall Feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Default"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Score Range"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Behavioural settings",
+      "description": "These options will let you control how the task behaves.",
+      "fields": [
+        {
+          "label": "Answer mode",
+          "description": "Indicates in what way the user gives answers.",
+          "options": [
+            {
+              "label": "The users selects from options."
+            },
+            {
+              "label": "The users types in the answers."
+            }
+          ],
+          "default": "typing"
+        },
+        {
+          "label": "Alternatives offered for selection",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          },
+          "options": [
+            {
+              "label": "The incorrect answers entered for the blank"
+            },
+            {
+              "label": "The correct answers of all other blanks"
+            }
+          ],
+          "default": "alternatives"
+        },
+        {
+          "label": "Maximum number of alternatives of other blanks offered for selection",
+          "description": "Enter 0 to set no limit.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Behaviour when user makes a spelling error",
+          "options": [
+            {
+              "label": "Accept it as a correct answer"
+            },
+            {
+              "label": "Warn the user about the error"
+            },
+            {
+              "label": "Consider it a regular mistake"
+            }
+          ],
+          "default": "mistake",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Case sensitive",
+          "description": "If enabled, capitalization that is different from the solution is considered an error.",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Automatically check answers after input"
+        },
+        {
+          "label": "Enable \"Show solutions\" button"
+        },
+        {
+          "label": "Require all fields to be answered before the solution can be viewed"
+        },
+        {
+          "label": "Enable \"Retry\""
+        },
+        {
+          "label": "Enable \"Check\" button"
+        },
+        {
+          "label": "Disable image zooming for question image"
+        },
+        {
+          "label": "Show confirmation dialog on \"Check\"",
+          "description": "This options is not compatible with the \"Automatically check answers after input\" option"
+        },
+        {
+          "label": "Show confirmation dialog on \"Retry\""
+        }
+      ]
+    },
+    {
+      "label": "Text for \"Show solutions\" button",
+      "default": "Show solution"
+    },
+    {
+      "label": "Text for \"Retry\" button",
+      "default": "Retry"
+    },
+    {
+      "label": "Text for \"Check\" button",
+      "default": "Check"
+    },
+    {
+      "label": "Text for \"Not filled out\" message",
+      "default": "Please fill in all blanks to view solution"
+    },
+    {
+      "label": "Tip icon label",
+      "default": "Tip"
+    },
+    {
+      "label": "Spelling mistake warning",
+      "description": "This is the message shown to users when they make a spelling mistake. Insert @mistake to show them what they did wrong.",
+      "default": "Check your spelling: @mistake"
+    },
+    {
+      "label": "Check confirmation dialog",
+      "fields": [
+        {
+          "label": "Header text",
+          "default": "Finish?"
+        },
+        {
+          "label": "Body text",
+          "default": "Are you sure you wish to finish?"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Finish"
+        }
+      ]
+    },
+    {
+      "label": "Retry confirmation dialog",
+      "fields": [
+        {
+          "label": "Header text",
+          "default": "Retry?"
+        },
+        {
+          "label": "Body text",
+          "default": "Are you sure you wish to retry?"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        }
+      ]
+    },
+    {
+      "label": "Textual representation of the score bar for those using a readspeaker",
+      "default": "You got :num out of :total points"
+    }
+  ]
+}
