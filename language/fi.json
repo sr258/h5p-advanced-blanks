@@ -4,62 +4,62 @@
       "label": "Media",
       "fields": [
         {
-          "label": "Type",
-          "description": "Optional media to display above the question."
+          "label": "Tyyppi",
+          "description": "Vapaaehtoinen kuva tai video joka esitetään kysymyksen yläpuolella."
         }
       ]
     },
     {
-      "label": "Blank content",
+      "label": "Tyhjä sisältö",
       "fields": [
         {
-          "label": "Task description",
-          "default": "Fill in the missing words.",
-          "description": "A guide telling the user how to answer this task."
+          "label": "Tehtävänkuvaus",
+          "default": "Täytä puuttuvat sanat.",
+          "description": "Lyhyt opastus suorittajille miten tehtävä suoritetaan."
         },
         {
-          "label": "Text with blanks",
+          "label": "Teksti aukkokohdilla",
           "important": {
-            "description": "<ul><li>Blanks must be marked with __________ (three or more underscores).</li><li>Do not put the solutions into the text.</li></ul>"
+            "description": "<ul><li>Aukkokohdat tulee merkitä __________ (vähintään kolmella alaviivalla).</li><li>Älä syötä vastausvaihtoehtoja suoraan tekstikappaleeseen vaan niille osoitettuihin kenttiin.</li></ul>"
           },
           "description": "",
           "font": {}
         },
         {
-          "label": "Blanks used in the text",
-          "entity": "blank",
+          "label": "Tekstin aukkokohdat",
+          "entity": "Aukko",
           "widgets": [
             {
-              "label": "Default"
+              "label": "Oletus"
             }
           ],
           "field": {
-            "label": "Blank",
+            "label": "Aukko",
             "fields": [
               {
-                "label": "Correct answer",
-                "description": "You can separate alternative answers with a slash (/)."
+                "label": "Oikea vastaus",
+                "description": "Voit listata useita oikeita vastaustavaihtoehtoja erottamalla ne kenoviivalla (/) esim. helsinki/turku/hämeenlinna"
               },
               {
-                "label": "Hint"
+                "label": "Vihje"
               },
               {
-                "label": "Incorrect answers",
-                "entity": "incorrect answer",
+                "label": "Väärät vastaukset",
+                "entity": "Väärä vastaus",
                 "field": {
-                  "label": "Incorrect answer",
-                  "description": "You can separate alternative answers with a slash (/).",
+                  "label": "Väärä vastaus",
+                  "description": "Voit listata useita vääriä vastaustavaihtoehtoja erottamalla ne kenoviivalla (/) esim. helsinki/turku/hämeenlinna",
                   "fields": [
                     {
-                      "label": "Incorrect answer text"
+                      "label": "Väärän vastauksen teksti"
                     },
                     {
-                      "label": "Feedback",
-                      "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user has entered."
+                      "label": "Väärän vastauksen palaute",
+                      "description": "Väärän vastauksen palautteen tarkoituksena on auttaa käyttäjää löytämään oikea vastaus ja ideaalitilanteessa se sopii jokaiseen mahdolliseen väärään vastausvaihtoehtoon jota hän voi antaa"
                     },
                     {
-                      "label": "Show highlight in the text when feedback is shown",
-                      "description": "Put !! before and after a piece of text to mark it as a highlight. (e.g. This is !!a highlight!!)"
+                      "label": "Korosta tekstiä silloin kun palaute näytetään.",
+                      "description": "Kun haluat korostaa tekstiä palautteen aikana laita sen ympärille huutomerkit !!(esim. Tämä on !!korostettu teksti!!)"
                     },
                     {
                       "label": "Highlight position relative to blank:",
@@ -98,22 +98,22 @@
       ]
     },
     {
-      "label": "Snippets",
+      "label": "Tekstipätkät",
       "fields": [
         {
-          "label": "Snippet list",
-          "description": "Snippets are texts that can be reused in feedback texts by inserting @snippetname into the it.",
-          "entity": "snippet",
+          "label": "Tekstipätkien lista",
+          "description": "Tekstipätkät ovat tekstipätkiä joihin voi viitata palauteteksteissä kirjoittamalla tekstiin @tekstipätkännimi",
+          "entity": "Tekstipätkä",
           "field": {
-            "label": "Snippet",
+            "label": "Tekstipätkä",
             "fields": [
               {
-                "label": "Name",
-                "description": "You can only use letters and numbers for the snippet name.",
+                "label": "Nimi",
+                "description": "Voit käyttää vain kirjaimia ja numeroita Tekstipätkän nimessä.",
                 "regexp": {}
               },
               {
-                "label": "Text"
+                "label": "Teksti"
               }
             ]
           }
@@ -121,26 +121,26 @@
       ]
     },
     {
-      "label": "Overall Feedback",
+      "label": "Yleinen Palaute",
       "fields": [
         {
           "widgets": [
             {
-              "label": "Default"
+              "label": "Oletus"
             }
           ],
-          "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity": "range",
+          "label": "Määritä räätälöity palaute haluamillesi pisterajoille",
+          "description": "Klikkaa  \"Add range\" -painiketta lisätäksesi niin monta pistealuerajoitusta kuin haluat. Esimerkiksi: 0-20% Huono pistemäärä, 21-91% Keskinkertainen pistemäärä, 91-100% Hyvä pistemäärä!",
+          "entity": "arvoväli",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "Pistearvoväli"
               },
               {},
               {
-                "label": "Feedback for defined score range",
-                "placeholder": "Fill in the feedback"
+                "label": "Palaute määritellyille pisterajoille",
+                "placeholder": "Täytä haluamasi palaute"
               }
             ]
           }
@@ -148,24 +148,24 @@
       ]
     },
     {
-      "label": "Behavioural settings",
-      "description": "These options will let you control how the task behaves.",
+      "label": "Lisäasetukset",
+      "description": "Nämä asetukset määrittelevät miten tämä kyseinen tehtävä toimii.",
       "fields": [
         {
-          "label": "Answer mode",
-          "description": "Indicates in what way the user gives answers.",
+          "label": "Vastaustapa",
+          "description": "Määrittelee miten käyttäjät antavat vastaukset.",
           "options": [
             {
-              "label": "The users selects from options."
+              "label": "Käyttäjä valitsee vastauksensa valmiilta listalta"
             },
             {
-              "label": "The users types in the answers."
+              "label": "Käyttäjä kirjoittaa vastauksensa."
             }
           ],
-          "default": "typing"
+          "default": "kirjoittaa"
         },
         {
-          "label": "Alternatives offered for selection",
+          "label": "Valittavissa olevat vaihtoehdot",
           "showWhen": {
             "rules": [
               {}
@@ -173,17 +173,17 @@
           },
           "options": [
             {
-              "label": "The incorrect answers entered for the blank"
+              "label": "Väärät vastaukset aukoille"
             },
             {
-              "label": "The correct answers of all other blanks"
+              "label": "Oikeat vastaukset kaikille muille aukoille."
             }
           ],
-          "default": "alternatives"
+          "default": "vaihtoehdot"
         },
         {
-          "label": "Maximum number of alternatives of other blanks offered for selection",
-          "description": "Enter 0 to set no limit.",
+          "label": "Muiden vaihtoehtojen maksimimäärä joita tarjotaan valittavaksi.",
+          "description": "Syötä 0 asettaakesi rajoittomattoman määrän",
           "showWhen": {
             "rules": [
               {}
@@ -191,19 +191,19 @@
           }
         },
         {
-          "label": "Behaviour when user makes a spelling error",
+          "label": "Käytös kun käyttäjä tekee kirjoitusvirheen",
           "options": [
             {
-              "label": "Accept it as a correct answer"
+              "label": "Hyväksy oikeana vastauksena."
             },
             {
-              "label": "Warn the user about the error"
+              "label": "Varoita käyttäjää kirjoitusvirheestä."
             },
             {
-              "label": "Consider it a regular mistake"
+              "label": "Hyväksy se tavanomaisena virheenä"
             }
           ],
-          "default": "mistake",
+          "default": "virhe",
           "showWhen": {
             "rules": [
               {}
@@ -211,8 +211,8 @@
           }
         },
         {
-          "label": "Case sensitive",
-          "description": "If enabled, capitalization that is different from the solution is considered an error.",
+          "label": "Merkkikokoriippuvainne",
+          "description": "Jos päällä niin kirjainkoko vaikuttaa siihen hyväksytäänkö vastaus oikeana vai virheellisenä esimerkiksi hyväksytäänkö helsinki vai ainoastaan Helsinki",
           "showWhen": {
             "rules": [
               {}
@@ -220,102 +220,102 @@
           }
         },
         {
-          "label": "Automatically check answers after input"
+          "label": "Tarkista vastaukset automaattisesti heti vastauksen jälkeen."
         },
         {
-          "label": "Enable \"Show solutions\" button"
+          "label": "Näytä \"Show solutions\" painike"
         },
         {
-          "label": "Require all fields to be answered before the solution can be viewed"
+          "label": "Vaadi että kaikki kentät ovat täytetty ennen kuin vastaukset voi tarkistaa"
         },
         {
-          "label": "Enable \"Retry\""
+          "label": "Salli \"Retry\""
         },
         {
-          "label": "Enable \"Check\" button"
+          "label": "Salli \"Check\" painike"
         },
         {
-          "label": "Disable image zooming for question image"
+          "label": "Estä kuvien kysymyskuvien zoomaaminen. 
         },
         {
-          "label": "Show confirmation dialog on \"Check\"",
-          "description": "This options is not compatible with the \"Automatically check answers after input\" option"
+          "label": "Näytä \"Check\" vahvistusikkuna",
+          "description": "Tämä asetus ei ole yhteensopiva \"Automatically check answers after input\" asetuksen kanssa"
         },
         {
-          "label": "Show confirmation dialog on \"Retry\""
+          "label": "Näytä \"Retry\" vahvistusikkuna"
         }
       ]
     },
     {
-      "label": "Text for \"Show solutions\" button",
-      "default": "Show solution"
+      "label": "Teksti \"Show solutions\" painikkeelle",
+      "default": "Näytä vastaukset"
     },
     {
-      "label": "Text for \"Retry\" button",
-      "default": "Retry"
+      "label": "Teksti \"Retry\" painikkeelle",
+      "default": "Yritä uudelleen"
     },
     {
-      "label": "Text for \"Check\" button",
-      "default": "Check"
+      "label": "Teksti \"Check\" painikkeelle",
+      "default": "Tarkista"
     },
     {
-      "label": "Text for \"Not filled out\" message",
-      "default": "Please fill in all blanks to view solution"
+      "label": "Teksti \"Not filled out\" viestille",
+      "default": "Ole hyvä ja täytä kaikki aukkokohdat nähdäksesi vastaukset"
     },
     {
-      "label": "Tip icon label",
-      "default": "Tip"
+      "label": "Vihje-ikonin teksti",
+      "default": "Vihje"
     },
     {
-      "label": "Spelling mistake warning",
-      "description": "This is the message shown to users when they make a spelling mistake. Insert @mistake to show them what they did wrong.",
-      "default": "Check your spelling: @mistake"
+      "label": "Kirjoitusvirhevaroitus",
+      "description": "Tämä on viesti joka näytetään käyttäjille kun he tekevät kirjoitusvirheen. Sisällytä viestiin muuttuja @mistake näyttääksesi heille missä he tekivät virheen.",
+      "default": "Tarkista oikeinkirjoitus: @mistake"
     },
     {
-      "label": "Check confirmation dialog",
+      "label": "Valmis-vahvistusikkuna",
       "fields": [
         {
-          "label": "Header text",
-          "default": "Finish?"
+          "label": "Otsikkoteksti",
+          "default": "Valmis?"
         },
         {
-          "label": "Body text",
-          "default": "Are you sure you wish to finish?"
+          "label": "Teksti",
+          "default": "Oletko varmasti valmis?"
         },
         {
-          "label": "Cancel button label",
+          "label": "Peruuta painikkeen teksti",
+          "default": "Peruuta"
+        },
+        {
+          "label": "Vahvitus painikkeen teksti",
+          "default": "Valmis"
+        }
+      ]
+    },
+    {
+      "label": "Yritä uudelleen-vahvistusikkuna",
+      "fields": [
+        {
+          "label": "Otsikkoteksti",
+          "default": "Yritä uudelleen?"
+        },
+        {
+          "label": "Teksti",
+          "default": "Oletko varma että haluat yrittää uudelleen?"
+        },
+        {
+          "label": "Peruuta painikkeen teksti",
           "default": "Cancel"
         },
         {
-          "label": "Confirm button label",
-          "default": "Finish"
+          "label": "Vahvitus painikkeen teksti",
+          "default": "Vahvista"
         }
       ]
     },
     {
-      "label": "Retry confirmation dialog",
-      "fields": [
-        {
-          "label": "Header text",
-          "default": "Retry?"
-        },
-        {
-          "label": "Body text",
-          "default": "Are you sure you wish to retry?"
-        },
-        {
-          "label": "Cancel button label",
-          "default": "Cancel"
-        },
-        {
-          "label": "Confirm button label",
-          "default": "Confirm"
-        }
-      ]
-    },
-    {
-      "label": "Textual representation of the score bar for those using a readspeaker",
-      "default": "You got :num out of :total points"
+      "label": "Tekstimuotoinen esitys pistepalkista niille jotka käyttävät ruudunlukijasovellusta",
+      "default": "Sait :num pistettä :total pisteestä"
     }
   ]
 }
