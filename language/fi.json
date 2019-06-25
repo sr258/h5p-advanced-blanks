@@ -1,0 +1,321 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Tyyppi",
+          "description": "Vapaaehtoinen kuva tai video joka esitetään kysymyksen yläpuolella."
+        }
+      ]
+    },
+    {
+      "label": "Tyhjä sisältö",
+      "fields": [
+        {
+          "label": "Tehtävänkuvaus",
+          "default": "Täytä puuttuvat sanat.",
+          "description": "Lyhyt opastus suorittajille miten tehtävä suoritetaan."
+        },
+        {
+          "label": "Teksti aukkokohdilla",
+          "important": {
+            "description": "<ul><li>Aukkokohdat tulee merkitä __________ (vähintään kolmella alaviivalla).</li><li>Älä syötä vastausvaihtoehtoja suoraan tekstikappaleeseen vaan niille osoitettuihin kenttiin.</li></ul>"
+          },
+          "description": "",
+          "font": {}
+        },
+        {
+          "label": "Tekstin aukkokohdat",
+          "entity": "Aukko",
+          "widgets": [
+            {
+              "label": "Oletus"
+            }
+          ],
+          "field": {
+            "label": "Aukko",
+            "fields": [
+              {
+                "label": "Oikea vastaus",
+                "description": "Voit listata useita oikeita vastaustavaihtoehtoja erottamalla ne kenoviivalla (/) esim. helsinki/turku/hämeenlinna"
+              },
+              {
+                "label": "Vihje"
+              },
+              {
+                "label": "Väärät vastaukset",
+                "entity": "Väärä vastaus",
+                "field": {
+                  "label": "Väärä vastaus",
+                  "description": "Voit listata useita vääriä vastaustavaihtoehtoja erottamalla ne kenoviivalla (/) esim. helsinki/turku/hämeenlinna",
+                  "fields": [
+                    {
+                      "label": "Väärän vastauksen teksti"
+                    },
+                    {
+                      "label": "Väärän vastauksen palaute",
+                      "description": "Väärän vastauksen palautteen tarkoituksena on auttaa käyttäjää löytämään oikea vastaus ja ideaalitilanteessa se sopii jokaiseen mahdolliseen väärään vastausvaihtoehtoon jota hän voi antaa"
+                    },
+                    {
+                      "label": "Korosta tekstiä silloin kun palaute näytetään.",
+                      "description": "Kun haluat korostaa tekstiä palautteen aikana laita sen ympärille huutomerkit !!(esim. Tämä on !!korostettu teksti!!)"
+                    },
+                    {
+                      "label": "Highlight position relative to blank:",
+                      "showWhen": {
+                        "rules": [
+                          {}
+                        ]
+                      },
+                      "options": [
+                        {
+                          "label": "- 1 (right before the blank)"
+                        },
+                        {
+                          "label": "- 2 (two highlights before the blank)"
+                        },
+                        {
+                          "label": "- 3 (three highlights before the blank)"
+                        },
+                        {
+                          "label": "+ 1 (right after the blank)"
+                        },
+                        {
+                          "label": "+ 2 (two highlights after the blank)"
+                        },
+                        {
+                          "label": "+ 3 (three highlights after the blank)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Tekstipätkät",
+      "fields": [
+        {
+          "label": "Tekstipätkien lista",
+          "description": "Tekstipätkät ovat tekstipätkiä joihin voi viitata palauteteksteissä kirjoittamalla tekstiin @tekstipätkännimi",
+          "entity": "Tekstipätkä",
+          "field": {
+            "label": "Tekstipätkä",
+            "fields": [
+              {
+                "label": "Nimi",
+                "description": "Voit käyttää vain kirjaimia ja numeroita Tekstipätkän nimessä.",
+                "regexp": {}
+              },
+              {
+                "label": "Teksti"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Yleinen Palaute",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Oletus"
+            }
+          ],
+          "label": "Määritä räätälöity palaute haluamillesi pisterajoille",
+          "description": "Klikkaa  \"Add range\" -painiketta lisätäksesi niin monta pistealuerajoitusta kuin haluat. Esimerkiksi: 0-20% Huono pistemäärä, 21-91% Keskinkertainen pistemäärä, 91-100% Hyvä pistemäärä!",
+          "entity": "arvoväli",
+          "field": {
+            "fields": [
+              {
+                "label": "Pistearvoväli"
+              },
+              {},
+              {
+                "label": "Palaute määritellyille pisterajoille",
+                "placeholder": "Täytä haluamasi palaute"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Lisäasetukset",
+      "description": "Nämä asetukset määrittelevät miten tämä kyseinen tehtävä toimii.",
+      "fields": [
+        {
+          "label": "Vastaustapa",
+          "description": "Määrittelee miten käyttäjät antavat vastaukset.",
+          "options": [
+            {
+              "label": "Käyttäjä valitsee vastauksensa valmiilta listalta"
+            },
+            {
+              "label": "Käyttäjä kirjoittaa vastauksensa."
+            }
+          ],
+          "default": "kirjoittaa"
+        },
+        {
+          "label": "Valittavissa olevat vaihtoehdot",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          },
+          "options": [
+            {
+              "label": "Väärät vastaukset aukoille"
+            },
+            {
+              "label": "Oikeat vastaukset kaikille muille aukoille."
+            }
+          ],
+          "default": "vaihtoehdot"
+        },
+        {
+          "label": "Muiden vaihtoehtojen maksimimäärä joita tarjotaan valittavaksi.",
+          "description": "Syötä 0 asettaakesi rajoittomattoman määrän",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Käytös kun käyttäjä tekee kirjoitusvirheen",
+          "options": [
+            {
+              "label": "Hyväksy oikeana vastauksena."
+            },
+            {
+              "label": "Varoita käyttäjää kirjoitusvirheestä."
+            },
+            {
+              "label": "Hyväksy se tavanomaisena virheenä"
+            }
+          ],
+          "default": "virhe",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Merkkikokoriippuvainne",
+          "description": "Jos päällä niin kirjainkoko vaikuttaa siihen hyväksytäänkö vastaus oikeana vai virheellisenä esimerkiksi hyväksytäänkö helsinki vai ainoastaan Helsinki",
+          "showWhen": {
+            "rules": [
+              {}
+            ]
+          }
+        },
+        {
+          "label": "Tarkista vastaukset automaattisesti heti vastauksen jälkeen."
+        },
+        {
+          "label": "Näytä \"Show solutions\" painike"
+        },
+        {
+          "label": "Vaadi että kaikki kentät ovat täytetty ennen kuin vastaukset voi tarkistaa"
+        },
+        {
+          "label": "Salli \"Retry\""
+        },
+        {
+          "label": "Salli \"Check\" painike"
+        },
+        {
+          "label": "Estä kuvien kysymyskuvien zoomaaminen. 
+        },
+        {
+          "label": "Näytä \"Check\" vahvistusikkuna",
+          "description": "Tämä asetus ei ole yhteensopiva \"Automatically check answers after input\" asetuksen kanssa"
+        },
+        {
+          "label": "Näytä \"Retry\" vahvistusikkuna"
+        }
+      ]
+    },
+    {
+      "label": "Teksti \"Show solutions\" painikkeelle",
+      "default": "Näytä vastaukset"
+    },
+    {
+      "label": "Teksti \"Retry\" painikkeelle",
+      "default": "Yritä uudelleen"
+    },
+    {
+      "label": "Teksti \"Check\" painikkeelle",
+      "default": "Tarkista"
+    },
+    {
+      "label": "Teksti \"Not filled out\" viestille",
+      "default": "Ole hyvä ja täytä kaikki aukkokohdat nähdäksesi vastaukset"
+    },
+    {
+      "label": "Vihje-ikonin teksti",
+      "default": "Vihje"
+    },
+    {
+      "label": "Kirjoitusvirhevaroitus",
+      "description": "Tämä on viesti joka näytetään käyttäjille kun he tekevät kirjoitusvirheen. Sisällytä viestiin muuttuja @mistake näyttääksesi heille missä he tekivät virheen.",
+      "default": "Tarkista oikeinkirjoitus: @mistake"
+    },
+    {
+      "label": "Valmis-vahvistusikkuna",
+      "fields": [
+        {
+          "label": "Otsikkoteksti",
+          "default": "Valmis?"
+        },
+        {
+          "label": "Teksti",
+          "default": "Oletko varmasti valmis?"
+        },
+        {
+          "label": "Peruuta painikkeen teksti",
+          "default": "Peruuta"
+        },
+        {
+          "label": "Vahvitus painikkeen teksti",
+          "default": "Valmis"
+        }
+      ]
+    },
+    {
+      "label": "Yritä uudelleen-vahvistusikkuna",
+      "fields": [
+        {
+          "label": "Otsikkoteksti",
+          "default": "Yritä uudelleen?"
+        },
+        {
+          "label": "Teksti",
+          "default": "Oletko varma että haluat yrittää uudelleen?"
+        },
+        {
+          "label": "Peruuta painikkeen teksti",
+          "default": "Cancel"
+        },
+        {
+          "label": "Vahvitus painikkeen teksti",
+          "default": "Vahvista"
+        }
+      ]
+    },
+    {
+      "label": "Tekstimuotoinen esitys pistepalkista niille jotka käyttävät ruudunlukijasovellusta",
+      "default": "Sait :num pistettä :total pisteestä"
+    }
+  ]
+}
