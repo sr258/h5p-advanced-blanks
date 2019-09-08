@@ -66,6 +66,26 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
     if (contentData && contentData.previousState)
       this.previousState = contentData.previousState;
+
+    /**
+    * Overrides the attach method of the superclass (H5P.Question) and calls it
+    * at the same time. (equivalent to super.attach($container)).
+    * This is necessary, as Ractive needs to be initialized with an existing DOM
+    * element. DOM elements are created in H5P.Question.attach, so initializing 
+    * Ractive in registerDomElements doesn't work.
+    */
+    this.attach = ((original) => {
+      return ($container) => {
+        original($container);
+        this.clozeController.initialize(this.container.get(0), $container);
+        if (this.clozeController.deserializeCloze(this.previousState)) {
+          this.answered = this.clozeController.isFilledOut;
+          if (this.settings.autoCheck)
+            this.onCheckAnswer();
+          this.toggleButtonVisibility(this.state);
+        }
+      }
+    })(this.attach);
   }
 
   /**
@@ -102,26 +122,6 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.triggerXAPI('interacted');
     this.triggerXAPIAnswered();
   }
-
-  /**
-   * Overrides the attach method of the superclass (H5P.Question) and calls it
-   * at the same time. (equivalent to super.attach($container)).
-   * This is necessary, as Ractive needs to be initialized with an existing DOM
-   * element. DOM elements are created in H5P.Question.attach, so initializing 
-   * Ractive in registerDomElements doesn't work.
-   */
-  attach = ((original) => {
-    return ($container) => {
-      original($container);
-      this.clozeController.initialize(this.container.get(0), $container);
-      if (this.clozeController.deserializeCloze(this.previousState)) {
-        this.answered = this.clozeController.isFilledOut;
-        if (this.settings.autoCheck)
-          this.onCheckAnswer();
-        this.toggleButtonVisibility(this.state);
-      }
-    }
-  })(this.attach);
 
   /**
    * Called by H5P.Question.attach(). Creates all content elements and registers them
@@ -190,13 +190,13 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       // Check answer button
       this.addButton('check-answer', this.localization.getTextFromLabel(LocalizationLabels.checkAllButton),
         this.onCheckAnswer, true, {}, {
-          confirmationDialog: {
-            enable: this.settings.confirmCheckDialog,
-            l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmCheck),
-            instance: this,
-            $parentElement: $container
-          }
-        });
+        confirmationDialog: {
+          enable: this.settings.confirmCheckDialog,
+          l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmCheck),
+          instance: this,
+          $parentElement: $container
+        }
+      });
     }
 
     // Show solution button
@@ -207,13 +207,13 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     if (this.settings.enableRetry === true) {
       this.addButton('try-again', this.localization.getTextFromLabel(LocalizationLabels.retryButton),
         this.onRetry, true, {}, {
-          confirmationDialog: {
-            enable: this.settings.confirmRetryDialog,
-            l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmRetry),
-            instance: this,
-            $parentElement: $container
-          }
-        });
+        confirmationDialog: {
+          enable: this.settings.confirmRetryDialog,
+          l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmRetry),
+          instance: this,
+          $parentElement: $container
+        }
+      });
     }
   }
 

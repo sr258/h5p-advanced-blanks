@@ -21,14 +21,18 @@ Grab all the modules:
 npm install
 ```
 
-Build project:
+Build project with debug info:
 
 ```bash
 npm run build
 ```
 
-Run tests:
-
+Build project in production mode:
 ```bash
-npm test
+npm run build:prod
+```
+
+Copy all relevant files to ``dist`` directory
+```bash
+npm run dist
 ```
