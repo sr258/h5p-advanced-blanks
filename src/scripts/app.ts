@@ -121,7 +121,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
         this.toggleButtonVisibility(this.state);
       }
     }
-  })(this.attach);
+  })(super.attach);
 
   /**
    * Called by H5P.Question.attach(). Creates all content elements and registers them
