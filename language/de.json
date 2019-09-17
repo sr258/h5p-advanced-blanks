@@ -5,7 +5,7 @@
       "fields": [
         {
           "label": "Typ",
-          "description": "Optionale Medien, die über der Frage angezeigt werden können."
+          "description": "Medium, das wahlweise oberhalb der Aufgabe angezeigt wird."
         }
       ]
     },
@@ -23,15 +23,14 @@
             "description": "<ul><li>Lücken müssen mit __________ (drei oder mehr Unterstriche) gekennzeichnet werden.</li><li>Die Lösungen werden erst weiter unten in einem anderen Bereich eingegeben.</li></ul>",
             "example": "Ich wollte _________ nach Norwegen fahren."
           },
-          "description": "",
-          "font": {}
+          "description": ""
         },
         {
           "label": "Lücken",
           "entity": "Lücke",
           "widgets": [
             {
-              "label": "Vorgabe"
+              "label": "Eingabemaske"
             }
           ],
           "field": {
@@ -64,11 +63,6 @@
                     },
                     {
                       "label": "Position der Hervorhebung relativ zur Lücke:",
-                      "showWhen": {
-                        "rules": [
-                          {}
-                        ]
-                      },
                       "options": [
                         {
                           "label": "- 1 (die letzte Hervorhebung vor der Lücke)"
@@ -110,8 +104,7 @@
             "fields": [
               {
                 "label": "Name",
-                "description": "Du kannst nur Buchstaben oder Ziffern für den Namen eines Textbausteins verwenden.",
-                "regexp": {}
+                "description": "Du kannst nur Buchstaben oder Ziffern für den Namen eines Textbausteins verwenden."
               },
               {
                 "label": "Text"
@@ -122,12 +115,12 @@
       ]
     },
     {
-      "label": "Allgemeine Rückmeldung",
+      "label": "Gesamtrückmeldung",
       "fields": [
         {
           "widgets": [
             {
-              "label": "Vorgabe"
+              "label": "Eingabemaske"
             }
           ],
           "label": "Lege Rückmeldungen für einzelne Punktebereiche fest",
@@ -140,7 +133,7 @@
               },
               {},
               {
-                "label": "Rückmeldung für festgelegte Punktebereiche",
+                "label": "Rückmeldung für jeweiligen Punktebereich",
                 "placeholder": "Trage die Rückmeldung ein"
               }
             ]
@@ -150,7 +143,7 @@
     },
     {
       "label": "Verhaltenseinstellungen",
-      "description": "Diese Optionen legen fest, wie sich die Aufgabe verhält.",
+      "description": "Diese Optionen legen fest, wie die Aufgabe im Detail funktioniert.",
       "fields": [
         {
           "label": "Antwortmodus",
@@ -167,11 +160,6 @@
         },
         {
           "label": "Alternativen, die zur Auswahl angeboten werden",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          },
           "options": [
             {
               "label": "Die für die jeweilige Lücke eingegebenen falschen Antworten"
@@ -184,12 +172,7 @@
         },
         {
           "label": "Maximalzahl der richtigen Antworten von allen anderen Lücken, die zur Auswahl angeboten werden",
-          "description": "Gib 0 ein, um keine Begrenzung zu setzen.",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "Gib 0 ein, um keine Begrenzung zu setzen."
         },
         {
           "label": "Verhalten bei Tippfehlern",
@@ -204,21 +187,11 @@
               "label": "Als Fehler ansehen"
             }
           ],
-          "default": "mistake",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "default": "mistake"
         },
         {
           "label": "Auf Groß-/Kleinschreibung achten",
-          "description": "Stellt sicher, dass die Lösung exakt der Vorgabe entspricht.",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "Stellt sicher, dass die Lösung exakt der Vorgabe entspricht."
         },
         {
           "label": "Antworten nach Eingabe automatisch prüfen"
@@ -236,7 +209,7 @@
           "label": "\"Überprüfen\"-Button anzeigen"
         },
         {
-          "label": "Zoom des Bildes deaktivieren."
+          "label": "Bildzoom deaktivieren"
         },
         {
           "label": "Bestätigungsdialog beim Klicken auf \"Überprüfen\" anzeigen",
@@ -248,23 +221,23 @@
       ]
     },
     {
-      "label": "Beschriftung für den \"Lösung anzeigen\"-Button",
+      "label": "Beschriftung des \"Lösung anzeigen\"-Buttons",
       "default": "Lösung anzeigen"
     },
     {
-      "label": "Beschriftung für den \"Wiederholen\"-Button",
+      "label": "Beschriftung des \"Wiederholen\"-Buttons",
       "default": "Wiederholen"
     },
     {
-      "label": "Beschriftung für den \"Überprüfen\"-Button",
+      "label": "Beschriftung des \"Überprüfen\"-Buttons",
       "default": "Überprüfen"
     },
     {
-      "label": "Text für die \"Nicht ausgefüllt\"-Nachricht",
-      "default": "Bitte fülle alle Lücken aus, um die Lösung zu sehen"
+      "label": "Text der \"Nicht ausgefüllt\"-Nachricht",
+      "default": "Bitte fülle alle Lücken aus, um die Lösung ansehen zu können"
     },
     {
-      "label": "Beschriftung für das Tipp-Icon",
+      "label": "Beschriftung des Tipp-Symbols",
       "default": "Tipp"
     },
     {
@@ -276,7 +249,7 @@
       "label": "Bestätigungsdialog beim Prüfen",
       "fields": [
         {
-          "label": "Text der Titelzeile",
+          "label": "Text der Überschrift",
           "default": "Beenden?"
         },
         {
@@ -297,7 +270,7 @@
       "label": "Bestätigungsdialog beim Wiederholen",
       "fields": [
         {
-          "label": "Text der Titelzeile",
+          "label": "Text der Überschrift",
           "default": "Wiederholen?"
         },
         {
@@ -315,7 +288,7 @@
       ]
     },
     {
-      "label": "Textuelle Repräsentation der Punkteleiste für diejenigen, die Readspeaker benutzen",
+      "label": "Anzeigetext als Ersatz für den Punktebalken in Vorlesewerkzeugen (Barrierefreiheit)",
       "default": "Du hast :num von :total Punkten erreicht."
     }
   ]
