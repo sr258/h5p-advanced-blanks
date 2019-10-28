@@ -7,11 +7,7 @@
     "test": "npx ava",
     "build": "cross-env NODE_ENV='development' webpack --mode=development",
     "build:prod": "cross-env NODE_ENV='production' webpack --mode=production",
-    "watch": "webpack --watch",
-    "dist": "cp library.json dist && cp semantics.json dist && cp -r language dist",
-    "deploy": "rsync -vaz --delete dist/* ../files/h5p/development/h5p-advanced-blanks",
-    "build+deploy": "npm run build && npm run deploy",
-    "bdd": "npm run build && npm run dist && npm run deploy"
+    "watch": "webpack --watch"
   },
   "repository": {
     "type": "git",
