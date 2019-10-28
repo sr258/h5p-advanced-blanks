@@ -17,7 +17,7 @@
   ],
   "preloadedJs": [
     {
-      "path": "dist.js"
+      "path": "dist/dist.js"
     }
   ],
   "preloadedDependencies": [
