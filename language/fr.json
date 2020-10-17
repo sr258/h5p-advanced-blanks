@@ -1,0 +1,294 @@
+{
+  "semantics": [
+    {
+      "label": "Média",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Média à afficher au-dessus de la question (facultatif)."
+        }
+      ]
+    },
+    {
+      "label": "Contenu",
+      "fields": [
+        {
+          "label": "Consigne",
+          "default": "Complétez les blancs.",
+          "description": "Consigne indiquant à l'utilisateur comment faire l'exercice."
+        },
+        {
+          "label": "Texte à trous",
+          "important": {
+            "description": "<ul><li>Les blancs doivent être marqués avec __________ (trois traits de soulignement ou plus).</li><li>Ne pas mettre les solutions dans le texte.</li></ul>"
+          },
+          "description": ""
+        },
+        {
+          "label": "Paramétrage des blancs utilisés dans le texte",
+          "entity": "blanc",
+          "widgets": [
+            {
+              "label": "Par défaut"
+            }
+          ],
+          "field": {
+            "label": "blanc",
+            "fields": [
+              {
+                "label": "Réponse correcte",
+                "description": "Vous pouvez séparer les réponses alternatives par une barre oblique (/)."
+              },
+              {
+                "label": "Indice"
+              },
+              {
+                "label": "Réponses incorrectes",
+                "entity": "réponse incorrecte",
+                "field": {
+                  "label": "Réponse incorrecte",
+                  "description": "Vous pouvez séparer les réponses alternatives par une barre oblique (/).",
+                  "fields": [
+                    {
+                      "label": "Texte de la réponse incorrecte"
+                    },
+                    {
+                      "label": "Feedback",
+                      "description": "Le feedback doit aider l'utilisateur à trouver la bonne réponse et être le plus possible adapté à la réponse qu'il a donnée."
+                    },
+                    {
+                      "label": "Surligner le texte lorsque le feedback est affiché",
+                      "description": "Mettez !! avant et après un élément du texte pour le marquer comme devant être surligné. (par exemple, ceci est !!un élément surligné !!)"
+                    },
+                    {
+                      "label": "Position de l'élément à mettre en surbrillance par rapport au blanc :",
+                      "options": [
+                        {
+                          "label": "- 1 (juste avant le blanc)"
+                        },
+                        {
+                          "label": "- 2 (deux surlignages avant le blanc)"
+                        },
+                        {
+                          "label": "- 3 (trois surlignages avant le blanc)"
+                        },
+                        {
+                          "label": "+ 1 (juste après le blanc)"
+                        },
+                        {
+                          "label": "+ 2 (deux surlignages après le blanc)"
+                        },
+                        {
+                          "label": "+ 3 (trois surlignages après le blanc)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Fragments de feedback",
+      "fields": [
+        {
+          "label": "Liste des fragments de feedback",
+          "description": "Les fragments de feedback sont des textes qui peuvent être réutilisés dans les textes de feedback en insérant @snippetname dans le texte.",
+          "entity": "fragment de feedback",
+          "field": {
+            "label": "Fragment de feedback",
+            "fields": [
+              {
+                "label": "Nom",
+                "description": "Pour le nom du fragment de feedback vous ne pouvez utiliser que des lettres, des chiffres ou le trait de soulignement."
+              },
+              {
+                "label": "Texte"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Feedback général",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Par défaut"
+            }
+          ],
+          "label": "Définissez des feedbacks pour différents intervalles de scores",
+          "description": "Cliquez sur le bouton \"Ajouter Intervalle\" pour ajouter autant d'intervalles de score que vous souhaitez. Exemple: 0-20% Mauvais score, 21-91% Score moyen, 91-100% Score excellent !",
+          "entity": "intervalle",
+          "field": {
+            "fields": [
+              {
+                "label": "Intervalle de scores"
+              },
+              {},
+              {
+                "label": "Feedback pour cet intervalle de scores",
+                "placeholder": "Remplissez le feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Options générales",
+      "description": "Ces options vous permettent de paramétrer le déroulement de l'exercice.",
+      "fields": [
+        {
+          "label": "Mode de réponse",
+          "description": "Définit la manière dont l'utilisateur donne des réponses.",
+          "options": [
+            {
+              "label": "L'utilisateur sélectionne parmi les choix proposés."
+            },
+            {
+              "label": "L'utilisateur tape les réponses."
+            }
+          ],
+          "default": "typing"
+        },
+        {
+          "label": "Choix proposés à l'utilisateur",
+          "options": [
+            {
+              "label": "Les réponses incorrectes fournies pour le blanc"
+            },
+            {
+              "label": "Les réponses correctes fournies pour tous les autres blancs"
+            }
+          ],
+          "default": "choix"
+        },
+        {
+          "label": "Nombre maximum de choix proposés",
+          "description": "Entrez 0 pour ne définir aucune limite."
+        },
+        {
+          "label": "Comportement lorsque l'utilisateur fait une faute d'orthographe",
+          "options": [
+            {
+              "label": "Considérez-la comme une bonne réponse"
+            },
+            {
+              "label": "Avertir l'utilisateur de l'erreur"
+            },
+            {
+              "label": "Considérez que c'est vraiment une erreur"
+            }
+          ],
+          "default": "erreur"
+        },
+        {
+          "label": "Sensible à la casse",
+          "description": "Si cette option est activée, une casse différente de celle de la solution est considérée comme une erreur."
+        },
+        {
+          "label": "Vérifier les réponses instantanément dès la saisie."
+        },
+        {
+          "label": "Activer le bouton \"Voir la correction\""
+        },
+        {
+          "label": "Obliger l'utilisateur à remplir tous les blancs avant de voir la correction."
+        },
+        {
+          "label": "Activer le bouton \"Recommencer\""
+        },
+        {
+          "label": "Activer le bouton \"Vérifier\""
+        },
+        {
+          "label": "Désactiver le zoom pour l'image attachée à la question"
+        },
+        {
+          "label": "Afficher la fenêtre de confirmation pour \"Vérifier\"",
+          "description": "Cette option n'est pas compatible avec l'option \"Vérifier les réponses instantanément dès la saisie.\""
+        },
+        {
+          "label": "Afficher la fenêtre de confirmation pour \"Recommencer\""
+        }
+      ]
+    },
+    {
+      "label": "Texte du bouton \"Voir la correction\"",
+      "default": "Voir la correction"
+    },
+    {
+      "label": "Texte du bouton \"Recommencer\"",
+      "default": "Recommencer"
+    },
+    {
+      "label": "Texte du bouton \"Vérifier\"",
+      "default": "Vérifier"
+    },
+    {
+      "label": "Texte pour le message \"Tout n'est pas complété\"",
+      "default": "Vous devez avoir rempli tous les blancs avant de voir la correction"
+    },
+    {
+      "label": "Intitulé de l'icône de l'indice",
+      "default": "Indice"
+    },
+    {
+      "label": "Avertissement d'erreur d'orthographe",
+      "description": "Ce message est affiché lorsque l'utilisateur a commis une faute d'orthographe. @mistake sera remplacé par le ou les fragment(s) de texte erroné(s).",
+      "default": "Vérifiez votre orthographe: @mistake"
+    },
+    {
+      "label": "Fenêtre de confirmation pour \"Vérifier\"",
+      "fields": [
+        {
+          "label": "Titre",
+          "default": "Terminé ?"
+        },
+        {
+          "label": "Texte",
+          "default": "Vous êtes sûr de vouloir finir ?"
+        },
+        {
+          "label": "Intitulé du bouton d'annulation",
+          "default": "Annuler"
+        },
+        {
+          "label": "Intitulé du bouton de confirmation",
+          "default": "Terminer"
+        }
+      ]
+    },
+    {
+      "label": "Fenêtre de confirmation pour \"Recommencer\"",
+      "fields": [
+        {
+          "label": "Titre",
+          "default": "Réessayer ?"
+        },
+        {
+          "label": "Texte",
+          "default": "Vous êtes sûr de vouloir réessayer ?"
+        },
+        {
+          "label": "Intitulé du bouton d'annulation",
+          "default": "Annuler"
+        },
+        {
+          "label": "Intitulé du bouton de confirmation",
+          "default": "Confirmer"
+        }
+      ]
+    },
+    {
+      "label": "Représentation textuelle du panneau du score pour les utilisateurs d'outils de synthèse vocale (comme ReadSpeaker)",
+      "default": "Vous avez obtenu :num points sur un total de :points"
+    }
+  ]
+}
