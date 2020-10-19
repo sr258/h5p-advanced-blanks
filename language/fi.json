@@ -22,8 +22,7 @@
           "important": {
             "description": "<ul><li>Aukkokohdat tulee merkitä __________ (vähintään kolmella alaviivalla).</li><li>Älä syötä vastausvaihtoehtoja suoraan tekstikappaleeseen vaan niille osoitettuihin kenttiin.</li></ul>"
           },
-          "description": "",
-          "font": {}
+          "description": ""
         },
         {
           "label": "Tekstin aukkokohdat",
@@ -63,11 +62,6 @@
                     },
                     {
                       "label": "Highlight position relative to blank:",
-                      "showWhen": {
-                        "rules": [
-                          {}
-                        ]
-                      },
                       "options": [
                         {
                           "label": "- 1 (right before the blank)"
@@ -109,8 +103,7 @@
             "fields": [
               {
                 "label": "Nimi",
-                "description": "Voit käyttää vain kirjaimia ja numeroita Tekstipätkän nimessä.",
-                "regexp": {}
+                "description": "Voit käyttää vain kirjaimia ja numeroita Tekstipätkän nimessä."
               },
               {
                 "label": "Teksti"
@@ -166,11 +159,6 @@
         },
         {
           "label": "Valittavissa olevat vaihtoehdot",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          },
           "options": [
             {
               "label": "Väärät vastaukset aukoille"
@@ -183,12 +171,7 @@
         },
         {
           "label": "Muiden vaihtoehtojen maksimimäärä joita tarjotaan valittavaksi.",
-          "description": "Syötä 0 asettaakesi rajoittomattoman määrän",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "Syötä 0 asettaakesi rajoittomattoman määrän"
         },
         {
           "label": "Käytös kun käyttäjä tekee kirjoitusvirheen",
@@ -203,21 +186,11 @@
               "label": "Hyväksy se tavanomaisena virheenä"
             }
           ],
-          "default": "virhe",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "default": "virhe"
         },
         {
           "label": "Merkkikokoriippuvainne",
-          "description": "Jos päällä niin kirjainkoko vaikuttaa siihen hyväksytäänkö vastaus oikeana vai virheellisenä esimerkiksi hyväksytäänkö helsinki vai ainoastaan Helsinki",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "Jos päällä niin kirjainkoko vaikuttaa siihen hyväksytäänkö vastaus oikeana vai virheellisenä esimerkiksi hyväksytäänkö helsinki vai ainoastaan Helsinki"
         },
         {
           "label": "Tarkista vastaukset automaattisesti heti vastauksen jälkeen."

@@ -22,8 +22,7 @@
           "important": {
             "description": "<ul><li>Blanks must be marked with __________ (three or more underscores).</li><li>Do not put the solutions into the text.</li></ul>"
           },
-          "description": "",
-          "font": {}
+          "description": ""
         },
         {
           "label": "Blanks used in the text",
@@ -63,11 +62,6 @@
                     },
                     {
                       "label": "Highlight position relative to blank:",
-                      "showWhen": {
-                        "rules": [
-                          {}
-                        ]
-                      },
                       "options": [
                         {
                           "label": "- 1 (right before the blank)"
@@ -102,15 +96,14 @@
       "fields": [
         {
           "label": "Snippet list",
-          "description": "Snippets are texts that can be reused in feedback texts by inserting @snippetname into the it.",
+          "description": "Snippets are texts that can be reused in feedback texts by inserting @snippetname into the text.",
           "entity": "snippet",
           "field": {
             "label": "Snippet",
             "fields": [
               {
                 "label": "Name",
-                "description": "You can only use letters and numbers for the snippet name.",
-                "regexp": {}
+                "description": "You can only use letters and numbers for the snippet name."
               },
               {
                 "label": "Text"
@@ -166,11 +159,6 @@
         },
         {
           "label": "Alternatives offered for selection",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          },
           "options": [
             {
               "label": "The incorrect answers entered for the blank"
@@ -183,12 +171,7 @@
         },
         {
           "label": "Maximum number of alternatives of other blanks offered for selection",
-          "description": "Enter 0 to set no limit.",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "Enter 0 to set no limit."
         },
         {
           "label": "Behaviour when user makes a spelling error",
@@ -203,21 +186,11 @@
               "label": "Consider it a regular mistake"
             }
           ],
-          "default": "mistake",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "default": "mistake"
         },
         {
           "label": "Case sensitive",
-          "description": "If enabled, capitalization that is different from the solution is considered an error.",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "If enabled, capitalization that is different from the solution is considered an error."
         },
         {
           "label": "Automatically check answers after input"
@@ -239,7 +212,7 @@
         },
         {
           "label": "Show confirmation dialog on \"Check\"",
-          "description": "This options is not compatible with the \"Automatically check answers after input\" option"
+          "description": "This option is not compatible with the \"Automatically check answers after input\" option"
         },
         {
           "label": "Show confirmation dialog on \"Retry\""
