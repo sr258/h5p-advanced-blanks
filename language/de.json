@@ -1,11 +1,11 @@
 {
   "semantics": [
     {
-      "label": "Medien",
+      "label": "Medium",
       "fields": [
         {
           "label": "Typ",
-          "description": "Medium, das wahlweise oberhalb der Aufgabe angezeigt wird."
+          "description": "Optionales Medium, das über der Frage dargestellt wird."
         }
       ]
     },
