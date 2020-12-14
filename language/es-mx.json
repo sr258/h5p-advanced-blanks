@@ -10,7 +10,7 @@
       ]
     },
     {
-      "label": "Contenido vacío",
+      "label": "Hueco en Contenido",
       "fields": [
         {
           "label": "Descripción del trabajo",
@@ -119,7 +119,7 @@
         {
           "widgets": [
             {
-              "label": "Predterminado"
+              "label": "Predeterminado"
             }
           ],
           "label": "Definir retroalimentación personalizada para cualquier rango de calificación",
@@ -141,8 +141,8 @@
       ]
     },
     {
-      "label": "Configuracones del comportamiento",
-      "description": "Estas opciones le permitirán controlar como se porta el trabajo.",
+      "label": "Configuraciones del comportamiento",
+      "description": "Estas opciones le permitirán controlar como se comporta el trabajo.",
       "fields": [
         {
           "label": "Modo de respuesta",
@@ -193,7 +193,7 @@
           "description": "Si se habilita, MAYÚSCULAS/minúsculas que sean diferentes de la solucion se consideran un error."
         },
         {
-          "label": "Automáticamente revisar respuestas después de ingesadas"
+          "label": "Automáticamente revisar respuestas después de ingresadas"
         },
         {
           "label": "Habilitar botón \"Mostrar soluciones\""
@@ -208,10 +208,10 @@
           "label": "Habilitar botón \"Revisar\""
         },
         {
-          "label": "Deshabilitar zom de imagen para imagen de pregunta"
+          "label": "Deshabilitar zoom de imagen para imagen de pregunta"
         },
         {
-          "label": "Mostrar diálogo de confirmaciónen \"Revisar\"",
+          "label": "Mostrar diálogo de confirmación en \"Revisar\"",
           "description": "Esta opción no es compatible con la opción de \"Automáticamente revisar respuestas después de ingresadas\""
         },
         {
@@ -220,75 +220,75 @@
       ]
     },
     {
-      "label": "Texto para botón de \"Mozstrar  soluciones\"",
+      "label": "Texto para botón de \"Mostrar  soluciones\"",
       "default": "Mostrar solución"
     },
     {
-      "label": "Text for \"Retry\" button",
-      "default": "Retry"
+      "label": "Texto para botón \"Reintentar\"",
+      "default": "Reintentar"
     },
     {
-      "label": "Text for \"Check\" button",
-      "default": "Check"
+      "label": "Texto para botón \"Revisar\"",
+      "default": "Revisar"
     },
     {
-      "label": "Text for \"Not filled out\" message",
-      "default": "Please fill in all blanks to view solution"
+      "label": "Texto para mensaje \"No completado\"",
+      "default": "Por favor llene todos los huecos para ver la solución"
     },
     {
-      "label": "Tip icon label",
-      "default": "Tip"
+      "label": "Etiqueta de ìcono de Sugerencia",
+      "default": "Sugerencia"
     },
     {
-      "label": "Spelling mistake warning",
-      "description": "This is the message shown to users when they make a spelling mistake. Insert @mistake to show them what they did wrong.",
-      "default": "Check your spelling: @mistake"
+      "label": "Advertencia de error de deletreado",
+      "description": "Este es un mensaje mostrado a los usuarios cuando hacen un error de deletreado. Inserte @mistake para mostrarles lo que hicieron mal.",
+      "default": "Revise su deletreado: @mistake"
     },
     {
-      "label": "Check confirmation dialog",
+      "label": "Diálogo para confirmación de revisión",
       "fields": [
         {
-          "label": "Header text",
-          "default": "Finish?"
+          "label": "Texto del encabezado",
+          "default": "¿Terminado?"
         },
         {
-          "label": "Body text",
-          "default": "Are you sure you wish to finish?"
+          "label": "Texto del cuerpo",
+          "default": "¿Seguro que quiere terminar?"
         },
         {
-          "label": "Cancel button label",
-          "default": "Cancel"
+          "label": "Etiqueta botón Cancelar",
+          "default": "Cancelar"
         },
         {
-          "label": "Confirm button label",
-          "default": "Finish"
+          "label": "Etiqueta botón Confirmar",
+          "default": "Terminar"
         }
       ]
     },
     {
-      "label": "Retry confirmation dialog",
+      "label": "Diálogo confirmación reintentar",
       "fields": [
         {
-          "label": "Header text",
-          "default": "Retry?"
+          "label": "Texto del encabezado",
+          "default": "¿Reintentar?"
         },
         {
-          "label": "Body text",
-          "default": "Are you sure you wish to retry?"
+          "label": "Texto del cuerpo",
+          "default": "¿Seguro que desea reintentar?"
         },
         {
-          "label": "Cancel button label",
-          "default": "Cancel"
+          "label": "Etiqueta botón Cancelar",
+          "default": "Cancelar"
         },
         {
-          "label": "Confirm button label",
-          "default": "Confirm"
+          "label": "Etiqueta botón Confirmar",
+          "default": "Confirmar"
         }
       ]
     },
     {
-      "label": "Textual representation of the score bar for those using a readspeaker",
-      "default": "You got :num out of :total points"
+      "label": "Representación textual de la barra de puntaje para los que usan lector de pantalla",
+      "default": "Usted tuvo :num de un total de :total puntos"
     }
   ]
 }
