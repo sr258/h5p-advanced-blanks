@@ -1,0 +1,294 @@
+{
+  "semantics": [
+    {
+      "label": "Medio",
+      "fields": [
+        {
+          "label": "Tipo",
+          "description": "Medio opcional para mostrar arriba de la pregunta."
+        }
+      ]
+    },
+    {
+      "label": "Contenido vacío",
+      "fields": [
+        {
+          "label": "Descripción del trabajo",
+          "default": "Escriba las palabras faltantes.",
+          "description": "Una guía que le dice al usuario como contestar este trabajo."
+        },
+        {
+          "label": "Texto con huecos",
+          "important": {
+            "description": "<ul><li>Los huecos deben ser marcados con __________ (tres o cuatro guiones bajos).</li><li>NO escriba las soluciones dentro del texto.</li></ul>"
+          },
+          "description": ""
+        },
+        {
+          "label": "Huecos usados en el texto",
+          "entity": "hueco",
+          "widgets": [
+            {
+              "label": "Predeterminado"
+            }
+          ],
+          "field": {
+            "label": "Hueco",
+            "fields": [
+              {
+                "label": "Respuesta correcta",
+                "description": "Puede separar respuestas alternas con una diagonal (/)."
+              },
+              {
+                "label": "Pista"
+              },
+              {
+                "label": "Respuestas incorrectas",
+                "entity": "respuesta incorrecta",
+                "field": {
+                  "label": "Respuesta incorrecta",
+                  "description": "Puede separar respuestas alternas con una diagonal (/)."
+                  "fields": [
+                    {
+                      "label": "Texto de respuesta incorrecta"
+                    },
+                    {
+                      "label": "Retroalimentación",
+                      "description": "La retroalimentación debería ayudar al usuario a encontrar la respuesta correcta y estar idealmente apropiada para la respuesta que el usuario ha ingresado."
+                    },
+                    {
+                      "label": "Mostrar resaltado en el texto cuando se muestre la retroalimentación",
+                      "description": "Ponga !! antes y después de un trozo de texto para marcarlo como resaltado. (ejemplo Esto !!está resaltado!!)"
+                    },
+                    {
+                      "label": "Resaltar posición relativa al hueco:",
+                      "options": [
+                        {
+                          "label": "- 1 (justo antes del hueco)"
+                        },
+                        {
+                          "label": "- 2 (dos resaltados antes del hueco)"
+                        },
+                        {
+                          "label": "- 3 (tres resaltados antes del hueco)"
+                        },
+                        {
+                          "label": "+ 1 (justo después del hueco)"
+                        },
+                        {
+                          "label": "+ 2 (dos resaltados después del hueco)"
+                        },
+                        {
+                          "label": "+ 3 (tres reslatados después del hueco)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Snippets",
+      "fields": [
+        {
+          "label": "Lista de Snippet",
+          "description": "Snippets son textos que pueden ser reutilizados en textos de retroalimentación al insertar @snippetname dentro del texto.",
+          "entity": "snippet",
+          "field": {
+            "label": "Snippet",
+            "fields": [
+              {
+                "label": "Nombre",
+                "description": "Usted solamente puede usar letras y números para el nombre del snippet."
+              },
+              {
+                "label": "Texto"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Retroalimentación global",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Predterminado"
+            }
+          ],
+          "label": "Definir retroalimentación personalizada para cualquier rango de calificación",
+          "description": "Elija el botón \"Añadir rango\" para añadir cuantos rangos necesite. Ejemplo: 0-20% Mal Puntaje, 21-91% Puntaje Promedio, 91-100% ¡Magnífico Puntaje!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Rango de Puntaje"
+              },
+              {},
+              {
+                "label": "Retroalimentación para rango de puntaje",
+                "placeholder": "Escriba la retroalimentación"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Configuracones del comportamiento",
+      "description": "Estas opciones le permitirán controlar como se porta el trabajo.",
+      "fields": [
+        {
+          "label": "Modo de respuesta",
+          "description": "Indica en cual forma el usuario da las respuestas.",
+          "options": [
+            {
+              "label": "El usuario elige entre opciones."
+            },
+            {
+              "label": "El usuario escribe las respuestas."
+            }
+          ],
+          "default": "escribiendo"
+        },
+        {
+          "label": "Alternativas ofrecidas para seleción",
+          "options": [
+            {
+              "label": "Las respuestas incorrectas ingresadas para el hueco"
+            },
+            {
+              "label": "La respuesta correcta de todos los otros huecos"
+            }
+          ],
+          "default": "alternativas"
+        },
+        {
+          "label": "Número máximo de alternativas de otros huecos ofrecidos para selección",
+          "description": "Escribir 0 para configurar a ilimitado."
+        },
+        {
+          "label": "Comportamiento cuando el usuario hace un error de deletreado",
+          "options": [
+            {
+              "label": "Aceptarla como una respuesta correcta"
+            },
+            {
+              "label": "Advertirle al usuario acerca del error"
+            },
+            {
+              "label": "Considerarla un error regular"
+            }
+          ],
+          "default": "error"
+        },
+        {
+          "label": "Sensibildad a MAYÚSCULAS/minúsculas",
+          "description": "Si se habilita, MAYÚSCULAS/minúsculas que sean diferentes de la solucion se consideran un error."
+        },
+        {
+          "label": "Automáticamente revisar respuestas después de ingesadas"
+        },
+        {
+          "label": "Habilitar botón \"Mostrar soluciones\""
+        },
+        {
+          "label": "Requerir que todos los campos sean contestados antes de que la solución pueda ser vista"
+        },
+        {
+          "label": "Habilitar \"Reintentar\""
+        },
+        {
+          "label": "Habilitar botón \"Revisar\""
+        },
+        {
+          "label": "Deshabilitar zom de imagen para imagen de pregunta"
+        },
+        {
+          "label": "Mostrar diálogo de confirmaciónen \"Revisar\"",
+          "description": "Esta opción no es compatible con la opción de \"Automáticamente revisar respuestas después de ingresadas\""
+        },
+        {
+          "label": "Mostrar diálogo de confirmación en \"Reintentar\""
+        }
+      ]
+    },
+    {
+      "label": "Texto para botón de \"Mozstrar  soluciones\"",
+      "default": "Mostrar solución"
+    },
+    {
+      "label": "Text for \"Retry\" button",
+      "default": "Retry"
+    },
+    {
+      "label": "Text for \"Check\" button",
+      "default": "Check"
+    },
+    {
+      "label": "Text for \"Not filled out\" message",
+      "default": "Please fill in all blanks to view solution"
+    },
+    {
+      "label": "Tip icon label",
+      "default": "Tip"
+    },
+    {
+      "label": "Spelling mistake warning",
+      "description": "This is the message shown to users when they make a spelling mistake. Insert @mistake to show them what they did wrong.",
+      "default": "Check your spelling: @mistake"
+    },
+    {
+      "label": "Check confirmation dialog",
+      "fields": [
+        {
+          "label": "Header text",
+          "default": "Finish?"
+        },
+        {
+          "label": "Body text",
+          "default": "Are you sure you wish to finish?"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Finish"
+        }
+      ]
+    },
+    {
+      "label": "Retry confirmation dialog",
+      "fields": [
+        {
+          "label": "Header text",
+          "default": "Retry?"
+        },
+        {
+          "label": "Body text",
+          "default": "Are you sure you wish to retry?"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        }
+      ]
+    },
+    {
+      "label": "Textual representation of the score bar for those using a readspeaker",
+      "default": "You got :num out of :total points"
+    }
+  ]
+}
