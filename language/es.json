@@ -37,7 +37,7 @@
             "fields": [
               {
                 "label": "Respuesta correcta",
-                "description": "Puede separar respuestas alternas con una diagonal (/)."
+                "description": "Puede separar respuestas alternas con una diagonal (/).",
               },
               {
                 "label": "Pista"
