@@ -47,7 +47,7 @@
                 "entity": "respuesta incorrecta",
                 "field": {
                   "label": "Respuesta incorrecta",
-                  "description": "Puede separar respuestas alternas con una diagonal (/)."
+                  "description": "Puede separar respuestas alternas con una diagonal (/).",
                   "fields": [
                     {
                       "label": "Texto de respuesta incorrecta"
