@@ -32,7 +32,6 @@ var config = {
         use: {
           loader: 'html-loader',
           options: {
-            ignoreCustomFragments: [/\{\{.*?}}/],
             minimize: false
           }
         }
