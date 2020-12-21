@@ -47,7 +47,12 @@ export class ClozeController {
   }
 
   public get currentScore(): number {
-    var score = this.cloze.blanks.filter(b => b.isCorrect).length;
+    const score = this.cloze.blanks.reduce((score, b) => {
+      const notShowingSolution = !b.isShowingSolution;
+      const correctAnswerGiven = b.correctAnswers[0].alternatives.indexOf(b.enteredText || '') !== -1;
+      return score += (notShowingSolution && correctAnswerGiven) ? 1 : 0;
+    }, 0);
+
     return Math.max(0, score);
   }
 
@@ -297,5 +302,5 @@ export class ClozeController {
     }
 
     return result;
-  }  
+  }
 }

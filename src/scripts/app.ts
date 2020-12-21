@@ -71,7 +71,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     * Overrides the attach method of the superclass (H5P.Question) and calls it
     * at the same time. (equivalent to super.attach($container)).
     * This is necessary, as Ractive needs to be initialized with an existing DOM
-    * element. DOM elements are created in H5P.Question.attach, so initializing 
+    * element. DOM elements are created in H5P.Question.attach, so initializing
     * Ractive in registerDomElements doesn't work.
     */
     this.attach = ((original) => {
@@ -140,7 +140,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
   /**
    * @returns JQuery - The outer h5p container. The library can add dialogues to this
-   * element. 
+   * element.
    */
   private getH5pContainer(): JQuery {
     var $content = this.jQuery('[data-content-id="' + this.contentId + '"].h5p-content');
@@ -314,7 +314,6 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   }
 
   public getScore = (): number => {
-    this.onCheckAnswer();
     return this.clozeController.currentScore;
   }
 
@@ -323,7 +322,6 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   }
 
   public showSolutions = () => {
-    this.onCheckAnswer();
     this.onShowSolution();
     this.moveToState(States.showingSolutionsEmbedded);
   }
