@@ -7,7 +7,7 @@ import { MessageService } from './services/message-service';
 import { Unrwapper } from './helpers/unwrapper';
 import { XAPIActivityDefinition } from './models/xapi';
 import { createPermutations } from './helpers/permutations';
-
+import { extend } from './helpers/extend';
 
 enum States {
   ongoing = 'ongoing',
@@ -45,6 +45,17 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
    */
   constructor(config: any, contentId: string, contentData: any = {}) {
     super();
+
+    // Set mandatory default values for editor widgets that create content type instances
+    config = extend({
+      content: {
+        blanksText: ''
+      },
+      behaviour: {
+        mode: 'typing',
+        selectAlternatives: 'alternatives'
+      }
+    }, config);
 
     this.jQuery = H5P.jQuery;
     this.contentId = contentId;
