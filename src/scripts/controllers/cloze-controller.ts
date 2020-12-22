@@ -46,6 +46,14 @@ export class ClozeController {
     return this.cloze.blanks.length;
   }
 
+  /**
+   * Detect whether there are blanks with more than one solution.
+   * @return {boolean} True if there is at least one blank with more than one solution.
+   */
+  public get hasAlternatives(): boolean {
+    return this.cloze.blanks.some(b => b.correctAnswers[0].alternatives.length > 1);
+  }
+
   public get currentScore(): number {
     var score = this.cloze.blanks.filter(b => b.isCorrect).length;
     return Math.max(0, score);
@@ -297,5 +305,5 @@ export class ClozeController {
     }
 
     return result;
-  }  
+  }
 }
