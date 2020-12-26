@@ -8,6 +8,7 @@ import { H5PLocalization } from "../services/localization";
 import { ClozeType, SelectAlternatives } from "../models/enums";
 import { Highlight } from "../models/highlight";
 import { Blank } from "../models/blank";
+import { Correctness } from '../models/answer';
 
 import * as RactiveEventsKeys from '../../lib/ractive-events-keys';
 
@@ -50,7 +51,14 @@ export class ClozeController {
     const score = this.cloze.blanks.reduce((score, b) => {
       const notShowingSolution = !b.isShowingSolution;
       const correctAnswerGiven = b.correctAnswers[0].alternatives.indexOf(b.enteredText || '') !== -1;
-      return score += (notShowingSolution && correctAnswerGiven) ? 1 : 0;
+
+      // Detect small mistakes
+      const closeCorrectMatches = b.correctAnswers
+        .map(answer => answer.evaluateAttempt(b.enteredText))
+        .filter(evaluation => evaluation.correctness === Correctness.CloseMatch);
+      const similarAnswerGiven = this.settings.acceptSpellingErrors && closeCorrectMatches.length > 0;
+
+      return score += (notShowingSolution && (correctAnswerGiven || similarAnswerGiven)) ? 1 : 0;
     }, 0);
 
     return Math.max(0, score);
