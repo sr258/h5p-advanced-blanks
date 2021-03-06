@@ -1,0 +1,294 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Tipo",
+          "description": ""
+        }
+      ]
+    },
+    {
+      "label": "",
+      "fields": [
+        {
+          "label": "",
+          "default": "",
+          "description": ""
+        },
+        {
+          "label": "",
+          "important": {
+            "description": ""
+          },
+          "description": ""
+        },
+        {
+          "label": "",
+          "entity": "",
+          "widgets": [
+            {
+              "label": ""
+            }
+          ],
+          "field": {
+            "label": "",
+            "fields": [
+              {
+                "label": "",
+                "description": ""
+              },
+              {
+                "label": ""
+              },
+              {
+                "label": "",
+                "entity": "",
+                "field": {
+                  "label": "",
+                  "description": "",
+                  "fields": [
+                    {
+                      "label": ""
+                    },
+                    {
+                      "label": "",
+                      "description": ""
+                    },
+                    {
+                      "label": "",
+                      "description": ""
+                    },
+                    {
+                      "label": "",
+                      "options": [
+                        {
+                          "label": ""
+                        },
+                        {
+                          "label": ""
+                        },
+                        {
+                          "label": ""
+                        },
+                        {
+                          "label": ""
+                        },
+                        {
+                          "label": ""
+                        },
+                        {
+                          "label": ""
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "",
+      "fields": [
+        {
+          "label": "",
+          "description": "",
+          "entity": "",
+          "field": {
+            "label": "",
+            "fields": [
+              {
+                "label": "",
+                "description": ""
+              },
+              {
+                "label": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": ""
+            }
+          ],
+          "label": "",
+          "description": "",
+          "entity": "",
+          "field": {
+            "fields": [
+              {
+                "label": ""
+              },
+              {},
+              {
+                "label": "",
+                "placeholder": ""
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "",
+      "description": "",
+      "fields": [
+        {
+          "label": "",
+          "description": "",
+          "options": [
+            {
+              "label": ""
+            },
+            {
+              "label": ""
+            }
+          ],
+          "default": ""
+        },
+        {
+          "label": "",
+          "options": [
+            {
+              "label": ""
+            },
+            {
+              "label": ""
+            }
+          ],
+          "default": ""
+        },
+        {
+          "label": "",
+          "description": ""
+        },
+        {
+          "label": "",
+          "options": [
+            {
+              "label": ""
+            },
+            {
+              "label": ""
+            },
+            {
+              "label": ""
+            }
+          ],
+          "default": ""
+        },
+        {
+          "label": "",
+          "description": ""
+        },
+        {
+          "label": ""
+        },
+        {
+          "label": ""
+        },
+        {
+          "label": ""
+        },
+        {
+          "label": ""
+        },
+        {
+          "label": ""
+        },
+        {
+          "label": ""
+        },
+        {
+          "label": "",
+          "description": ""
+        },
+        {
+          "label": ""
+        }
+      ]
+    },
+    {
+      "label": "",
+      "default": ""
+    },
+    {
+      "label": "",
+      "default": ""
+    },
+    {
+      "label": "",
+      "default": ""
+    },
+    {
+      "label": "",
+      "default": ""
+    },
+    {
+      "label": "",
+      "default": ""
+    },
+    {
+      "label": "",
+      "description": "",
+      "default": ""
+    },
+    {
+      "label": "",
+      "fields": [
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "label": "",
+      "fields": [
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        },
+        {
+          "label": "",
+          "default": ""
+        }
+      ]
+    },
+    {
+      "label": "",
+      "default": ""
+    }
+  ]
+}
