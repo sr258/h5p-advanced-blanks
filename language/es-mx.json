@@ -5,7 +5,7 @@
       "fields": [
         {
           "label": "Tipo",
-          "description": "Medio opcional para mostrar arriba de la pregunta."
+          "description": "Medio opcional a mostrar arriba de la pregunta."
         }
       ]
     },
@@ -54,11 +54,11 @@
                     },
                     {
                       "label": "Retroalimentación",
-                      "description": "La retroalimentación debería ayudar al usuario a encontrar la respuesta correcta y estar idealmente apropiada para la respuesta que el usuario ha ingresado."
+                      "description": "La retroalimentación debería ayudarle al usuario a encontrar la respuesta correcta y estar idealmente hecha a la medida para la respuesta que el usuario ha ingresado."
                     },
                     {
                       "label": "Mostrar resaltado en el texto cuando se muestre la retroalimentación",
-                      "description": "Ponga !! antes y después de un trozo de texto para marcarlo como resaltado. (ejemplo Esto !!está resaltado!!)"
+                      "description": "Ponga !! antes y después de un trozo de texto para marcarlo como resaltado. (ejemplo: Esto !!está resaltado!!)"
                     },
                     {
                       "label": "Resaltar posición relativa al hueco:",
@@ -79,7 +79,7 @@
                           "label": "+ 2 (dos resaltados después del hueco)"
                         },
                         {
-                          "label": "+ 3 (tres reslatados después del hueco)"
+                          "label": "+ 3 (tres resaltados después del hueco)"
                         }
                       ]
                     }
@@ -92,14 +92,14 @@
       ]
     },
     {
-      "label": "Snippets",
+      "label": "Snippets (fragmentos)",
       "fields": [
         {
-          "label": "Lista de Snippet",
-          "description": "Snippets son textos que pueden ser reutilizados en textos de retroalimentación al insertar @snippetname dentro del texto.",
-          "entity": "snippet",
+          "label": "Lista de Snippets",
+          "description": "Snippets (fragmentos) son textos que pueden ser reutilizados en textos de retroalimentación al insertar @snippetname dentro del texto.",
+          "entity": "snippet (fragmento)",
           "field": {
-            "label": "Snippet",
+            "label": "Snippet (Fragmento)",
             "fields": [
               {
                 "label": "Nombre",
@@ -114,7 +114,7 @@
       ]
     },
     {
-      "label": "Retroalimentación global",
+      "label": "Retroalimentación Global",
       "fields": [
         {
           "widgets": [
@@ -122,9 +122,9 @@
               "label": "Predeterminado"
             }
           ],
-          "label": "Definir retroalimentación personalizada para cualquier rango de calificación",
-          "description": "Elija el botón \"Añadir rango\" para añadir cuantos rangos necesite. Ejemplo: 0-20% Mal Puntaje, 21-91% Puntaje Promedio, 91-100% ¡Magnífico Puntaje!",
-          "entity": "range",
+          "label": "Definir retroalimentación personalizada para cualquier rango de puntaje",
+          "description": "Haga clic en el botón de \"Añadir rango\" para añadir cuantos rangos necesite. Ejemplo: 0-20% Mal puntaje, 21-91% Puntaje promedio, 91-100% ¡Magnífico puntaje!",
+          "entity": "rango",
           "field": {
             "fields": [
               {
@@ -132,8 +132,8 @@
               },
               {},
               {
-                "label": "Retroalimentación para rango de puntaje",
-                "placeholder": "Escriba la retroalimentación"
+                "label": "Retroalimentación para rango de puntaje definido",
+                "placeholder": "Complete la retroalimentación"
               }
             ]
           }
@@ -158,13 +158,13 @@
           "default": "escribiendo"
         },
         {
-          "label": "Alternativas ofrecidas para seleción",
+          "label": "Alternativas ofrecidas para selección",
           "options": [
             {
               "label": "Las respuestas incorrectas ingresadas para el hueco"
             },
             {
-              "label": "La respuesta correcta de todos los otros huecos"
+              "label": "Las respuestas correctas de todos los otros huecos"
             }
           ],
           "default": "alternativas"
@@ -189,8 +189,8 @@
           "default": "error"
         },
         {
-          "label": "Sensibildad a MAYÚSCULAS/minúsculas",
-          "description": "Si se habilita, MAYÚSCULAS/minúsculas que sean diferentes de la solucion se consideran un error."
+          "label": "MAYÚSCULAS/minúsculas si importan",
+          "description": "Si se habilita, MAYÚSCULAS/minúsculas que sean diferentes de la solución son consideradas un error."
         },
         {
           "label": "Automáticamente revisar respuestas después de ingresadas"
@@ -205,14 +205,14 @@
           "label": "Habilitar \"Reintentar\""
         },
         {
-          "label": "Habilitar botón \"Revisar\""
+          "label": "Habilitar botón \"Comprobar\""
         },
         {
           "label": "Deshabilitar zoom de imagen para imagen de pregunta"
         },
         {
-          "label": "Mostrar diálogo de confirmación en \"Revisar\"",
-          "description": "Esta opción no es compatible con la opción de \"Automáticamente revisar respuestas después de ingresadas\""
+          "label": "Mostrar diálogo de confirmación en \"Comprobar\"",
+          "description": "Esta opción no es compatible con la opción de \"Automáticamente comprobar respuestas después de ingresadas\""
         },
         {
           "label": "Mostrar diálogo de confirmación en \"Reintentar\""
@@ -220,7 +220,7 @@
       ]
     },
     {
-      "label": "Texto para botón de \"Mostrar  soluciones\"",
+      "label": "Texto para botón \"Mostrar soluciones\"",
       "default": "Mostrar solución"
     },
     {
@@ -228,24 +228,24 @@
       "default": "Reintentar"
     },
     {
-      "label": "Texto para botón \"Revisar\"",
-      "default": "Revisar"
+      "label": "Texto para botón \"Comprobar\"",
+      "default": "Comprobar"
     },
     {
       "label": "Texto para mensaje \"No completado\"",
       "default": "Por favor llene todos los huecos para ver la solución"
     },
     {
-      "label": "Etiqueta de ìcono de Sugerencia",
-      "default": "Sugerencia"
+      "label": "Etiqueta de ícono de Pista",
+      "default": "Pista"
     },
     {
       "label": "Advertencia de error de deletreado",
       "description": "Este es un mensaje mostrado a los usuarios cuando hacen un error de deletreado. Inserte @mistake para mostrarles lo que hicieron mal.",
-      "default": "Revise su deletreado: @mistake"
+      "default": "Revise su ortografía (deletreado): @mistake"
     },
     {
-      "label": "Diálogo para confirmación de revisión",
+      "label": "Diálogo de confirmación para Comprobar",
       "fields": [
         {
           "label": "Texto del encabezado",
@@ -266,7 +266,7 @@
       ]
     },
     {
-      "label": "Diálogo confirmación reintentar",
+      "label": "Diálogo confirmación Reintentar",
       "fields": [
         {
           "label": "Texto del encabezado",
@@ -287,8 +287,8 @@
       ]
     },
     {
-      "label": "Representación textual de la barra de puntaje para los que usan lector de pantalla",
-      "default": "Usted tuvo :num de un total de :total puntos"
+      "label": "Representación textual de la barra de puntaje para aquellos que usan un lector de texto en voz alta",
+      "default": "Obtuvo :num de un total de :total"
     }
   ]
 }
