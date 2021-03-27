@@ -1,0 +1,294 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Soort",
+          "description": "Opsionele media wat bo die vraag vertoon word."
+        }
+      ]
+    },
+    {
+      "label": "Leë inhoud",
+      "fields": [
+        {
+          "label": "Taak beskrywing",
+          "default": "Vul die ontbrekende woorde in.",
+          "description": "'n Gids wat die gebruiker vertel hoe om hierdie taak te beantwoord."
+        },
+        {
+          "label": "Teks met leë spasies",
+          "important": {
+            "description": "<ul><li>Spasies moet gemerk word met __________ (drie of meer onderstrepe).</li><li>Moenie die oplossings in die teks plaas nie.</li></ul>"
+          },
+          "description": ""
+        },
+        {
+          "label": "Oop spasies gebruik in die teks",
+          "entity": "spasie",
+          "widgets": [
+            {
+              "label": "Verstek"
+            }
+          ],
+          "field": {
+            "label": "Leeg",
+            "fields": [
+              {
+                "label": "Regte antwoord",
+                "description": "Jy kan alternatiewe antwoorde met 'n flap (/) onderskei."
+              },
+              {
+                "label": "Wenk"
+              },
+              {
+                "label": "Verkeerde antwoord",
+                "entity": "verkeerde antwoord",
+                "field": {
+                  "label": "verkeerde antwoord",
+                  "description": "Jy kan verskillende antwoorde met 'n flap (/) onderskei.",
+                  "fields": [
+                    {
+                      "label": "Verkeerde antwoordteks"
+                    },
+                    {
+                      "label": "Terugvoer",
+                      "description": "Die terugvoer behoort die gebruiker te help om die regte antwoord te vind. Die ideaal is om dit aan te pas volgens die antwoord wat die gebruiker gegee het."
+                    },
+                    {
+                      "label": "Wys beklemtoning in die teks wanneer die terugvoer gewys word",
+                      "description": "Plaas !! voor en na 'n stuk teks om dit te laat uitstaan. (bv. Hierdie gaan !!uitstaan!!)"
+                    },
+                    {
+                      "label": "Beklemtoon posisie relatief tot leë spasie:",
+                      "options": [
+                        {
+                          "label": "- 1 (reg voor die oop spasie)"
+                        },
+                        {
+                          "label": "- 2 (twee beklemtonings voor die oop spasie)"
+                        },
+                        {
+                          "label": "- 3 (drie beklemtonings voor die oop spasie)"
+                        },
+                        {
+                          "label": "+ 1 (direk na die oop spasie)"
+                        },
+                        {
+                          "label": "+ 2 (twee bekemtonings na die oop spasie)"
+                        },
+                        {
+                          "label": "+ 3 (drie beklemtonings na die oop spasie)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Brokkies",
+      "fields": [
+        {
+          "label": "Brokkielys",
+          "description": "Brokkies is tekste wat hergebruik kan word in die terugvoerteks deur @snippetname in die teks in te voer.",
+          "entity": "brokkie",
+          "field": {
+            "label": "Brokkie",
+            "fields": [
+              {
+                "label": "Naam",
+                "description": "Jy kan slegs letters en getalle vir die brokkienaam gebruik."
+              },
+              {
+                "label": "Teks"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Algemene terugvoer",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Verstek"
+            }
+          ],
+          "label": "Bepaal verstekterugvoer vir enige telreeks",
+          "description": "Klik die \"Voeg reeks by\" knoppie by om soveel reekse as wat jy nodig het by te voeg. Byvoorbeeld: 0-20% Swak telling, 21-91% Gemiddelde telling, 91-100% Uitstekende telling!",
+          "entity": "reeks",
+          "field": {
+            "fields": [
+              {
+                "label": "Telreeks"
+              },
+              {},
+              {
+                "label": "Terugvoer vir gedefinieerde telling reeks",
+                "placeholder": "Vul die terugvoer in"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Gedragsinstellings",
+      "description": "Hierdie keuses laat jou toe om te stel hoe die taak reageer.",
+      "fields": [
+        {
+          "label": "Antwoordmodus",
+          "description": "Dui aan op watter wyse die gebruiker antwoorde gee.",
+          "options": [
+            {
+              "label": "Die gebruiker kies vanuit opsies."
+            },
+            {
+              "label": "Die gebruiker tik die antwoorde in."
+            }
+          ],
+          "default": "besig om te tik"
+        },
+        {
+          "label": "Alternatiewe beskikbaar vir keuse",
+          "options": [
+            {
+              "label": "Die verkeerde antwoord in die oop spasie ingelees"
+            },
+            {
+              "label": "Die regte antwoorde van al die ander oop spasies"
+            }
+          ],
+          "default": "alternatiewe"
+        },
+        {
+          "label": "Maksimum aantal alternatiewe beskikbaar vir ander oop spasies",
+          "description": "Voer 0 in om geen beperking te stel nie."
+        },
+        {
+          "label": "Gedragsinstellings wanneer gebruiker 'n spelfout maak",
+          "options": [
+            {
+              "label": "Anvaar dit as 'n regte anwoord"
+            },
+            {
+              "label": "Waarsku die gebruiker oor die fout"
+            },
+            {
+              "label": "Beskou dit as 'n gereelde fout"
+            }
+          ],
+          "default": "fout"
+        },
+        {
+          "label": "Hooflettergevoelig",
+          "description": "Indien geaktiveer , word kapitalisasie wat verskil van die memorandum as 'n fout beskou."
+        },
+        {
+          "label": "Toets antwoorde outomaties na invoering"
+        },
+        {
+          "label": "Aktiveer \"Wys antwoord\" knoppie"
+        },
+        {
+          "label": "Vereis dat alle velde beantwoord moet word voordat die antwoord besigtig kan word"
+        },
+        {
+          "label": "Aktiveer \"Probeer weer\""
+        },
+        {
+          "label": "Aktiveer \"Toets\" knoppie"
+        },
+        {
+          "label": "Deaktiveer prentzoomfunksie vir vraagprent"
+        },
+        {
+          "label": "Wys bevestigingdialoog op \"Toets\"",
+          "description": "Hierdie keuses is nie versoenbaar met die opsie \"Gaan antwoorde outomaties na invoer na\" nie"
+        },
+        {
+          "label": "Wys bevestigingdialoog op \"Probeer weer\""
+        }
+      ]
+    },
+    {
+      "label": "Teks vir \"Wys antwoord\" knoppie",
+      "default": "Wys antwoord"
+    },
+    {
+      "label": "Teks vir \"Probeer weer\" knoppie",
+      "default": "Probeer weer"
+    },
+    {
+      "label": "Teks vir \"Toets\" knoppie",
+      "default": "Toets"
+    },
+    {
+      "label": "Teks vir \"Nie ingevul\" boodskap",
+      "default": "Vul asb. al die oop spasies in om die antwoord te sien"
+    },
+    {
+      "label": "Wenk ikoon etiket",
+      "default": "Wenk"
+    },
+    {
+      "label": "Spelfoutwaarskuwing",
+      "description": "Hierdie boodskap word gewys aan gebruikers wanneer hul 'n spelfout begaan. Voer @mistake in om hul te wys waar hul 'n fout gemaak het.",
+      "default": "Kyk na jou spelling: @mistake"
+    },
+    {
+      "label": "Toets bevestigingsdialoog",
+      "fields": [
+        {
+          "label": "Hoofopskrifteks",
+          "default": "Klaar?"
+        },
+        {
+          "label": "Lyfteks",
+          "default": "Is jy seker jy wil klaarmaak ?"
+        },
+        {
+          "label": "Kanseleerknoppie etiket",
+          "default": "Kanseleer"
+        },
+        {
+          "label": "Bevestig knoppie etiket",
+          "default": "Klaar"
+        }
+      ]
+    },
+    {
+      "label": "Probeer weer bevestigingsdialoog",
+      "fields": [
+        {
+          "label": "Hoofopskrifteks",
+          "default": "Probeer weer?"
+        },
+        {
+          "label": "Liggaamteks",
+          "default": "Is jy seker jy wil weer probeer ?"
+        },
+        {
+          "label": "Kanselleer knoppie etiket",
+          "default": "Kanselleer"
+        },
+        {
+          "label": "Bevestig knoppie etiket",
+          "default": "Bevestig"
+        }
+      ]
+    },
+    {
+      "label": "Tekstuele tentoonstelling van die telkaart vir diegene wat 'n spreekleser gebruik",
+      "default": "Jy het :num uit :total punte gekry"
+    }
+  ]
+}
