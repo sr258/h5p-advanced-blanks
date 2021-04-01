@@ -4,7 +4,7 @@
       "label": "Media",
       "fields": [
         {
-          "label": "Soort",
+          "label": "Tipe",
           "description": "Opsionele media wat bo die vraag vertoon word."
         }
       ]
@@ -114,7 +114,7 @@
       ]
     },
     {
-      "label": "Algemene terugvoer",
+      "label": "Algehele terugvoer",
       "fields": [
         {
           "widgets": [
@@ -122,13 +122,13 @@
               "label": "Verstek"
             }
           ],
-          "label": "Bepaal verstekterugvoer vir enige telreeks",
-          "description": "Klik die \"Voeg reeks by\" knoppie by om soveel reekse as wat jy nodig het by te voeg. Byvoorbeeld: 0-20% Swak telling, 21-91% Gemiddelde telling, 91-100% Uitstekende telling!",
+          "label": "Bepaal verstekterugvoer vir enige reeks tellings",
+          "description": "Kliek op die \"Voeg reeks by\" knoppie om so veel as moontlik reekse by te voeg. Byvoorbeeld: 0-20% Swak Punt, 21-91% Gemiddelde Punt, 91-100% Uitstekende Punt!",
           "entity": "reeks",
           "field": {
             "fields": [
               {
-                "label": "Telreeks"
+                "label": "Telling reeks"
               },
               {},
               {
