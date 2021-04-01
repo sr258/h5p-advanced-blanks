@@ -206,6 +206,12 @@
         },
         {
           "label": "Habilitar botón \"Comprobar\""
+<<<<<<< HEAD
+=======
+        },
+        {
+          "label": "Deshabilitar zoom de imagen para imagen de pregunta"
+>>>>>>> German Valero <gvalero@unam.mx> updated Spanish translation using Weblate @ translate-h5p.tk.
         },
         {
           "label": "Mostrar diálogo de confirmación en \"Comprobar\"",
