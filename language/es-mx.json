@@ -6,6 +6,9 @@
         {
           "label": "Tipo",
           "description": "Medio opcional para mostrar arriba de la pregunta."
+        },
+        {
+          "label": "Deshabilitar zoom de imagen para imagen de pregunta"
         }
       ]
     },
@@ -154,8 +157,7 @@
             {
               "label": "El usuario escribe las respuestas."
             }
-          ],
-          "default": "escribiendo"
+          ]
         },
         {
           "label": "Alternativas ofrecidas para seleción",
@@ -166,8 +168,7 @@
             {
               "label": "La respuesta correcta de todos los otros huecos"
             }
-          ],
-          "default": "alternativas"
+          ]
         },
         {
           "label": "Número máximo de alternativas de otros huecos ofrecidos para selección",
@@ -185,8 +186,7 @@
             {
               "label": "Considerarla un error regular"
             }
-          ],
-          "default": "error"
+          ]
         },
         {
           "label": "Sensibildad a MAYÚSCULAS/minúsculas",
@@ -206,9 +206,6 @@
         },
         {
           "label": "Habilitar botón \"Revisar\""
-        },
-        {
-          "label": "Deshabilitar zoom de imagen para imagen de pregunta"
         },
         {
           "label": "Mostrar diálogo de confirmación en \"Revisar\"",

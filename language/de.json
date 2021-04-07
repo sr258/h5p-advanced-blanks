@@ -6,6 +6,9 @@
         {
           "label": "Typ",
           "description": "Optionales Medium, das über der Frage dargestellt wird."
+        },
+        {
+          "label": "Bildzoom deaktivieren"
         }
       ]
     },
@@ -155,8 +158,7 @@
             {
               "label": "Der Nutzer tippt sie ein."
             }
-          ],
-          "default": "typing"
+          ]
         },
         {
           "label": "Alternativen, die zur Auswahl angeboten werden",
@@ -167,8 +169,7 @@
             {
               "label": "Die richtigen Antworten von allen anderen Lücken"
             }
-          ],
-          "default": "alternatives"
+          ]
         },
         {
           "label": "Maximalzahl der richtigen Antworten von allen anderen Lücken, die zur Auswahl angeboten werden",
@@ -186,8 +187,7 @@
             {
               "label": "Als Fehler ansehen"
             }
-          ],
-          "default": "mistake"
+          ]
         },
         {
           "label": "Auf Groß-/Kleinschreibung achten",
@@ -207,9 +207,6 @@
         },
         {
           "label": "\"Überprüfen\"-Button anzeigen"
-        },
-        {
-          "label": "Bildzoom deaktivieren"
         },
         {
           "label": "Bestätigungsdialog beim Klicken auf \"Überprüfen\" anzeigen",
