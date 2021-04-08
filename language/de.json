@@ -123,7 +123,7 @@
         {
           "widgets": [
             {
-              "label": "Eingabemaske"
+              "label": "Voreinstellung"
             }
           ],
           "label": "Lege Rückmeldungen für einzelne Punktebereiche fest",
@@ -286,7 +286,7 @@
     },
     {
       "label": "Anzeigetext als Ersatz für den Punktebalken in Vorlesewerkzeugen (Barrierefreiheit)",
-      "default": "Du hast :num von :total Punkten erreicht."
+      "default": "Du hast :num von :total Punkten erreicht"
     }
   ]
 }
