@@ -37,7 +37,7 @@ export class H5PDataRepository implements IDataRepository {
   }
 
   getMedia(): any {
-    return this.h5pConfigData.media;
+    return this.h5pConfigData.media.type;
   }
 
   getTaskDescription(): string {

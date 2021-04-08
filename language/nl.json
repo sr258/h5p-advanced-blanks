@@ -6,6 +6,9 @@
         {
           "label": "Type",
           "description": "Optionele media die boven de vragen wordt getoond."
+        },
+        {
+          "label": "Deactiveer het zoomen van de afbeelding tijdens het tonen van de opgave"
         }
       ]
     },
@@ -22,8 +25,7 @@
           "important": {
             "description": "<ul><li>Lege plekken moeten worden gemarkeerd met _____ (3 of meer liggende streepjes).</li><li>Plaats geen oplossingen in de tekst.</li></ul>"
           },
-          "description": "",
-          "font": {}
+          "description": ""
         },
         {
           "label": "Lege plekken die in de tekst worden gebruikt",
@@ -63,11 +65,6 @@
                     },
                     {
                       "label": "Markeer de positie ten opzichte van een lege plek:",
-                      "showWhen": {
-                        "rules": [
-                          {}
-                        ]
-                      },
                       "options": [
                         {
                           "label": "- 1 (vlak voor de lege plek)"
@@ -109,8 +106,7 @@
             "fields": [
               {
                 "label": "Naam",
-                "description": "Je kunt alleen letters en cijfers gebruiken voor de naam van het fragment.",
-                "regexp": {}
+                "description": "Je kunt alleen letters en cijfers gebruiken voor de naam van het fragment."
               },
               {
                 "label": "Tekst"
@@ -161,16 +157,10 @@
             {
               "label": "De gebruikers typen de antwoorden in."
             }
-          ],
-          "default": "intypen"
+          ]
         },
         {
           "label": "De alternatieven die voor selectie worden aangeboden",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          },
           "options": [
             {
               "label": "De onjuiste antwoorden die zijn ingevoerd voor de lege plek"
@@ -178,17 +168,11 @@
             {
               "label": "De juiste antwoorden van alle andere lege plekken"
             }
-          ],
-          "default": "alternatieven"
+          ]
         },
         {
           "label": "Het maximaal aantal alternatieven voor andere lege plekken, die voor de selectie worden aangeboden",
-          "description": "Om geen limiet in te stellen vul je 0 in.",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "Om geen limiet in te stellen vul je 0 in."
         },
         {
           "label": "Gedrag wanneer een gebruiker een spelfout maakt in de spelling",
@@ -202,22 +186,11 @@
             {
               "label": "Beschouw het als een normale fout"
             }
-          ],
-          "default": "fout",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          ]
         },
         {
           "label": "Hoofdlettergevoelig",
-          "description": "Indien ingeschakeld, wordt het hoofdlettergebruik dat afwijkt van de oplossing als een fout beschouwd.",
-          "showWhen": {
-            "rules": [
-              {}
-            ]
-          }
+          "description": "Indien ingeschakeld, wordt het hoofdlettergebruik dat afwijkt van de oplossing als een fout beschouwd."
         },
         {
           "label": "Controleer automatisch de antwoorden na invoer"
@@ -233,9 +206,6 @@
         },
         {
           "label": "Activeer de knop \"Controleer\""
-        },
-        {
-          "label": "Deactiveer het zoomen van de afbeelding tijdens het tonen van de opgave"
         },
         {
           "label": "Toon bevestigingsvenster bij \"Controleer\"",

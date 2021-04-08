@@ -6,6 +6,9 @@
         {
           "label": "Tyyppi",
           "description": "Vapaaehtoinen kuva tai video joka esitetään kysymyksen yläpuolella."
+        },
+        {
+          "label": "Estä kuvien kysymyskuvien zoomaaminen"
         }
       ]
     },
@@ -154,8 +157,7 @@
             {
               "label": "Käyttäjä kirjoittaa vastauksensa."
             }
-          ],
-          "default": "kirjoittaa"
+          ]
         },
         {
           "label": "Valittavissa olevat vaihtoehdot",
@@ -166,8 +168,7 @@
             {
               "label": "Oikeat vastaukset kaikille muille aukoille."
             }
-          ],
-          "default": "vaihtoehdot"
+          ]
         },
         {
           "label": "Muiden vaihtoehtojen maksimimäärä joita tarjotaan valittavaksi.",
@@ -185,8 +186,7 @@
             {
               "label": "Hyväksy se tavanomaisena virheenä"
             }
-          ],
-          "default": "virhe"
+          ]
         },
         {
           "label": "Merkkikokoriippuvainne",
@@ -206,9 +206,6 @@
         },
         {
           "label": "Salli \"Check\" painike"
-        },
-        {
-          "label": "Estä kuvien kysymyskuvien zoomaaminen."
         },
         {
           "label": "Näytä \"Check\" vahvistusikkuna",

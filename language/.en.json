@@ -6,6 +6,9 @@
         {
           "label": "Type",
           "description": "Optional media to display above the question."
+        },
+        {
+          "label": "Disable image zooming for question image"
         }
       ]
     },
@@ -154,8 +157,7 @@
             {
               "label": "The users types in the answers."
             }
-          ],
-          "default": "typing"
+          ]
         },
         {
           "label": "Alternatives offered for selection",
@@ -166,8 +168,7 @@
             {
               "label": "The correct answers of all other blanks"
             }
-          ],
-          "default": "alternatives"
+          ]
         },
         {
           "label": "Maximum number of alternatives of other blanks offered for selection",
@@ -185,8 +186,7 @@
             {
               "label": "Consider it a regular mistake"
             }
-          ],
-          "default": "mistake"
+          ]
         },
         {
           "label": "Case sensitive",
@@ -206,9 +206,6 @@
         },
         {
           "label": "Enable \"Check\" button"
-        },
-        {
-          "label": "Disable image zooming for question image"
         },
         {
           "label": "Show confirmation dialog on \"Check\"",

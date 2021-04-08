@@ -6,6 +6,9 @@
         {
           "label": "Type",
           "description": "Média à afficher au-dessus de la question (facultatif)."
+        },
+        {
+          "label": "Désactiver le zoom pour l'image attachée à la question"
         }
       ]
     },
@@ -154,8 +157,7 @@
             {
               "label": "L'utilisateur tape les réponses."
             }
-          ],
-          "default": "typing"
+          ]
         },
         {
           "label": "Choix proposés à l'utilisateur",
@@ -166,8 +168,7 @@
             {
               "label": "Les réponses correctes fournies pour tous les autres blancs"
             }
-          ],
-          "default": "choix"
+          ]
         },
         {
           "label": "Nombre maximum de choix proposés",
@@ -185,8 +186,7 @@
             {
               "label": "Considérez que c'est vraiment une erreur"
             }
-          ],
-          "default": "erreur"
+          ]
         },
         {
           "label": "Sensible à la casse",
@@ -206,9 +206,6 @@
         },
         {
           "label": "Activer le bouton \"Vérifier\""
-        },
-        {
-          "label": "Désactiver le zoom pour l'image attachée à la question"
         },
         {
           "label": "Afficher la fenêtre de confirmation pour \"Vérifier\"",
