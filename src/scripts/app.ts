@@ -17,6 +17,10 @@ enum States {
   showingSolutionsEmbedded = 'showing-solution-embedded'
 }
 
+const XAPI_ALTERNATIVE_EXTENSION = 'https://h5p.org/x-api/alternatives';
+const XAPI_CASE_SENSITIVITY = 'https://h5p.org/x-api/case-sensitivity';
+const XAPI_REPORTING_VERSION_EXTENSION = 'https://h5p.org/x-api/h5p-reporting-version';
+
 export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
   private clozeController: ClozeController;
@@ -377,20 +381,32 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
    * @return {Object}
    */
   public getxAPIDefinition = (): XAPIActivityDefinition => {
-    var definition = new XAPIActivityDefinition();
+    const definition = new XAPIActivityDefinition();
+
     definition.description = {
-      'en-US': '<p>' + this.repository.getTaskDescription() + '</p>' + this.repository.getClozeText()
+      'en-US': '<p>' + this.repository.getTaskDescription() + '</p>' + this.repository.getClozeText().replace(/__(_)+/g, '__________')
     };
+
     definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
     definition.interactionType = 'fill-in'; // We use the 'fill-in' type even in select mode, as the xAPI format for selections doesn't really cater for sequences.
-    definition.correctResponsesPattern = [];
-    let correctResponsesPatternPrefix = '{case_matters=' + this.settings.caseSensitive + '}';
 
-    // xAPI forces us to create solution patterns for all possible solution combinations
-    let correctAnswerPermutations = createPermutations(this.clozeController.getCorrectAnswerList());
-    for (let permutation of correctAnswerPermutations) {
-      definition.correctResponsesPattern.push(correctResponsesPatternPrefix + permutation.join('[,]'));
-    }
+    const correctResponsesPatternPrefix = '{case_matters=' + this.settings.caseSensitive + '}';
+
+    const correctAnswerList = this.clozeController.getCorrectAnswerList();
+
+    // H5P uses extension instead of full correct responses pattern to counter complexity
+    const firstAlternatives = correctAnswerList.reduce((result, list) => {
+      result.push(list[0]);
+      return result;
+    }, []).join('[,]');
+    definition.correctResponsesPattern = [`${correctResponsesPatternPrefix}${firstAlternatives}`];
+
+    // Add the H5P Alternative extension which provides all the combinations of different answers
+    // Reporting software will need to support this extension for alternatives to work.
+    definition.extensions = definition.extensions || {};
+    definition.extensions[XAPI_CASE_SENSITIVITY] = this.settings.caseSensitive;
+    definition.extensions[XAPI_ALTERNATIVE_EXTENSION] = correctAnswerList;
+
     return definition;
   };
 
@@ -399,7 +415,14 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
    */
   public addQuestionToXAPI = (xAPIEvent) => {
     var definition = xAPIEvent.getVerifiedStatementValue(['object', 'definition']);
-    this.jQuery.extend(definition, this.getxAPIDefinition());
+    this.jQuery.extend(true, definition, this.getxAPIDefinition());
+
+    // Set reporting module version if alternative extension is used
+    if (this.clozeController.hasAlternatives) {
+      const context = xAPIEvent.getVerifiedStatementValue(['context']);
+      context.extensions = context.extensions || {};
+      context.extensions[XAPI_REPORTING_VERSION_EXTENSION] = '1.0.0';
+    }
   };
 
   /**
