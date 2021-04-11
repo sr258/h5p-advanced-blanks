@@ -17,3 +17,11 @@ README.md
 CONTRIBUTING.md
 package.json
 worknotes
+releases/
+tsconfig.json
+postcss.config.js
+tslint.json
+.gitignore
+TODO
+h5p-hub-metadata.md
+package-lock.json
