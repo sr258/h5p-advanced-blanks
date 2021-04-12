@@ -25,3 +25,4 @@ tslint.json
 TODO
 h5p-hub-metadata.md
 package-lock.json
+.vscode

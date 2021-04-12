@@ -6,7 +6,6 @@ import { ISettings, H5PSettings } from "./services/settings";
 import { MessageService } from './services/message-service';
 import { Unrwapper } from './helpers/unwrapper';
 import { XAPIActivityDefinition } from './models/xapi';
-import { createPermutations } from './helpers/permutations';
 import { extend } from './helpers/extend';
 
 enum States {
