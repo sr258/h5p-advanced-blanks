@@ -166,7 +166,7 @@
               "label": "Las respuestas incorrectas ingresadas para el hueco"
             },
             {
-              "label": "La respuesta correcta de todos los otros huecos"
+              "label": "Las respuestas correctas de todos los otros huecos"
             }
           ]
         },
@@ -285,7 +285,7 @@
     },
     {
       "label": "Representación textual de la barra de puntaje para aquellos que usan un lector de texto en voz alta",
-      "default": "Obtuvo :num de un total de :total"
+      "default": "Obtuvo :num de un total de :total puntos"
     }
   ]
 }
