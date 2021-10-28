@@ -57,11 +57,13 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       behaviour: {
         mode: 'typing',
         selectAlternatives: 'alternatives'
-      }
+      },
+      submitAnswer: 'Submit',
     }, config);
 
     this.jQuery = H5P.jQuery;
     this.contentId = contentId;
+    this.contentData = contentData;
 
     let unwrapper = new Unrwapper(this.jQuery);
 
@@ -204,12 +206,14 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       // Check answer button
       this.addButton('check-answer', this.localization.getTextFromLabel(LocalizationLabels.checkAllButton),
         this.onCheckAnswer, true, {}, {
-        confirmationDialog: {
-          enable: this.settings.confirmCheckDialog,
-          l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmCheck),
-          instance: this,
-          $parentElement: $container
-        }
+          confirmationDialog: {
+            enable: this.settings.confirmCheckDialog,
+            l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmCheck),
+            instance: this,
+            $parentElement: $container,
+          },
+          contentData: this.contentData,
+          textIfSubmitting: this.localization.getTextFromLabel(LocalizationLabels.submitAllButton),
       });
     }
 

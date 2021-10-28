@@ -230,6 +230,10 @@
       "default": "Überprüfen"
     },
     {
+      "label": "Text for \"Submit\" button",
+      "default": "Submit"
+    },
+    {
       "label": "Text der \"Nicht ausgefüllt\"-Nachricht",
       "default": "Bitte fülle alle Lücken aus, um die Lösung ansehen zu können"
     },
