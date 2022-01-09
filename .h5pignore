@@ -23,6 +23,7 @@ postcss.config.js
 tslint.json
 .gitignore
 TODO
+LICENSE
 h5p-hub-metadata.md
 package-lock.json
 .vscode

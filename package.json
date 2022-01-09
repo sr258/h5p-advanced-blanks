@@ -7,7 +7,7 @@
     "test": "npx ava",
     "build": "cross-env NODE_ENV='development' webpack --mode=development && cp node_modules/ractive/ractive.min.js ./dist",
     "build:prod": "cross-env NODE_ENV='production' webpack --mode=production && cp node_modules/ractive/ractive.min.js ./dist",
-    "watch": "webpack --watch"
+    "watch": "webpack --watch --mode=development"
   },
   "repository": {
     "type": "git",
