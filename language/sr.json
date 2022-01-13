@@ -24,12 +24,11 @@
           "label": "Текст са празним пољима",
           "important": {
             "description": "<ul><li>Празнине морају бити означене са __________ (три или више доњих црта).</li><li>Не стављајте решења у текст.</li></ul>"
-          },
-          "description": ""
+          }
         },
         {
           "label": "Празна места коришћена у тексту",
-          "entity": "blank",
+          "entity": "празно",
           "widgets": [
             {
               "label": "Уобичајено"
@@ -43,11 +42,11 @@
                 "description": "Алтернативне одговоре можете раздвојити косом цртом (/)."
               },
               {
-                "label": "Hint"
+                "label": "Савет"
               },
               {
                 "label": "Нетачни одговори",
-                "entity": "incorrect answer",
+                "entity": "нетачан одговор",
                 "field": {
                   "label": "Нетачан одговор",
                   "description": "Алтернативне одговоре можете раздвојити косом цртом (/).",
@@ -95,21 +94,21 @@
       ]
     },
     {
-      "label": "Snippets",
+      "label": "Исечак",
       "fields": [
         {
-          "label": "Snippet list",
-          "description": "Snippets are texts that can be reused in feedback texts by inserting @snippetname into the text.",
-          "entity": "snippet",
+          "label": "Листа исечака",
+          "description": "Исечак је текст који може поново да се користи у тексту повратне информације уношењем @snippetname у сам текст.",
+          "entity": "исечак",
           "field": {
-            "label": "Snippet",
+            "label": "Исечак",
             "fields": [
               {
-                "label": "Name",
-                "description": "You can only use letters and numbers for the snippet name."
+                "label": "Име",
+                "description": "Користите само слова и бројеве за назив исечка."
               },
               {
-                "label": "Text"
+                "label": "Текст"
               }
             ]
           }
@@ -127,7 +126,7 @@
           ],
           "label": "Дефинишите прилагођене повратне информације за било који опсег резултата",
           "description": "Кликните на \"Додај опсег\" дугме за додавање онолико опсега колико вам је потребно. Пример: 0-20% Лош резултат, 21-91% Просечан резултат, 91-100% Одличан резултат!",
-          "entity": "range",
+          "entity": "опсег",
           "field": {
             "fields": [
               {
