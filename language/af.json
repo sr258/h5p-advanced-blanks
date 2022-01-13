@@ -21,8 +21,7 @@
           "label": "Teks met leë spasies",
           "important": {
             "description": "<ul><li>Spasies moet gemerk word met __________ (drie of meer onderstrepe).</li><li>Moenie die oplossings in die teks plaas nie.</li></ul>"
-          },
-          "description": ""
+          }
         },
         {
           "label": "Oop spasies gebruik in die teks",
