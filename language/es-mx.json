@@ -5,7 +5,7 @@
       "fields": [
         {
           "label": "Tipo",
-          "description": "Medio opcional para mostrar arriba de la pregunta."
+          "description": "Medio opcional a mostrar arriba de la pregunta."
         },
         {
           "label": "Deshabilitar zoom de imagen para imagen de pregunta"
@@ -24,8 +24,7 @@
           "label": "Texto con huecos",
           "important": {
             "description": "<ul><li>Los huecos deben ser marcados con __________ (tres o cuatro guiones bajos).</li><li>NO escriba las soluciones dentro del texto.</li></ul>"
-          },
-          "description": ""
+          }
         },
         {
           "label": "Huecos usados en el texto",
@@ -61,7 +60,7 @@
                     },
                     {
                       "label": "Mostrar resaltado en el texto cuando se muestre la retroalimentación",
-                      "description": "Ponga !! antes y después de un trozo de texto para marcarlo como resaltado. (ejemplo Esto !!está resaltado!!)"
+                      "description": "Ponga !! antes y después de un trozo de texto para marcarlo como resaltado. (ejemplo Esto !!es un resaltado!!)"
                     },
                     {
                       "label": "Resaltar posición relativa al hueco:",
@@ -131,7 +130,7 @@
           "field": {
             "fields": [
               {
-                "label": "Rango de Puntaje"
+                "label": "Rango del Puntaje"
               },
               {},
               {
@@ -229,7 +228,7 @@
       "default": "Comprobar"
     },
     {
-      "label": "Texto para mensaje \"No completado\"",
+      "label": "Texto para mensaje de \"No contestado\"",
       "default": "Por favor llene todos los huecos para ver la solución"
     },
     {
@@ -257,13 +256,13 @@
           "default": "Cancelar"
         },
         {
-          "label": "Etiqueta botón Confirmar",
+          "label": "Etiqueta del botón Confirmar",
           "default": "Terminar"
         }
       ]
     },
     {
-      "label": "Diálogo confirmación Reintentar",
+      "label": "Diálogo de confirmación Reintentar",
       "fields": [
         {
           "label": "Texto del encabezado",
@@ -278,7 +277,7 @@
           "default": "Cancelar"
         },
         {
-          "label": "Etiqueta botón Confirmar",
+          "label": "Etiqueta del botón Confirmar",
           "default": "Confirmar"
         }
       ]
