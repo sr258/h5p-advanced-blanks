@@ -1,0 +1,290 @@
+{
+  "semantics": [
+    {
+      "label": "Multimedia",
+      "fields": [
+        {
+          "label": "Mota",
+          "description": "Galderaren gainean bistaratzeko aukerako multimedia."
+        },
+        {
+          "label": "Desgaitu irudien zooma galdera-irudirako"
+        }
+      ]
+    },
+    {
+      "label": "Edukiaren hutsunea",
+      "fields": [
+        {
+          "label": "Lanaren deskribapena",
+          "default": "Bete falta diren hitzak.",
+          "description": "Ikasleari lan hau nola erantzun azaltzen dion gida bat."
+        },
+        {
+          "label": "Testua hutsuneekin",
+          "important": {
+            "description": "<ul><li>Hutsuneak __________ karaktereekin markatu behar dira (hiru beheko gidoi edo gehiago).</li><li>Ez itzazu erantzunak testua jarri.</li></ul>"
+          }
+        },
+        {
+          "label": "Testuan erabilitako hutsuneak",
+          "entity": "hutsune",
+          "widgets": [
+            {
+              "label": "Lehenetsitakoa"
+            }
+          ],
+          "field": {
+            "label": "Hutsune",
+            "fields": [
+              {
+                "label": "Erantzun zuzena",
+                "description": "Erantzun posibleak barrarekin (/) banatu ditzakezu."
+              },
+              {
+                "label": "Pista"
+              },
+              {
+                "label": "Erantzun okerrak",
+                "entity": "erantzun okerra",
+                "field": {
+                  "label": "Erantzun okerra",
+                  "description": "Erantzun posibleak barrarekin (/) banatu ditzakezu.",
+                  "fields": [
+                    {
+                      "label": "Erantzun okerraren testua"
+                    },
+                    {
+                      "label": "Feedbacka",
+                      "description": "Feedbackak erabiltzaileari erantzun zuzena aurkitzen lagundu beharko lioke eta idealki erabiltzaileak erantzundakoaren neurrira egokitua."
+                    },
+                    {
+                      "label": "Erakutsi nabarmentzea testuan feedbacka erakusten denean",
+                      "description": "Jarri ezazu !! testuaren aurretik eta ondoren nabarmendu gisa markatzeko. (Adibidez: Hau !!nabarmenduta!! dago)"
+                    },
+                    {
+                      "label": "Nabarmendu hutsunearekiko posizio erlatiboa:",
+                      "options": [
+                        {
+                          "label": "- 1 (hutsunearen aurretik)"
+                        },
+                        {
+                          "label": "- 2 (bi nabarmentze hutsunearen aurretik)"
+                        },
+                        {
+                          "label": "- 3 (hiru nabarmentze hutsunearen aurretik)"
+                        },
+                        {
+                          "label": "+ 1 (hutsunearen ondoren)"
+                        },
+                        {
+                          "label": "+ 2 (bi nabarmentze hutsunearen ondoren)"
+                        },
+                        {
+                          "label": "+ 3 (hiru nabarmentze hutsunearen ondoren)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Snippet-ak (pusketak)",
+      "fields": [
+        {
+          "label": "Snippet-zerrenda",
+          "description": "Snippet-ak (pusketak) @snippetname testuan txertatuta feedbacketan berrerabili daitezkeen testuak dira.",
+          "entity": "snippet (pusketa)",
+          "field": {
+            "label": "Snippet (Pusketa)",
+            "fields": [
+              {
+                "label": "Izena",
+                "description": "Snippet-aren izenean soilik letrak eta zenbakiak erabili ditzakezu."
+              },
+              {
+                "label": "Testua"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Feedback Orokorra",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Lehenetsitakoa"
+            }
+          ],
+          "label": "Zehaztu ezazu edozein puntuazio-tarterako feedback pertsonalizatua",
+          "description": "Egin klik \"Gehitu tartea\" botoian behar dituzun tarte guztiak gehitzeko. Adibidez: 0-20% Puntuazio eskasa, 21-91% Batez besteko puntuazioa, 91-100% Puntuazio bikaina!",
+          "entity": "tartea",
+          "field": {
+            "fields": [
+              {
+                "label": "Puntuazio tartea"
+              },
+              {},
+              {
+                "label": "Zehaztutako tartearentzako feedbacka",
+                "placeholder": "Idatzi ezazu feedbacka"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Portaeraren ezarpenak",
+      "description": "Aukera hauek lanaren portaera kontrolatzea ahalbidetzen dizute.",
+      "fields": [
+        {
+          "label": "Erantzun-modua",
+          "description": "Zehaztu ezazu erabiltzaileak nola erantzungo duen.",
+          "options": [
+            {
+              "label": "Erabiltzaileak aukeren artean hautatzen du."
+            },
+            {
+              "label": "Erabiltzaileak erantzunak idazten ditu."
+            }
+          ]
+        },
+        {
+          "label": "Hautatzeko eskainitako aukerak",
+          "options": [
+            {
+              "label": "Hutsunerako idatzitako erantzun okerrak"
+            },
+            {
+              "label": "Hutsunerako idatzitako erantzun zuzenak"
+            }
+          ]
+        },
+        {
+          "label": "Beste hutsuneetarako hautatzeko gehienezko aukera kopurua",
+          "description": "0 idatzi ezazu mugarik ez zehazteko."
+        },
+        {
+          "label": "Portaera erabiltzaileak letreiatze-akatsa egiten duenean",
+          "options": [
+            {
+              "label": "Onartu erantzun zuzen gisa"
+            },
+            {
+              "label": "Ohartu erabiltzaileari errorearen inguruan"
+            },
+            {
+              "label": "Akats arruntzat hartu"
+            }
+          ]
+        },
+        {
+          "label": "Bereizi maiuskulak eta minuskulak",
+          "description": "Gaituz gero, emaitzarekiko letra larri/xehe ezberdinak dituztenak akats gisa hartuko dira."
+        },
+        {
+          "label": "Egiaztatu erantzunak automatikoki erantzun ondoren"
+        },
+        {
+          "label": "Gaitu \"Erakutsi emaitzak\" botoia"
+        },
+        {
+          "label": "Behartu eremu guztiak erantzutea emaitzak ikusi ahal izateko"
+        },
+        {
+          "label": "Gaitu \"Saiatu berriro\""
+        },
+        {
+          "label": "Gaitu \"Egiaztatu\" botoia"
+        },
+        {
+          "label": "Erakutsi \"Egiaztatu\" botoirako baieztapen-mezua",
+          "description": "Aukera hau ez da \"Egiaztatu automatikoki erantzunak sartu ondoren\" aukerarekin bateragarria"
+        },
+        {
+          "label": "Erakutsi \"Saiatu berriro\" botoirako baieztapen-mezua"
+        }
+      ]
+    },
+    {
+      "label": "\"Erakutsi emaitza\" botoiaren testua",
+      "default": "Erakutsi emaitza"
+    },
+    {
+      "label": "\"Saiatu berriro\" botoiarentzako testua",
+      "default": "Saiatu berriro"
+    },
+    {
+      "label": "\"Egiaztatu\" botoiarentzako testua",
+      "default": "Egiaztatu"
+    },
+    {
+      "label": "\"Bete gabea\" mezuarentzako testua",
+      "default": "Bete itzazu hutsune guztiak emaitzak ikusi ahal izateko"
+    },
+    {
+      "label": "Pistaren ikonoaren etiketa",
+      "default": "Pista"
+    },
+    {
+      "label": "Letreiatze-akatsaren oharra",
+      "description": "Mezu hau letreiatze-akats bat izan duten erabiltzaileei erakusten zaie. Txertatu ezazu @mistake egin duten akatsa erakusteko.",
+      "default": "Egiaztatu zure letreiatzea: @mistake"
+    },
+    {
+      "label": "Egiaztatu botoirako baieztapen-mezua",
+      "fields": [
+        {
+          "label": "Goiburuaren testua",
+          "default": "Amaitu duzu?"
+        },
+        {
+          "label": "Gorputzaren testua",
+          "default": "Ziur zaude amaitu nahi duzula?"
+        },
+        {
+          "label": "Utzi botoiaren etiketa",
+          "default": "Utzi"
+        },
+        {
+          "label": "Berretsi botoiaren etiketa",
+          "default": "Amaitu"
+        }
+      ]
+    },
+    {
+      "label": "Berriz saiatzeko baieztapen-testua",
+      "fields": [
+        {
+          "label": "Goiburuko testua",
+          "default": "Saiatu berriro?"
+        },
+        {
+          "label": "Gorputzaren testua",
+          "default": "Ziur zaude berriz saiatu nahi zarela?"
+        },
+        {
+          "label": "Utzi botoiarentzako etiketa",
+          "default": "Utzi"
+        },
+        {
+          "label": "Berretsi botoiaren etiketa",
+          "default": "Baieztatu"
+        }
+      ]
+    },
+    {
+      "label": "Irakurtzen duen bozgorailua erabiltzen dutenentzako puntuazio-barraren testuzko irudikapena",
+      "default": ":total puntutik :num puntu lortu duzu"
+    }
+  ]
+}
