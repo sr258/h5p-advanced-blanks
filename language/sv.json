@@ -1,0 +1,290 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Typ",
+          "description": "Valfri media att visa ovanför frågan."
+        },
+        {
+          "label": "Inaktivera zoomning i frågans bild"
+        }
+      ]
+    },
+    {
+      "label": "Tomt innehåll",
+      "fields": [
+        {
+          "label": "Uppgiftsbeskrivning",
+          "default": "Fyll i de saknade orden.",
+          "description": "En guide som förklarar för användaren hur man löser denna uppgift."
+        },
+        {
+          "label": "Text med tomrum",
+          "important": {
+            "description": "<ul><li>Tomrum måste vara markerade med __________ (tre eller flera understrykningar).</li><li>Skriv inte in lösningarna i texten.</li></ul>"
+          }
+        },
+        {
+          "label": "Tomrum som används i texten",
+          "entity": "tomrum",
+          "widgets": [
+            {
+              "label": "Standard"
+            }
+          ],
+          "field": {
+            "label": "Tomrum",
+            "fields": [
+              {
+                "label": "Rätt svar",
+                "description": "Du kan separera alternativa svar med ett snedstreck (/)."
+              },
+              {
+                "label": "Ledtråd"
+              },
+              {
+                "label": "Felaktiga svar",
+                "entity": "fel svar",
+                "field": {
+                  "label": "Fel svar",
+                  "description": "Du kan separera alternativa svar med ett snedstreck (/).",
+                  "fields": [
+                    {
+                      "label": "Text vid fel svar"
+                    },
+                    {
+                      "label": "Feedback",
+                      "description": "Denna feedback bör hjälpa användaren att hitta rätt svar och helst vara anpassat utifrån användarens angivna svar."
+                    },
+                    {
+                      "label": "Visa en markering i texten när feedback visas",
+                      "description": "Ange !! före och efter en text för att markera den. (Exempel: Detta ska !!markeras!!)"
+                    },
+                    {
+                      "label": "Markera position i relation till tomrum:",
+                      "options": [
+                        {
+                          "label": "- 1 (direkt före tomrummet)"
+                        },
+                        {
+                          "label": "- 2 (två markeringar före tomrummet)"
+                        },
+                        {
+                          "label": "-3 (tre markeringar före tomrummet)"
+                        },
+                        {
+                          "label": "+ 1 (direkt efter tomrummet)"
+                        },
+                        {
+                          "label": "+2 (två markeringar efter tomrummet)"
+                        },
+                        {
+                          "label": "+3 (tre markeringar efter tomrummet)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Utdrag",
+      "fields": [
+        {
+          "label": "Lista över utdrag",
+          "description": "Utdrag är texter som kan återanvändas i feedback-texter genom att infoga @snippetname i texten.",
+          "entity": "utdrag",
+          "field": {
+            "label": "Utdrag",
+            "fields": [
+              {
+                "label": "Namn",
+                "description": "Du kan bara använda bokstäver och siffror för namn på utdrag."
+              },
+              {
+                "label": "Text"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Allmän feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Standard"
+            }
+          ],
+          "label": "Ange specifik feedback för valfritt poängintervall",
+          "description": "Klicka på knappen \"Lägg till intervall\" för att lägga till så många intervall du behöver. Exempel: 0-20 % Inte så bra, 21-91 % Medel, 91-100 % Jättebra!",
+          "entity": "intervall",
+          "field": {
+            "fields": [
+              {
+                "label": "Poängintervall"
+              },
+              {},
+              {
+                "label": "Feedback för specifikt poängintervall",
+                "placeholder": "Fyll i din feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Beteende-inställningar",
+      "description": "Denna inställningar påverkar hur uppgiften beter sig.",
+      "fields": [
+        {
+          "label": "Svarsläge",
+          "description": "Indikerar på vilket sätt användaren ger sina svar.",
+          "options": [
+            {
+              "label": "Användarna väljer från inställningar."
+            },
+            {
+              "label": "Användarna skriver in svaren."
+            }
+          ]
+        },
+        {
+          "label": "Alternativ att välja från",
+          "options": [
+            {
+              "label": "De felaktiga svaren som är angivna för tomrummet"
+            },
+            {
+              "label": "De rätta svaren för alla andra tomrum"
+            }
+          ]
+        },
+        {
+          "label": "Max antal alternativ för andra tomrum i urvalet",
+          "description": "Ange 0 för att sätta utan gräns."
+        },
+        {
+          "label": "Beteende när användaren gör ett stavfel",
+          "options": [
+            {
+              "label": "Acceptera det som ett korrekt svar"
+            },
+            {
+              "label": "Varna användaren om felet"
+            },
+            {
+              "label": "Betrakta det som ett vanligt fel"
+            }
+          ]
+        },
+        {
+          "label": "Skiftlägeskänsligt",
+          "description": "Om aktiverat, så blir svar som felaktigt använder stor eller liten bokstav betraktat som ett fel."
+        },
+        {
+          "label": "Rätta svar automatiskt efter inmatning"
+        },
+        {
+          "label": "Aktivera knappen \"Visa lösningar\""
+        },
+        {
+          "label": "Kräv att alla fält besvaras innan lösningen kan visas"
+        },
+        {
+          "label": "Aktivera \"Försök igen\""
+        },
+        {
+          "label": "Aktivera knappen \"Rätta\""
+        },
+        {
+          "label": "Visa bekräftelse-dialog vid \"Rätta\"",
+          "description": "Denna inställning är inte kompatibel med valet \"Rätta svar automatiskt efter inmatning\""
+        },
+        {
+          "label": "Visa bekräftelse-dialog vid \"Försök igen\""
+        }
+      ]
+    },
+    {
+      "label": "Text för knappen \"Visa lösningar\"",
+      "default": "Visa lösning"
+    },
+    {
+      "label": "Text för knappen \"Rätta\"",
+      "default": "Försök igen"
+    },
+    {
+      "label": "Text för knappen \"Rätta\"",
+      "default": "Rätta"
+    },
+    {
+      "label": "Text för meddelande \"Inte fyllt i\"",
+      "default": "Fyll i alla tomma fält för att visa lösningen"
+    },
+    {
+      "label": "Etikett för tips-ikon",
+      "default": "Tips"
+    },
+    {
+      "label": "Varning om stavfel",
+      "description": "Detta är meddelandet som visas för användare när de gör ett stavfel. Infoga @mistake för att visa dem vad de stavade fel.",
+      "default": "Kontrollera din stavning: @mistake"
+    },
+    {
+      "label": "Bekräftelse-dialog för Rätta",
+      "fields": [
+        {
+          "label": "Rubriktext",
+          "default": "Avsluta?"
+        },
+        {
+          "label": "Text",
+          "default": "Är du säker på att du vill avsluta?"
+        },
+        {
+          "label": "Etikett för avbryt-knapp",
+          "default": "Avbryt"
+        },
+        {
+          "label": "Etikett för bekräfta-knapp",
+          "default": "Avsluta"
+        }
+      ]
+    },
+    {
+      "label": "Bekräftelse-dialog för försök igen",
+      "fields": [
+        {
+          "label": "Rubriktext",
+          "default": "Försök igen?"
+        },
+        {
+          "label": "Text",
+          "default": "Är du säker på att du vill försöka igen?"
+        },
+        {
+          "label": "Etikett för avbryt-knapp",
+          "default": "Avbryt"
+        },
+        {
+          "label": "Etikett för bekräfta-knapp",
+          "default": "Bekräfta"
+        }
+      ]
+    },
+    {
+      "label": "Text som används vid skärmläsare för att läsa upp poäng",
+      "default": "Du fick :num av :total poäng"
+    }
+  ]
+}
