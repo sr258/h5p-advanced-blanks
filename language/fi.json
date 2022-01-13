@@ -24,8 +24,7 @@
           "label": "Teksti aukkokohdilla",
           "important": {
             "description": "<ul><li>Aukkokohdat tulee merkitä __________ (vähintään kolmella alaviivalla).</li><li>Älä syötä vastausvaihtoehtoja suoraan tekstikappaleeseen vaan niille osoitettuihin kenttiin.</li></ul>"
-          },
-          "description": ""
+          }
         },
         {
           "label": "Tekstin aukkokohdat",
