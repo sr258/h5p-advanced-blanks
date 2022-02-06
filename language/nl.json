@@ -8,7 +8,7 @@
           "description": "Optionele media, die boven de vraag wordt getoond."
         },
         {
-          "label": "Deactiveer het zoomen van de afbeelding tijdens het tonen van de opgave"
+          "label": "Afbeelding zoom uitschakelen voor afbeelding van de vraag"
         }
       ]
     },
@@ -35,7 +35,7 @@
             }
           ],
           "field": {
-            "label": "Leeg",
+            "label": "Lege plek",
             "fields": [
               {
                 "label": "Juist antwoord",
@@ -143,8 +143,8 @@
       ]
     },
     {
-      "label": "Gedragsinstellingen",
-      "description": "Met deze opties kun je bepalen hoe de opgave zich gedraagt.",
+      "label": "Gedragsinstelllingen",
+      "description": "Met deze opties kun je bepalen hoe de taak zich gedraagt.",
       "fields": [
         {
           "label": "Antwoordmodus",
@@ -201,10 +201,10 @@
           "label": "Het is een vereiste dat alle velden moeten worden beantwoord voordat de oplossing kan worden bekeken"
         },
         {
-          "label": "Activeer de \"Opnieuw\"-knop"
+          "label": "Schakel \"Opnieuw\" in"
         },
         {
-          "label": "Activeer de \"Controleer\"-knop"
+          "label": "Schakel \"Controleer\"-knop in"
         },
         {
           "label": "Toon bevestigingsdialoog bij \"Controleer\"",
@@ -232,7 +232,7 @@
       "default": "Alle velden moeten worden ingevuld voordat de oplossing wordt getoond"
     },
     {
-      "label": "Tekst voor het pictogram 'Tip'",
+      "label": "Label van het \"Tip\"-pictogram",
       "default": "Tip"
     },
     {
