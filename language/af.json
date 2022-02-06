@@ -6,6 +6,9 @@
         {
           "label": "Tipe",
           "description": "Opsionele media wat bo die vraag vertoon word."
+        },
+        {
+          "label": "Disable image zooming for question image"
         }
       ]
     },
@@ -207,7 +210,8 @@
           "label": "Aktiveer \"Toets\" knoppie"
         },
         {
-          "label": "Deaktiveer prentzoomfunksie vir vraagprent"
+          "label": "Deaktiveer prentzoomfunksie vir vraagprent",
+          "description": "This option is not compatible with the \"Automatically check answers after input\" option"
         },
         {
           "label": "Wys bevestigingdialoog op \"Toets\"",
