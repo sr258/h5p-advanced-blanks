@@ -77,6 +77,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.clozeController.onSolved = this.onSolved;
     this.clozeController.onAutoChecked = this.onAutoChecked;
     this.clozeController.onTyped = this.onTyped;
+    this.clozeController.onTextChanged = () => this.triggerXAPI('interacted');
 
     if (contentData && contentData.previousState)
       this.previousState = contentData.previousState;
@@ -128,7 +129,6 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       this.state = States.ongoing;
       this.toggleButtonVisibility(this.state);
     }
-    this.triggerXAPI('interacted');
     this.answered = true;
   }
 

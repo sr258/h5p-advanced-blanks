@@ -28,6 +28,10 @@ interface Typed {
   (): void;
 }
 
+interface TextChanged {
+  () : void;
+}
+
 export class ClozeController {
   private jquery: JQuery;
 
@@ -38,6 +42,7 @@ export class ClozeController {
   public onAutoChecked: AutoChecked;
   public onSolved: Solved;
   public onTyped: Typed;
+  public onTextChanged: TextChanged;
 
   // Storage of the ractive objects that link models and views
   private highlightRactives: { [id: string]: Ractive.Ractive } = {};
@@ -251,6 +256,7 @@ export class ClozeController {
     ractive.on("checkBlank", this.checkBlank);
     ractive.on("showHint", this.showHint);
     ractive.on("textTyped", this.textTyped);
+    ractive.on("textChanged", this.onTextChanged);
     ractive.on("closeMessage", this.requestCloseTooltip);
     ractive.on("focus", this.focus);
     ractive.on("displayFeedback", this.displayFeedback);

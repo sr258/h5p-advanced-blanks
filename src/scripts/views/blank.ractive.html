@@ -6,7 +6,8 @@
              on-enter="@this.fire('checkBlank', blank, 'enter')" 
              on-blur="@this.fire('checkBlank', blank, 'blur')" 
              on-focus="@this.fire('focus', blank)"
-             on-change="@this.fire('textTyped', blank)"
+             on-anykey="@this.fire('textTyped', blank)"
+             on-change="@this.fire('textChanged', blank)"
              {{#(blank.isCorrect || blank.isShowingSolution)}}disabled="disabled"{{/if}}
              class="h5p-text-input"
              autocomplete="off"
