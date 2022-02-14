@@ -16,10 +16,6 @@ interface ScoreChanged {
   (score: number, maxScore: number): void;
 }
 
-interface AutoChecked {
-  (): void;
-}
-
 interface Solved {
   (): void;
 }
@@ -39,7 +35,6 @@ export class ClozeController {
   private isSelectCloze: boolean;
 
   public onScoreChanged: ScoreChanged;
-  public onAutoChecked: AutoChecked;
   public onSolved: Solved;
   public onTyped: Typed;
   public onTextChanged: TextChanged;
@@ -177,19 +172,7 @@ export class ClozeController {
       this.onTyped();
     }
 
-    if (this.settings.autoCheck) {
-      if (!blank.enteredText || blank.enteredText === "")
-        return;
-
-      this.cloze.hideAllHighlights();
-      blank.evaluateAttempt(false);
-      this.checkAndNotifyCompleteness();
-      this.refreshCloze();
-      this.onAutoChecked();
-    }
-    if ((cause === 'enter')
-      && ((this.settings.autoCheck && blank.isCorrect && !this.isSolved)
-        || !this.settings.autoCheck)) {
+    if (cause === 'enter') {
       // move to next blank
       var index = this.cloze.blanks.indexOf(blank);
       var nextId;
