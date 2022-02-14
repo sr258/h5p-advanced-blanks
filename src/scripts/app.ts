@@ -364,7 +364,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     const definition = new XAPIActivityDefinition();
 
     definition.description = {
-      'en-US': '<p>' + this.repository.getTaskDescription() + '</p>' + this.repository.getClozeText().replace(/__(_)+/g, '__________')
+      'en-US': '<p>' + this.repository.getTaskDescription() + '</p>' + this.repository.getClozeText().replace(/__(_)+/g, '__________').replace(/!!/g, '')
     };
 
     definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
