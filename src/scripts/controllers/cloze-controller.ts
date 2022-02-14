@@ -107,6 +107,9 @@ export class ClozeController {
 
     var blanks = this.repository.getBlanks();
 
+    // Stop ractive debug mode
+    Ractive.DEBUG = false;
+
     if (this.isSelectCloze && this.settings.selectAlternatives === SelectAlternatives.All) {
       for (var blank of blanks) {
         let otherBlanks = blanks.filter(v => v !== blank);
