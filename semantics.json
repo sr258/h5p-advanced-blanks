@@ -523,6 +523,15 @@
     "optional": true
   },
   {
+    "label": "Text for \"Submit\" button",
+    "importance": "low",
+    "name": "submitAnswer",
+    "type": "text",
+    "default": "Submit",
+    "common": true,
+    "optional": true
+  },
+  {
     "label": "Text for \"Not filled out\" message",
     "importance": "low",
     "name": "notFilledOut",
