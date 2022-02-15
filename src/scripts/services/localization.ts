@@ -2,10 +2,11 @@
   showSolutionButton = "showSolutions",
   retryButton = "tryAgain",
   checkAllButton = "checkAnswer",
+  submitAllButton = "submitAnswer",
   notFilledOutWarning = "notFilledOut",
   tipButton ="tipLabel",
   typoMessage = "spellingMistakeWarning",
-  scoreBarLabel = "scoreBarLabel"  
+  scoreBarLabel = "scoreBarLabel"
 }
 
 export enum LocalizationStructures {

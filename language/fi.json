@@ -229,6 +229,10 @@
       "default": "Tarkista"
     },
     {
+      "label": "Text for \"Submit\" button",
+      "default": "Submit"
+    },
+    {
       "label": "Teksti \"Not filled out\" viestille",
       "default": "Ole hyvä ja täytä kaikki aukkokohdat nähdäksesi vastaukset"
     },

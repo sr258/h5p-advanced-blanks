@@ -6,6 +6,9 @@
         {
           "label": "Tipe",
           "description": "Opsionele media wat bo die vraag vertoon word."
+        },
+        {
+          "label": "Disable image zooming for question image"
         }
       ]
     },
@@ -154,8 +157,7 @@
             {
               "label": "Die gebruiker tik die antwoorde in."
             }
-          ],
-          "default": "besig om te tik"
+          ]
         },
         {
           "label": "Alternatiewe beskikbaar vir keuse",
@@ -166,8 +168,7 @@
             {
               "label": "Die regte antwoorde van al die ander oop spasies"
             }
-          ],
-          "default": "alternatiewe"
+          ]
         },
         {
           "label": "Maksimum aantal alternatiewe beskikbaar vir ander oop spasies",
@@ -185,8 +186,7 @@
             {
               "label": "Beskou dit as 'n gereelde fout"
             }
-          ],
-          "default": "fout"
+          ]
         },
         {
           "label": "Hooflettergevoelig",
@@ -208,11 +208,11 @@
           "label": "Aktiveer \"Toets\" knoppie"
         },
         {
-          "label": "Deaktiveer prentzoomfunksie vir vraagprent"
+          "label": "Deaktiveer prentzoomfunksie vir vraagprent",
+          "description": "This options is not compatible with the \"Automatically check answers after input\" option"
         },
         {
-          "label": "Wys bevestigingdialoog op \"Toets\"",
-          "description": "Hierdie keuses is nie versoenbaar met die opsie \"Gaan antwoorde outomaties na invoer na\" nie"
+          "label": "Wys bevestigingdialoog op \"Toets\""
         },
         {
           "label": "Wys bevestigingdialoog op \"Probeer weer\""
@@ -230,6 +230,10 @@
     {
       "label": "Teks vir \"Toets\" knoppie",
       "default": "Toets"
+    },
+    {
+      "label": "Text for \"Submit\" button",
+      "default": "Submit"
     },
     {
       "label": "Teks vir \"Nie ingevul\" boodskap",
