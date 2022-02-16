@@ -77,7 +77,6 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
     this.clozeController.onScoreChanged = this.onScoreChanged;
     this.clozeController.onSolved = this.onSolved;
-    this.clozeController.onAutoChecked = this.onAutoChecked;
     this.clozeController.onTyped = this.onTyped;
     this.clozeController.onTextChanged = () => this.triggerXAPI('interacted');
 
@@ -97,8 +96,6 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
         this.clozeController.initialize(this.container.get(0), $container);
         if (this.clozeController.deserializeCloze(this.previousState)) {
           this.answered = this.clozeController.isFilledOut;
-          if (this.settings.autoCheck)
-            this.onCheckAnswer();
           this.toggleButtonVisibility(this.state);
         }
       }
@@ -132,11 +129,6 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
       this.toggleButtonVisibility(this.state);
     }
     this.answered = true;
-  }
-
-  private onAutoChecked = () => {
-    this.triggerXAPI('interacted');
-    this.triggerXAPIAnswered();
   }
 
   /**
@@ -202,20 +194,18 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
   private registerButtons() {
     var $container = this.getH5pContainer();
 
-    if (!this.settings.autoCheck) {
-      // Check answer button
-      this.addButton('check-answer', this.localization.getTextFromLabel(LocalizationLabels.checkAllButton),
-        this.onCheckAnswer, true, {}, {
-          confirmationDialog: {
-            enable: this.settings.confirmCheckDialog,
-            l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmCheck),
-            instance: this,
-            $parentElement: $container,
-          },
-          contentData: this.contentData,
-          textIfSubmitting: this.localization.getTextFromLabel(LocalizationLabels.submitAllButton),
-      });
-    }
+    // Check answer button
+    this.addButton('check-answer', this.localization.getTextFromLabel(LocalizationLabels.checkAllButton),
+      this.onCheckAnswer, true, {}, {
+        confirmationDialog: {
+          enable: this.settings.confirmCheckDialog,
+          l10n: this.localization.getObjectForStructure(LocalizationStructures.confirmCheck),
+          instance: this,
+          $parentElement: $container,
+        },
+        contentData: this.contentData,
+        textIfSubmitting: this.localization.getTextFromLabel(LocalizationLabels.submitAllButton),
+    });
 
     // Show solution button
     this.addButton('show-solution', this.localization.getTextFromLabel(LocalizationLabels.showSolutionButton),
@@ -286,8 +276,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
 
   private toggleButtonVisibility(state: States) {
     if (this.settings.enableSolutionsButton) {
-      if (((state === States.checking)
-        || (this.settings.autoCheck && state === States.ongoing))
+      if ((state === States.checking)
         && (!this.settings.showSolutionsRequiresInput || this.clozeController.allBlanksEntered)) {
         this.showButton('show-solution');
       }
@@ -387,7 +376,7 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     const definition = new XAPIActivityDefinition();
 
     definition.description = {
-      'en-US': '<p>' + this.repository.getTaskDescription() + '</p>' + this.repository.getClozeText().replace(/__(_)+/g, '__________')
+      'en-US': '<p>' + this.repository.getTaskDescription() + '</p>' + this.repository.getClozeText().replace(/__(_)+/g, '__________').replace(/!!/g, '')
     };
 
     definition.type = 'http://adlnet.gov/expapi/activities/cmi.interaction';
