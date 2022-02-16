@@ -187,31 +187,31 @@
                     },
                     "options": [
                       {
-                        "value": -1,
+                        "value": "-1",
                         "label": "- 1 (right before the blank)"
                       },
                       {
-                        "value": -2,
+                        "value": "-2",
                         "label": "- 2 (two highlights before the blank)"
                       },
                       {
-                        "value": -3,
+                        "value": "-3",
                         "label": "- 3 (three highlights before the blank)"
                       },
                       {
-                        "value": 1,
+                        "value": "1",
                         "label": "+ 1 (right after the blank)"
                       },
                       {
-                        "value": 2,
+                        "value": "2",
                         "label": "+ 2 (two highlights after the blank)"
                       },
                       {
-                        "value": 3,
+                        "value": "3",
                         "label": "+ 3 (three highlights after the blank)"
                       }
                     ],
-                    "default": -1
+                    "default": "-1"
                   }
                 ]
               }
