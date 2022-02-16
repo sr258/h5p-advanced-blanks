@@ -257,6 +257,8 @@ export default class AdvancedBlanks extends (H5P.Question as { new(): any; }) {
     this.clozeController.reset();
     this.answered = false;
     this.moveToState(States.ongoing);
+    // Reset timer
+    this.setActivityStarted(true);
   }
 
   private showFeedback() {
