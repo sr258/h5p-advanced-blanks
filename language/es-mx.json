@@ -193,9 +193,6 @@
           "description": "Si se habilita, MAYÚSCULAS/minúsculas que sean diferentes de la solución son consideradas un error."
         },
         {
-          "label": "Automáticamente comprobar respuestas después de ingresadas"
-        },
-        {
           "label": "Habilitar botón \"Mostrar soluciones\""
         },
         {

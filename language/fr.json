@@ -193,9 +193,6 @@
           "description": "Si cette option est activée, une casse différente de celle de la solution est considérée comme une erreur."
         },
         {
-          "label": "Vérifier les réponses instantanément dès la saisie."
-        },
-        {
           "label": "Activer le bouton \"Voir la correction\""
         },
         {
