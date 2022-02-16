@@ -23,9 +23,9 @@
         {
           "label": "Teksti aukkokohdilla",
           "important": {
-            "description": "<ul><li>Aukkokohdat tulee merkitä __________ (vähintään kolmella alaviivalla).</li><li>Älä syötä vastausvaihtoehtoja suoraan tekstikappaleeseen vaan niille osoitettuihin kenttiin.</li></ul>"
-          },
-          "description": ""
+            "description": "<ul><li>Aukkokohdat tulee merkitä __________ (vähintään kolmella alaviivalla).</li><li>Älä syötä vastausvaihtoehtoja suoraan tekstikappaleeseen vaan niille osoitettuihin kenttiin.</li></ul>",
+            "example": "I have _________ wanted to visit Norway."
+          }
         },
         {
           "label": "Tekstin aukkokohdat",
@@ -205,8 +205,7 @@
           "label": "Salli \"Check\" painike"
         },
         {
-          "label": "Näytä \"Check\" vahvistusikkuna",
-          "description": "Tämä asetus ei ole yhteensopiva \"Automatically check answers after input\" asetuksen kanssa"
+          "label": "Näytä \"Check\" vahvistusikkuna"
         },
         {
           "label": "Näytä \"Retry\" vahvistusikkuna"

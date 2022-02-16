@@ -23,9 +23,9 @@
         {
           "label": "Texto con huecos",
           "important": {
-            "description": "<ul><li>Los huecos deben ser marcados con __________ (tres o cuatro guiones bajos).</li><li>NO escriba las soluciones dentro del texto.</li></ul>"
-          },
-          "description": ""
+            "description": "<ul><li>Los huecos deben ser marcados con __________ (tres o cuatro guiones bajos).</li><li>NO escriba las soluciones dentro del texto.</li></ul>",
+            "example": "I have _________ wanted to visit Norway."
+          }
         },
         {
           "label": "Huecos usados en el texto",
@@ -205,8 +205,7 @@
           "label": "Habilitar botón \"Comprobar\""
         },
         {
-          "label": "Mostrar diálogo de confirmación en \"Comprobar\"",
-          "description": "Esta opción no es compatible con la opción de \"Automáticamente comprobar respuestas después de ingresadas\""
+          "label": "Mostrar diálogo de confirmación en \"Comprobar\""
         },
         {
           "label": "Mostrar diálogo de confirmación en \"Reintentar\""

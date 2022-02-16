@@ -23,9 +23,9 @@
         {
           "label": "Text with blanks",
           "important": {
-            "description": "<ul><li>Blanks must be marked with __________ (three or more underscores).</li><li>Do not put the solutions into the text.</li></ul>"
-          },
-          "description": ""
+            "description": "<ul><li>Blanks must be marked with __________ (three or more underscores).</li><li>Do not put the solutions into the text.</li></ul>",
+            "example": "I have _________ wanted to visit Norway."
+          }
         },
         {
           "label": "Blanks used in the text",
@@ -99,7 +99,7 @@
       "fields": [
         {
           "label": "Snippet list",
-          "description": "Snippets are texts that can be reused in feedback texts by inserting @snippetname into the text.",
+          "description": "Snippets are texts that can be reused in feedback texts by inserting @snippetname into the it.",
           "entity": "snippet",
           "field": {
             "label": "Snippet",
@@ -205,8 +205,7 @@
           "label": "Enable \"Check\" button"
         },
         {
-          "label": "Show confirmation dialog on \"Check\"",
-          "description": "This option is not compatible with the \"Automatically check answers after input\" option"
+          "label": "Show confirmation dialog on \"Check\""
         },
         {
           "label": "Show confirmation dialog on \"Retry\""

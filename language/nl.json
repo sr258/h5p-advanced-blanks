@@ -23,9 +23,9 @@
         {
           "label": "Tekst met liggende streepjes",
           "important": {
-            "description": "<ul><li>Lege plekken moeten worden gemarkeerd met _____ (3 of meer liggende streepjes).</li><li>Plaats geen oplossingen in de tekst.</li></ul>"
-          },
-          "description": ""
+            "description": "<ul><li>Lege plekken moeten worden gemarkeerd met _____ (3 of meer liggende streepjes).</li><li>Plaats geen oplossingen in de tekst.</li></ul>",
+            "example": "I have _________ wanted to visit Norway."
+          }
         },
         {
           "label": "Lege plekken die in de tekst worden gebruikt",
@@ -205,8 +205,7 @@
           "label": "Activeer de knop \"Controleer\""
         },
         {
-          "label": "Toon bevestigingsvenster bij \"Controleer\"",
-          "description": "Deze optie is niet verenigbaar met de \"Controleer automatisch de antwoorden na invoer\" optie"
+          "label": "Toon bevestigingsvenster bij \"Controleer\""
         },
         {
           "label": "Toon bevestigingsvenster bij \"Opnieuw\""

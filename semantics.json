@@ -75,7 +75,6 @@
           "description": "<ul><li>Blanks must be marked with __________ (three or more underscores).</li><li>Do not put the solutions into the text.</li></ul>",
           "example": "I have _________ wanted to visit Norway."
         },
-        "description": "",
         "tags": [
           "strong",
           "em",
@@ -484,7 +483,6 @@
         "importance": "low",
         "name": "confirmCheckDialog",
         "type": "boolean",
-        "description": "This options is not compatible with the \"Automatically check answers after input\" option",
         "default": false
       },
       {

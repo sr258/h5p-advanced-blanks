@@ -25,8 +25,7 @@
           "important": {
             "description": "<ul><li>Lücken müssen mit __________ (drei oder mehr Unterstriche) gekennzeichnet werden.</li><li>Die Lösungen werden erst weiter unten in einem anderen Bereich eingegeben.</li></ul>",
             "example": "Ich wollte _________ nach Norwegen fahren."
-          },
-          "description": ""
+          }
         },
         {
           "label": "Lücken",
@@ -206,8 +205,7 @@
           "label": "\"Überprüfen\"-Button anzeigen"
         },
         {
-          "label": "Bestätigungsdialog beim Klicken auf \"Überprüfen\" anzeigen",
-          "description": "Diese Option funktioniert nicht zusammen mit \"Antworten nach Eingabe automatisch prüfen\""
+          "label": "Bestätigungsdialog beim Klicken auf \"Überprüfen\" anzeigen"
         },
         {
           "label": "Bestätigungsdialog beim Klicken auf \"Wiederholen\" anzeigen"

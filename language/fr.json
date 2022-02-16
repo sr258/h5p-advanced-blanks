@@ -23,9 +23,9 @@
         {
           "label": "Texte à trous",
           "important": {
-            "description": "<ul><li>Les blancs doivent être marqués avec __________ (trois traits de soulignement ou plus).</li><li>Ne pas mettre les solutions dans le texte.</li></ul>"
-          },
-          "description": ""
+            "description": "<ul><li>Les blancs doivent être marqués avec __________ (trois traits de soulignement ou plus).</li><li>Ne pas mettre les solutions dans le texte.</li></ul>",
+            "example": "I have _________ wanted to visit Norway."
+          }
         },
         {
           "label": "Paramétrage des blancs utilisés dans le texte",
@@ -205,8 +205,7 @@
           "label": "Activer le bouton \"Vérifier\""
         },
         {
-          "label": "Afficher la fenêtre de confirmation pour \"Vérifier\"",
-          "description": "Cette option n'est pas compatible avec l'option \"Vérifier les réponses instantanément dès la saisie.\""
+          "label": "Afficher la fenêtre de confirmation pour \"Vérifier\""
         },
         {
           "label": "Afficher la fenêtre de confirmation pour \"Recommencer\""
