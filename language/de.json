@@ -194,9 +194,6 @@
           "description": "Stellt sicher, dass die Lösung exakt der Vorgabe entspricht."
         },
         {
-          "label": "Antworten nach Eingabe automatisch prüfen"
-        },
-        {
           "label": "\"Lösung anzeigen\"-Button anzeigen"
         },
         {

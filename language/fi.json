@@ -193,9 +193,6 @@
           "description": "Jos päällä niin kirjainkoko vaikuttaa siihen hyväksytäänkö vastaus oikeana vai virheellisenä esimerkiksi hyväksytäänkö helsinki vai ainoastaan Helsinki"
         },
         {
-          "label": "Tarkista vastaukset automaattisesti heti vastauksen jälkeen."
-        },
-        {
           "label": "Näytä \"Show solutions\" painike"
         },
         {
