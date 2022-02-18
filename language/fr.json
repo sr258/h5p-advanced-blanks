@@ -24,8 +24,7 @@
           "label": "Texte à trous",
           "important": {
             "description": "<ul><li>Les blancs doivent être marqués avec __________ (trois traits de soulignement ou plus).</li><li>Ne pas mettre les solutions dans le texte.</li></ul>"
-          },
-          "description": ""
+          }
         },
         {
           "label": "Paramétrage des blancs utilisés dans le texte",
@@ -131,7 +130,7 @@
           "field": {
             "fields": [
               {
-                "label": "Intervalle de scores"
+                "label": "Fourchette de score"
               },
               {},
               {

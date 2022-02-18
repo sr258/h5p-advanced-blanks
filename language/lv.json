@@ -1,0 +1,290 @@
+{
+  "semantics": [
+    {
+      "label": "Multivide",
+      "fields": [
+        {
+          "description": "Papildu multimedijs, kuru atspoguļot virs jautājuma.",
+          "label": "Tips"
+        },
+        {
+          "label": "Atspējot attēla tālummaiņu jautājuma attēlam"
+        }
+      ]
+    },
+    {
+      "label": "Tukšs saturs",
+      "fields": [
+        {
+          "label": "Uzdevuma apraksts",
+          "default": "Aizpildiet trūkstošos vārdus.",
+          "description": "Pamācība lietotājam kā pildīt šo uzdevumu."
+        },
+        {
+          "label": "Teksts ar tukšām vietām",
+          "important": {
+            "description": "<ul><li>Tukšās vietas ir jāatzīmē ar __________ (trīs vai vairāk pasvītrojumu).</li><li>Neievietojiet tekstā risinājumus.</li></ul>"
+          }
+        },
+        {
+          "label": "Tekstā izmantotās tukšās vietas",
+          "entity": "tukšs",
+          "widgets": [
+            {
+              "label": "Pēc noklusējuma"
+            }
+          ],
+          "field": {
+            "label": "Tukšs",
+            "fields": [
+              {
+                "label": "Pareizā atbilde",
+                "description": "Alternatīvās atbildes var atdalīt ar slīpsvītru (/)."
+              },
+              {
+                "label": "Padoms"
+              },
+              {
+                "entity": "nepareiza atbilde",
+                "field": {
+                  "label": "Nepareiza atbilde",
+                  "description": "Alternatīvās atbildes var atdalīt ar slīpsvītru (/).",
+                  "fields": [
+                    {
+                      "label": "Nepareizās atbildes teksts"
+                    },
+                    {
+                      "label": "Atgriezeniskā saite",
+                      "description": "Atgriezeniskajai saitei būtu jāpalīdz lietotājam atrast pareizo atbildi, un ideālā gadījumā tā ir jāpielāgo lietotāja ievadītajai atbildei."
+                    },
+                    {
+                      "label": "Rādīt izcēlumu tekstā, kad tiek rādīta atgriezeniskā saite",
+                      "description": "Lieciet !! pirms un pēc teksta daļas, lai atzīmētu to kā izceltu. (piem., šis ir !!izcelts!!)"
+                    },
+                    {
+                      "label": "Izcelt pozīciju attiecībā pret tukšo:",
+                      "options": [
+                        {
+                          "label": "- 1 (tieši pirms tukšās vietas)"
+                        },
+                        {
+                          "label": "- 2 (divi izcēlumi pirms tukšās vietas)"
+                        },
+                        {
+                          "label": "- 3 (trīs izcēlumi pirms tukšās vietas)"
+                        },
+                        {
+                          "label": "+ 1 (tieši aiz tukšās vietas)"
+                        },
+                        {
+                          "label": "+ 2 (divi izcēlumi aiz tukšās vietas)"
+                        },
+                        {
+                          "label": "+ 3 (trīs izcēlumi aiz tukšās vietas)"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "label": "Nepareizās atbildes"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Fragmenti",
+      "fields": [
+        {
+          "label": "Fragmentu saraksts",
+          "entity": "fragments",
+          "field": {
+            "label": "Fragments",
+            "fields": [
+              {
+                "label": "Nosaukums",
+                "description": "Fragmenta nosaukumā var izmantot tikai burtus un ciparus."
+              },
+              {
+                "label": "Teksts"
+              }
+            ]
+          },
+          "description": "Fragmenti ir teksti, kurus var atkārtoti izmantot atgriezeniskās saitē, tekstā ievietojot @snippetname."
+        }
+      ]
+    },
+    {
+      "label": "Kopējā atgriezeniskā saite",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Pēc noklusējuma"
+            }
+          ],
+          "label": "Iestatiet pielāgotu atgriezenisko saiti katram rezultātu diapazonam",
+          "entity": "diapazons",
+          "field": {
+            "fields": [
+              {
+                "label": "Rezultātu diapazons"
+              },
+              {},
+              {
+                "label": "Norādītā diapazona atgriezeniskā saite",
+                "placeholder": "Aizpildiet atgriezenisko saiti"
+              }
+            ]
+          },
+          "description": "Klikšķiniet pogu \"Pievienot diapazonu\", lai pievienotu tik diapazonus cik vēlaties. Piemēram, 0-20% Slikts rezultāts, 21-91% Viduvējs rezultāts, 91-100% Lielisks rezultāts!"
+        }
+      ]
+    },
+    {
+      "label": "Uzvedības iestatījumi",
+      "description": "Šie iestatījumi ļaus jums kontrolēt uzdevuma uzvedību.",
+      "fields": [
+        {
+          "label": "Atbildēšanas režīms",
+          "description": "Norāda, kādā veidā lietotājs sniedz atbildes.",
+          "options": [
+            {
+              "label": "Lietotāji izvēlas no iespējām."
+            },
+            {
+              "label": "Lietotāji ieraksta atbildes."
+            }
+          ]
+        },
+        {
+          "label": "Izvēlei piedāvātie varianti",
+          "options": [
+            {
+              "label": "Tukšajā laukā ievadītas nepareizās atbildes"
+            },
+            {
+              "label": "Visu pārējo tukšo lauku pareizās atbildes"
+            }
+          ]
+        },
+        {
+          "description": "Ievadiet 0, lai neierobežotu.",
+          "label": "Maksimālais piedāvāto citu tukšo lauku variantu skaits"
+        },
+        {
+          "options": [
+            {
+              "label": "Pieņemt kā pareizu atbildi"
+            },
+            {
+              "label": "Brīdināt lietotāju par kļūdu"
+            },
+            {
+              "label": "Uzskatīt par parastu kļūdu"
+            }
+          ],
+          "label": "Rīcība, kad lietotājs pieļauj pareizrakstības kļūdu"
+        },
+        {
+          "label": "Reģistrjutīgs",
+          "description": "Ja iespējots, lielo burtu lietojums, kas atšķiras no risinājuma, tiek uzskatīts par kļūdu."
+        },
+        {
+          "label": "Automātiski pārbaudīt atbildes pēc ievades"
+        },
+        {
+          "label": "Atļaut pogu \"Rādīt risinājumus\""
+        },
+        {
+          "label": "Pieprasīt, lai visi lauki ir aizpildīti pirms var skatīt risinājumu"
+        },
+        {
+          "label": "Atļaut \"Mēģināt vēlreiz\""
+        },
+        {
+          "label": "Atļaut pogu \"Pārbaudīt\""
+        },
+        {
+          "label": "Rādīt apstiprinājuma dialogu pēc \"Pārbaudīt\"",
+          "description": "Šis iestatījums nav savietojams ar iestatījumu \"Automātiski pārbaudīt atbildes pēc ievades\""
+        },
+        {
+          "label": "Rādīt apstiprinājuma dialogu pēc \"Mēģināt vēlreiz\""
+        }
+      ]
+    },
+    {
+      "label": "Pogas \"Rādīt risinājumus\" teksts",
+      "default": "Parādīt risinājumu"
+    },
+    {
+      "label": "Pogas \"Mēģināt vēlreiz\" teksts",
+      "default": "Mēģināt vēlreiz"
+    },
+    {
+      "label": "Pogas \"Pārbaudīt\" teksts",
+      "default": "Pārbaudīt"
+    },
+    {
+      "label": "Ziņas \"Nav aizpildīts\" teksts",
+      "default": "Lūdzu aizpildiet visus tukšos laukus, lai skatītu risinājumu"
+    },
+    {
+      "label": "Padoma ikonas etiķete",
+      "default": "Padoms"
+    },
+    {
+      "label": "Brīdinājums par pareizrakstības kļūdu",
+      "default": "Pārbaudiet pareizrakstību: @mistake",
+      "description": "Šis ir ziņojums, kas tiek rādīts lietotājiem, kad viņi pieļauj pareizrakstības kļūdu. Ievietojiet @mistake, lai parādītu, ko viņi izdarīja nepareizi."
+    },
+    {
+      "label": "Pārbaudīšanas apstiprinājuma dialogs",
+      "fields": [
+        {
+          "label": "Galvenes teksts",
+          "default": "Beigt?"
+        },
+        {
+          "label": "Pamatteksts",
+          "default": "Vai esat pārliecināts, ka vēlaties beigt?"
+        },
+        {
+          "label": "Atcelšanas pogas etiķete",
+          "default": "Atcelt"
+        },
+        {
+          "label": "Apstiprinājuma pogas etiķete",
+          "default": "Beigt"
+        }
+      ]
+    },
+    {
+      "label": "Atkārtota mēģinājuma apstiprināšanas dialogs",
+      "fields": [
+        {
+          "label": "Galvenes teksts",
+          "default": "Mēģināt vēlreiz?"
+        },
+        {
+          "default": "Vai esat pārliecināts, ka vēlaties mēģināt atkārtoti?",
+          "label": "Pamata teksts"
+        },
+        {
+          "label": "Atcelšanas pogas etiķete",
+          "default": "Atcelt"
+        },
+        {
+          "label": "Apstiprinājuma pogas etiķete",
+          "default": "Apstiprināt"
+        }
+      ]
+    },
+    {
+      "label": "Rezultātu skalas tekstuālais atspoguļojums tiem, kas izmanto asistīvās tehnoloģijas",
+      "default": "Tu saņēmi :num no :total punktiem"
+    }
+  ]
+}

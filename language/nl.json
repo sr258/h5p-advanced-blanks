@@ -5,7 +5,7 @@
       "fields": [
         {
           "label": "Type",
-          "description": "Optionele media die boven de vragen wordt getoond."
+          "description": "Optionele media, die boven de vraag wordt getoond."
         },
         {
           "label": "Deactiveer het zoomen van de afbeelding tijdens het tonen van de opgave"
@@ -16,7 +16,7 @@
       "label": "Lege inhoud",
       "fields": [
         {
-          "label": "Beschrijving opgave",
+          "label": "Taakomschrijving",
           "default": "Vul de ontbrekende woorden in.",
           "description": "Een uitleg die de gebruiker vertelt hoe deze opgave moet worden beantwoord."
         },
@@ -24,8 +24,7 @@
           "label": "Tekst met liggende streepjes",
           "important": {
             "description": "<ul><li>Lege plekken moeten worden gemarkeerd met _____ (3 of meer liggende streepjes).</li><li>Plaats geen oplossingen in de tekst.</li></ul>"
-          },
-          "description": ""
+          }
         },
         {
           "label": "Lege plekken die in de tekst worden gebruikt",
@@ -60,8 +59,8 @@
                       "description": "De feedback moet de gebruiker helpen het juiste antwoord te vinden en moet idealiter zijn afgestemd op het antwoord dat de gebruiker heeft ingevoerd."
                     },
                     {
-                      "label": "Geef de markering in de tekst weer wanneer feedback wordt getoond",
-                      "description": "Plaats !! voor en na een stuk tekst om het als opvallend kenmerk te markeren. (bijvoorbeeld Dit is !!een opvallend kenmerk!!)"
+                      "label": "Markeer de tekst wanneer feedback wordt getoond",
+                      "description": "Plaats !! voor en na een stuk tekst om het als opvallend kenmerk te markeren. (bijvoorbeeld: Dit is !!een opvallend kenmerk!!)"
                     },
                     {
                       "label": "Markeer de positie ten opzichte van een lege plek:",
@@ -98,8 +97,8 @@
       "label": "Fragmenten",
       "fields": [
         {
-          "label": "Fragementenlijst",
-          "description": "Fragmenten zijn teksten die kunnen worden hergebruikt in feedbackteksten door de @fragmentnaam eraan toe te voegen.",
+          "label": "Fragmentenlijst",
+          "description": "Fragmenten zijn teksten die kunnen worden hergebruikt in feedbackteksten door @snippetname eraan toe te voegen.",
           "entity": "fragment",
           "field": {
             "label": "Fragment",
@@ -125,18 +124,18 @@
               "label": "Standaard"
             }
           ],
-          "label": "Definieer aangepaste feedback voor elke score reeks",
-          "description": "Druk op de \"Voeg scorereeks\" knop om zoveel reeksen toe te voegen als nodig. Voorbeeld: 0-20% Onvoldoende, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
+          "label": "Definieer aangepaste feedback voor elke scorereeks",
+          "description": "Druk op de \"Voeg scorereeks\"-knop om zoveel reeksen toe te voegen als nodig. Voorbeeld: 0-20% Onvoldoende, 21-91% Gemiddelde score, 91-100% Uitstekende score!",
           "entity": "reeks",
           "field": {
             "fields": [
               {
-                "label": "Score reeks"
+                "label": "Scorereeks"
               },
               {},
               {
                 "label": "Feedback voor de gedefinieerde scorereeks",
-                "placeholder": "Vul de aangepaste feedback in"
+                "placeholder": "Vul de feedback in"
               }
             ]
           }
@@ -172,10 +171,10 @@
         },
         {
           "label": "Het maximaal aantal alternatieven voor andere lege plekken, die voor de selectie worden aangeboden",
-          "description": "Om geen limiet in te stellen vul je 0 in."
+          "description": "Voer 0 in voor geen limiet."
         },
         {
-          "label": "Gedrag wanneer een gebruiker een spelfout maakt in de spelling",
+          "label": "Gedrag wanneer een gebruiker een spelfout maakt",
           "options": [
             {
               "label": "Accepteer het als een correct antwoord"
@@ -190,47 +189,47 @@
         },
         {
           "label": "Hoofdlettergevoelig",
-          "description": "Indien ingeschakeld, wordt het hoofdlettergebruik dat afwijkt van de oplossing als een fout beschouwd."
+          "description": "Indien ingeschakeld, wordt hoofdlettergebruik dat afwijkt van de oplossing als een fout beschouwd."
         },
         {
           "label": "Controleer automatisch de antwoorden na invoer"
         },
         {
-          "label": "Activeer de knop \"Toon oplossingen\""
+          "label": "Activeer de \"Toon oplossingen\"-knop"
         },
         {
-          "label": "Het is een vereiste dat alle velden moeten worden beantwoord voordat de oplossing kan worden bekeken."
+          "label": "Het is een vereiste dat alle velden moeten worden beantwoord voordat de oplossing kan worden bekeken"
         },
         {
-          "label": "Activeer de knop \"Opnieuw\""
+          "label": "Activeer de \"Opnieuw\"-knop"
         },
         {
-          "label": "Activeer de knop \"Controleer\""
+          "label": "Activeer de \"Controleer\"-knop"
         },
         {
-          "label": "Toon bevestigingsvenster bij \"Controleer\"",
-          "description": "Deze optie is niet verenigbaar met de \"Controleer automatisch de antwoorden na invoer\" optie"
+          "label": "Toon bevestigingsdialoog bij \"Controleer\"",
+          "description": "Deze optie is niet verenigbaar met de \"Controleer antwoorden automatisch na invoer\" optie"
         },
         {
-          "label": "Toon bevestigingsvenster bij \"Opnieuw\""
+          "label": "Toon bevestigingsdialoog bij \"Opnieuw\""
         }
       ]
     },
     {
-      "label": "Tekst voor de knop \"Toon oplossing\"",
+      "label": "Tekst voor \"Toon oplossing\"-knop",
       "default": "Toon oplossing"
     },
     {
-      "label": "Tekst voor de knop \"Opnieuw\"",
+      "label": "Tekst voor \"Opnieuw\"-knop",
       "default": "Opnieuw"
     },
     {
-      "label": "Tekst voor de knop \"Controleer\"",
+      "label": "Tekst voor \"Controleer\"-knop",
       "default": "Controleer"
     },
     {
-      "label": "Tekst voor het bericht \"Niet ingevuld\"",
-      "default": "Alle velden moeten worden ingevuld voordat de oplossing kan worden getoond"
+      "label": "Tekst voor het \"Niet ingevuld\"-bericht",
+      "default": "Alle velden moeten worden ingevuld voordat de oplossing wordt getoond"
     },
     {
       "label": "Tekst voor het pictogram 'Tip'",
@@ -238,11 +237,11 @@
     },
     {
       "label": "Waarschuwing voor spelfouten",
-      "description": "Dit is de boodschap die aan gebruikers wordt getoond wanneer zij een spelfout maken. Voeg @fout in om te laten zien wat ze verkeerd hebben gedaan.",
+      "description": "Dit is het bericht dat aan gebruikers wordt getoond wanneer zij een spelfout maken. Voeg @fout in om te laten zien wat ze verkeerd hebben gedaan.",
       "default": "Controleer je spelling: @fout"
     },
     {
-      "label": "Controleer de bevestigingsdialoog",
+      "label": "Bevestigingsdialoog voor Controleer",
       "fields": [
         {
           "label": "Koptekst",
@@ -253,17 +252,17 @@
           "default": "Ben je er zeker van dat je wilt stoppen?"
         },
         {
-          "label": "Label annuleerknop",
+          "label": "Label van \"Annuleer\"-knop",
           "default": "Annuleer"
         },
         {
-          "label": "Label bevestigingsknop",
-          "default": "Klaar"
+          "label": "Label van \"Bevestig\"-knop",
+          "default": "Stoppen"
         }
       ]
     },
     {
-      "label": "Bevestigingsdialoogvenster opnieuw proberen",
+      "label": "Bevestigingsdialoog voor \"Opnieuw\"",
       "fields": [
         {
           "label": "Koptekst",
@@ -274,18 +273,18 @@
           "default": "Ben je er zeker van dat je het opnieuw wil proberen?"
         },
         {
-          "label": "Label annuleerknop",
+          "label": "Label van \"Annuleer\"-knop",
           "default": "Annuleer"
         },
         {
-          "label": "Label bevestigingknop",
+          "label": "Label van \"Bevestig\"-knop",
           "default": "Bevestig"
         }
       ]
     },
     {
-      "label": "ekstuele weergave van de scorebalk voor diegenen die gebruik maken van een readspeaker",
-      "default": "Je hebt :aantal van het :totaal aantal punten"
+      "label": "Tekstuele weergave van de scorebalk voor de gebruikers van de schermlezer",
+      "default": "Je hebt :num van de :total punten"
     }
   ]
 }
