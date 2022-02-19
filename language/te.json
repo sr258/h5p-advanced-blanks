@@ -1,0 +1,290 @@
+{
+  "semantics": [
+    {
+      "label": "Media",
+      "fields": [
+        {
+          "label": "Type",
+          "description": "Optional media to display above the question."
+        },
+        {
+          "label": "ప్రశ్న లోని చిత్రాన్ని జూమ్ చేయడాన్ని డిసేబుల్ చేయండి"
+        }
+      ]
+    },
+    {
+      "label": "ఖాళీ కంటెంట్",
+      "fields": [
+        {
+          "label": "యూజర్ చెయ్యాల్సిన టాస్క్ వివరణ",
+          "default": "ఖాళీల్లో పదాలను పూరించండి.",
+          "description": "ఈ టాస్క్‌కు ఎలా సమాధానం ఇవ్వాలో యూజర్ కు చెప్పే గైడ్."
+        },
+        {
+          "label": "ఖాళీలతో కూడిన టెక్స్ట్",
+          "important": {
+            "description": "<ul><li>ఖాళీలు తప్పనిసరిగా __________ (మూడు లేదా అంతకంటే ఎక్కువ అండర్‌స్కోర్‌లు)తో గుర్తించబడాలి.</li><li>టెక్స్ట్‌లో సమాధానాలను ఉంచవద్దు.</li></ul>"
+          }
+        },
+        {
+          "label": "టెక్స్ట్ లో ఉపయోగించబడిన ఖాళీలు",
+          "entity": "ఖాళీ",
+          "widgets": [
+            {
+              "label": "డిఫాల్ట్"
+            }
+          ],
+          "field": {
+            "label": "ఖాళీ",
+            "fields": [
+              {
+                "label": "సరైన సమాధానం",
+                "description": "(/) స్లాష్‌తో ప్రత్యామ్నాయ సమాధానాలను ఇవ్వవచ్చు."
+              },
+              {
+                "label": "సూచన/హింట్"
+              },
+              {
+                "label": "తప్పు సమాధానాలు",
+                "entity": "తప్పు సమాధానం",
+                "field": {
+                  "label": "తప్పు సమాధానం",
+                  "description": "(/) స్లాష్‌తో ప్రత్యామ్నాయ సమాధానాలను ఇవ్వవచ్చు.",
+                  "fields": [
+                    {
+                      "label": "తప్పు జవాబు"
+                    },
+                    {
+                      "label": "ఫీడ్ బాక్",
+                      "description": "ఫీడ్‌బ్యాక్ యూజర్ కు సరైన సమాధానాన్ని కనుగొనడంలో సహాయపడాలి మరియు యూజరు ఇచ్చిన సమాధానానికి అనువైనదిగా ఉండాలి."
+                    },
+                    {
+                      "label": "ఫీడ్ బ్యాక్ చూపినప్పుడు టెక్స్ట్ హైలైట్‌ చేయండి",
+                      "description": "టెక్స్ట్ యొక్క భాగాన్ని హైలైట్‌ చేయడానికి దానికి ముందు మరియు తర్వాత !! వాడు. .(ఉదా. ఇది !!ఒక హైలైట్!!)"
+                    },
+                    {
+                      "label": "ఖాళీకి సంబంధించి హైలైట్ స్థానం:",
+                      "options": [
+                        {
+                          "label": "- 1 (ఖాళీకి ముందు)"
+                        },
+                        {
+                          "label": "- 2 (ఖాళీకి ముందు రెండు హైలైట్స్ /ముఖ్యాంశాలు)"
+                        },
+                        {
+                          "label": "- 3 (ఖాళీకి ముందు మూడు హైలైట్స్ /ముఖ్యాంశాలు)"
+                        },
+                        {
+                          "label": "+ 1 (ఖాళీ తర్వాత)"
+                        },
+                        {
+                          "label": "+ 2 (ఖాళీ తర్వాత రెండు హైలైట్స్ /ముఖ్యాంశాలు)"
+                        },
+                        {
+                          "label": "+ 3 (ఖాళీ తర్వాత మూడు హైలైట్స్ /ముఖ్యాంశాలు)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "స్నిప్పెట్‌లు",
+      "fields": [
+        {
+          "label": "స్నిప్పెట్‌ జాబితా",
+          "description": "స్నిప్పెట్ లు, ఫీడ్‌బ్యాక్ టెక్స్ట్‌లో @snippetnameని ఇన్‌సర్ట్ చేయడం ద్వారా తిరిగి ఉపయోగించగల టెక్స్ట్.",
+          "entity": "స్నిప్పెట్",
+          "field": {
+            "label": "స్నిప్పెట్",
+            "fields": [
+              {
+                "label": "పేరు",
+                "description": "స్నిప్పెట్ పేరు కై అక్షరాలు మరియు సంఖ్యలను మాత్రమే ఉపయోగించగలరు."
+              },
+              {
+                "label": "టెక్స్ట్"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Overall Feedback",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Default"
+            }
+          ],
+          "label": "Define custom feedback for any score range",
+          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
+          "entity": "range",
+          "field": {
+            "fields": [
+              {
+                "label": "Score Range"
+              },
+              {},
+              {
+                "label": "Feedback for defined score range",
+                "placeholder": "Fill in the feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "బిహేవియరల్ సెట్తింగ్స్/ప్రవర్తించే తీరు",
+      "description": "ఇవి టాస్క్ ఎలా ప్రవర్తించాలో నియంత్రించడానికి పనికొచ్చే ఆప్షన్లు .",
+      "fields": [
+        {
+          "label": "జవాబు మోడ్",
+          "description": "యూజర్ ఏ విధంగా సమాధానాలు ఇవ్వగలరో సూచిస్తుంది.",
+          "options": [
+            {
+              "label": "యూజర్లు ఆప్షన్ల నుండి ఎంచుకుంటారు."
+            },
+            {
+              "label": "యూజర్లు సమాధానాలను టైప్ చేస్తారు."
+            }
+          ]
+        },
+        {
+          "label": "ఎంపిక కోసం ప్రత్యామ్నాయాలు ఇవ్వబడ్డాయి",
+          "options": [
+            {
+              "label": "ఖాళీలో తప్పు సమాధానాలు ఎంటర్ చేయబడ్డాయి"
+            },
+            {
+              "label": "అన్ని ఇతర ఖాళీలకు సరైన సమాధానాలు"
+            }
+          ]
+        },
+        {
+          "label": "ఇతర ఖాళీల్లో ఎంపికకై ఇవ్వబడిన గరిష్ట ప్రత్యామ్నాయాల సంఖ్య",
+          "description": "పరిమితిని సెట్ చేయడానికి 0ని ఎంటర్ చేయండి."
+        },
+        {
+          "label": "యూజర్ తప్పు స్పెల్లింగ్ ఇచ్చినప్పుడు ప్రవర్తించే తీరు",
+          "options": [
+            {
+              "label": "సరైన సమాధానంగా అంగీకరించు"
+            },
+            {
+              "label": "లోపం గురించి యూజర్ ను హెచ్చరించు"
+            },
+            {
+              "label": "ఇది సాధారణ తప్పుగా పరిగణించు"
+            }
+          ]
+        },
+        {
+          "label": "కేస్ సెన్సిటివ్",
+          "description": "ఎనేబుల్ చేస్తే, సమాధానంలో లేని క్యాపిటలైజేషన్ ఉంటే అది లోపంగా పరిగణించబడుతుంది."
+        },
+        {
+          "label": "ఇన్‌పుట్ తర్వాత సమాధానాలను ఆటోమేటిక్ గా తనిఖీ చేయండి"
+        },
+        {
+          "label": "\"సమాధానాలు చూపించు\" బటన్ ఎనేబుల్ చెయ్యండి"
+        },
+        {
+          "label": "Require all fields to be answered before the solution can be viewed"
+        },
+        {
+          "label": "Enable \"Retry\""
+        },
+        {
+          "label": "Enable \"Check\" button"
+        },
+        {
+          "label": "Show confirmation dialog on \"Check\"",
+          "description": "This option is not compatible with the \"Automatically check answers after input\" option"
+        },
+        {
+          "label": "Show confirmation dialog on \"Retry\""
+        }
+      ]
+    },
+    {
+      "label": "Text for \"Show solutions\" button",
+      "default": "Show solution"
+    },
+    {
+      "label": "Text for \"Retry\" button",
+      "default": "Retry"
+    },
+    {
+      "label": "Text for \"Check\" button",
+      "default": "Check"
+    },
+    {
+      "label": "Text for \"Not filled out\" message",
+      "default": "Please fill in all blanks to view solution"
+    },
+    {
+      "label": "Tip icon label",
+      "default": "Tip"
+    },
+    {
+      "label": "Spelling mistake warning",
+      "description": "This is the message shown to users when they make a spelling mistake. Insert @mistake to show them what they did wrong.",
+      "default": "Check your spelling: @mistake"
+    },
+    {
+      "label": "Check confirmation dialog",
+      "fields": [
+        {
+          "label": "Header text",
+          "default": "Finish?"
+        },
+        {
+          "label": "Body text",
+          "default": "Are you sure you wish to finish?"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Finish"
+        }
+      ]
+    },
+    {
+      "label": "Retry confirmation dialog",
+      "fields": [
+        {
+          "label": "Header text",
+          "default": "Retry?"
+        },
+        {
+          "label": "Body text",
+          "default": "Are you sure you wish to retry?"
+        },
+        {
+          "label": "Cancel button label",
+          "default": "Cancel"
+        },
+        {
+          "label": "Confirm button label",
+          "default": "Confirm"
+        }
+      ]
+    },
+    {
+      "label": "రీడ్‌స్పీకర్‌ని ఉపయోగించే వారి కోసం స్కోర్ బార్ యొక్క టెక్స్టువల్ రిప్రెజెంటేషన్",
+      "default": "మీరు మొత్తం పాయింట్లలో :total points"
+    }
+  ]
+}

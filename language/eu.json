@@ -143,8 +143,8 @@
       ]
     },
     {
-      "label": "Portaeraren ezarpenak",
-      "description": "Aukera hauek lanaren portaera kontrolatzea ahalbidetzen dizute.",
+      "label": "Portaera ezarpenak",
+      "description": "Aukera hauek portaera kontrolatzea ahalbidetzen dizute.",
       "fields": [
         {
           "label": "Erantzun-modua",
