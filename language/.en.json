@@ -193,6 +193,9 @@
           "description": "If enabled, capitalization that is different from the solution is considered an error."
         },
         {
+          "label": "Automatically check answers after input"
+        },
+        {
           "label": "Enable \"Show solutions\" button"
         },
         {

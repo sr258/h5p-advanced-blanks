@@ -193,6 +193,9 @@
           "description": "Indien ingeschakeld, wordt het hoofdlettergebruik dat afwijkt van de oplossing als een fout beschouwd."
         },
         {
+          "label": "Controleer automatisch de antwoorden na invoer"
+        },
+        {
           "label": "Activeer de knop \"Toon oplossingen\""
         },
         {
