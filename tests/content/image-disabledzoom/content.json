@@ -80,6 +80,7 @@
     "selectAlternativeRestriction": 5,
     "spellingErrorBehaviour": "mistake",
     "caseSensitive": false,
+    "autoCheck": false,
     "enableSolutionsButton": true,
     "showSolutionsRequiresInput": true,
     "enableRetry": true,

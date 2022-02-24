@@ -446,6 +446,14 @@
         }
       },
       {
+        "label": "Automatically check answers after input",
+        "importance": "low",
+        "name": "autoCheck",
+        "type": "boolean",
+        "default": false,
+        "optional": true
+      },
+      {
         "label": "Enable \"Show solutions\" button",
         "importance": "low",
         "name": "enableSolutionsButton",

@@ -7,6 +7,7 @@ export interface ISettings {
   enableRetry: boolean;
   enableSolutionsButton: boolean;
   enableCheckButton: boolean;
+  autoCheck: boolean;
   caseSensitive: boolean;
   warnSpellingErrors: boolean;
   acceptSpellingErrors: boolean;
@@ -23,6 +24,7 @@ export class H5PSettings implements ISettings {
   public enableRetry: boolean = true;
   public enableSolutionsButton: boolean = true;
   public enableCheckButton: boolean = true;
+  public autoCheck: boolean = false;
   public caseSensitive: boolean = false;
   public warnSpellingErrors: boolean = true;
   public acceptSpellingErrors: boolean = false;
@@ -52,6 +54,7 @@ export class H5PSettings implements ISettings {
     this.enableRetry = h5pConfigData.behaviour.enableRetry;
     this.enableSolutionsButton = h5pConfigData.behaviour.enableSolutionsButton;
     this.enableCheckButton = h5pConfigData.behaviour.enableCheckButton;
+    this.autoCheck = h5pConfigData.behaviour.autoCheck;
     this.caseSensitive = h5pConfigData.behaviour.caseSensitive;
     this.warnSpellingErrors = h5pConfigData.behaviour.spellingErrorBehaviour === "warn";
     this.acceptSpellingErrors = h5pConfigData.behaviour.spellingErrorBehaviour === "accept";
