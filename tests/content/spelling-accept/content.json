@@ -61,6 +61,7 @@
     "selectAlternativeRestriction": 5,
     "spellingErrorBehaviour": "accept",
     "caseSensitive": false,
+    "autoCheck": false,
     "enableSolutionsButton": true,
     "showSolutionsRequiresInput": true,
     "enableRetry": true,
