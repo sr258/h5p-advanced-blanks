@@ -228,8 +228,8 @@
       "default": "Controleer"
     },
     {
-      "label": "Text for \"Submit\" button",
-      "default": "Submit"
+      "label": "Tekst voor \"Verzend\"-knop",
+      "default": "Verzend"
     },
     {
       "label": "Tekst voor het bericht \"Niet ingevuld\"",
