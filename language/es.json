@@ -1,11 +1,11 @@
 {
   "semantics": [
     {
-      "label": "Medio",
+      "label": "Medios",
       "fields": [
         {
           "label": "Tipo",
-          "description": "Medio opcional a mostrar arriba de la pregunta."
+          "description": "Medios opcionales mostrados encima de la pregunta."
         },
         {
           "label": "Deshabilitar zoom de imagen para imagen de pregunta"
@@ -13,17 +13,17 @@
       ]
     },
     {
-      "label": "Hueco en Contenido",
+      "label": "Contenido vacío",
       "fields": [
         {
-          "label": "Descripción del trabajo",
-          "default": "Escriba las palabras faltantes.",
-          "description": "Una guía que le dice al usuario como contestar este trabajo."
+          "label": "Descripción de la tarea",
+          "default": "Escribe las palabras que faltan.",
+          "description": "Una guía que le dice al usuario como hacer esta tarea."
         },
         {
           "label": "Texto con huecos",
           "important": {
-            "description": "<ul><li>Los huecos deben ser marcados con __________ (tres o cuatro guiones bajos).</li><li>NO escriba las soluciones dentro del texto.</li></ul>"
+            "description": "<ul><li>Los huecos deben marcarse con __________ (tres o cuatro guiones bajos).</li><li>NO escriba las soluciones dentro del texto.</li></ul>"
           }
         },
         {
@@ -31,7 +31,7 @@
           "entity": "hueco",
           "widgets": [
             {
-              "label": "Predeterminado"
+              "label": "Por defecto"
             }
           ],
           "field": {
@@ -39,7 +39,7 @@
             "fields": [
               {
                 "label": "Respuesta correcta",
-                "description": "Puede separar respuestas alternas con una diagonal (/)."
+                "description": "Puedes separar respuestas alternativas con una barra inclinada (/)."
               },
               {
                 "label": "Pista"
@@ -49,21 +49,21 @@
                 "entity": "respuesta incorrecta",
                 "field": {
                   "label": "Respuesta incorrecta",
-                  "description": "Puede separar respuestas alternas con una diagonal (/).",
+                  "description": "Puedes separar respuestas alternativas con una barra inclinada (/).",
                   "fields": [
                     {
                       "label": "Texto de respuesta incorrecta"
                     },
                     {
                       "label": "Retroalimentación",
-                      "description": "La retroalimentación debería ayudar al usuario a encontrar la respuesta correcta y estar idealmente apropiada para la respuesta que el usuario ha ingresado."
+                      "description": "La retroalimentación debería ayudar al usuario a encontrar la respuesta correcta y, a ser posible, estar adaptada a la respuesta que éste haya proporcionado."
                     },
                     {
                       "label": "Mostrar resaltado en el texto cuando se muestre la retroalimentación",
-                      "description": "Ponga !! antes y después de un trozo de texto para marcarlo como resaltado. (ejemplo Esto !!es un resaltado!!)"
+                      "description": "Pon !! antes y después de un trozo de texto para marcarlo como resaltado. (ejemplo Esto !!es un resaltado!!)"
                     },
                     {
-                      "label": "Resaltar posición relativa al hueco:",
+                      "label": "Posición del resaltado relativa al hueco:",
                       "options": [
                         {
                           "label": "- 1 (justo antes del hueco)"
@@ -98,14 +98,14 @@
       "fields": [
         {
           "label": "Lista de Snippets",
-          "description": "Snippets (fragmentos) son textos que pueden ser reutilizados en textos de retroalimentación al insertar @snippetname dentro del texto.",
+          "description": "Los Snippets (fragmentos) son textos que pueden ser reutilizados en textos de retroalimentación al insertar @snippetname dentro del texto.",
           "entity": "snippet (fragmento)",
           "field": {
             "label": "Snippet (Fragmento)",
             "fields": [
               {
                 "label": "Nombre",
-                "description": "Usted solamente puede usar letras y números para el nombre del snippet."
+                "description": "Sólo se pueden usar letras y números para el nombre del snippet."
               },
               {
                 "label": "Texto"
@@ -121,21 +121,21 @@
         {
           "widgets": [
             {
-              "label": "Predeterminado"
+              "label": "Por defecto"
             }
           ],
-          "label": "Definir retroalimentación personalizada para cualquier rango de puntaje",
-          "description": "Haga clic en el botón \"Añadir rango\" para añadir cuantos rangos necesite. Ejemplo: 0-20% Mal puntaje, 21-91% Puntaje Promedio, 91-100% ¡Magnífico Puntaje!",
+          "label": "Definir retroalimentación personalizada para cualquier rango de puntuación",
+          "description": "Haz clic en el botón \"Añadir rango\" para añadir los rangos que necesites. Ejemplo: 0-20% Mala puntuación, 21-91% Puntuación Media, 91-100% ¡Puntuación Estupenda!",
           "entity": "rango",
           "field": {
             "fields": [
               {
-                "label": "Rango del Puntaje"
+                "label": "Rango de puntuación"
               },
               {},
               {
-                "label": "Retroalimentación para rango de puntaje definido",
-                "placeholder": "Complete la retroalimentación"
+                "label": "Realimentación para rango de puntuación definido",
+                "placeholder": "Escribe tu retroalimentación"
               }
             ]
           }
@@ -143,12 +143,12 @@
       ]
     },
     {
-      "label": "Configuraciones del comportamiento",
-      "description": "Estas opciones le permitirán controlar como se comporta el trabajo.",
+      "label": "Configuración del comportamiento",
+      "description": "Estas opciones te permitirán controlar como se comporta la tarea.",
       "fields": [
         {
           "label": "Modo de respuesta",
-          "description": "Indica en cual forma el usuario da las respuestas.",
+          "description": "Indica de qué manera da el usuario sus respuestas.",
           "options": [
             {
               "label": "El usuario elige entre opciones."
@@ -159,10 +159,10 @@
           ]
         },
         {
-          "label": "Alternativas ofrecidas para selección",
+          "label": "Alternativas ofrecidas para la selección",
           "options": [
             {
-              "label": "Las respuestas incorrectas ingresadas para el hueco"
+              "label": "Las respuestas incorrectas dadas para el hueco"
             },
             {
               "label": "Las respuestas correctas de todos los otros huecos"
@@ -170,121 +170,121 @@
           ]
         },
         {
-          "label": "Número máximo de alternativas de otros huecos ofrecidos para selección",
-          "description": "Escribir 0 para configurar a ilimitado."
+          "label": "Número máximo de alternativas de otros huecos ofrecidas para la selección",
+          "description": "Escribir 0 para configurar a ilimitadas."
         },
         {
-          "label": "Comportamiento cuando el usuario hace un error de deletreado",
+          "label": "Comportamiento cuando el usuario comete un error ortográfico",
           "options": [
             {
-              "label": "Aceptarla como una respuesta correcta"
+              "label": "Aceptarlo como respuesta correcta"
             },
             {
-              "label": "Advertirle al usuario acerca del error"
+              "label": "Advertir al usuario del error"
             },
             {
-              "label": "Considerarla un error regular"
+              "label": "Considerarlo un error normal"
             }
           ]
         },
         {
-          "label": "MAYÚSCULAS/minúsculas si importan",
-          "description": "Si se habilita, MAYÚSCULAS/minúsculas que sean diferentes de la solución son consideradas un error."
+          "label": "Diferenciar entre MAYÚSCULAS/minúsculas",
+          "description": "Si se habilita, el uso de MAYÚSCULAS/minúsculas diferentes a las de la solución se considerará un error."
         },
         {
-          "label": "Automáticamente revisar respuestas después de ingresadas"
+          "label": "Revisar las respuestas automáticamente mientras se escribe"
         },
         {
           "label": "Habilitar botón \"Mostrar soluciones\""
         },
         {
-          "label": "Requerir que todos los campos sean contestados antes de que la solución pueda ser vista"
+          "label": "Exigir contestar todos los campos antes de poder ver la solución"
         },
         {
-          "label": "Habilitar \"Reintentar\""
+          "label": "Habilitar \"Intentar de nuevo\""
         },
         {
           "label": "Habilitar botón \"Comprobar\""
         },
         {
-          "label": "Mostrar diálogo de confirmación en \"Comprobar\"",
-          "description": "Esta opción no es compatible con la opción de \"Automáticamente comprobar respuestas después de ingresadas\""
+          "label": "Mostrar diálogo de confirmación para \"Comprobar\"",
+          "description": "Esta opción no es compatible con \" Revisar las respuestas automáticamente mientras se escribe \""
         },
         {
-          "label": "Mostrar diálogo de confirmación en \"Reintentar\""
+          "label": "Mostrar diálogo de confirmación para \"Intentar de nuevo\""
         }
       ]
     },
     {
-      "label": "Texto para botón \"Mostrar soluciones\"",
+      "label": "Texto para el botón \"Mostrar soluciones\"",
       "default": "Mostrar solución"
     },
     {
-      "label": "Texto para botón \"Reintentar\"",
-      "default": "Reintentar"
+      "label": "Texto para el botón \"Intentar de nuevo\"",
+      "default": "Intentar de nuevo"
     },
     {
-      "label": "Texto para botón \"Comprobar\"",
+      "label": "Texto para el botón \"Comprobar\"",
       "default": "Comprobar"
     },
     {
       "label": "Texto para mensaje de \"No contestado\"",
-      "default": "Por favor llene todos los huecos para ver la solución"
+      "default": "Por favor, completa todos los huecos para poder ver la solución"
     },
     {
-      "label": "Etiqueta de ícono de Pista",
+      "label": "Etiqueta para el icono de Pista",
       "default": "Pista"
     },
     {
-      "label": "Advertencia de error de deletreado",
-      "description": "Este es un mensaje mostrado a los usuarios cuando hacen un error de deletreado. Inserte @mistake para mostrarles lo que hicieron mal.",
-      "default": "Revise su ortografía (deletreado): @mistake"
+      "label": "Advertencia de error gramatical",
+      "description": "Este mensaje se muestra a los usuarios cuando cometen un error gramatical. Inserta @mistake para mostrarles lo que han hecho mal.",
+      "default": "Revisa tu ortografía: @mistake"
     },
     {
       "label": "Diálogo de confirmación para Comprobar",
       "fields": [
         {
           "label": "Texto del encabezado",
-          "default": "¿Terminado?"
+          "default": "¿Has terminado?"
         },
         {
           "label": "Texto del cuerpo",
-          "default": "¿Seguro que quiere terminar?"
+          "default": "¿Seguro que quieres terminar?"
         },
         {
-          "label": "Etiqueta botón Cancelar",
+          "label": "Etiqueta para el botón Cancelar",
           "default": "Cancelar"
         },
         {
-          "label": "Etiqueta botón Confirmar",
+          "label": "Etiqueta para el botón Confirmar",
           "default": "Terminar"
         }
       ]
     },
     {
-      "label": "Diálogo confirmación Reintentar",
+      "label": "Diálogo de confirmación para Intentar de nuevo",
       "fields": [
         {
           "label": "Texto del encabezado",
-          "default": "¿Reintentar?"
+          "default": "¿Intentar de nuevo?"
         },
         {
           "label": "Texto del cuerpo",
-          "default": "¿Seguro que desea reintentar?"
+          "default": "¿Seguro que quieres volver a intentarlo?"
         },
         {
-          "label": "Etiqueta botón Cancelar",
+          "label": "Etiqueta para el botón Cancelar",
           "default": "Cancelar"
         },
         {
-          "label": "Etiqueta botón Confirmar",
+          "label": "Etiqueta para el botón Confirmar",
           "default": "Confirmar"
         }
       ]
     },
     {
-      "label": "Representación textual de la barra de puntaje para aquellos que usan un lector de texto en voz alta",
-      "default": "Obtuvo :num de un total de :total puntos"
+      "label": "Representación textual de la barra de puntuación cuando se usa un lector de pantalla",
+      "default": "Has obtenido :num de un total de :total puntos"
     }
   ]
 }
