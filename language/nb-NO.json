@@ -7,81 +7,81 @@
           "description": "Valgfritt medieelement. Elementet vil bli plassert over spørsmålet."
         },
         {
-          "label": "Disable image zooming for question image"
+          "label": "Deaktiver zoom-funksjon"
         }
       ],
       "label": "Medieelement"
     },
     {
-      "label": "Blank content",
+      "label": "Innhold",
       "fields": [
         {
-          "label": "Task description",
-          "default": "Fill in the missing words.",
-          "description": "A guide telling the user how to answer this task."
+          "label": "Oppgavebeskrivelse",
+          "default": "Skriv inn orda som mangler.",
+          "description": "En instruksjon som forteller brukeren hvordan oppgava skal løses."
         },
         {
-          "label": "Text with blanks",
+          "label": "Luketekst",
           "important": {
-            "description": "<ul><li>Blanks must be marked with __________ (three or more underscores).</li><li>Do not put the solutions into the text.</li></ul>"
+            "description": "<ul><li>Marker luker med med __________ (tre eller flere understreker ).</li><li>Svaralternativene skal du ikke skrive inn her.</li></ul>"
           }
         },
         {
-          "label": "Blanks used in the text",
-          "entity": "blank",
+          "label": "Lag fasit",
+          "entity": "luke",
           "widgets": [
             {
-              "label": "Default"
+              "label": "Standard"
             }
           ],
           "field": {
-            "label": "Blank",
+            "label": "Luke",
             "fields": [
               {
-                "label": "Correct answer",
-                "description": "You can separate alternative answers with a slash (/)."
+                "label": "Rett svar",
+                "description": "Bruk skråstrek (/) for å legge inn andre korrekte svaralternativer."
               },
               {
-                "label": "Hint"
+                "label": "Tips"
               },
               {
-                "label": "Incorrect answers",
-                "entity": "incorrect answer",
+                "label": "Feil svar",
+                "entity": "feil svar",
                 "field": {
-                  "label": "Incorrect answer",
-                  "description": "You can separate alternative answers with a slash (/).",
+                  "label": "Feil svar",
+                  "description": "Bruk skråstrek (/) for å legge til alternative svar.",
                   "fields": [
                     {
-                      "label": "Incorrect answer text"
+                      "label": "Feil svar gitt av bruker"
                     },
                     {
-                      "label": "Feedback",
-                      "description": "The feedback should help the user find the correct answer and ideally be tailored to the answer the user has entered."
+                      "label": "Tilbakemelding",
+                      "description": "Tilbakemeldinga bør hjelpe brukeren å komme fram til rett svar. Om mulig bør den ta utgangspunkt i svaret bruker har gitt."
                     },
                     {
-                      "label": "Show highlight in the text when feedback is shown",
-                      "description": "Put !! before and after a piece of text to mark it as a highlight. (e.g. This is !!a highlight!!)"
+                      "label": "Vis utheving i teksten mens tilbakemelding blir gitt.",
+                      "description": "Utheving markeres med !! før og etter tekstdelen du vil utheve. Eksempel: Dette er !!ei utheving!!"
                     },
                     {
-                      "label": "Highlight position relative to blank:",
+                      "label": "Plassering i forhold til luka:",
                       "options": [
                         {
-                          "label": "- 1 (right before the blank)"
+                          "label": "- 1 (uthevinga rett før luka)"
                         },
                         {
-                          "label": "- 2 (two highlights before the blank)"
+                          "label": "- 2 (to uthevinger før luka)"
                         },
                         {
-                          "label": "- 3 (three highlights before the blank)"
+                          "label": "- 3 (tre uthevinger før luka)"
                         },
                         {
-                          "label": "+ 1 (right after the blank)"
+                          "label": "+ 1 (første utheving etter luka)"
                         },
                         {
-                          "label": "+ 2 (two highlights after the blank)"
+                          "label": "+ 2 (to uthevinger etter luka)"
                         },
                         {
-                          "label": "+ 3 (three highlights after the blank)"
+                          "label": "+ 3 (tre uthevinger etter luka)"
                         }
                       ]
                     }
