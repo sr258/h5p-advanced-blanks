@@ -1,0 +1,290 @@
+{
+  "semantics": [
+    {
+      "label": "Medios",
+      "fields": [
+        {
+          "label": "Tipo",
+          "description": "Medios adicionais amosados enriba da pregunta."
+        },
+        {
+          "label": "Desactivar zoom de imaxe para a imaxe da pregunta"
+        }
+      ]
+    },
+    {
+      "label": "Contido baleiro",
+      "fields": [
+        {
+          "label": "Descrición da tarefa",
+          "default": "Completa as palabras que faltan.",
+          "description": "Unha guía para dicirlle ao usuario como contestar esta tarefa."
+        },
+        {
+          "label": "Texto con ocos",
+          "important": {
+            "description": "<ul><li>Os ocos débense marcar con __________ (tres ou máis guións baixos).</li><li>Non poñas as solucións dentro do texto.</li></ul>"
+          }
+        },
+        {
+          "label": "Ocos usados no texto",
+          "entity": "oco",
+          "widgets": [
+            {
+              "label": "Por defecto"
+            }
+          ],
+          "field": {
+            "label": "Oco",
+            "fields": [
+              {
+                "label": "Resposta correcta",
+                "description": "Podes separar respostas alternativas cunha barra (/)."
+              },
+              {
+                "label": "Pista"
+              },
+              {
+                "label": "Respostas incorrectas",
+                "entity": "resposta incorrecta",
+                "field": {
+                  "label": "Resposta incorrecta",
+                  "description": "Podes separar respostas alternativas cunha barra (/).",
+                  "fields": [
+                    {
+                      "label": "Texto para resposta incorreta"
+                    },
+                    {
+                      "label": "Retroalimentación",
+                      "description": "A retroalimentación debería axudar ao usuario a atopar a resposta correcta e, a ser posible, adaptarse á resposta introducida por el."
+                    },
+                    {
+                      "label": "Amosar resaltado no texto ao amosar a retroalimentación",
+                      "description": "Pon !! antes e despois da parte do texto que queres resaltar. (p.ex. Isto é un !!texto resaltado!!)"
+                    },
+                    {
+                      "label": "Posición do resaltado relativa ao oco:",
+                      "options": [
+                        {
+                          "label": "- 1 (xusto antes do oco)"
+                        },
+                        {
+                          "label": "- 2 (dous resaltados antes do oco)"
+                        },
+                        {
+                          "label": "- 3 (tres resaltados antes do oco)"
+                        },
+                        {
+                          "label": "+ 1 (xusto despois do oco)"
+                        },
+                        {
+                          "label": "+ 2 (dous resaltados despois do oco)"
+                        },
+                        {
+                          "label": "+ 3 (tres resaltados despois do oco)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Snippets (fragmentos)",
+      "fields": [
+        {
+          "label": "Lista de Snippets",
+          "description": "Os snippets son textos que podemos reutilizar en mensaxes de retroalimentación insertando @snippetname no texto.",
+          "entity": "snippet",
+          "field": {
+            "label": "Snippet",
+            "fields": [
+              {
+                "label": "Nome",
+                "description": "Só podes usar números e letras no nome do snippet."
+              },
+              {
+                "label": "Texto"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Retroalimentación xeral",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Por defecto"
+            }
+          ],
+          "label": "Define a retroalimentación por defecto para calquera rango de puntuación",
+          "description": "Preme o botón \"Engadir rango\" para engadir tantos rangos como precises. Exemplo: 0-20% Mala Puntuación, 21-91% Puntuación Media, 91-100% Puntuación Xenial!",
+          "entity": "rango",
+          "field": {
+            "fields": [
+              {
+                "label": "Rango de Puntuación"
+              },
+              {},
+              {
+                "label": "Retroalimentación para rango de puntuación definido",
+                "placeholder": "Escribe a retroalimentación"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Configuración de comportamento",
+      "description": "Estas opcións permitiranche controlar o comportamento da tarefa.",
+      "fields": [
+        {
+          "label": "Modo de resposta",
+          "description": "Indica como da as súas resposta o usuario.",
+          "options": [
+            {
+              "label": "O usuario selecciona de entre varias opcións."
+            },
+            {
+              "label": "O usuario escribe as respostas."
+            }
+          ]
+        },
+        {
+          "label": "Ofrécense alternativas para a súa selección",
+          "options": [
+            {
+              "label": "As respostas incorrectas proporcionadas para o oco"
+            },
+            {
+              "label": "As respostas correctas para todos os demais ocos"
+            }
+          ]
+        },
+        {
+          "label": "Número máximo de alternativas doutros ocos ofrecidas para a súa selección",
+          "description": "Escribe 0 para non establecer límite."
+        },
+        {
+          "label": "Comportamento cando o usuario comente un erro ortográfico",
+          "options": [
+            {
+              "label": "Aceptalo como resposta correcta"
+            },
+            {
+              "label": "Advertir do erro ao usuario"
+            },
+            {
+              "label": "Consideralo un error normal"
+            }
+          ]
+        },
+        {
+          "label": "Diferénciase entre maiúsculas e minúsculas",
+          "description": "Ao activar esta opción, considerarase como erro calquera uso das maiúsculas e minúsculas diferente do da solución."
+        },
+        {
+          "label": "Comprobar respostas automaticamente mentres se escribe"
+        },
+        {
+          "label": "Activar botón \"Amosar solucións\""
+        },
+        {
+          "label": "Requirir o completado de todos os campos antes de poder ver a solución"
+        },
+        {
+          "label": "Activar \"Tentar de novo\""
+        },
+        {
+          "label": "Activar botón \"Comprobar\""
+        },
+        {
+          "label": "Amosar diálogo de confirmación para\"Comprobar\"",
+          "description": "Esta opción non é compatible coa opción \"Comprobar respostas mentres se escribe\""
+        },
+        {
+          "label": "Amosar diálogo de confirmación para \"Tentar de novo\""
+        }
+      ]
+    },
+    {
+      "label": "Texto para o botón \"Amosar solucións\"",
+      "default": "Amosar solución"
+    },
+    {
+      "label": "Texto para o botón \"Tentar de novo\"",
+      "default": "Tentar de novo"
+    },
+    {
+      "label": "Texto para o botón \"Comprobar\"",
+      "default": "Comprobar"
+    },
+    {
+      "label": "Texto para a mensaxe \"Non completado\"",
+      "default": "Por favor, completa todos os ocos para ver a solución"
+    },
+    {
+      "label": "Etiqueta para a icona de pista",
+      "default": "Pista"
+    },
+    {
+      "label": "Advertencia de erro ortográfico",
+      "description": "Esta mensaxe amósase aos usuarios cando comenten un erro ortográfico. Inserta @mistake para amosar o que fixeron mal.",
+      "default": "Comproba a túa ortografía: @mistake"
+    },
+    {
+      "label": "Diálogo de confirmación de comprobación",
+      "fields": [
+        {
+          "label": "Texto de cabeceira",
+          "default": "Remataches?"
+        },
+        {
+          "label": "Texto do corpo",
+          "default": "Seguro que queres rematar?"
+        },
+        {
+          "label": "Etiqueta para o botón cancelar",
+          "default": "Cancelar"
+        },
+        {
+          "label": "Etiqueta para o botón confirmar",
+          "default": "Rematar"
+        }
+      ]
+    },
+    {
+      "label": "Diálogo de confirmación para tentar de novo",
+      "fields": [
+        {
+          "label": "Texto de cabeceira",
+          "default": "Tentar de novo?"
+        },
+        {
+          "label": "Texto do corpo",
+          "default": "Seguro que queres tentar de novo?"
+        },
+        {
+          "label": "Etiqueta para o botón cancelar",
+          "default": "Cancelar"
+        },
+        {
+          "label": "Etiqueta para o botón confirmar",
+          "default": "Confirmar"
+        }
+      ]
+    },
+    {
+      "label": "Representación textual da puntuación cando se está a usar un lector de pantalla",
+      "default": "Conseguiches :num dun total de :total puntos"
+    }
+  ]
+}
