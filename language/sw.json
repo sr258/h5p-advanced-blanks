@@ -1,0 +1,290 @@
+{
+  "semantics": [
+    {
+      "label": "Vyombo vya habari",
+      "fields": [
+        {
+          "label": "Aina",
+          "description": "Vyombo vya habari vya hiari vya kuonyesha juu ya swali."
+        },
+        {
+          "label": "Zima ukuzaji wa picha kwa picha ya swali"
+        }
+      ]
+    },
+    {
+      "label": "Maudhui tupu",
+      "fields": [
+        {
+          "label": "Maelezo ya kazi",
+          "default": "Jaza maneno yanayokosekana.",
+          "description": "Mwongozo unaomwambia mtumiaji jinsi ya kujibu kazi hii."
+        },
+        {
+          "label": "Maandishi yenye nafasi zilizo wazi",
+          "important": {
+            "description": "<ul><li>Nafasi zilizoachwa wazi lazima ziwekewe alama ya __________ (mistari ya chini mitatu au zaidi).</li><li>Usiweke masuluhisho kwenye maandishi.</li></ul>"
+          }
+        },
+        {
+          "label": "Nafasi za wazi zilizotumika katika maandishi",
+          "entity": "nafasi tupu",
+          "widgets": [
+            {
+              "label": "Chaguo-msingi"
+            }
+          ],
+          "field": {
+            "label": "Nafasi Tupu",
+            "fields": [
+              {
+                "label": "Jibu sahihi",
+                "description": "Unaweza kutenganisha majibu mbadala kwa alama ya mlalo (/)."
+              },
+              {
+                "label": "Kidokezo"
+              },
+              {
+                "label": "Majibu yasiyo sahihi",
+                "entity": "jibu lisilo sahihi",
+                "field": {
+                  "label": "Jibu lisilo sahihi",
+                  "description": "Unaweza kutenganisha majibu mbadala kwa alama ya mlalo (/).",
+                  "fields": [
+                    {
+                      "label": "Maandishi ya jibu lisilo sahihi"
+                    },
+                    {
+                      "label": "Maoni",
+                      "description": "Maoni yanapaswa kumsaidia mtumiaji kupata jibu sahihi na kulenga jibu ambalo mtumiaji ameweka."
+                    },
+                    {
+                      "label": "Onyesha muhtasari katika maandishi wakati maoni yanaonyeshwa",
+                      "description": "Weka!!kabla na baada ya kipande cha maandishi ili kuweka alama kionyeshi. (kwa mfano, Hiki ni!! kionyeshi!!)"
+                    },
+                    {
+                      "label": "Angazia nafasi inayohusiana na nafasi tupu /iliyoachwa wazi:",
+                      "options": [
+                        {
+                          "label": "- 1 (kabla ya nafasi tupu)"
+                        },
+                        {
+                          "label": "- 2 (vionyeshi viwili kabla ya nafasi tupu)"
+                        },
+                        {
+                          "label": "- 3 (vionyeshi vitatu kabla ya nafasi tupu)"
+                        },
+                        {
+                          "label": "+ 1 (baada ya nafasi tupu)"
+                        },
+                        {
+                          "label": "+ 2 (vionyeshi viwili baada ya nafasi tupu)"
+                        },
+                        {
+                          "label": "+ 3 (vionyeshi vitatu baada ya nafasi tupu)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Vijisehemu",
+      "fields": [
+        {
+          "label": "Orodha ya vijisehemu",
+          "description": "Vijisehemu ni maandishi ambayo yanaweza kutumika tena katika @snippetname maandishi ya maoni kwa kuingiza kwenye maandishi.",
+          "entity": "kipande kidogo",
+          "field": {
+            "label": "Kipande kidogo",
+            "fields": [
+              {
+                "label": "Jina",
+                "description": "Unaweza kutumia herufi na namba tu kwa jina la kijisehemu pekee."
+              },
+              {
+                "label": "Maandishi"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Maoni ya Jumla",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Chaguo-msingi"
+            }
+          ],
+          "label": "Bainisha maoni maalum kwa masafa yoyote ya alama",
+          "description": "Bofya kitufe cha \"Ongeza masafa\" ili kuongeza masafa mengi unavyohitaji. Mfano: 0-20% Alama mbaya, 21-91% Alama ya Wastani, 91-100% Alama Nzuri!",
+          "entity": "masafa",
+          "field": {
+            "fields": [
+              {
+                "label": "Masafa ya Alama"
+              },
+              {},
+              {
+                "label": "Maoni kwa masafa ya alama yaliyofafanuliwa",
+                "placeholder": "Jaza maoni"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Mipangilio ya tabia",
+      "description": "Chaguzi hizi zitakuwezesha kudhibiti jinsi kazi inavyofanya.",
+      "fields": [
+        {
+          "label": "Njia ya jibu",
+          "description": "Inaonyesha ni kwa njia gani mtumiaji anatoa majibu.",
+          "options": [
+            {
+              "label": "Machaguo ya watumiaji kutoka kwenye chaguzi."
+            },
+            {
+              "label": "Aina za watumiaji kutoka kwenye majibu."
+            }
+          ]
+        },
+        {
+          "label": "Njia mbadala zinazotolewa kwa uteuzi",
+          "options": [
+            {
+              "label": "Majibu yasiyo sahihi yameingizwa kwa tupu"
+            },
+            {
+              "label": "Majibu sahihi ya nafasi wazi zote"
+            }
+          ]
+        },
+        {
+          "label": "Idadi ya juu zaidi ya chaguo mbadala za nafasi zilizoachwa wazi zinazotolewa kwa uteuzi",
+          "description": "Weka 0 ili usiweke ukomo."
+        },
+        {
+          "label": "Tabia wakati mtumiaji anafanya makosa ya tahajia",
+          "options": [
+            {
+              "label": "Ikubali kama jibu sahihi"
+            },
+            {
+              "label": "Onya mtumiaji kuhusu kosa hilo"
+            },
+            {
+              "label": "Fikiria kuwa ni kosa la kawaida"
+            }
+          ]
+        },
+        {
+          "label": "Kesi nyeti",
+          "description": "Ikiwashwa, herufi kubwa ambayo ni tofauti na suluhisho inachukuliwa kuwa kosa."
+        },
+        {
+          "label": "Angalia majibu kiotomatiki baada ya kuingiza"
+        },
+        {
+          "label": "Washa kitufe cha \"Onyesha njia\""
+        },
+        {
+          "label": "Inahitaji sehemu zote kujibiwa kabla ya njia kutazamwa"
+        },
+        {
+          "label": "Wezesha \"Jaribu tena\""
+        },
+        {
+          "label": "Wezesha kitufe cha \"Weka alama\""
+        },
+        {
+          "label": "Onyesha mazungumzo ya uthibitisho kwenye \"Weka alama\"",
+          "description": "Chaguo hili halioani na chaguo la \"Angalia majibu kiotomatiki baada ya kuingiza\""
+        },
+        {
+          "label": "Onyesha mazungumzo ya uthibitisho kwenye \"Jaribu tena\""
+        }
+      ]
+    },
+    {
+      "label": "Maandishi ya kitufe cha \"Onyesha suluhisho\"",
+      "default": "Onyesha suluhisho"
+    },
+    {
+      "label": "Maandishi kwa kitufe cha \"Jaribu tena\"",
+      "default": "Jaribu tena"
+    },
+    {
+      "label": "Maandishi ya kitufe cha \"Weka alama\"",
+      "default": "Weka alama"
+    },
+    {
+      "label": "Maandishi ya ujumbe \"Haujajazwa\"",
+      "default": "Tafadhali jaza sehemu zote zilizoachwa wazi ili kuona suluhisho"
+    },
+    {
+      "label": "Lebo ya ikoni ya kidokezo",
+      "default": "Kidokezo"
+    },
+    {
+      "label": "Onyo la makosa ya tahajia",
+      "description": "Huu ni ujumbe unaoonyeshwa kwa watumiaji wanapofanya makosa ya tahajia. Ingiza @mistakeili kuwaonyesha walichokosea.",
+      "default": "Angalia tahajia yako: @mistake"
+    },
+    {
+      "label": "Weka alama mazungumzo ya uthibitisho",
+      "fields": [
+        {
+          "label": "Maandishi ya kichwa",
+          "default": "Umemaliza?"
+        },
+        {
+          "label": "Maandishi ya kiini",
+          "default": "Una uhakika unataka kumaliza?"
+        },
+        {
+          "label": "Ghairi lebo ya kitufe",
+          "default": "Ghairi"
+        },
+        {
+          "label": "Lebo ya kitufe cha kuthibitisha",
+          "default": "Maliza"
+        }
+      ]
+    },
+    {
+      "label": "Jaribu tena mazungumzo ya uthibitisho",
+      "fields": [
+        {
+          "label": "Maandishi ya kichwa",
+          "default": "Jaribu tena?"
+        },
+        {
+          "label": "Maandishi ya kiini",
+          "default": "Una uhakika unataka kujaribu tena?"
+        },
+        {
+          "label": "Ghairi lebo ya kitufe",
+          "default": "Ghairi"
+        },
+        {
+          "label": "Lebo ya kitufe cha kuthibitisha",
+          "default": "Thibitisha"
+        }
+      ]
+    },
+    {
+      "label": "Uwakilishi wa maandishi wa upau wa alama kwa wale wanaotumia kisoma maandishi",
+      "default": "Umepata :num kati ya alama:total"
+    }
+  ]
+}

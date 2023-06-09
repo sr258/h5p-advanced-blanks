@@ -1,0 +1,290 @@
+{
+  "semantics": [
+    {
+      "label": "Medija",
+      "fields": [
+        {
+          "label": "Tipas",
+          "description": "Pasirenkama medija, rodoma virš klausimo."
+        },
+        {
+          "label": "Išjungti klausimo paveiksliuko vaizdo mastelio keitimą"
+        }
+      ]
+    },
+    {
+      "label": "Turščias turinys",
+      "fields": [
+        {
+          "label": "Užduoties aprašymas",
+          "default": "Užpildykite praleistus žodžius.",
+          "description": "Vadovas, nurodantis naudotojui, kaip atsakyti į šią užduotį."
+        },
+        {
+          "label": "Tekstas su tarpais",
+          "important": {
+            "description": "<ul><li>Tarpai turi būti užpildyti __________ (dviem ar daugiau pabraukimais).</li><li>Neįrašykite atsakymo į tekstą.</li></ul>"
+          }
+        },
+        {
+          "label": "Tarpai panaudojami tekste",
+          "entity": "tarpas",
+          "widgets": [
+            {
+              "label": "Pradinis"
+            }
+          ],
+          "field": {
+            "label": "Tarpas",
+            "fields": [
+              {
+                "label": "Teisingas atsakymas",
+                "description": "Jūs galite atskirti alternatyvius atsakymus pasviruoju brūkšneliu (/)."
+              },
+              {
+                "label": "Patarimas"
+              },
+              {
+                "label": "Neteisingas atsakymas",
+                "entity": "Neteisingas atsakymas",
+                "field": {
+                  "label": "Neteisingas atsakymas",
+                  "description": "Jūs galite atskirti alternatyvius atsakymus pasviruoju brūkšneliu (/).",
+                  "fields": [
+                    {
+                      "label": "Neteisingo atsakymo tekstas"
+                    },
+                    {
+                      "label": "Grįžtamasis ryšys",
+                      "description": "Grįžtamasis ryšys turi padėti naudotojui surasti teisingą atsakymą ir tinkamai susietas su naudotojo įvestu atsakymu."
+                    },
+                    {
+                      "label": "Rodyti paryškinimą tekste, kai rodomas atsiliepimas",
+                      "description": "Įdėkite!! prieš ir po teksto, kad pažymėtumėte jį kaip akcentą. (pvz., tai yra !!svarbiausia!!)"
+                    },
+                    {
+                      "label": "Paryškinimo padėtis tuščios vietos atžvilgiu:",
+                      "options": [
+                        {
+                          "label": "- 1 (prieš tuščią laukelį)"
+                        },
+                        {
+                          "label": "- 2 (du paryškinimai prieš tuščią vietą)"
+                        },
+                        {
+                          "label": "- 3 (trys paryškinimai prieš tuščią vietą)"
+                        },
+                        {
+                          "label": "+ 1 (iš karto po tuščio laukelio)"
+                        },
+                        {
+                          "label": "+ 2 (du paryškinimai po tuščios vietos)"
+                        },
+                        {
+                          "label": "+ 3 (trys paryškinimai po tuščios vietos)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Fragmentai",
+      "fields": [
+        {
+          "label": "Fragmentų sąrašas",
+          "description": "Fragmentai yra tekstai, kuriuos galima pakartotinai panaudoti atsiliepimų tekstuose, į tekstą įterpiant @snippetname.",
+          "entity": "fragmentas",
+          "field": {
+            "label": "Fragmentas",
+            "fields": [
+              {
+                "label": "Pavadinimas",
+                "description": "Fragmento pavadinimui galite naudoti tik raides ir skaičius."
+              },
+              {
+                "label": "Tekstas"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Bendras atsiliepimas",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Pradinis"
+            }
+          ],
+          "label": "Nustatykite tinkintus atsiliepimus bet kokiam balų diapazonui",
+          "description": "Spustelėkite mygtuką „Pridėti diapazoną“, kad pridėtumėte tiek diapazonų, kiek jums reikia. Pavyzdys: 0–20 % blogas balas, 21–91 % vidutinis balas, 91–100 % puikus!",
+          "entity": "diapozonas",
+          "field": {
+            "fields": [
+              {
+                "label": "Balų diapozonas"
+              },
+              {},
+              {
+                "label": "Atsiliepimai apibrėžtam balų diapazonui",
+                "placeholder": "Užpildykite atsiliepimą"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Veikimo nustatymai",
+      "description": "Šios parinktys leis jums valdyti, kaip veikia užduotis.",
+      "fields": [
+        {
+          "label": "Atsakymo režimas",
+          "description": "Nurodo, kokiu būdu vartotojas pateikia atsakymus.",
+          "options": [
+            {
+              "label": "Vartotojai pasirenka iš parinkčių."
+            },
+            {
+              "label": "Vartotojai įveda atsakymus."
+            }
+          ]
+        },
+        {
+          "label": "Pasirinkimui siūlomos alternatyvos",
+          "options": [
+            {
+              "label": "Į tuščią lauką įvesti neteisingi atsakymai"
+            },
+            {
+              "label": "Teisingi visų kitų tuščių laukelių atsakymai"
+            }
+          ]
+        },
+        {
+          "label": "Maksimalus pasirinkimui siūlomų kitų ruošinių alternatyvų skaičius",
+          "description": "Įveskite 0, jei norite nenustatyti jokių apribojimų."
+        },
+        {
+          "label": "Veikimas, kai vartotojas padaro rašybos klaidą",
+          "options": [
+            {
+              "label": "Priimkite tai kaip teisingą atsakymą"
+            },
+            {
+              "label": "Įspėkite vartotoją apie klaidą"
+            },
+            {
+              "label": "Laikykite tai įprasta klaida"
+            }
+          ]
+        },
+        {
+          "label": "Skirta didžiosioms ir mažosioms raidėms",
+          "description": "Jei įjungta, didžiųjų raidžių rašymas, kuris skiriasi nuo sprendimo, laikomas klaida."
+        },
+        {
+          "label": "Automatiškai patikrinkite atsakymus po įvesties"
+        },
+        {
+          "label": "Įgalinti mygtuką „Rodyti sprendimus“."
+        },
+        {
+          "label": "Kad būtų galima peržiūrėti sprendimą, reikalaujama užpildyti visus laukus"
+        },
+        {
+          "label": "Įgalinti „Bandyti dar kartą“"
+        },
+        {
+          "label": "Įgalinkite mygtuką „Patikrinti“."
+        },
+        {
+          "label": "Rodyti patvirtinimo dialogo langą „Patikrinti“",
+          "description": "Ši parinktis nesuderinama su parinktimi „Automatiškai tikrinti atsakymus po įvesties“."
+        },
+        {
+          "label": "Rodyti patvirtinimo dialogo langą „Bandyti dar kartą“"
+        }
+      ]
+    },
+    {
+      "label": "Mygtuko „Rodyti sprendimus“ tekstas",
+      "default": "Rodyti sprendimus"
+    },
+    {
+      "label": "Tekstas mygtukui „Bandyti iš naujo“.",
+      "default": "Kartoti"
+    },
+    {
+      "label": "\"Patikrinti\" mygtuko tekstas",
+      "default": "Patikrinti"
+    },
+    {
+      "label": "Neužpildyta iki galo\" žinutės tekstas",
+      "default": "Norėdami pamatyti sprendimą, užpildykite visus tuščius laukus"
+    },
+    {
+      "label": "Patarimo ikonos pavadinimas",
+      "default": "Patarimas"
+    },
+    {
+      "label": "Taisymo klaidos pranešimas",
+      "description": "Tai yra pranešimas, rodomas vartotojams, kai jie padaro rašybos klaidą. Įveskite @mistake, kad parodytumėte, ką jie padarė ne taip.",
+      "default": "Taisyti: @mistake"
+    },
+    {
+      "label": "Patvirtinti dialogą",
+      "fields": [
+        {
+          "label": "Pavadinimo tekstas",
+          "default": "Baigti?"
+        },
+        {
+          "label": "Pagrindinis tekstas",
+          "default": "Ar norite baigti?"
+        },
+        {
+          "label": "Ašaukti mygtuko pavadinimas",
+          "default": "Atšaukti"
+        },
+        {
+          "label": "Patvirtinti mygtuko pavadinimas",
+          "default": "Baigti"
+        }
+      ]
+    },
+    {
+      "label": "Kartojimo patvirtinimo dialogas",
+      "fields": [
+        {
+          "label": "Pavadinimo tekstas",
+          "default": "Kartoti?"
+        },
+        {
+          "label": "Pagrindinis tekstas",
+          "default": "Ar tikrai norite kartoti?"
+        },
+        {
+          "label": "Atšaukti mygtuko pavadinimas",
+          "default": "Atšaukti"
+        },
+        {
+          "label": "Patvirtinti mygtuko pavadinimas",
+          "default": "Patvirtinti"
+        }
+      ]
+    },
+    {
+      "label": "Tekstinis taškų juostos vaizdavimas tiems, kurie naudoja skaitymo garsiakalbį",
+      "default": "Jūs surinkote :num iš :total balų"
+    }
+  ]
+}
