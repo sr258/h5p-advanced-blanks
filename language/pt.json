@@ -1,0 +1,290 @@
+{
+  "semantics": [
+    {
+      "label": "Mídia",
+      "fields": [
+        {
+          "label": "Tipo",
+          "description": "Mídia opcional para exibir acima da pergunta."
+        },
+        {
+          "label": "Desactivar o zoom da imagem para a imagem da pergunta"
+        }
+      ]
+    },
+    {
+      "label": "Guia do autor do conteúdo em branco",
+      "fields": [
+        {
+          "label": "Descrição da tarefa",
+          "default": "Preencha as actividades de adicionar com palavra que falta.",
+          "description": "Um guia a informar o utilizador como completar a tarefa."
+        },
+        {
+          "label": "Texto com espaços em branco",
+          "important": {
+            "description": "<ul><li>Os espaços em branco devem ser marcados com __________ (três ou mais sublinhados).</li><li>Não coloque as soluções no texto.</li></ul>"
+          }
+        },
+        {
+          "label": "Campos em branco utilizados no texto",
+          "entity": "em branco",
+          "widgets": [
+            {
+              "label": "Padrão"
+            }
+          ],
+          "field": {
+            "label": "Em branco",
+            "fields": [
+              {
+                "label": "Resposta correcta",
+                "description": "Poderá separar respostas alternativas com uma barra (/)."
+              },
+              {
+                "label": "Dica"
+              },
+              {
+                "label": "Respostas incorrectas",
+                "entity": "resposta incorrecta",
+                "field": {
+                  "label": "Resposta incorrecta",
+                  "description": "Poderá separar respostas alternativas com uma barra (/).",
+                  "fields": [
+                    {
+                      "label": "Texto de resposta incorrecta"
+                    },
+                    {
+                      "label": "Feedback",
+                      "description": "O feedback deve ajudar o utilizador a encontrar a resposta correcta e, preferencialmente, deve ser adaptado à resposta que o utilizador inseriu."
+                    },
+                    {
+                      "label": "Mostrar destaque no texto quando o feedback é mostrado",
+                      "description": "Utilize!! Antes e depois de um texto para marcá-lo como um destaque. (por exemplo: Isto é!! Um destaque!!)"
+                    },
+                    {
+                      "label": "Posição de destaque em relação ao espaço em branco:",
+                      "options": [
+                        {
+                          "label": "- 1 (antes do espaço em branco)"
+                        },
+                        {
+                          "label": "- 2 (dois destaques antes do espaço em branco)"
+                        },
+                        {
+                          "label": "- 3 (três destaques antes do espaço em branco)"
+                        },
+                        {
+                          "label": "+ 1 (após o espaço em branco)"
+                        },
+                        {
+                          "label": "+ 2 (dois destaques após o espaço em branco)"
+                        },
+                        {
+                          "label": "+ 3 (três destaques após o espaço em branco)"
+                        }
+                      ]
+                    }
+                  ]
+                }
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Trechos",
+      "fields": [
+        {
+          "label": "Lista de trechos",
+          "description": "Trechos são textos que podem ser reutilizados em textos de feedback, inserindo @snippetname no texto.",
+          "entity": "trecho",
+          "field": {
+            "label": "Trecho",
+            "fields": [
+              {
+                "label": "Nome",
+                "description": "Poderá usar somente letras e números para o nome do trecho."
+              },
+              {
+                "label": "Texto"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Feedback Geral",
+      "fields": [
+        {
+          "widgets": [
+            {
+              "label": "Padrão"
+            }
+          ],
+          "label": "Definir feedback personalizado para qualquer faixa de pontuação",
+          "description": "Clique no botão \"Adicionar faixa\" para adicionar quantos intervalos precisar. Exemplo: 0-20% Pontuação Péssima, 21-91% Pontuação Média, 91-100% Pontuação Óptima!",
+          "entity": "faixa",
+          "field": {
+            "fields": [
+              {
+                "label": "Faixa de Pontuação"
+              },
+              {},
+              {
+                "label": "Feedback para a faixa de pontuação definida",
+                "placeholder": "Preencha o feedback"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "label": "Configurações comportamentais",
+      "description": "Essas opções permitem controlar como a tarefa se comportará.",
+      "fields": [
+        {
+          "label": "Modo de resposta",
+          "description": "Indica de que forma o utilizador dá as respostas.",
+          "options": [
+            {
+              "label": "Os utilizadores selecionam entre as opções."
+            },
+            {
+              "label": "Os utilizadores digitam nas respostas."
+            }
+          ]
+        },
+        {
+          "label": "Alternativas oferecidas para seleção",
+          "options": [
+            {
+              "label": "As respostas incorrectas inseridas para o espaço em branco"
+            },
+            {
+              "label": "As respostas correctas de todos os outros espaços em branco"
+            }
+          ]
+        },
+        {
+          "label": "Número máximo de alternativas de outros espaços em branco oferecidos para seleção",
+          "description": "Digite 0 para não definir nenhum limite."
+        },
+        {
+          "label": "Comportamento quando o utilizador comete um erro ortográfico",
+          "options": [
+            {
+              "label": "Aceitar como resposta correcta"
+            },
+            {
+              "label": "Alertar o utilizador sobre o erro"
+            },
+            {
+              "label": "Considerar um erro normal"
+            }
+          ]
+        },
+        {
+          "label": "Diferenciar maiúsculas e minúsculas",
+          "description": "Se activada, a capitalização que é diferente da solução será considerada um erro."
+        },
+        {
+          "label": "Verificação automática das respostas após a entrada"
+        },
+        {
+          "label": "Activar o botão \"Mostrar soluções\""
+        },
+        {
+          "label": "Exigir que todos os campos sejam respondidos antes que a solução possa ser visualizada"
+        },
+        {
+          "label": "Activar \"Tentar Novamente\""
+        },
+        {
+          "label": "Activar o botão \"Verificar\""
+        },
+        {
+          "label": "Mostrar caixa de diálogo de confirmação em \"Verificar\"",
+          "description": "Esta opção não é compatível com a opção \"Verificação automática das respostas após a entrada\""
+        },
+        {
+          "label": "Mostrar caixa de diálogo de confirmação em \"Tentar Novamente\""
+        }
+      ]
+    },
+    {
+      "label": "Texto para o botão \"Mostrar soluções\"",
+      "default": "Mostrar solução"
+    },
+    {
+      "label": "Texto do botão \"Tentar Novamente\"",
+      "default": "Tentar novamente"
+    },
+    {
+      "label": "Texto do botão \"Verificar\"",
+      "default": "Verificar"
+    },
+    {
+      "label": "Texto para a mensagem \"Não preenchido\"",
+      "default": "Preencha todos os espaços em branco para ver a solução"
+    },
+    {
+      "label": "Etiqueta do ícone de dica",
+      "default": "Dica"
+    },
+    {
+      "label": "Aviso de erro ortográfico",
+      "description": "Esta é a mensagem mostrada aos utilizadores quando eles cometem um erro ortográfico. Insira @mistake para lhes mostrar o que fizeram de errado.",
+      "default": "Verifique a sua ortografia: @mistake"
+    },
+    {
+      "label": "Verificar diálogo de confirmação",
+      "fields": [
+        {
+          "label": "Texto de cabeçalho",
+          "default": "Finalizar?"
+        },
+        {
+          "label": "Corpo de texto",
+          "default": "Tem a certeza de que deseja finalizar?"
+        },
+        {
+          "label": "Etiqueta do botão Cancelar",
+          "default": "Cancelar"
+        },
+        {
+          "label": "Etiqueta do botão Confirmar",
+          "default": "Finalizar"
+        }
+      ]
+    },
+    {
+      "label": "Diálogo de confirmação de nova tentativa",
+      "fields": [
+        {
+          "label": "Texto de cabeçalho",
+          "default": "Tentar Novamente?"
+        },
+        {
+          "label": "Corpo de texto",
+          "default": "Tem certeza que deseja tentar novamente?"
+        },
+        {
+          "label": "Etiqueta do botão Cancelar",
+          "default": "Cancelar"
+        },
+        {
+          "label": "Etiqueta do botão Confirmar",
+          "default": "Confirmar"
+        }
+      ]
+    },
+    {
+      "label": "Representação textual da barra de pontuação para quem usa um Readspeaker",
+      "default": "Conseguiu :num de :total pontos possíveis"
+    }
+  ]
+}
