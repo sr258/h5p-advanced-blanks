@@ -35,7 +35,7 @@
             }
           ],
           "field": {
-            "label": "blanc",
+            "label": "Blanc",
             "fields": [
               {
                 "label": "Réponse correcte",
@@ -60,7 +60,7 @@
                     },
                     {
                       "label": "Surligner le texte lorsque le feedback est affiché",
-                      "description": "Mettez !! avant et après un élément du texte pour le marquer comme devant être surligné. (par exemple, ceci est !!un élément surligné !!)"
+                      "description": "Mettez !! avant et après un élément du texte pour le marquer comme devant être surligné. (Par exemple, ceci est !!un élément surligné !!)"
                     },
                     {
                       "label": "Position de l'élément à mettre en surbrillance par rapport au blanc :",
@@ -98,14 +98,14 @@
       "fields": [
         {
           "label": "Liste des fragments de feedback",
-          "description": "Les fragments de feedback sont des textes qui peuvent être réutilisés dans les textes de feedback en insérant @snippetname dans le texte.",
+          "description": "Les fragments de feedback (\"snippets\") sont des textes qui peuvent être réutilisés dans les textes de feedback en insérant @snippetname dans le texte.",
           "entity": "fragment de feedback",
           "field": {
             "label": "Fragment de feedback",
             "fields": [
               {
                 "label": "Nom",
-                "description": "Pour le nom du fragment de feedback vous ne pouvez utiliser que des lettres, des chiffres ou le trait de soulignement."
+                "description": "Pour le nom du fragment de feedback vous ne pouvez utiliser que des lettres ou des chiffres."
               },
               {
                 "label": "Texte"
@@ -124,13 +124,13 @@
               "label": "Par défaut"
             }
           ],
-          "label": "Définissez des feedbacks pour différents intervalles de scores",
-          "description": "Cliquez sur le bouton \"Ajouter Intervalle\" pour ajouter autant d'intervalles de score que vous souhaitez. Exemple: 0-20% Mauvais score, 21-91% Score moyen, 91-100% Score excellent !",
+          "label": "Définissez le feedback pour chaque intervalle de score",
+          "description": "Cliquez sur le bouton \"Ajouter Intervalle\" pour ajouter autant d'intervalles de score que vous souhaitez. Exemple : 0-20% Mauvais score, 21-91% Score moyen, 91-100% Score excellent !",
           "entity": "intervalle",
           "field": {
             "fields": [
               {
-                "label": "Fourchette de score"
+                "label": "Intervalle de score"
               },
               {},
               {
@@ -192,13 +192,13 @@
           "description": "Si cette option est activée, une casse différente de celle de la solution est considérée comme une erreur."
         },
         {
-          "label": "Vérifier les réponses instantanément dès la saisie."
+          "label": "Vérifier les réponses instantanément dès la saisie"
         },
         {
           "label": "Activer le bouton \"Voir la correction\""
         },
         {
-          "label": "Obliger l'utilisateur à remplir tous les blancs avant de voir la correction."
+          "label": "Obliger l'utilisateur à remplir tous les blancs avant de voir la correction"
         },
         {
           "label": "Activer le bouton \"Recommencer\""
