@@ -1,11 +1,11 @@
 {
   "semantics": [
     {
-      "label": "Media",
+      "label": "మీడియా",
       "fields": [
         {
-          "label": "Type",
-          "description": "Optional media to display above the question."
+          "label": "రకం",
+          "description": "ప్రశ్న పైన ప్రదర్శించడానికి ఐచ్ఛిక మీడియా."
         },
         {
           "label": "ప్రశ్న లోని చిత్రాన్ని జూమ్ చేయడాన్ని డిసేబుల్ చేయండి"
@@ -116,26 +116,26 @@
       ]
     },
     {
-      "label": "Overall Feedback",
+      "label": "ఓవర్ ఆల్ ఫీడ్ బ్యాక్",
       "fields": [
         {
           "widgets": [
             {
-              "label": "Default"
+              "label": "డిఫాల్ట్"
             }
           ],
-          "label": "Define custom feedback for any score range",
-          "description": "Click the \"Add range\" button to add as many ranges as you need. Example: 0-20% Bad score, 21-91% Average Score, 91-100% Great Score!",
-          "entity": "range",
+          "label": "ఏ స్కోర్ పరిధి కైనా ఇచ్చే కస్టమ్ ఫీడ్ బ్యాక్ ను ఇక్కడ నిర్వచించండి",
+          "description": "మీకు అవసరమైనన్ని పరిధులను జోడించడానికి \"పరిధిని జోడించు\" బటన్‌ను క్లిక్ చేయండి. ఉదాహరణ: 0-20% బ్యాడ్ స్కోర్, 21-91% సగటు స్కోర్, 91-100% గొప్ప స్కోర్!",
+          "entity": "పరిధి",
           "field": {
             "fields": [
               {
-                "label": "Score Range"
+                "label": "స్కోర్ పరిధి"
               },
               {},
               {
-                "label": "Feedback for defined score range",
-                "placeholder": "Fill in the feedback"
+                "label": "నిర్వచింపబడిన స్కోర్ పరిధి కై ఫీడ్ బ్యాక్",
+                "placeholder": "ఫీడ్ బ్యాక్ పూరించండి"
               }
             ]
           }
@@ -198,93 +198,93 @@
           "label": "\"సమాధానాలు చూపించు\" బటన్ ఎనేబుల్ చెయ్యండి"
         },
         {
-          "label": "Require all fields to be answered before the solution can be viewed"
+          "label": "జవాబును వీక్షించే ముందు అన్ని ఫీల్డ్‌లకు సమాధానం ఇవ్వాలి"
         },
         {
-          "label": "Enable \"Retry\""
+          "label": "\"Retry\" ను ఎనేబుల్ చెయ్యి"
         },
         {
-          "label": "Enable \"Check\" button"
+          "label": "\"Check\" బటన్ ను ఎనేబుల్ చెయ్యి"
         },
         {
-          "label": "Show confirmation dialog on \"Check\"",
-          "description": "This option is not compatible with the \"Automatically check answers after input\" option"
+          "label": "\"Check\" చేసినపుడు కన్ఫర్మేషన్ డైలాగ్ చూపించు",
+          "description": "\"Automatically check answers after input\" ఆప్షన్ ఈ ఎంపికకు అనుకూలంగా లేదు"
         },
         {
-          "label": "Show confirmation dialog on \"Retry\""
+          "label": "\"Retry\" చేసినపుడు కన్ఫర్మేషన్ డైలాగ్ చూపించు"
         }
       ]
     },
     {
-      "label": "Text for \"Show solutions\" button",
-      "default": "Show solution"
+      "label": "\"Show solutions\" బటన్ కొరకై టెక్స్ట్",
+      "default": "జవాబు చూపించు"
     },
     {
-      "label": "Text for \"Retry\" button",
-      "default": "Retry"
+      "label": "\"Retry\" బటన్ కొరకై టెక్స్ట్",
+      "default": "తిరిగి ప్రయత్నించు /రి ట్రై"
     },
     {
-      "label": "Text for \"Check\" button",
-      "default": "Check"
+      "label": "\"Check\" బటన్ కొరకై టెక్స్ట్",
+      "default": "చెక్"
     },
     {
-      "label": "Text for \"Not filled out\" message",
-      "default": "Please fill in all blanks to view solution"
+      "label": "\"Not filled out\" మెసేజ్ కొరకై టెక్స్ట్",
+      "default": "జవాబు చూడటానికి అన్ని ఖాళీలను పూరించండి"
     },
     {
-      "label": "Tip icon label",
-      "default": "Tip"
+      "label": "టిప్ ఐకాన్ లేబుల్",
+      "default": "టిప్"
     },
     {
-      "label": "Spelling mistake warning",
-      "description": "This is the message shown to users when they make a spelling mistake. Insert @mistake to show them what they did wrong.",
-      "default": "Check your spelling: @mistake"
+      "label": "స్పెల్లింగ్ తప్పు అని హెచ్చరిక",
+      "description": "ఇది, యూజర్లు స్పెల్లింగ్ తప్పు చేసినప్పుడు వారికి చూపబడే సందేశం. వారు ఏమి తప్పు చేశారో వారికి చూపించడానికి @mistake ని ఇన్స్సర్ట్ చేయండి.",
+      "default": "మీ స్పెల్లింగ్ సరిచూసుకోండి: @mistake"
     },
     {
-      "label": "Check confirmation dialog",
+      "label": "కన్ఫర్మేషన్ డైలాగ్‌ని చెక్ చేయండి",
       "fields": [
         {
-          "label": "Header text",
-          "default": "Finish?"
+          "label": "హెడర్ టెక్స్ట్",
+          "default": "పూర్తి అయ్యిందా?"
         },
         {
-          "label": "Body text",
-          "default": "Are you sure you wish to finish?"
+          "label": "బాడీ టెక్స్ట్",
+          "default": "ఖచ్చితంగా మీరు పూర్తి చేసారని అనుకుంటున్నారా?"
         },
         {
-          "label": "Cancel button label",
-          "default": "Cancel"
+          "label": "కేన్సిల్ బటన్ లేబుల్",
+          "default": "కేన్సిల్"
         },
         {
-          "label": "Confirm button label",
-          "default": "Finish"
+          "label": "కన్ఫర్మ్ బటన్ లేబుల్",
+          "default": "ముగించు / పూర్తిచేయు"
         }
       ]
     },
     {
-      "label": "Retry confirmation dialog",
+      "label": "కన్ఫర్మేషన్ డైలాగ్ కై తిరిగి ప్రయత్నించు",
       "fields": [
         {
-          "label": "Header text",
-          "default": "Retry?"
+          "label": "హెడర్ టెక్స్ట్",
+          "default": "మళ్లీ ప్రయత్నించాలా?"
         },
         {
-          "label": "Body text",
-          "default": "Are you sure you wish to retry?"
+          "label": "బాడీ టెక్స్ట్",
+          "default": "ఖచ్చితంగా మీరు మళ్లీ ప్రయత్నించాలనుకుంటున్నారా?"
         },
         {
-          "label": "Cancel button label",
-          "default": "Cancel"
+          "label": "కేన్సిల్ బటన్ లేబుల్",
+          "default": "కేన్సిల్"
         },
         {
-          "label": "Confirm button label",
-          "default": "Confirm"
+          "label": "కన్ఫర్మ్ బటన్ లేబుల్",
+          "default": "నిర్ధారించండి / కన్ఫర్మ్ చెయ్యండి"
         }
       ]
     },
     {
       "label": "రీడ్‌స్పీకర్‌ని ఉపయోగించే వారి కోసం స్కోర్ బార్ యొక్క టెక్స్టువల్ రిప్రెజెంటేషన్",
-      "default": "మీరు మొత్తం పాయింట్లలో :total points"
+      "default": "మీరు మొత్తం పాయింట్లలో :total points పొందారు"
     }
   ]
 }
