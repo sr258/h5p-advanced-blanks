@@ -10,6 +10,9 @@ import { Highlight } from "../models/highlight";
 import { Blank } from "../models/blank";
 import { Correctness } from '../models/answer';
 
+import highlightTemplate from '../views/highlight.ractive.html';
+import blankTemplate from '../views/blank.ractive.html';
+
 import * as RactiveEventsKeys from '../../lib/ractive-events-keys';
 
 interface ScoreChanged {
@@ -142,36 +145,36 @@ export class ClozeController {
     this.checkAndNotifyCompleteness();
   }
 
-  textTyped = (blank: Blank) => {
+  textTyped = (event, blank: Blank) => {
     blank.onTyped();
     if (this.onTyped)
       this.onTyped();
     this.refreshCloze();
   }
 
-  focus = (blank: Blank) => {
-    blank.onFocussed();
+  focus = (event, blank: Blank) => {
+    blank.onFocused();
     this.refreshCloze();
   }
 
-  displayFeedback = (blank: Blank) => {
+  displayFeedback = (event, blank: Blank) => {
     blank.onDisplayFeedback();
     this.refreshCloze();
   }
 
-  showHint = (blank: Blank) => {
+  showHint = (event, blank: Blank) => {
     this.cloze.hideAllHighlights();
     blank.showHint();
     this.refreshCloze();
   }
 
-  requestCloseTooltip = (blank: Blank) => {
+  requestCloseTooltip = (event, blank: Blank) => {
     blank.removeTooltip();
     this.refreshCloze();
     this.jquery.find("#" + blank.id).focus();
   }
 
-  checkBlank = (blank: Blank, cause: string) => {
+  checkBlank = (event, blank: Blank, cause: string) => {
     if ((cause === 'blur' || cause === 'change')) {
       blank.lostFocus();
     }
@@ -235,7 +238,7 @@ export class ClozeController {
   private createHighlightBinding(highlight: Highlight) {
     this.highlightRactives[highlight.id] = new Ractive({
       el: '#container_' + highlight.id,
-      template: require('../views/highlight.ractive.html'),
+      template: highlightTemplate,
       data: {
         object: highlight
       }
@@ -245,7 +248,7 @@ export class ClozeController {
   private createBlankBinding(blank: Blank) {
     var ractive = new Ractive({
       el: '#container_' + blank.id,
-      template: require('../views/blank.ractive.html'),
+      template: blankTemplate,
       data: {
         isSelectCloze: this.isSelectCloze,
         blank: blank

@@ -8,7 +8,7 @@ export function extend(...args: any[]) {
     for (let key in args[i]) {
       if (args[i].hasOwnProperty(key)) {
         if (typeof args[0][key] === 'object' && typeof args[i][key] === 'object') {
-          this.extend(args[0][key], args[i][key]);
+          extend(args[0][key], args[i][key]);
         }
         else {
           args[0][key] = args[i][key];

@@ -198,7 +198,7 @@ export class Blank extends ClozeElement {
     this.setAnswerState(MessageType.ShowSolution);
   }
 
-  public onFocussed() {
+  public onFocused() {
     if (this.hasPendingFeedback) {
       this.evaluateAttempt(false);
     }

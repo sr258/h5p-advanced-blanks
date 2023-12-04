@@ -54,7 +54,7 @@ General todo:
   Firefox 57: 
     Safari iOS 11 on iPhone and iPad:
       ✘ typing mode: error indicator overlaps with text @cancelled(18-06-29 17:02) not reproducable
-      - typing mode: when there's a popup, the reference element should be focussed (still needed?)
+      - typing mode: when there's a popup, the reference element should be focused (still needed?)
       ✔ typing mode: the color of correctly solved gaps are wrong (the text is much too light) @done(18-06-29 17:02)
       ✔ typing mode: the alignment of the (in)correct symbol is broken: it's too far up (minor issue) @done(18-06-29 17:02)
       - typing mode: the cursor is visible on top of popups if they overlap (happens a lot)      
@@ -62,7 +62,7 @@ General todo:
       - typing mode: part of the cursor is visible on top of popups if they overlap (happens a lot, not as ugly as on iOS)
       - clipping of popups (small amount, no content clipped) in certain cases
       - highlight of text + textarea directly below --> no space between them
-      - popup and textarea / select should be focussed when popup is shown
+      - popup and textarea / select should be focused when popup is shown
     Edge 41 + Internet Explorer 10/11:
       - highlight blink animation doesn't work
       - select mode: when selecting an option, all options in the list are displayed with the in/correct style (displayed only for a short time)
