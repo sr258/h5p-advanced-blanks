@@ -20,7 +20,7 @@
       "path": "dist/ractive.min.js"
     },
     {
-      "path": "dist/dist.js"
+      "path": "dist/h5p-advanced-blanks.js"
     }
   ],
   "preloadedDependencies": [

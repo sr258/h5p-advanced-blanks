@@ -8,7 +8,7 @@ module.exports = (env, argv) => {
     },
     output: {
       path: path.resolve(__dirname, 'dist'),
-      filename: '[name].js'
+      filename: 'h5p-advanced-blanks.js'
     },
     module: {
       rules: [
