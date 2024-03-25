@@ -3,7 +3,7 @@
   "description": "Fill the blanks exercise with individual feedback",
   "majorVersion": 1,
   "minorVersion": 2,
-  "patchVersion": 5,
+  "patchVersion": 6,
   "runnable": 1,
   "author": "S. Rettig",
   "license": "MIT",
@@ -20,7 +20,7 @@
       "path": "dist/ractive.min.js"
     },
     {
-      "path": "dist/dist.js"
+      "path": "dist/h5p-advanced-blanks.js"
     }
   ],
   "preloadedDependencies": [
